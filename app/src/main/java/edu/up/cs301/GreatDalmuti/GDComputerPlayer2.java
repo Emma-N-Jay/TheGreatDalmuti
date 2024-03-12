@@ -1,4 +1,4 @@
-package edu.up.cs301.counter;
+package edu.up.cs301.GreatDalmuti;
 
 import edu.up.cs301.GameFramework.GameMainActivity;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
@@ -22,14 +22,14 @@ import android.widget.TextView;
 * @author Andrew M. Nuxoll
 * @version September 2013
 */
-public class CounterComputerPlayer2 extends CounterComputerPlayer1 {
+public class GDComputerPlayer2 extends edu.up.cs301.GreatDalmuti.GDComputerPlayer1 {
 	
 	/*
 	 * instance variables
 	 */
 	
 	// the most recent game state, as given to us by the CounterLocalGame
-	private CounterState currentGameState = null;
+	private GDState currentGameState = null;
 	
 	// If this player is running the GUI, the activity (null if the player is
 	// not running a GUI).
@@ -49,7 +49,7 @@ public class CounterComputerPlayer2 extends CounterComputerPlayer1 {
 	 * @param name
 	 * 		the player's name
 	 */
-	public CounterComputerPlayer2(String name) {
+	public GDComputerPlayer2(String name) {
 		super(name);
 	}
 	
@@ -70,9 +70,9 @@ public class CounterComputerPlayer2 extends CounterComputerPlayer1 {
 		if (game == null) {
 			return;
 		}
-		else if (info instanceof CounterState) {
+		else if (info instanceof GDState) {
 			// if we indeed have a counter-state, update the GUI
-			currentGameState = (CounterState)info;
+			currentGameState = (GDState)info;
 			updateDisplay();
 		}
 	}
@@ -123,11 +123,11 @@ public class CounterComputerPlayer2 extends CounterComputerPlayer1 {
 		this.guiHandler = new Handler();
 		
 		// Load the layout resource for the our GUI's configuration
-		activityForGui.setContentView(R.layout.counter_human_player);
+		activityForGui.setContentView(R.layout.gd_human_player);
 
 		// remember who our text view is, for updating the counter value
 		this.counterValueTextView =
-				(TextView) activityForGui.findViewById(R.id.counterValueTextView);
+				(TextView) activityForGui.findViewById(R.id.greatDalmutiValueTextView);
 		
 		// disable the buttons, since they will have no effect anyway
 		Button plusButton = (Button)activityForGui.findViewById(R.id.plusButton);

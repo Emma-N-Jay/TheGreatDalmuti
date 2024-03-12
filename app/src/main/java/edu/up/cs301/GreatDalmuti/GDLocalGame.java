@@ -1,4 +1,4 @@
-package edu.up.cs301.counter;
+package edu.up.GreatDalmuti;
 
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 import edu.up.cs301.GameFramework.players.GamePlayer;
@@ -15,7 +15,7 @@ import android.util.Log;
  * @author Andrew M. Nuxoll
  * @version July 2013
  */
-public class CounterLocalGame extends LocalGame {
+public class GDLocalGame extends LocalGame {
 
 	// When a counter game is played, any number of players. The first player
 	// is trying to get the counter value to TARGET_MAGNITUDE; the second player,
@@ -25,7 +25,7 @@ public class CounterLocalGame extends LocalGame {
 	public static final int TARGET_MAGNITUDE = 10;
 
 	// the game's state
-	private CounterState gameState;
+	private edu.up.cs301.GreatDalmuti.GDState gameState;
 	
 	/**
 	 * can this player move
@@ -42,12 +42,12 @@ public class CounterLocalGame extends LocalGame {
 	/**
 	 * This ctor should be called when a new counter game is started
 	 */
-	public CounterLocalGame(GameState state) {
+	public GDLocalGame(GameState state) {
 		// initialize the game state, with the counter value starting at 0
-		if (! (state instanceof CounterState)) {
-			state = new CounterState(0);
+		if (! (state instanceof edu.up.cs301.GreatDalmuti.GDState)) {
+			state = new edu.up.cs301.GreatDalmuti.GDState(0);
 		}
-		this.gameState = (CounterState)state;
+		this.gameState = (edu.up.cs301.GreatDalmuti.GDState)state;
 		super.state = state;
 	}
 
@@ -58,10 +58,10 @@ public class CounterLocalGame extends LocalGame {
 	protected boolean makeMove(GameAction action) {
 		Log.i("action", action.getClass().toString());
 		
-		if (action instanceof CounterMoveAction) {
+		if (action instanceof edu.up.cs301.GreatDalmuti.GDMoveAction) {
 		
 			// cast so that we Java knows it's a CounterMoveAction
-			CounterMoveAction cma = (CounterMoveAction)action;
+			edu.up.cs301.GreatDalmuti.GDMoveAction cma = (edu.up.cs301.GreatDalmuti.GDMoveAction)action;
 
 			// Update the counter values based upon the action
 			int result = gameState.getCounter() + (cma.isPlus() ? 1 : -1);
@@ -83,7 +83,7 @@ public class CounterLocalGame extends LocalGame {
 	protected void sendUpdatedStateTo(GamePlayer p) {
 		// this is a perfect-information game, so we'll make a
 		// complete copy of the state to send to the player
-		p.sendInfo(new CounterState(this.gameState));
+		p.sendInfo(new edu.up.cs301.GreatDalmuti.GDState(this.gameState));
 		
 	}//sendUpdatedSate
 	

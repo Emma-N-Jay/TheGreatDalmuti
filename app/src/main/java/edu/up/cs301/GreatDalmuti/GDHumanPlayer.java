@@ -1,4 +1,4 @@
-package edu.up.cs301.counter;
+package edu.up.cs301.GreatDalmuti;
 
 import edu.up.cs301.GameFramework.players.GameHumanPlayer;
 import edu.up.cs301.GameFramework.GameMainActivity;
@@ -22,7 +22,7 @@ import android.view.View.OnClickListener;
  * @author Andrew M. Nuxoll
  * @version July 2013
  */
-public class CounterHumanPlayer extends GameHumanPlayer implements OnClickListener {
+public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	/* instance variables */
 	
@@ -30,7 +30,7 @@ public class CounterHumanPlayer extends GameHumanPlayer implements OnClickListen
 	private TextView counterValueTextView;
 	
 	// the most recent game state, as given to us by the CounterLocalGame
-	private CounterState state;
+	private edu.up.cs301.GreatDalmuti.GDState state;
 	
 	// the android activity that we are running
 	private GameMainActivity myActivity;
@@ -40,7 +40,7 @@ public class CounterHumanPlayer extends GameHumanPlayer implements OnClickListen
 	 * @param name
 	 * 		the player's name
 	 */
-	public CounterHumanPlayer(String name) {
+	public GDHumanPlayer(String name) {
 		super(name);
 	}
 
@@ -77,11 +77,11 @@ public class CounterHumanPlayer extends GameHumanPlayer implements OnClickListen
 		GameAction action = null;
 		if (button.getId() == R.id.plusButton) {
 			// plus button: create "increment" action
-			action = new CounterMoveAction(this, true);
+			action = new edu.up.cs301.GreatDalmuti.GDMoveAction(this, true);
 		}
 		else if (button.getId() == R.id.minusButton) {
 			// minus button: create "decrement" action
-			action = new CounterMoveAction(this, false);
+			action = new edu.up.cs301.GreatDalmuti.GDMoveAction(this, false);
 		}
 		else {
 			// something else was pressed: ignore
@@ -100,10 +100,10 @@ public class CounterHumanPlayer extends GameHumanPlayer implements OnClickListen
 	@Override
 	public void receiveInfo(GameInfo info) {
 		// ignore the message if it's not a CounterState message
-		if (!(info instanceof CounterState)) return;
+		if (!(info instanceof edu.up.cs301.GreatDalmuti.GDState)) return;
 		
 		// update our state; then update the display
-		this.state = (CounterState)info;
+		this.state = (edu.up.cs301.GreatDalmuti.GDState)info;
 		updateDisplay();
 	}
 	
@@ -120,7 +120,7 @@ public class CounterHumanPlayer extends GameHumanPlayer implements OnClickListen
 		this.myActivity = activity;
 		
 	    // Load the layout resource for our GUI
-		activity.setContentView(R.layout.counter_human_player);
+		activity.setContentView(R.layout.gd_human_player);
 		
 		// make this object the listener for both the '+' and '-' 'buttons
 		Button plusButton = (Button) activity.findViewById(R.id.plusButton);
@@ -130,7 +130,7 @@ public class CounterHumanPlayer extends GameHumanPlayer implements OnClickListen
 
 		// remember the field that we update to display the counter's value
 		this.counterValueTextView =
-				(TextView) activity.findViewById(R.id.counterValueTextView);
+				(TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
 		
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
