@@ -34,17 +34,17 @@ hasLead:boolean//is allowed to start new round
 public class GDLocalGame extends LocalGame {
 
 	//variables
-	public ArrayList<ArrayList<Integer>> cards;
-	public boolean isVisibleCards;
-	public boolean handIsVisible;
-	public boolean revolutionIsVisible;
-	public  int[] playerScores;
-	public int timerCurrent;
-	public int numInPule;
-	public char rankInPile;
-	public boolean exchangeTax;
-	public boolean hasLowest;
-	public boolean hasLead;
+	private ArrayList<ArrayList<Character>> cards;
+	private boolean isVisibleCards;
+	private boolean handIsVisible;
+	private boolean revolutionIsVisible;
+	private  int[] playerScores;
+	private int timerCurrent;
+	private int numInPule;
+	private char rankInPile;
+	private boolean exchangeTax;
+	private boolean hasLowest;
+	private boolean hasLead;
 
 	//TODO Change this comment to pertain to Dalmuti
 	// When a counter game is played, any number of players. The first player
@@ -59,10 +59,7 @@ public class GDLocalGame extends LocalGame {
 	
 	/**
 	 * can this player move
-	 * 
-	 * @return
-	 * 		true, because all player are always allowed to move at all times,
-	 * 		as this is a fully asynchronous game
+	 *TODO Change this to if they can play cards. Maybe make another class called isLegalPlay
 	 */
 	@Override
 	protected boolean canMove(int playerIdx) {
@@ -70,7 +67,7 @@ public class GDLocalGame extends LocalGame {
 	}
 
 	/**
-	 * This ctor should be called when a new counter game is started
+	 * This ctor should be called when a new Dalmuti game is started
 	 */
 	public GDLocalGame(GameState state) {
 		// initialize the game state, with the counter value starting at 0
