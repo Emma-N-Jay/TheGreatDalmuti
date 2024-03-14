@@ -56,11 +56,13 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	
 	/**
 	 * sets the counter value in the text view
-	 */
+
 	protected void updateDisplay() {
 		// set the text in the appropriate widget
 		counterValueTextView.setText("" + state.getCounter());
 	}
+	 */
+
 
 	/**
 	 * this method gets called when the user clicks the '+' or '-' button. It

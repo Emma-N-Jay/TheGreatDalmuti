@@ -63,9 +63,10 @@ public class GDLocalGame extends LocalGame {
 			// cast so that we Java knows it's a CounterMoveAction
 			edu.up.cs301.GreatDalmuti.GDMoveAction cma = (edu.up.cs301.GreatDalmuti.GDMoveAction)action;
 
+			//TODO Change this as needed
 			// Update the counter values based upon the action
-			int result = gameState.getCounter() + (cma.isPlus() ? 1 : -1);
-			gameState.setCounter(result);
+			//int result = gameState.getCounter() + (cma.isPlus() ? 1 : -1);
+			//gameState.setCounter(result);
 			
 			// denote that this was a legal/successful move
 			return true;
@@ -97,31 +98,32 @@ public class GDLocalGame extends LocalGame {
 	 */
 	@Override
 	protected String checkIfGameOver() {
-		
-		// get the value of the counter
-		int counterVal = this.gameState.getCounter();
-		
-		if (counterVal >= TARGET_MAGNITUDE) {
-			// counter has reached target magnitude, so return message that
-			// player 0 has won.
-			return playerNames[0]+" has won.";
-		}
-		else if (counterVal <= -TARGET_MAGNITUDE) {
-			// counter has reached negative of target magnitude; if there
-			// is a second player, return message that this player has won,
-			// otherwise that the first player has lost
-			if (playerNames.length >= 2) {
-				return playerNames[1]+" has won.";
-			}
-			else {
-				return playerNames[0]+" has lost.";
-			}
-		}else {
-			// game is still between the two limit: return null, as the game
-			// is not yet over
-			return null;
-		}
 
+		//TODO change as needed or delete
+		// get the value of the counter
+//		int counterVal = this.gameState.getCounter();
+//
+//		if (counterVal >= TARGET_MAGNITUDE) {
+//			// counter has reached target magnitude, so return message that
+//			// player 0 has won.
+//			return playerNames[0]+" has won.";
+//		}
+//		else if (counterVal <= -TARGET_MAGNITUDE) {
+//			// counter has reached negative of target magnitude; if there
+//			// is a second player, return message that this player has won,
+//			// otherwise that the first player has lost
+//			if (playerNames.length >= 2) {
+//				return playerNames[1]+" has won.";
+//			}
+//			else {
+//				return playerNames[0]+" has lost.";
+//			}
+//		}else {
+//			// game is still between the two limit: return null, as the game
+//			// is not yet over
+//			return null;
+//		}
+		return null;
 	}
 
 }// class CounterLocalGame

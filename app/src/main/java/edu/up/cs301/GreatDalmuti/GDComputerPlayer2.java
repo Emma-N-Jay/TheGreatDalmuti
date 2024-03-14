@@ -90,7 +90,9 @@ public class GDComputerPlayer2 extends edu.up.cs301.GreatDalmuti.GDComputerPlaye
 					new Runnable() {
 						public void run() {
 						if (counterValueTextView != null && currentGameState != null) {
-							counterValueTextView.setText("" + currentGameState.getCounter());
+
+							//TODO Change this to something else if we need to
+							//counterValueTextView.setText("" + currentGameState.getCounter());
 						}
 					}});
 		}

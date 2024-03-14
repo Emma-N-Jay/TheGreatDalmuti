@@ -75,6 +75,7 @@ public class GDState extends GameState {
 	 * @return
 	 * 		the value of the counter
 	 */
+	//TODO MARKED FOR DELETION
 	public int getCounter() {
 		return counter;
 	}
@@ -85,6 +86,7 @@ public class GDState extends GameState {
 	 * @param counter
 	 * 		the value to which the counter should be set
 	 */
+	//TODO MARKED FOR DELETION
 	public void setCounter(int counter) {
 		this.counter = counter;
 	}
