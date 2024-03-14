@@ -1,4 +1,4 @@
-package edu.up.GreatDalmuti;
+package edu.up.cs301.GreatDalmuti;
 
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 import edu.up.cs301.GameFramework.players.GamePlayer;
@@ -6,17 +6,47 @@ import edu.up.cs301.GameFramework.LocalGame;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 /**
- * A class that represents the state of a game. In our counter game, the only
- * relevant piece of information is the value of the game's counter. The
- * CounterState object is therefore very simple.
+ * A class that represents the state of a game. In The Great Dalmuti, we need to know the cards,
+ * players hands, rank, revolution status, taxes, player turn, and who is in the lead.
+ *
+ * 2d arraylist of cards(represents players hand, group cards by like numbers)
+isVisibleCard:boolean
+For deciding turn reuse getPlayerTurn from pig lab
+handIsVisible
+revolutionIsVisible
+playerScores:int[]
+timerCurrent:int
+numInPile:int
+rankInPile:char
+exchangingTaxes:boolean //if we are in the taxing stage still
+hasLowest:boolean//currently has the lowest play
+hasLead:boolean//is allowed to start new round
  * 
  * @author Steven R. Vegdahl
  * @author Andrew M. Nuxoll
  * @version July 2013
  */
+
+
 public class GDLocalGame extends LocalGame {
 
+	//variables
+	public ArrayList<ArrayList<Integer>> cards;
+	public boolean isVisibleCards;
+	public boolean handIsVisible;
+	public boolean revolutionIsVisible;
+	public  int[] playerScores;
+	public int timerCurrent;
+	public int numInPule;
+	public char rankInPile;
+	public boolean exchangeTax;
+	public boolean hasLowest;
+	public boolean hasLead;
+
+	//TODO Change this comment to pertain to Dalmuti
 	// When a counter game is played, any number of players. The first player
 	// is trying to get the counter value to TARGET_MAGNITUDE; the second player,
 	// if present, is trying to get the counter to -TARGET_MAGNITUDE. The
