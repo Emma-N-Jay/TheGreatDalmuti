@@ -38,10 +38,16 @@ public class GDState extends GameState {
 	private boolean hasLowestInRound;
 	private int hasLead;
 	private int turn;
+	private GDState game;
 
-	GDState(int playNum){
-
-	}
+	/**
+	 * constructor, initializing from the parameter
+	 *
+	 * @param playNum
+	 * 		the value to be initialized
+	 */
+	 public GDState(int playNum){//intentionally left blank
+	 }
 	
 	/**
 	 * copy constructor; makes a copy of the original object
@@ -69,6 +75,9 @@ public class GDState extends GameState {
 	//Getter and setter for turn
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
+	public GDState getState(){
+		return this;
+	}
 
 	@Override
 	public String toString() {
