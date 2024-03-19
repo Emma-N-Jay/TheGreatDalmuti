@@ -32,7 +32,7 @@ public class GDState extends GameState {
 	// the value of the counter
 	private int counter;
 
-	private ArrayList<ArrayList<Character>> cards;
+	private ArrayList<ArrayList<Integer>> cards;
 	private boolean handIsVisible;
 	private boolean revolutionIsVisible;
 	private  int[] playerScores;
@@ -41,7 +41,9 @@ public class GDState extends GameState {
 	private char rankInPile;
 	private boolean exchangeTax;
 	private boolean hasLowest;
-	private boolean hasLead;
+	private int hasLead;
+	private int currentTurn;
+
 
 	// METHODS *************************************************************************************
 
