@@ -38,9 +38,14 @@ public class GDState extends GameState {
 	private int hasLead;
 	private int turn;
 
-	GDState(int playNum){
-
-	}
+	/**
+	 * constructor, initializing from the parameter
+	 *
+	 * @param playNum
+	 * 		the value to be initialized
+	 */
+	 public GDState(int playNum){//intentionally left blank
+	 }
 	
 	/**
 	 * copy constructor; makes a copy of the original object
