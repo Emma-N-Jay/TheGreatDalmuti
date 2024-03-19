@@ -80,6 +80,10 @@ public class GDState extends GameState {
 	public GDState getState(){
 		return this;
 	}
+	public void setExchangingTaxes(boolean update){
+		exchangingTaxes = update;
+	}
+
 
 	@Override
 	public String toString() {

@@ -5,9 +5,16 @@ import android.app.Notification;
 import java.util.ArrayList;
 
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
+import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class RevolutionAction extends GameAction {
+
+    public GDState game;
+    public void receiveInfo(GameInfo info) {
+        game = (GDState) info;
+    }
+
     /**
      * constructor for GameAction
      *
@@ -21,7 +28,7 @@ public class RevolutionAction extends GameAction {
     public boolean revolution(int player, ArrayList<ArrayList<Integer>> cards){
         if(cards.get(player).get(13) == 2){
             if(player == 3){
-                //exchanging taxes = false;
+                game.setExchangingTaxes(false);
             } else if(player == 4){
 
                 //switches player 1 for 4 & 2 for 3
