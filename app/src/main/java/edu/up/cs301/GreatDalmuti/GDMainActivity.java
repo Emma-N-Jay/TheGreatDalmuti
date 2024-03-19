@@ -44,10 +44,19 @@ public class GDMainActivity extends GameMainActivity {
 			}});
 		
 		// a computer player type (player type 1)
-		playerTypes.add(new GamePlayerType("Computer Player") {
+		playerTypes.add(new GamePlayerType("Computer Player 1") {
 			public GamePlayer createPlayer(String name) {
 				return new edu.up.cs301.GreatDalmuti.GDComputerPlayer1(name);
 			}});
+		playerTypes.add(new GamePlayerType("Computer Player 2") {
+			public GamePlayer createPlayer(String name) {
+				return new edu.up.cs301.GreatDalmuti.GDComputerPlayer1(name);
+			}});
+		playerTypes.add(new GamePlayerType("Computer Player 3") {
+			public GamePlayer createPlayer(String name) {
+				return new edu.up.cs301.GreatDalmuti.GDComputerPlayer1(name);
+			}});
+
 		
 		// a computer player type (player type 2)
 		playerTypes.add(new GamePlayerType("Computer Player (GUI)") {
@@ -55,9 +64,10 @@ public class GDMainActivity extends GameMainActivity {
 				return new edu.up.cs301.GreatDalmuti.GDComputerPlayer2(name);
 			}});
 
+
 		// Create a game configuration class for Counter:
 		// - player types as given above
-		// - from 1 to 2 players
+		// - from 1 to 4 players
 		// - name of game is "Counter Game"
 		// - port number as defined above
 		GameConfig defaultConfig = new GameConfig(playerTypes, 1, 4, "Great Dalmuti",
@@ -66,8 +76,8 @@ public class GDMainActivity extends GameMainActivity {
 		// Add the default players to the configuration
 		defaultConfig.addPlayer("Human", 0); // player 1: a human player
 		defaultConfig.addPlayer("Computer 1", 1); // player 2: a computer player
-		defaultConfig.addPlayer("Computer 2", 2); // player 2: a computer player
-		defaultConfig.addPlayer("Computer 3", 3); // player 2: a computer player
+		defaultConfig.addPlayer("Computer 2", 2); // player 3: a computer player
+		defaultConfig.addPlayer("Computer 3", 3); // player 4: a computer player
 
 		
 		// Set the default remote-player setup:
