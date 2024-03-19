@@ -12,9 +12,6 @@ public class IllegalMoveInfo extends GameInfo {
     //Tag for logging
     //If too many cards based on previous play, no play
     //If no lower cards, no play
-    private IllegalMoveInfo() {
-
-    }
 
     private static final String TAG = "IllegalMoveInfo";
     // to satisfy Serializable interface
