@@ -19,101 +19,23 @@ public class GDState extends GameState {
 
 	// INSTANCE VARIABLES **************************************************************************
 	private boolean exchangingTaxes;
-	private boolean revolution;
-	private boolean playCard;
-	private boolean pass;
+	private RevolutionAction revolution;
+	private PlayCardAction playCard;
+	private PassAction pass;
 
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;
 
-	// the value of the counter
-	private int counter;
 
-	private ArrayList<ArrayList<Integer>> cards;
+	//this is literally the entire deck of cards
+	private ArrayList<ArrayList<Integer>> deck;
 	private boolean handIsVisible;
 	private boolean revolutionIsVisible;
-	private  int[] playerScores;
-	private int timerCurrent;
 	private int numInPile;
-	private char rankInPile;
-	private boolean exchangeTax;
-	private boolean hasLowest;
+	private int rankInPile;
+	private boolean hasLowestInRound;
 	private int hasLead;
 	private int turn;
-
-
-	// METHODS *************************************************************************************
-
-	public void setExchangingTaxes(boolean inExchangingTaxes) {
-		this.exchangingTaxes = inExchangingTaxes;
-	}
-
-	//added methods for game actions
-	public boolean taxes(PayTaxesAction action){
-		//Is it this player's turn?
-
-
-		//Are we in the pay taxes game phase or not?
-
-
-		//Verify that the cards specified are valid?
-
-
-		//Adjust 'this' state to reflect that taxes are paid by this player
-
-
-
-
-		if(!exchangingTaxes){
-			return false;
-		}
-
-		//cards selected need to be exchanged
-
-		setExchangingTaxes(false);
-		return true;
-	}
-
-	public boolean revolution(){
-		if(!exchangingTaxes){
-			return false;
-		}
-
-		//needs to check if 2 jesters are in hand
-		//needs to check rank of the owner of jesters\
-		//if 2 jesters and LP, setExchangingTaxes(true);  else setExchangingTaxes(false);
-
-		setExchangingTaxes(false);
-		return true;
-	}
-
-	//shuffling method maybe, but i think thats happening automatically
-	//playCards needs to know which player/hand
-
-	public boolean playCards(){
-		//needs to check if legal else return false and then get rid of cards
-		//needs to change the player who has the lead and whose turn it is
-
-		return true;
-	}
-
-	public boolean pass(){
-		//needs to check whose turn it is else return false
-		//needs to change whose turn it is
-
-		return true;
-	}
-
-	
-	/**
-	 * constructor, initializing the counter value from the parameter
-	 * 
-	 * @param counterVal
-	 * 		the value to which the counter's value should be initialized
-	 */
-	public GDState(int counterVal) {
-		counter = counterVal;
-	}
 	
 	/**
 	 * copy constructor; makes a copy of the original object
@@ -125,52 +47,22 @@ public class GDState extends GameState {
 		//TODO figure out if we have to do anything with the serial number in here
 
 		// makes a deep copy of all variables so far
-		this.counter = orig.counter;
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.revolution = orig.revolution;
 		this.playCard = orig.playCard;
 		this.pass = orig.pass;
-		this.cards = orig.cards;
+		this.deck = orig.deck;
 		this.handIsVisible = orig.handIsVisible;
-		this.revolution = orig.revolution;
-		this.playerScores = orig.playerScores;
-		this.timerCurrent = orig.timerCurrent;
 		this.numInPile = orig.numInPile;
 		this.rankInPile = orig.rankInPile;
-		this.exchangingTaxes = orig.exchangingTaxes;
-		this.hasLowest = orig.hasLowest;
+		this.hasLowestInRound = orig.hasLowestInRound;
 		this.hasLead = orig.hasLead;
-	}
-
-	/**
-	 * getter method for the counter
-	 * 
-	 * @return
-	 * 		the value of the counter
-	 */
-	//TODO MARKED FOR DELETION
-	public int getCounter() {
-		return counter;
-	}
-	
-	/**
-	 * setter method for the counter
-	 * 
-	 * @param counter
-	 * 		the value to which the counter should be set
-	 */
-	//TODO MARKED FOR DELETION
-	public void setCounter(int counter) {
-		this.counter = counter;
 	}
 
 
 	//Getter and setter for turn
 	public int getTurn(){return this.turn;}
-
-	public void setTurn(int turn){
-		this.turn = turn;
-	}
+	public void setTurn(int turn){this.turn = turn;}
 
 	@Override
 	public String toString() {
