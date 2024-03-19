@@ -44,7 +44,7 @@ public class GDLocalGame extends LocalGame {
 	private boolean revolutionIsVisible;
 	private  int[] playerScores;
 	private int timerCurrent;
-	private int numInPule;
+	private int numInPile;
 	private char rankInPile;
 	private boolean exchangeTax;
 	private boolean hasLowest;

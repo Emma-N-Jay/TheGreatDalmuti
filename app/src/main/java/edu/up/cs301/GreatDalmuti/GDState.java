@@ -11,6 +11,8 @@
 
 package edu.up.cs301.GreatDalmuti;
 
+import java.util.ArrayList;
+
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 
 
@@ -22,6 +24,17 @@ public class GDState extends GameState {
 	private boolean revolution;
 	private boolean playCard;
 	private boolean pass;
+	private ArrayList<ArrayList<Character>> cards;
+	private boolean isVisibleCards;
+	private boolean handIsVisible;
+	private boolean revolutionIsVisible;
+	private  int[] playerScores;
+	private int timerCurrent;
+	private int numInPile;
+	private char rankInPile;
+	private boolean exchangeTax;
+	private boolean hasLowest;
+	private boolean hasLead;
 
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;
@@ -100,6 +113,18 @@ public class GDState extends GameState {
 		this.revolution = orig.revolution;
 		this.playCard = orig.playCard;
 		this.pass = orig.pass;
+		//TODO arraylist of cards
+		this.isVisibleCards = orig.isVisibleCards;
+		this.handIsVisible = orig.handIsVisible;
+		this.revolutionIsVisible = orig.revolutionIsVisible;
+		this.playerScores = orig.playerScores;
+		this.timerCurrent = orig.timerCurrent;
+		this.numInPile = orig.numInPile;
+		this.rankInPile = orig.rankInPile;
+		this.exchangingTaxes = orig.exchangingTaxes;
+		this.hasLowest = orig.hasLowest;
+		this.hasLead = orig.hasLead;
+
 
 	}
 
