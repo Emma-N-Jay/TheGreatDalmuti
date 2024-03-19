@@ -23,6 +23,12 @@ public class GDState extends GameState {
 	private boolean playCard;
 	private boolean pass;
 
+	// to satisfy Serializable interface
+	private static final long serialVersionUID = 7737393762469851826L;
+
+	// the value of the counter
+	private int counter;
+
 	public void setExchangingTaxes(boolean inExchangingTaxes) {
 		this.exchangingTaxes = inExchangingTaxes;
 	}
@@ -68,12 +74,6 @@ public class GDState extends GameState {
 		return true;
 	}
 
-
-	// to satisfy Serializable interface
-	private static final long serialVersionUID = 7737393762469851826L;
-	
-	// the value of the counter
-	private int counter;
 	
 	/**
 	 * constructor, initializing the counter value from the parameter
@@ -92,8 +92,15 @@ public class GDState extends GameState {
 	 * 		the object from which the copy should be made
 	 */
 	public GDState(edu.up.cs301.GreatDalmuti.GDState orig) {
-		// set the counter to that of the original
+		//TODO figure out if we have to do anything with the serial number in here
+
+		// makes a deep copy of all variables so far
 		this.counter = orig.counter;
+		this.exchangingTaxes = orig.exchangingTaxes;
+		this.revolution = orig.revolution;
+		this.playCard = orig.playCard;
+		this.pass = orig.pass;
+
 	}
 
 	/**
