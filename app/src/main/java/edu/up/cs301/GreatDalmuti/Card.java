@@ -11,6 +11,7 @@ package edu.up.cs301.GreatDalmuti;
 public class Card {
      private String cardName;
     private int cardValue;
+    private boolean isSelected;
 
     /**
      * 80 Cards Total:
@@ -30,5 +31,6 @@ public class Card {
     public int getCardValue() {
         return cardValue;
     }
+    public boolean getSelected(){return isSelected;}
 
 }
