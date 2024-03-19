@@ -16,28 +16,23 @@ import edu.up.cs301.GameFramework.infoMessage.GameState;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class GDState extends GameState {
+	// to satisfy Serializable interface
+	private static final long serialVersionUID = 7737393762469851826L;
 
-
-	// INSTANCE VARIABLES **************************************************************************
-	private boolean exchangingTaxes;
+	// instances of specific actions taken in the game
 	private RevolutionAction revolution;
 	private PlayCardAction playCard;
 	private PassAction pass;
 
-	// to satisfy Serializable interface
-	private static final long serialVersionUID = 7737393762469851826L;
-
-
-	//this is literally the entire deck of cards
-	private ArrayList<ArrayList<Integer>> deck;
-	private boolean handIsVisible;
-	private boolean revolutionIsVisible;
-	private int numInPile;
-	private int rankInPile;
-	private boolean hasLowestInRound;
-	private int hasLead;
-	private int turn;
-	private GDState game;
+	private ArrayList<ArrayList<Integer>> deck; //this is literally the entire deck of cards
+	private boolean handIsVisible; //if a players hand is visible for a specific device
+	private boolean revolutionIsVisible; //is the revolution button visible
+	private boolean exchangingTaxes; //are we currently exchanging taxes
+	private int numInPile; // number of the current rank of cards in the middle
+	private int rankInPile; // the number of the rank in the pile
+	private boolean hasLowestInRound; // who is in line to get the lead next
+	private int hasLead; // who currently has the lead
+	private int turn; // who's turn is it
 
 	/**
 	 * constructor, initializing from the parameter
@@ -75,9 +70,7 @@ public class GDState extends GameState {
 	//Getter and setter for turn
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
-	public GDState getState(){
-		return this;
-	}
+	public GDState getState(){return this;}
 
 	@Override
 	public String toString() {
