@@ -98,7 +98,7 @@ public class GDLocalGame extends LocalGame {
 	protected void sendUpdatedStateTo(GamePlayer p) {
 		// this is a perfect-information game, so we'll make a
 		// complete copy of the state to send to the player
-		p.sendInfo(new edu.up.cs301.GreatDalmuti.GDState(this.gameState));
+		p.sendInfo(new edu.up.cs301.GreatDalmuti.GDState(this.gameState, this.getPlayerIdx(p)));
 		
 	}//sendUpdatedSate
 	

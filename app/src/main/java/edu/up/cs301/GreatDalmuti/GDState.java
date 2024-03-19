@@ -1,19 +1,17 @@
 /**
- * This contains the state for the GreatDalmuti game. The state consist of simply
- * the value of the counter.
+ * This contains the state for the Great Dalmuti game.
  *
  * @author Tramanh Best
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 18 2024
+ * @version March 19 2024
  *
  */
 
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
-import edu.up.cs301.GameFramework.players.GamePlayer;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
@@ -57,11 +55,12 @@ public class GDState extends GameState {
 	 * @param orig
 	 * 		the object from which the copy should be made
 	 */
-	public GDState(edu.up.cs301.GreatDalmuti.GDState orig) {
+	public GDState(edu.up.cs301.GreatDalmuti.GDState orig, int playNum) {
 		// makes a deep copy of all variables so far
 		this.revolution = new RevolutionAction(this.revolution.getPlayer());
 		this.playCard = new PlayCardAction(this.playCard.getPlayer());
 		this.pass = new PassAction(this.pass.getPlayer());
+
 
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.deck = orig.deck;
@@ -80,15 +79,25 @@ public class GDState extends GameState {
 	public GDState getState(){
 		return this;
 	}
+	public void setExchangingTaxes(boolean update){
+		exchangingTaxes = update;
+	}
+
 
 	@Override
 	public String toString() {
-		System.out.println("Taxes have been exchanged - " + this.exchangingTaxes);
-		System.out.println("Revolution is visible - " + this.revolution);
+		System.out.println("Revolution action - " + this.revolution);
 		System.out.println("Card is played - " + this.playCard);
+		System.out.println("Pass action - " + this.pass);
+
+		System.out.println("Taxes have been exchanged - " + this.exchangingTaxes);
+		System.out.println("Deck of cards - " + this.deck);
 		System.out.println("Hand is variable - " + this.handIsVisible);
 		System.out.println("Number of cards last put in pile - " + this.numInPile);
-		System.out.println("");
+		System.out.println("Rank of cards last put in pile - " + this.rankInPile);
+		System.out.println("If player has played the lowest card of the round - " + this.hasLowestInRound);
+		System.out.println("Number of player who has the lead - " + this.hasLead);
+		System.out.println("Revolution is visible - " + this.revolutionIsVisible);
 		return null;
 	}
 }
