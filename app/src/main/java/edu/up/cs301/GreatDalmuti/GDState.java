@@ -17,6 +17,7 @@ import edu.up.cs301.GameFramework.infoMessage.GameState;
 
 public class GDState extends GameState {
 
+
 	// INSTANCE VARIABLES **************************************************************************
 	private boolean exchangingTaxes;
 	private RevolutionAction revolution;
@@ -36,6 +37,10 @@ public class GDState extends GameState {
 	private boolean hasLowestInRound;
 	private int hasLead;
 	private int turn;
+
+	GDState(int playNum){
+
+	}
 	
 	/**
 	 * copy constructor; makes a copy of the original object
