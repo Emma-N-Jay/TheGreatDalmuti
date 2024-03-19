@@ -13,6 +13,7 @@
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
+import edu.up.cs301.GameFramework.players.GamePlayer;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 
 public class GDState extends GameState {
@@ -49,13 +50,12 @@ public class GDState extends GameState {
 	 * 		the object from which the copy should be made
 	 */
 	public GDState(edu.up.cs301.GreatDalmuti.GDState orig) {
-		//TODO figure out if we have to do anything with the serial number in here
-
 		// makes a deep copy of all variables so far
+		this.revolution = new RevolutionAction(this.revolution.getPlayer());
+		this.playCard = new PlayCardAction(this.playCard.getPlayer());
+		this.pass = new PassAction(this.pass.getPlayer());
+
 		this.exchangingTaxes = orig.exchangingTaxes;
-		this.revolution = orig.revolution;
-		this.playCard = orig.playCard;
-		this.pass = orig.pass;
 		this.deck = orig.deck;
 		this.handIsVisible = orig.handIsVisible;
 		this.numInPile = orig.numInPile;
