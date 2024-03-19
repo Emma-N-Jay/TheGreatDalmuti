@@ -8,19 +8,19 @@
 
 package edu.up.cs301.GreatDalmuti;
 
-import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
+import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.utilities.Tickable;
 
-public class GDComputerPlayer1 extends GameComputerPlayer implements Tickable {
-	
+public class GDComputerPlayer3 extends GameComputerPlayer implements Tickable {
+
     /**
      * Constructor for objects of class CounterComputerPlayer1
-     * 
+     *
      * @param name
      * 		the player's name
      */
-    public GDComputerPlayer1(String name) {
+    public GDComputerPlayer3(String name) {
         // invoke superclass constructor
         super(name);
         
@@ -53,6 +53,6 @@ public class GDComputerPlayer1 extends GameComputerPlayer implements Tickable {
 		boolean move = Math.random() >= 0.5;
 		
 		// send the move-action to the game
-		game.sendAction(new edu.up.cs301.GreatDalmuti.GDMoveAction(this, move));
+		game.sendAction(new GDMoveAction(this, move));
 	}
 }
