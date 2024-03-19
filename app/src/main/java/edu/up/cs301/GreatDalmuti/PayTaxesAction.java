@@ -32,6 +32,7 @@ public class PayTaxesAction extends GameAction {
 
     //taxes for the peons
     public boolean payTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards){
+
         //lesser peon gives lesser dalmuti their cards, 3 should be changed to a named variable
         if(playerRank == 3){
             //adds lowest card to greater dalmuti
