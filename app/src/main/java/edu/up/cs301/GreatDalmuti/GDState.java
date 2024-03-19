@@ -114,7 +114,7 @@ public class GDState extends GameState {
 		this.pass = orig.pass;
 		this.cards = orig.cards;
 		this.handIsVisible = orig.handIsVisible;
-		this.revolutionIsVisible = orig.revolutionIsVisible;
+		this.revolution = orig.revolution;
 		this.playerScores = orig.playerScores;
 		this.timerCurrent = orig.timerCurrent;
 		this.numInPile = orig.numInPile;
