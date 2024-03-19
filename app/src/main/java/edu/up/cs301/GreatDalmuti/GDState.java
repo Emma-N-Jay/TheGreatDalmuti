@@ -11,16 +11,24 @@
 
 package edu.up.cs301.GreatDalmuti;
 
-import java.util.ArrayList;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
+import java.util.ArrayList;
+
 
 public class GDState extends GameState {
 
-	// INSTANCE VARIABLES **************************************************************************
+	//added variables
 	private boolean exchangingTaxes;
 	private boolean revolution;
 	private boolean playCard;
 	private boolean pass;
+
+	// to satisfy Serializable interface
+	private static final long serialVersionUID = 7737393762469851826L;
+
+	// the value of the counter
+	private int counter;
+
 	private ArrayList<ArrayList<Character>> cards;
 	private boolean handIsVisible;
 	private  int[] playerScores;
@@ -31,18 +39,13 @@ public class GDState extends GameState {
 	private boolean hasLowest;
 	private boolean hasLead;
 
-	// to satisfy Serializable interface
-	private static final long serialVersionUID = 7737393762469851826L;
-
-	// the value of the counter
-	private int counter;
-
 	// METHODS *************************************************************************************
 
 	public void setExchangingTaxes(boolean inExchangingTaxes) {
 		this.exchangingTaxes = inExchangingTaxes;
 	}
 
+	//added methods for game actions
 	public boolean taxes(){
 		if(!exchangingTaxes){
 			return false;
@@ -109,7 +112,16 @@ public class GDState extends GameState {
 		this.revolution = orig.revolution;
 		this.playCard = orig.playCard;
 		this.pass = orig.pass;
-
+		this.cards = orig.cards;
+		this.handIsVisible = orig.handIsVisible;
+		this.revolutionIsVisible = orig.revolutionIsVisible;
+		this.playerScores = orig.playerScores;
+		this.timerCurrent = orig.timerCurrent;
+		this.numInPile = orig.numInPile;
+		this.rankInPile = orig.rankInPile;
+		this.exchangingTaxes = orig.exchangingTaxes;
+		this.hasLowest = orig.hasLowest;
+		this.hasLead = orig.hasLead;
 	}
 
 	/**
@@ -118,6 +130,7 @@ public class GDState extends GameState {
 	 * @return
 	 * 		the value of the counter
 	 */
+	//TODO MARKED FOR DELETION
 	public int getCounter() {
 		return counter;
 	}
@@ -128,10 +141,12 @@ public class GDState extends GameState {
 	 * @param counter
 	 * 		the value to which the counter should be set
 	 */
+	//TODO MARKED FOR DELETION
 	public void setCounter(int counter) {
 		this.counter = counter;
 	}
 
+	//lalallallalala
 	@Override
 	public String toString() {
 		System.out.println("Taxes have been exchanged - " + this.exchangingTaxes);

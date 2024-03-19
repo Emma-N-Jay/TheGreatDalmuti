@@ -34,9 +34,21 @@ hasLowest:boolean//currently has the lowest play
 hasLead:boolean//is allowed to start new round
  */
 
+
 public class GDLocalGame extends LocalGame {
 
-
+	//variables
+	private ArrayList<ArrayList<Character>> cards;
+	private boolean isVisibleCards;
+	private boolean handIsVisible;
+	private boolean revolutionIsVisible;
+	private  int[] playerScores;
+	private int timerCurrent;
+	private int numInPile;
+	private char rankInPile;
+	private boolean exchangeTax;
+	private boolean hasLowest;
+	private boolean hasLead;
 
 	//TODO Change this comment to pertain to Dalmuti
 	// When a counter game is played, any number of players. The first player
