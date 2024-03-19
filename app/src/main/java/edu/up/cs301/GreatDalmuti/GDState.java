@@ -15,6 +15,7 @@ package edu.up.cs301.GreatDalmuti;
 import java.util.ArrayList;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
+import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class GDState extends GameState {
 
@@ -46,7 +47,8 @@ public class GDState extends GameState {
 	 * @param playNum
 	 * 		the value to be initialized
 	 */
-	 public GDState(int playNum){//intentionally left blank
+	 public GDState(int playNum){
+		 //intentionally left blank
 	 }
 	
 	/**
@@ -84,6 +86,9 @@ public class GDState extends GameState {
 		System.out.println("Taxes have been exchanged - " + this.exchangingTaxes);
 		System.out.println("Revolution is visible - " + this.revolution);
 		System.out.println("Card is played - " + this.playCard);
+		System.out.println("Hand is variable - " + this.handIsVisible);
+		System.out.println("Number of cards last put in pile - " + this.numInPile);
+		System.out.println("");
 		return null;
 	}
 }
