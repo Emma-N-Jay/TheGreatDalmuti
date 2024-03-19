@@ -1,3 +1,11 @@
+/**
+ * @author Tramanh Best
+ * @author Emma Jeppesen
+ * @author Alex Burns
+ * @author Theresa Wunderlich
+ * @version March 18 2024
+ */
+
 package edu.up.cs301.GreatDalmuti;
 
 import edu.up.cs301.GameFramework.infoMessage.GameState;
@@ -24,10 +32,6 @@ rankInPile:char
 exchangingTaxes:boolean //if we are in the taxing stage still
 hasLowest:boolean//currently has the lowest play
 hasLead:boolean//is allowed to start new round
- * 
- * @author Steven R. Vegdahl
- * @author Andrew M. Nuxoll
- * @version July 2013
  */
 
 

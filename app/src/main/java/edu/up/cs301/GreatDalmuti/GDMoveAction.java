@@ -1,16 +1,16 @@
+/**
+ * @author Tramanh Best
+ * @author Emma Jeppesen
+ * @author Alex Burns
+ * @author Theresa Wunderlich
+ * @version March 18 2024
+ */
+
 package edu.up.cs301.GreatDalmuti;
 
 import edu.up.cs301.GameFramework.players.GamePlayer;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 
-/**
- * A CounterMoveAction is an action that is a "move" the game: either increasing
- * or decreasing the counter value.
- * 
- * @author Steven R. Vegdahl
- * @author Andrew M. Nuxoll
- * @version September 2012
- */
 public class GDMoveAction extends GameAction {
 	
 	// to satisfy the serializable interface

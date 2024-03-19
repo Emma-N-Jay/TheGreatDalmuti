@@ -1,3 +1,11 @@
+/**
+ * @author Tramanh Best
+ * @author Emma Jeppesen
+ * @author Alex Burns
+ * @author Theresa Wunderlich
+ * @version March 18 2024
+ */
+
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
@@ -8,13 +16,6 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
 import edu.up.cs301.GameFramework.LocalGame;
 import edu.up.cs301.GameFramework.gameConfiguration.*;
 
-/**
- * this is the primary activity for Counter game
- * 
- * @author Andrew M. Nuxoll
- * @author Steven R. Vegdahl
- * @version July 2013
- */
 public class GDMainActivity extends GameMainActivity {
 	
 	// the port number that this game will use when playing over the network

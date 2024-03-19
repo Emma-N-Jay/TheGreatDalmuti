@@ -1,18 +1,17 @@
+/**
+ * @author Tramanh Best
+ * @author Emma Jeppesen
+ * @author Alex Burns
+ * @author Theresa Wunderlich
+ * @version March 18 2024
+ */
+
 package edu.up.cs301.GreatDalmuti;
 
 import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.utilities.Tickable;
 
-/**
- * A computer-version of a counter-player.  Since this is such a simple game,
- * it just sends "+" and "-" commands with equal probability, at an average
- * rate of one per second. 
- * 
- * @author Steven R. Vegdahl
- * @author Andrew M. Nuxoll
- * @version September 2013
- */
 public class GDComputerPlayer1 extends GameComputerPlayer implements Tickable {
 	
     /**
