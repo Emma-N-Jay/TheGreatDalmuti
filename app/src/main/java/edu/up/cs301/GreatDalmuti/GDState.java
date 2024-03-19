@@ -11,10 +11,8 @@
 
 package edu.up.cs301.GreatDalmuti;
 
-import java.util.ArrayList;
-
 import edu.up.cs301.GameFramework.infoMessage.GameState;
-
+import java.util.ArrayList;
 
 
 public class GDState extends GameState {
@@ -24,22 +22,25 @@ public class GDState extends GameState {
 	private boolean revolution;
 	private boolean playCard;
 	private boolean pass;
-	private ArrayList<ArrayList<Character>> cards;
-	private boolean isVisibleCards;
-	private boolean handIsVisible;
-	private boolean revolutionIsVisible;
-	private  int[] playerScores;
-	private int timerCurrent;
-	private int numInPile;
-	private char rankInPile;
-	private boolean hasLowest;
-	private boolean hasLead;
 
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;
 
 	// the value of the counter
 	private int counter;
+
+	private ArrayList<ArrayList<Character>> cards;
+	private boolean handIsVisible;
+	private boolean revolutionIsVisible;
+	private  int[] playerScores;
+	private int timerCurrent;
+	private int numInPile;
+	private char rankInPile;
+	private boolean exchangeTax;
+	private boolean hasLowest;
+	private boolean hasLead;
+
+	// METHODS *************************************************************************************
 
 	public void setExchangingTaxes(boolean inExchangingTaxes) {
 		this.exchangingTaxes = inExchangingTaxes;
@@ -108,11 +109,11 @@ public class GDState extends GameState {
 
 		// makes a deep copy of all variables so far
 		this.counter = orig.counter;
+		this.exchangingTaxes = orig.exchangingTaxes;
 		this.revolution = orig.revolution;
 		this.playCard = orig.playCard;
 		this.pass = orig.pass;
 		this.cards = orig.cards;
-		this.isVisibleCards = orig.isVisibleCards;
 		this.handIsVisible = orig.handIsVisible;
 		this.revolutionIsVisible = orig.revolutionIsVisible;
 		this.playerScores = orig.playerScores;
