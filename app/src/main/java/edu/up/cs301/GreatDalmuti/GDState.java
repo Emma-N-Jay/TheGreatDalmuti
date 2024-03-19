@@ -23,7 +23,6 @@ public class GDState extends GameState {
 	private boolean pass;
 	private ArrayList<ArrayList<Character>> cards;
 	private boolean handIsVisible;
-	private boolean revolutionIsVisible;
 	private  int[] playerScores;
 	private int timerCurrent;
 	private int numInPile;
@@ -136,7 +135,8 @@ public class GDState extends GameState {
 	@Override
 	public String toString() {
 		System.out.println("Taxes have been exchanged - " + this.exchangingTaxes);
-
+		System.out.println("Revolution is visible - " + this.revolution);
+		System.out.println("Card is played - " + this.playCard);
 		return null;
 	}
 }
