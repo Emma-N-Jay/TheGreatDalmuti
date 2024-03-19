@@ -13,14 +13,11 @@
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
-
 import edu.up.cs301.GameFramework.infoMessage.GameState;
-
-
 
 public class GDState extends GameState {
 
-	//added variables
+	// INSTANCE VARIABLES **************************************************************************
 	private boolean exchangingTaxes;
 	private boolean revolution;
 	private boolean playCard;
