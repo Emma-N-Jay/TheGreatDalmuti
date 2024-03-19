@@ -29,6 +29,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	
 	// the android activity that we are running
 	private GameMainActivity myActivity;
+
+	//An array of the players hand
+	private Card[] hand;
 	
 	/**
 	 * constructor

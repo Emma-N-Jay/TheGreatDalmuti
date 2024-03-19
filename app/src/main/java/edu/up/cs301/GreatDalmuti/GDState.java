@@ -14,7 +14,7 @@ package edu.up.cs301.GreatDalmuti;
 import java.util.ArrayList;
 
 import edu.up.cs301.GameFramework.infoMessage.GameState;
-
+import edu.up.cs301.GameFramework.infoMessage.IllegalMoveInfo;
 
 
 public class GDState extends GameState {
@@ -28,12 +28,10 @@ public class GDState extends GameState {
 	//variables
 	private ArrayList<ArrayList<Character>> cards;
 	private boolean handIsVisible;
-	private boolean revolutionIsVisible;
 	private  int[] playerScores;
 	private int timerCurrent;
 	private int numInPile;
 	private char rankInPile;
-	private boolean exchangeTax;
 	private boolean hasLowest;
 	private boolean hasLead;
 
@@ -50,7 +48,21 @@ public class GDState extends GameState {
 	}
 
 	//added methods for game actions
-	public boolean taxes(){
+	public boolean taxes(PayTaxesAction action){
+		//Is it this player's turn?
+
+
+		//Are we in the pay taxes game phase or not?
+
+
+		//Verify that the cards specified are valid?
+
+
+		//Adjust 'this' state to reflect that taxes are paid by this player
+
+
+
+
 		if(!exchangingTaxes){
 			return false;
 		}
@@ -67,16 +79,18 @@ public class GDState extends GameState {
 		}
 
 		//needs to check if 2 jesters are in hand
-		//needs to check rank of the owner of jesters
+		//needs to check rank of the owner of jesters\
+		//if 2 jesters and LP, setExchangingTaxes(true);  else setExchangingTaxes(false);
 
 		setExchangingTaxes(false);
 		return true;
 	}
 
-	//shuffeling but i think thats happening automatically
+	//shuffling method maybe, but i think thats happening automatically
 	//playCards needs to know which player/hand
 
 	public boolean playCards(){
+		//if(IllegalMoveInfo)
 		//needs to check if legal else return false and then get rid of cards
 		//needs to change the player who has the lead and whose turn it is
 
