@@ -32,7 +32,6 @@ public class GDState extends GameState {
 	private int timerCurrent;
 	private int numInPile;
 	private char rankInPile;
-	private boolean exchangeTax;
 	private boolean hasLowest;
 	private boolean hasLead;
 
@@ -109,11 +108,10 @@ public class GDState extends GameState {
 
 		// makes a deep copy of all variables so far
 		this.counter = orig.counter;
-		this.exchangingTaxes = orig.exchangingTaxes;
 		this.revolution = orig.revolution;
 		this.playCard = orig.playCard;
 		this.pass = orig.pass;
-		//TODO arraylist of cards
+		this.cards = orig.cards;
 		this.isVisibleCards = orig.isVisibleCards;
 		this.handIsVisible = orig.handIsVisible;
 		this.revolutionIsVisible = orig.revolutionIsVisible;
@@ -124,8 +122,6 @@ public class GDState extends GameState {
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.hasLowest = orig.hasLowest;
 		this.hasLead = orig.hasLead;
-
-
 	}
 
 	/**
