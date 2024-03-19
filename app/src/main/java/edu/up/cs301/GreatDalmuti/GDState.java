@@ -14,7 +14,7 @@ package edu.up.cs301.GreatDalmuti;
 import java.util.ArrayList;
 
 import edu.up.cs301.GameFramework.infoMessage.GameState;
-import edu.up.cs301.GameFramework.infoMessage.IllegalMoveInfo;
+
 
 
 public class GDState extends GameState {
@@ -25,23 +25,24 @@ public class GDState extends GameState {
 	private boolean playCard;
 	private boolean pass;
 
-	//variables
-	private ArrayList<ArrayList<Character>> cards;
-	private boolean handIsVisible;
-	private  int[] playerScores;
-	private int timerCurrent;
-	private int numInPile;
-	private char rankInPile;
-	private boolean hasLowest;
-	private boolean hasLead;
-
-
-
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;
 
 	// the value of the counter
 	private int counter;
+
+	private ArrayList<ArrayList<Character>> cards;
+	private boolean handIsVisible;
+	private boolean revolutionIsVisible;
+	private  int[] playerScores;
+	private int timerCurrent;
+	private int numInPile;
+	private char rankInPile;
+	private boolean exchangeTax;
+	private boolean hasLowest;
+	private boolean hasLead;
+
+	// METHODS *************************************************************************************
 
 	public void setExchangingTaxes(boolean inExchangingTaxes) {
 		this.exchangingTaxes = inExchangingTaxes;
@@ -90,7 +91,6 @@ public class GDState extends GameState {
 	//playCards needs to know which player/hand
 
 	public boolean playCards(){
-		//if(IllegalMoveInfo)
 		//needs to check if legal else return false and then get rid of cards
 		//needs to change the player who has the lead and whose turn it is
 
@@ -130,7 +130,16 @@ public class GDState extends GameState {
 		this.revolution = orig.revolution;
 		this.playCard = orig.playCard;
 		this.pass = orig.pass;
-
+		this.cards = orig.cards;
+		this.handIsVisible = orig.handIsVisible;
+		this.revolution = orig.revolution;
+		this.playerScores = orig.playerScores;
+		this.timerCurrent = orig.timerCurrent;
+		this.numInPile = orig.numInPile;
+		this.rankInPile = orig.rankInPile;
+		this.exchangingTaxes = orig.exchangingTaxes;
+		this.hasLowest = orig.hasLowest;
+		this.hasLead = orig.hasLead;
 	}
 
 	/**
@@ -158,7 +167,8 @@ public class GDState extends GameState {
 	@Override
 	public String toString() {
 		System.out.println("Taxes have been exchanged - " + this.exchangingTaxes);
-
+		System.out.println("Revolution is visible - " + this.revolution);
+		System.out.println("Card is played - " + this.playCard);
 		return null;
 	}
 }
