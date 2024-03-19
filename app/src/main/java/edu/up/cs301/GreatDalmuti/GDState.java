@@ -51,9 +51,9 @@ public class GDState extends GameState {
 	 */
 	public GDState(edu.up.cs301.GreatDalmuti.GDState orig, int playNum) {
 		// makes a deep copy of all variables so far
-		this.revolution = new RevolutionAction(this.revolution.getPlayer());
-		this.playCard = new PlayCardAction(this.playCard.getPlayer());
-		this.pass = new PassAction(this.pass.getPlayer());
+		//this.revolution = new RevolutionAction(this.revolution.getPlayer());
+		//this.playCard = new PlayCardAction(this.playCard.getPlayer());
+		//this.pass = new PassAction(this.pass.getPlayer());
 
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.deck = orig.deck;
