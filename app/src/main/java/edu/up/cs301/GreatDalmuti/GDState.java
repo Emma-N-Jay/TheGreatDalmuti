@@ -57,6 +57,7 @@ public class GDState extends GameState {
 		this.rankInPile = orig.rankInPile;
 		this.hasLowestInRound = orig.hasLowestInRound;
 		this.hasLead = orig.hasLead;
+		this.revolutionIsVisible = orig.revolutionIsVisible;
 	}
 
 
