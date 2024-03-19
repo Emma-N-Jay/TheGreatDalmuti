@@ -34,7 +34,6 @@ hasLowest:boolean//currently has the lowest play
 hasLead:boolean//is allowed to start new round
  */
 
-
 public class GDLocalGame extends LocalGame {
 
 

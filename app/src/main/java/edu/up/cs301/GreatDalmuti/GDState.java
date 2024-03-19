@@ -12,20 +12,15 @@
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
-
 import edu.up.cs301.GameFramework.infoMessage.GameState;
-
-
 
 public class GDState extends GameState {
 
-	//added variables
+	// INSTANCE VARIABLES **************************************************************************
 	private boolean exchangingTaxes;
 	private boolean revolution;
 	private boolean playCard;
 	private boolean pass;
-
-	//variables
 	private ArrayList<ArrayList<Character>> cards;
 	private boolean handIsVisible;
 	private boolean revolutionIsVisible;
@@ -37,19 +32,18 @@ public class GDState extends GameState {
 	private boolean hasLowest;
 	private boolean hasLead;
 
-
-
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;
 
 	// the value of the counter
 	private int counter;
 
+	// METHODS *************************************************************************************
+
 	public void setExchangingTaxes(boolean inExchangingTaxes) {
 		this.exchangingTaxes = inExchangingTaxes;
 	}
 
-	//added methods for game actions
 	public boolean taxes(){
 		if(!exchangingTaxes){
 			return false;
@@ -125,7 +119,6 @@ public class GDState extends GameState {
 	 * @return
 	 * 		the value of the counter
 	 */
-	//TODO MARKED FOR DELETION
 	public int getCounter() {
 		return counter;
 	}
@@ -136,7 +129,6 @@ public class GDState extends GameState {
 	 * @param counter
 	 * 		the value to which the counter should be set
 	 */
-	//TODO MARKED FOR DELETION
 	public void setCounter(int counter) {
 		this.counter = counter;
 	}
