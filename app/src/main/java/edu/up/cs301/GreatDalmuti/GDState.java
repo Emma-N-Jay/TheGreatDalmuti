@@ -72,14 +72,24 @@ public class GDState extends GameState {
 	public void setTurn(int turn){this.turn = turn;}
 	public GDState getState(){return this;}
 
+	public void setExchangingTaxes(boolean update){
+		exchangingTaxes = update;
+	}
+
 	@Override
 	public String toString() {
-		System.out.println("Taxes have been exchanged - " + this.exchangingTaxes);
 		System.out.println("Revolution is visible - " + this.revolution);
 		System.out.println("Card is played - " + this.playCard);
+		System.out.println("Pass action - " + this.pass);
+
+		System.out.println("Taxes have been exchanged - " + this.exchangingTaxes);
+		System.out.println("Deck of cards - " + this.deck);
 		System.out.println("Hand is variable - " + this.handIsVisible);
 		System.out.println("Number of cards last put in pile - " + this.numInPile);
-		System.out.println("");
+		System.out.println("Rank of cards last put in pile - " + this.rankInPile);
+		System.out.println("If player has played the lowest card of the round - " + this.hasLowestInRound);
+		System.out.println("Number of player who has the lead - " + this.hasLead);
+		System.out.println("Revolution is visible - " + this.revolutionIsVisible);
 		return null;
 	}
 }

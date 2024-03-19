@@ -8,133 +8,51 @@
 
 package edu.up.cs301.GreatDalmuti;
 
-import edu.up.cs301.GameFramework.GameMainActivity;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
-import android.app.Activity;
-import android.os.Handler;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
+import edu.up.cs301.GameFramework.players.GameComputerPlayer;
+import edu.up.cs301.GameFramework.utilities.Tickable;
 
-public class GDComputerPlayer2 extends edu.up.cs301.GreatDalmuti.GDComputerPlayer1 {
-	
-	/*
-	 * instance variables
-	 */
-	
-	// the most recent game state, as given to us by the CounterLocalGame
-	private GDState currentGameState = null;
-	
-	// If this player is running the GUI, the activity (null if the player is
-	// not running a GUI).
-	private Activity activityForGui = null;
-	
-	// If this player is running the GUI, the widget containing the counter's
-	// value (otherwise, null);
-	private TextView counterValueTextView = null;
-	
-	// If this player is running the GUI, the handler for the GUI thread (otherwise
-	// null)
-	private Handler guiHandler = null;
-	
-	/**
-	 * constructor
-	 * 
-	 * @param name
-	 * 		the player's name
-	 */
-	public GDComputerPlayer2(String name) {
-		super(name);
-	}
-	
+public class GDComputerPlayer2 extends GameComputerPlayer implements Tickable {
+
+    /**
+     * Constructor for objects of class CounterComputerPlayer1
+     *
+     * @param name
+     * 		the player's name
+     */
+    public GDComputerPlayer2(String name) {
+        // invoke superclass constructor
+        super(name);
+        
+        // start the timer, ticking 20 times per second
+        getTimer().setInterval(50);
+        getTimer().start();
+    }
+    
     /**
      * callback method--game's state has changed
      * 
      * @param info
      * 		the information (presumably containing the game's state)
+	 *GDComputerPlayer1
      */
 	@Override
 	protected void receiveInfo(GameInfo info) {
-		// perform superclass behavior
-		super.receiveInfo(info);
-		
-		Log.i("computer player", "receiving");
-		
-		// if there is no game, ignore
-		if (game == null) {
-			return;
-		}
-		else if (info instanceof GDState) {
-			// if we indeed have a counter-state, update the GUI
-			currentGameState = (GDState)info;
-			updateDisplay();
-		}
-	}
-	
-	
-	/** 
-	 * sets the counter value in the text view
-	 *  */
-	private void updateDisplay() {
-		// if the guiHandler is available, set the new counter value
-		// in the counter-display widget, doing it in the Activity's
-		// thread.
-		if (guiHandler != null) {
-			guiHandler.post(
-					new Runnable() {
-						public void run() {
-						if (counterValueTextView != null && currentGameState != null) {
-
-							//TODO Change this to something else if we need to
-							//counterValueTextView.setText("" + currentGameState.getCounter());
-						}
-					}});
-		}
+		// Do nothing, as we ignore all state in deciding our next move. It
+		// depends totally on the timer and random numbers.
 	}
 	
 	/**
-	 * Tells whether we support a GUI
-	 * 
-	 * @return
-	 * 		true because we support a GUI
+	 * callback method: the timer ticked
 	 */
-	public boolean supportsGui() {
-		return true;
-	}
-	
-	/**
-	 * callback method--our player has been chosen/rechosen to be the GUI,
-	 * called from the GUI thread.
-	 * 
-	 * @param a
-	 * 		the activity under which we are running
-	 */
-	@Override
-	public void setAsGui(GameMainActivity a) {
-		
-		// remember who our activity is
-		this.activityForGui = a;
-		
-		// remember the handler for the GUI thread
-		this.guiHandler = new Handler();
-		
-		// Load the layout resource for the our GUI's configuration
-		activityForGui.setContentView(R.layout.gd_human_player);
+	protected void timerTicked() {
+		// 5% of the time, increment or decrement the counter
+		if (Math.random() >= 0.05) return; // do nothing 95% of the time
 
-		// remember who our text view is, for updating the counter value
-		this.counterValueTextView =
-				(TextView) activityForGui.findViewById(R.id.greatDalmutiValueTextView);
+		// "flip a coin" to determine whether to increment or decrement
+		boolean move = Math.random() >= 0.5;
 		
-		// disable the buttons, since they will have no effect anyway
-		Button plusButton = (Button)activityForGui.findViewById(R.id.plusButton);
-		plusButton.setEnabled(false);
-		Button minusButton = (Button)activityForGui.findViewById(R.id.minusButton);
-		minusButton.setEnabled(false);
-		
-		// if the state is non=null, update the display
-		if (currentGameState != null) {
-			updateDisplay();
-		}
+		// send the move-action to the game
+		game.sendAction(new GDMoveAction(this, move));
 	}
-
 }

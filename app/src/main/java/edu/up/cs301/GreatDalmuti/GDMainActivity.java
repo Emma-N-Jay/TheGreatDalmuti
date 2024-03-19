@@ -61,7 +61,7 @@ public class GDMainActivity extends GameMainActivity {
 		// a computer player type (player type 2)
 		playerTypes.add(new GamePlayerType("Computer Player (GUI)") {
 			public GamePlayer createPlayer(String name) {
-				return new edu.up.cs301.GreatDalmuti.GDComputerPlayer2(name);
+				return new GDComputerPlayerGUI(name);
 			}});
 
 
