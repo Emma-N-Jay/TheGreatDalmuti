@@ -37,6 +37,7 @@ public class GDState extends GameState {
 	private boolean hasLowestInRound;
 	private int hasLead;
 	private int turn;
+	private GDState game;
 
 	GDState(int playNum){
 
@@ -69,6 +70,9 @@ public class GDState extends GameState {
 	//Getter and setter for turn
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
+	public GDState getState(){
+		return this;
+	}
 
 	@Override
 	public String toString() {
