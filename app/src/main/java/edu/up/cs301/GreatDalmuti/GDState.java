@@ -42,7 +42,7 @@ public class GDState extends GameState {
 	private boolean exchangeTax;
 	private boolean hasLowest;
 	private int hasLead;
-	private int currentTurn;
+	private int turn;
 
 
 	// METHODS *************************************************************************************
@@ -165,6 +165,14 @@ public class GDState extends GameState {
 	//TODO MARKED FOR DELETION
 	public void setCounter(int counter) {
 		this.counter = counter;
+	}
+
+
+	//Getter and setter for turn
+	public int getTurn(){return this.turn;}
+
+	public void setTurn(int turn){
+		this.turn = turn;
 	}
 
 	@Override
