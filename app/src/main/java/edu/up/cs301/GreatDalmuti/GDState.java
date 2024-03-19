@@ -1,11 +1,11 @@
 /**
- * This contains the state for the GreatDalmuti game.
+ * This contains the state for the Great Dalmuti game.
  *
  * @author Tramanh Best
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 18 2024
+ * @version March 19 2024
  *
  */
 
