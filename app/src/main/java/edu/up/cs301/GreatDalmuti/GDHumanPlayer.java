@@ -146,6 +146,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 //    }
 
 	public Card[] getHand(){return hand;}
+	public void setHand(Card[] playerHand){
+		this.hand = playerHand;
+	}
 //
 //    public void setPlayerHand(ArrayList<Card> playerHand) {
 //        this.playerHand = playerHand;
