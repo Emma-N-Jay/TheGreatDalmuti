@@ -6,7 +6,6 @@
  * @author Alex Burns
  * @author Theresa Wunderlich
  * @version March 18 2024
- *
  */
 
 package edu.up.cs301.GreatDalmuti;
