@@ -59,7 +59,7 @@ public class GDLocalGame extends LocalGame {
 	public GDLocalGame(GameState state) {
 		// initialize the game state, with the counter value starting at 0
 		if (! (state instanceof edu.up.cs301.GreatDalmuti.GDState)) {
-			state = new edu.up.cs301.GreatDalmuti.GDState(0);
+			state = new edu.up.cs301.GreatDalmuti.GDState(gameState);
 		}
 		this.gameState = (edu.up.cs301.GreatDalmuti.GDState)state;
 		super.state = state;
