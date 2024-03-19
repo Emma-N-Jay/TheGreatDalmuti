@@ -14,5 +14,14 @@ public class PassAction extends GameAction {
     }
 
 
+    public boolean pass(int turn){
+     //   if(turn == 4 ){
+     //       setTurn(1);
+     //   } else {
+     //        setTurn(turn + 1);
+     //      }
+        return true;
+    }
+
 
 }
