@@ -41,7 +41,56 @@ CounterGameState’s constructor.
  *
  */
 public class GDState extends GameState {
-	
+
+	//added variables
+	private boolean exchangingTaxes;
+
+	public void setExchangingTaxes(boolean inExchangingTaxes) {
+		this.exchangingTaxes = inExchangingTaxes;
+	}
+
+	//added methods for game actions
+	public boolean taxes(){
+		if(!exchangingTaxes){
+			return false;
+		}
+
+		//cards selected need to be exchanged
+
+		setExchangingTaxes(false);
+		return true;
+	}
+
+	public boolean revolution(){
+		if(!exchangingTaxes){
+			return false;
+		}
+
+		//needs to check if 2 jesters are in hand
+		//needs to check rank of the owner of jesters
+
+		setExchangingTaxes(false);
+		return true;
+	}
+
+	//shuffeling but i think thats happening automatically
+	//playCards needs to know which player/hand
+
+	public boolean playCards(){
+		//needs to check if legal else return false and then get rid of cards
+		//needs to change the player who has the lead and whose turn it is
+
+		return true;
+	}
+
+	public boolean pass(){
+		//needs to check whose turn it is else return false
+		//needs to change whose turn it is
+
+		return true;
+	}
+
+
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;
 	
