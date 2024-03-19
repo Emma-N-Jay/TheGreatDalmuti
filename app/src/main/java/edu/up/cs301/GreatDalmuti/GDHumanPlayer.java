@@ -96,6 +96,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * 
 	 * @param info
 	 * 		the message
+	 *
 	 */
 	@Override
 	public void receiveInfo(GameInfo info) {

@@ -6,6 +6,7 @@ package edu.up.cs301.GameFramework.infoMessage;
  *
  * @author Steven R. Vegdahl
  * @version July 2013
+ *
  */
 public class IllegalMoveInfo extends GameInfo {
     //Tag for logging

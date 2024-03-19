@@ -126,6 +126,7 @@ public class GDLocalGame extends LocalGame {
 	 * @return
 	 * 		a message that tells who has won the game, or null if the
 	 * 		game is not over
+	 *
 	 */
 	@Override
 	protected String checkIfGameOver() {

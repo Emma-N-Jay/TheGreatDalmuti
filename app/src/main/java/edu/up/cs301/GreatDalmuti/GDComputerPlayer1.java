@@ -34,6 +34,7 @@ public class GDComputerPlayer1 extends GameComputerPlayer implements Tickable {
      * 
      * @param info
      * 		the information (presumably containing the game's state)
+	 *
      */
 	@Override
 	protected void receiveInfo(GameInfo info) {
