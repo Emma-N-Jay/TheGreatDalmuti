@@ -1,20 +1,26 @@
 package edu.up.cs301.GreatDalmuti;
+/**
+ * This contains the revolution action for the Great Dalmuti game.
+ *
+ * @author Tramanh Best
+ * @author Emma Jeppesen
+ * @author Alex Burns
+ * @author Theresa Wunderlich
+ * @version March 19 2024
+ */
 
 import android.app.Notification;
-
 import java.util.ArrayList;
-
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class RevolutionAction extends GameAction {
 
+    // INSTANCE VARIABLES **************************************************************************
     public GDState game;
-    public void receiveInfo(GameInfo info) {
-        game = (GDState) info;
-    }
 
+    // CONSTRUCTORS ********************************************************************************
     /**
      * constructor for GameAction
      *
@@ -22,6 +28,11 @@ public class RevolutionAction extends GameAction {
      */
     public RevolutionAction(GamePlayer player) {
         super(player);
+    }
+
+    // METHODS *************************************************************************************
+    public void receiveInfo(GameInfo info) {
+        game = (GDState) info;
     }
 
     //given that the player that has the jesters calls the revolution, carries out revolution
@@ -43,6 +54,5 @@ public class RevolutionAction extends GameAction {
         }
         return true;
     }
-
 
 }
