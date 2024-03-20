@@ -5,7 +5,7 @@
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 18 2024
+ * @version March 19 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
@@ -15,8 +15,8 @@ import edu.up.cs301.GameFramework.infoMessage.GameState;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class GDState extends GameState {
+	// INSTANCE VARIABLES **************************************************************************
 	// to satisfy Serializable interface
-
 	private static final long serialVersionUID = 7737393762469851826L;
 
 	// instances of specific actions taken in the game
@@ -34,16 +34,19 @@ public class GDState extends GameState {
 	private int hasLead; // who currently has the lead
 	private int turn; // who's turn is it
 
+	// CONSTRUCTORS ********************************************************************************
 	/**
-	 * constructor, initializing from the parameter
-	 *
+	 * constructor
 	 * @param playNum
-	 * 		the value to be initialized
 	 */
 	 public GDState(int playNum){
 		 //intentionally left blank
 	 }
 
+	/**
+	 * constructor
+	 * no parameters
+	 */
 	 public GDState(){
 		 // makes a deep copy of all variables so far
 		 this.exchangingTaxes = true;
@@ -74,7 +77,7 @@ public class GDState extends GameState {
 		this.revolutionIsVisible = orig.revolutionIsVisible;
 	}
 
-
+	// METHODS *************************************************************************************
 	//Getter and setter for turn
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
@@ -99,5 +102,6 @@ public class GDState extends GameState {
 		System.out.println("Number of player who has the lead - " + this.hasLead);
 		System.out.println("Revolution is visible - " + this.revolutionIsVisible);
 		return null;
-	}
+	} // toString
+
 }
