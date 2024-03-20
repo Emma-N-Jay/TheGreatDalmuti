@@ -1,3 +1,13 @@
+/**
+ * This contains the pass action for the GreatDalmuti game.
+ *
+ * @author Tramanh Best
+ * @author Emma Jeppesen
+ * @author Alex Burns
+ * @author Theresa Wunderlich
+ * @version March 19 2024
+ */
+
 package edu.up.cs301.GreatDalmuti;
 
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
@@ -6,11 +16,10 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class PassAction extends GameAction {
 
+    // INSTANCE VARIABLES **************************************************************************
     public GDState game;
-    public void receiveInfo(GameInfo info) {
-        game = (GDState) info;
-    }
 
+    // CONSTRUCTORS ********************************************************************************
     /**
      * constructor for GameAction
      *
@@ -21,6 +30,10 @@ public class PassAction extends GameAction {
         super(player);
     }
 
+    // METHODS *************************************************************************************
+    public void receiveInfo(GameInfo info) {
+        game = (GDState) info;
+    }
 
     public boolean pass(int turn){
         if(turn == 4 ){
@@ -30,6 +43,5 @@ public class PassAction extends GameAction {
            }
         return true;
     }
-
 
 }
