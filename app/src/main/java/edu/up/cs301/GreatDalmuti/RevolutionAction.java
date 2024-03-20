@@ -1,4 +1,3 @@
-package edu.up.cs301.GreatDalmuti;
 /**
  * This contains the revolution action for the Great Dalmuti game.
  *
@@ -8,6 +7,8 @@ package edu.up.cs301.GreatDalmuti;
  * @author Theresa Wunderlich
  * @version March 19 2024
  */
+
+package edu.up.cs301.GreatDalmuti;
 
 import android.app.Notification;
 import java.util.ArrayList;
