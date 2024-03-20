@@ -1,9 +1,11 @@
 /**
+ * This contains the human player for the Great Dalmuti game.
+ *
  * @author Tramanh Best
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 18 2024
+ * @version March 19 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
@@ -19,7 +21,7 @@ import android.view.View.OnClickListener;
 
 public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
-	/* instance variables */
+	// INSTANCE VARIABLES **************************************************************************
 	
 	// The TextView the displays the current counter value
 	private TextView counterValueTextView;
@@ -32,7 +34,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	//An array of the players hand
 	private Card[] hand;
-	
+
+	// CONSTRUCTORS ********************************************************************************
 	/**
 	 * constructor
 	 * @param name
@@ -42,6 +45,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		super(name);
 	}
 
+	// METHODS *************************************************************************************
 	/**
 	 * Returns the GUI's top view object
 	 * 
@@ -59,8 +63,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// set the text in the appropriate widget
 		//counterValueTextView.setText("" + state.getCounter());
 	}
-
-
 
 	/**
 	 * this method gets called when the user clicks the '+' or '-' button. It
@@ -154,7 +156,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 //        this.playerHand = playerHand;
 //    }
 //    private ArrayList<Card> playerHand;
-
 
 }// class CounterHumanPlayer
 

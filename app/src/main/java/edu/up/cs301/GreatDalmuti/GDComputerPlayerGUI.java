@@ -1,9 +1,11 @@
 /**
+ * This contains the computer player GUI for the Great Dalmuti game.
+ *
  * @author Tramanh Best
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 18 2024
+ * @version March 19 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
@@ -18,9 +20,7 @@ import android.widget.TextView;
 
 public class GDComputerPlayerGUI extends edu.up.cs301.GreatDalmuti.GDComputerPlayer1 {
 	
-	/*
-	 * instance variables
-	 */
+	// INSTANCE VARIABLES **************************************************************************
 	
 	// the most recent game state, as given to us by the CounterLocalGame
 	private GDState currentGameState = null;
@@ -36,7 +36,9 @@ public class GDComputerPlayerGUI extends edu.up.cs301.GreatDalmuti.GDComputerPla
 	// If this player is running the GUI, the handler for the GUI thread (otherwise
 	// null)
 	private Handler guiHandler = null;
-	
+
+	// CONSTRUCTORS ********************************************************************************
+
 	/**
 	 * constructor
 	 * 
@@ -46,7 +48,9 @@ public class GDComputerPlayerGUI extends edu.up.cs301.GreatDalmuti.GDComputerPla
 	public GDComputerPlayerGUI(String name) {
 		super(name);
 	}
-	
+
+	// METHODS *************************************************************************************
+
     /**
      * callback method--game's state has changed
      * 
@@ -71,7 +75,6 @@ public class GDComputerPlayerGUI extends edu.up.cs301.GreatDalmuti.GDComputerPla
 		}
 	}
 	
-	
 	/** 
 	 * sets the counter value in the text view
 	 *  */
@@ -83,12 +86,13 @@ public class GDComputerPlayerGUI extends edu.up.cs301.GreatDalmuti.GDComputerPla
 			guiHandler.post(
 					new Runnable() {
 						public void run() {
-						if (counterValueTextView != null && currentGameState != null) {
+							if (counterValueTextView != null && currentGameState != null) {
 
-							//TODO Change this to something else if we need to
-							//counterValueTextView.setText("" + currentGameState.getCounter());
+								//TODO Change this to something else if we need to
+								//counterValueTextView.setText("" + currentGameState.getCounter());
+							}
 						}
-					}});
+					});
 		}
 	}
 	

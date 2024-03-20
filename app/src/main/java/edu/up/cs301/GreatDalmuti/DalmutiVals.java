@@ -1,15 +1,17 @@
 /**
+ * This contains the values for the Great Dalmuti game.
+ *
  * @author Tramanh Best
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 18 2024
+ * @version March 19 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
 
 public class DalmutiVals {
-     public static final String[] CARD_NAMES = new String[]{
+    public static final String[] CARD_NAMES = new String[]{
         "Dalmuti", "Archbishop", "Earl Marshal", "Baroness", "Abbess", "Knight",
         "Seamstress", "Mason", "Cook", "Shepherdess", "Stonecutter", "Peasant", "Jester"
     };

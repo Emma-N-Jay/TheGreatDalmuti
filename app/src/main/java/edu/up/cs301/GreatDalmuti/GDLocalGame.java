@@ -1,9 +1,11 @@
 /**
+ * This contains the local game for the Great Dalmuti game.
+ *
  * @author Tramanh Best
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 18 2024
+ * @version March 19 2024
  *
  * A class that represents the state of a game. In The Great Dalmuti, we need to know the cards,
  * players hands, rank, revolution status, taxes, player turn, and who is in the lead.
@@ -39,20 +41,14 @@ public class GDLocalGame extends LocalGame {
 	// if present, is trying to get the counter to -TARGET_MAGNITUDE. The
 	// remaining players are neither winners nor losers, but can interfere by
 	// modifying the counter.
+
+	// INSTANCE VARIABLES **************************************************************************
 	public static final int TARGET_MAGNITUDE = 10;
 
 	// the game's state
 	private edu.up.cs301.GreatDalmuti.GDState gameState;
-	
-	/**
-	 * can this player move
-	 *TODO Change this to if they can play cards. Maybe make another class called isLegalPlay
-	 */
-	@Override
-	protected boolean canMove(int playerIdx) {
-		return true;
-	}
 
+	// CONSTRUCTORS ********************************************************************************
 	/**
 	 * This ctor should be called when a new Dalmuti game is started
 	 */
@@ -63,6 +59,16 @@ public class GDLocalGame extends LocalGame {
 		}
 		this.gameState = (edu.up.cs301.GreatDalmuti.GDState)state;
 		super.state = state;
+	}
+
+	// METHODS *************************************************************************************
+	/**
+	 * can this player move
+	 *TODO Change this to if they can play cards. Maybe make another class called isLegalPlay
+	 */
+	@Override
+	protected boolean canMove(int playerIdx) {
+		return true;
 	}
 
 	/**

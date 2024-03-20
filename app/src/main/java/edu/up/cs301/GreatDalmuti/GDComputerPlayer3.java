@@ -1,9 +1,11 @@
 /**
+ * This contains the computer player three for the Great Dalmuti game.
+ *
  * @author Tramanh Best
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 18 2024
+ * @version March 19 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
@@ -14,6 +16,9 @@ import edu.up.cs301.GameFramework.utilities.Tickable;
 
 public class GDComputerPlayer3 extends GameComputerPlayer implements Tickable {
 
+	// INSTANCE VARIABLES **************************************************************************
+
+	// CONSTRUCTORS ********************************************************************************
     /**
      * Constructor for objects of class CounterComputerPlayer1
      *
@@ -28,7 +33,8 @@ public class GDComputerPlayer3 extends GameComputerPlayer implements Tickable {
         getTimer().setInterval(50);
         getTimer().start();
     }
-    
+
+	// METHODS *************************************************************************************
     /**
      * callback method--game's state has changed
      * 
@@ -55,4 +61,5 @@ public class GDComputerPlayer3 extends GameComputerPlayer implements Tickable {
 		// send the move-action to the game
 		game.sendAction(new GDMoveAction(this, move));
 	}
+
 }

@@ -1,10 +1,11 @@
 /**
+ * This contains the main activity for the Great Dalmuti game.
+ *
  * @author Tramanh Best
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 18 2024
- *
+ * @version March 19 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
@@ -18,10 +19,12 @@ import edu.up.cs301.GameFramework.LocalGame;
 import edu.up.cs301.GameFramework.gameConfiguration.*;
 
 public class GDMainActivity extends GameMainActivity {
-	
+
+	// INSTANCE VARIABLES **************************************************************************
 	// the port number that this game will use when playing over the network
 	private static final int PORT_NUMBER = 2234;
 
+	// METHODS *************************************************************************************
 	/**
 	 * Create the default configuration for this game:
 	 * - one human player vs. one computer player
@@ -96,8 +99,6 @@ public class GDMainActivity extends GameMainActivity {
 	 * @return
 	 * 		the local game, a counter game
 	 */
-
-
 	@Override
 	public LocalGame createLocalGame(GameState state) {
 		if (state == null) state = new edu.up.cs301.GreatDalmuti.GDState(0);
