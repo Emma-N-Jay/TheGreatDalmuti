@@ -1,3 +1,13 @@
+/**
+ * This contains the pay taxes action for the Great Dalmuti game.
+ *
+ * @author Tramanh Best
+ * @author Emma Jeppesen
+ * @author Alex Burns
+ * @author Theresa Wunderlich
+ * @version March 19 2024
+ */
+
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
@@ -7,8 +17,10 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class PayTaxesAction extends GameAction {
 
+    // INSTANCE VARIABLES **************************************************************************
     public int[] taxCardIndexes;
 
+    // CONSTRUCTORS ********************************************************************************
     /**
      * constructor for GameAction
      *
@@ -19,6 +31,7 @@ public class PayTaxesAction extends GameAction {
         this.taxCardIndexes = initIndexes;
     }
 
+    // METHODS *************************************************************************************
     //finds index of players lowest card (best)
     public int findLowest(ArrayList<ArrayList<Integer>> cards, int player) {
         int lowestIndex = 0;
@@ -71,6 +84,5 @@ public class PayTaxesAction extends GameAction {
         cards.get(2).set(indexTax, cards.get(2).get(indexTax) - 1);
         return true;
     }
-
 
 }

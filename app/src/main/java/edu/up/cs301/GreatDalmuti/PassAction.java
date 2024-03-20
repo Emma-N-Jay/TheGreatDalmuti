@@ -1,5 +1,5 @@
 /**
- * This contains the pass action for the GreatDalmuti game.
+ * This contains the pass action for the Great Dalmuti game.
  *
  * @author Tramanh Best
  * @author Emma Jeppesen
