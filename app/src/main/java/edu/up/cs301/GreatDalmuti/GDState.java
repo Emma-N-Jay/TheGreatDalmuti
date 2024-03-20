@@ -16,6 +16,7 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class GDState extends GameState {
 	// to satisfy Serializable interface
+
 	private static final long serialVersionUID = 7737393762469851826L;
 
 	// instances of specific actions taken in the game
