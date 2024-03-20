@@ -1,3 +1,13 @@
+/**
+ * This contains the play card action for the Great Dalmuti game.
+ *
+ * @author Tramanh Best
+ * @author Emma Jeppesen
+ * @author Alex Burns
+ * @author Theresa Wunderlich
+ * @version March 19 2024
+ */
+
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
@@ -8,15 +18,11 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class PlayCardAction extends GameAction {
 
+    // INSTANCE VARIABLES **************************************************************************
     public int indexHand;
     public GDState game;
 
-
-
-
-    public void receiveInfo(GameInfo info) {
-        game = (GDState) info;
-    }
+    // CONSTRUCTORS ********************************************************************************
     /**
      * constructor for GameAction
      *
@@ -25,6 +31,11 @@ public class PlayCardAction extends GameAction {
     public PlayCardAction(GamePlayer player) {
         super(player);
         game.getTurn();
+    }
+
+    // METHODS *************************************************************************************
+    public void receiveInfo(GameInfo info) {
+        game = (GDState) info;
     }
 
     public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, ArrayList<ArrayList<Integer>> selected){
@@ -41,7 +52,5 @@ public class PlayCardAction extends GameAction {
 
         return decks;
     }
-
-
 
 }
