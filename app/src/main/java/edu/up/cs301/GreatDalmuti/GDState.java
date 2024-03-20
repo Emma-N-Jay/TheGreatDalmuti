@@ -42,6 +42,18 @@ public class GDState extends GameState {
 	 public GDState(int playNum){
 		 //intentionally left blank
 	 }
+
+	 public GDState(){
+		 // makes a deep copy of all variables so far
+		 this.exchangingTaxes = true;
+		 this.deck = new ArrayList<ArrayList<Integer>>();
+		 this.handIsVisible = false;
+		 this.numInPile = 0;
+		 this.rankInPile = 0;
+		 this.hasLowestInRound = false;
+		 this.hasLead = 0;
+		 this.revolutionIsVisible = false;
+	 }
 	
 	/**
 	 * copy constructor; makes a copy of the original object
@@ -49,12 +61,8 @@ public class GDState extends GameState {
 	 * @param orig
 	 * 		the object from which the copy should be made
 	 */
-	public GDState(edu.up.cs301.GreatDalmuti.GDState orig, int playNum) {
+	public GDState(edu.up.cs301.GreatDalmuti.GDState orig, int numPlayer) {
 		// makes a deep copy of all variables so far
-		//this.revolution = new RevolutionAction(this.revolution.getPlayer());
-		//this.playCard = new PlayCardAction(this.playCard.getPlayer());
-		//this.pass = new PassAction(this.pass.getPlayer());
-
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.deck = orig.deck;
 		this.handIsVisible = orig.handIsVisible;
