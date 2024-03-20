@@ -29,7 +29,7 @@ public class PayTaxesAction extends GameAction {
     public PayTaxesAction(GamePlayer player, int[] initIndexes) {
         super(player);
         this.taxCardIndexes = initIndexes;
-    }
+    } // PayTaxesAction
 
     // METHODS *************************************************************************************
     //finds index of players lowest card (best)
@@ -41,7 +41,7 @@ public class PayTaxesAction extends GameAction {
             }
         }
         return lowestIndex;
-    }
+    } // findLowest
 
     //taxes for the peons
     public boolean payTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards){
@@ -63,7 +63,7 @@ public class PayTaxesAction extends GameAction {
             cards.get(playerRank).set(low, cards.get(playerRank).get(low) - 1);
         }
         return true;
-    }
+    } // payTaxes
 
     //taxes for the greater dalmuti, ranks should be changed to named variables
     public boolean greatTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards, int indexTax, int indexTax2){
@@ -74,7 +74,7 @@ public class PayTaxesAction extends GameAction {
         cards.get(1).set(indexTax, cards.get(1).get(indexTax) - 1);
         cards.get(1).set(indexTax2, cards.get(1).get(indexTax2) - 1);
         return true;
-    }
+    } // greatTaxes
 
     //taxes for the lesser dalmuti, ranks should be changed to named variables
     public boolean lesserTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards, int indexTax){
@@ -83,6 +83,6 @@ public class PayTaxesAction extends GameAction {
         //takes away cards from original holder
         cards.get(2).set(indexTax, cards.get(2).get(indexTax) - 1);
         return true;
-    }
+    } // lesserTaxes
 
-}
+} // PayTaxesAction class

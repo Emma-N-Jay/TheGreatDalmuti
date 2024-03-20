@@ -54,6 +54,6 @@ public class RevolutionAction extends GameAction {
             }
         }
         return true;
-    }
+    } // revolution
 
-}
+} // RevolutionAction class

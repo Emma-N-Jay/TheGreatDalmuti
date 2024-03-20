@@ -22,4 +22,5 @@ public class DalmutiVals {
     public static final String CARD_DRAW = "CARD_DRAW";
     public static final String DECK_SPLIT = "DECK_SPLIT";
     public static final String END_GAME = "END_GAME";
-}
+
+} // DalmutiVals class

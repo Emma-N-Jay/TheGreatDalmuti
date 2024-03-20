@@ -73,7 +73,7 @@ public class GDComputerPlayerGUI extends edu.up.cs301.GreatDalmuti.GDComputerPla
 			currentGameState = (GDState)info;
 			updateDisplay();
 		}
-	}
+	} // receiveInfo
 	
 	/** 
 	 * sets the counter value in the text view
@@ -94,7 +94,7 @@ public class GDComputerPlayerGUI extends edu.up.cs301.GreatDalmuti.GDComputerPla
 						}
 					});
 		}
-	}
+	} // updateDisplay
 	
 	/**
 	 * Tells whether we support a GUI
@@ -139,6 +139,6 @@ public class GDComputerPlayerGUI extends edu.up.cs301.GreatDalmuti.GDComputerPla
 		if (currentGameState != null) {
 			updateDisplay();
 		}
-	}
+	} // setAsGui
 
-}
+} // GDComputerPlayerGUI class

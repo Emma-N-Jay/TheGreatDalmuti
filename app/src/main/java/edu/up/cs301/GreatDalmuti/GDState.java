@@ -57,7 +57,7 @@ public class GDState extends GameState {
 		 this.hasLowestInRound = false;
 		 this.hasLead = 0;
 		 this.revolutionIsVisible = false;
-	 }
+	 } // GDState
 	
 	/**
 	 * copy constructor; makes a copy of the original object
@@ -75,7 +75,7 @@ public class GDState extends GameState {
 		this.hasLowestInRound = orig.hasLowestInRound;
 		this.hasLead = orig.hasLead;
 		this.revolutionIsVisible = orig.revolutionIsVisible;
-	}
+	} // GDState
 
 	// METHODS *************************************************************************************
 	//Getter and setter for turn
@@ -104,4 +104,4 @@ public class GDState extends GameState {
 		return null;
 	} // toString
 
-}
+} // GDState class

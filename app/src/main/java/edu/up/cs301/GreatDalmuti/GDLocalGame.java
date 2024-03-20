@@ -59,7 +59,7 @@ public class GDLocalGame extends LocalGame {
 		}
 		this.gameState = (edu.up.cs301.GreatDalmuti.GDState)state;
 		super.state = state;
-	}
+	} //GDLocalGame
 
 	// METHODS *************************************************************************************
 	/**
@@ -95,7 +95,7 @@ public class GDLocalGame extends LocalGame {
 			// denote that this was an illegal move
 			return false;
 		}
-	}//makeMove
+	} // makeMove
 	
 	/**
 	 * send the updated state to a given player
@@ -106,7 +106,7 @@ public class GDLocalGame extends LocalGame {
 		// complete copy of the state to send to the player
 		p.sendInfo(new edu.up.cs301.GreatDalmuti.GDState(this.gameState, this.getPlayerIdx(p)));
 		
-	}//sendUpdatedSate
+	} // sendUpdatedSate
 	
 	/**
 	 * Check if the game is over. It is over, return a string that tells
@@ -145,6 +145,6 @@ public class GDLocalGame extends LocalGame {
 //			return null;
 //		}
 		return null;
-	}
+	} // checkIfGameOver
 
-}// class CounterLocalGame
+} // GDLocalGame class

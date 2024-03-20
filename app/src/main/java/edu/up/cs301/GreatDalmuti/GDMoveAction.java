@@ -34,7 +34,7 @@ public class GDMoveAction extends GameAction {
 	public GDMoveAction(GamePlayer player, boolean isPlus) {
 		super(player);
 		this.isPlus = isPlus;
-	}
+	} // GDMoveAction
 
 	// METHODS *************************************************************************************
 	/**
@@ -45,6 +45,6 @@ public class GDMoveAction extends GameAction {
 	 */
 	public boolean isPlus() {
 		return isPlus;
-		
-	}
-}//class CounterMoveAction
+	} // isPlus
+
+} // GDMoveAction class

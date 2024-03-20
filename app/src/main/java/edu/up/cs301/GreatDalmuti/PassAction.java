@@ -42,6 +42,6 @@ public class PassAction extends GameAction {
              game.setTurn(turn + 1);
            }
         return true;
-    }
+    } // pass
 
-}
+} // PassAction class

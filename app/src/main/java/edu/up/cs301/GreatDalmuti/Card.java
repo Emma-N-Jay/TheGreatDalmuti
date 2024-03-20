@@ -27,7 +27,7 @@ public class Card {
     public Card(int cardValue) {
         this.cardValue = cardValue;
         this.cardName = DalmutiVals.CARD_NAMES[cardValue-1];
-    }
+    } // Card
 
     // METHODS *************************************************************************************
     public String getCardName() {
@@ -40,4 +40,4 @@ public class Card {
 
     public boolean getSelected(){return isSelected;}
 
-}
+} // Card class

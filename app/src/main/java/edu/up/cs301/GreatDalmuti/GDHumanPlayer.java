@@ -62,7 +62,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	protected void updateDisplay() {
 		// set the text in the appropriate widget
 		//counterValueTextView.setText("" + state.getCounter());
-	}
+	} // updateDisplay
 
 	/**
 	 * this method gets called when the user clicks the '+' or '-' button. It
@@ -108,7 +108,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// update our state; then update the display
 		this.state = (edu.up.cs301.GreatDalmuti.GDState)info;
 		updateDisplay();
-	}
+	} // receiveInfo
 	
 	/**
 	 * callback method--our game has been chosen/rechosen to be the GUI,
@@ -140,7 +140,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		if (state != null) {
 			receiveInfo(state);
 		}
-	}
+	} // setAsGui
 
 	//TODO fix this
 //	  public ArrayList<Card> getPlayerHand() {
@@ -157,5 +157,5 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 //    }
 //    private ArrayList<Card> playerHand;
 
-}// class CounterHumanPlayer
+} // GDHumanPlayer class
 

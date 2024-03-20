@@ -91,7 +91,7 @@ public class GDMainActivity extends GameMainActivity {
 		
 		// return the configuration
 		return defaultConfig;
-	}//createDefaultConfig
+	} // createDefaultConfig
 
 	/**
 	 * create a local game
@@ -103,6 +103,6 @@ public class GDMainActivity extends GameMainActivity {
 	public LocalGame createLocalGame(GameState state) {
 		if (state == null) state = new edu.up.cs301.GreatDalmuti.GDState(0);
 		return new edu.up.cs301.GreatDalmuti.GDLocalGame(state);
-	}
+	} // createLocalGame
 
-}
+} // GDMainActivity class

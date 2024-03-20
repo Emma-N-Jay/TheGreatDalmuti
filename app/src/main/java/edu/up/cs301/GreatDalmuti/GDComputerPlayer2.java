@@ -32,7 +32,7 @@ public class GDComputerPlayer2 extends GameComputerPlayer implements Tickable {
         // start the timer, ticking 20 times per second
         getTimer().setInterval(50);
         getTimer().start();
-    }
+    } // GDComputerPlayer2
 
 	// METHODS *************************************************************************************
     /**
@@ -46,7 +46,7 @@ public class GDComputerPlayer2 extends GameComputerPlayer implements Tickable {
 	protected void receiveInfo(GameInfo info) {
 		// Do nothing, as we ignore all state in deciding our next move. It
 		// depends totally on the timer and random numbers.
-	}
+	} // receiveInfo
 	
 	/**
 	 * callback method: the timer ticked
@@ -60,6 +60,6 @@ public class GDComputerPlayer2 extends GameComputerPlayer implements Tickable {
 		
 		// send the move-action to the game
 		game.sendAction(new GDMoveAction(this, move));
-	}
+	} // timerTicked
 
-}
+} // GDComputerPlayer2

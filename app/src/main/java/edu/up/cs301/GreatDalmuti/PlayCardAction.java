@@ -31,7 +31,7 @@ public class PlayCardAction extends GameAction {
     public PlayCardAction(GamePlayer player) {
         super(player);
         game.getTurn();
-    }
+    } // PlayCardAction
 
     // METHODS *************************************************************************************
     public void receiveInfo(GameInfo info) {
@@ -51,6 +51,6 @@ public class PlayCardAction extends GameAction {
         }
 
         return decks;
-    }
+    } // play
 
-}
+} // PlayCardAction class
