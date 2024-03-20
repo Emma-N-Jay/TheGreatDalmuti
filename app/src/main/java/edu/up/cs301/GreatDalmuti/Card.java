@@ -1,17 +1,16 @@
 /**
+ * This contains the cards for the Great Dalmuti game.
+ *
  * @author Tramanh Best
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 18 2024
+ * @version March 19 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
 
 public class Card {
-     private String cardName;
-    private int cardValue;
-    private boolean isSelected;
 
     /**
      * 80 Cards Total:
@@ -19,11 +18,18 @@ public class Card {
      * five 5s, four 4s, three 3s, two 2s, one 1, and two Jesters.
      */
 
+    // INSTANCE VARIABLES **************************************************************************
+    private String cardName;
+    private int cardValue;
+    private boolean isSelected;
+
+    // CONSTRUCTORS ********************************************************************************
     public Card(int cardValue) {
         this.cardValue = cardValue;
         this.cardName = DalmutiVals.CARD_NAMES[cardValue-1];
     }
 
+    // METHODS *************************************************************************************
     public String getCardName() {
         return cardName;
     }
@@ -31,6 +37,7 @@ public class Card {
     public int getCardValue() {
         return cardValue;
     }
+
     public boolean getSelected(){return isSelected;}
 
 }
