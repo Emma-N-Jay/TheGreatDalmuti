@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/run_test"
+        android:title="@string/run_test"
+        android:orderInCategory="100"/>
+<!--If you want to make new menu items copy the above item object and change the id to be
+unique (and descriptive!) and the title to be new text
+Once you've done this update your game-specific MainActivity to set a listener for this new
+item.-->
+
+</menu>
