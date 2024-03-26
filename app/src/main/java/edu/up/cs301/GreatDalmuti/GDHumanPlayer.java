@@ -19,6 +19,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
+import java.util.ArrayList;
+
 public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	// INSTANCE VARIABLES **************************************************************************
@@ -85,11 +87,24 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		GDState firstCopy = new GDState(firstInstance, 1);
 
 		RevolutionAction declareRev = new RevolutionAction(this);
-		declareRev.revolution(firstCopy.getTurn(), firstCopy.getDeck());
+		declareRev.revolution(firstCopy.getTurn(), firstCopy.getP1Hand());
 
 		int[] taxCards = {1, 2};
 		PayTaxesAction payTax = new PayTaxesAction(this, taxCards);
-		payTax.payTaxes(firstCopy.getTurn(), firstCopy.getDeck());
+		payTax.payTaxes(firstCopy.getTurn(), firstCopy.getP1Hand());
+
+		PassAction passCards = new PassAction(this);
+		passCards.pass(firstCopy.getTurn());
+
+		ArrayList<ArrayList<Integer>> playingCards = new ArrayList<>();
+		ArrayList<Integer> foo = new ArrayList<>();
+		playingCards.add(foo);
+		foo.add(1);
+		foo.add(2);
+		PlayCardAction playCards = new PlayCardAction(this);
+		playCards.play(firstCopy.getTurn(), firstCopy.getDeck(), playingCards);
+
+
 
 
 	}// onClick

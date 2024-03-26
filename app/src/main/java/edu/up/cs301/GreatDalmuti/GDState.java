@@ -25,6 +25,10 @@ public class GDState extends GameState {
 	private PassAction pass;
 
 	private ArrayList<ArrayList<Integer>> deck; //this is literally the entire deck of cards
+	private ArrayList<ArrayList<Integer>> p1Hand;
+	private ArrayList<ArrayList<Integer>> p2Hand;
+	private ArrayList<ArrayList<Integer>> p3Hand;
+	private ArrayList<ArrayList<Integer>> p4Hand;
 	private boolean handIsVisible; //if a players hand is visible for a specific device
 	private boolean revolutionIsVisible; //is the revolution button visible
 	private boolean exchangingTaxes; //are we currently exchanging taxes
@@ -87,6 +91,10 @@ public class GDState extends GameState {
 		exchangingTaxes = update;
 	}
 	public ArrayList<ArrayList<Integer>> getDeck(){return deck;}
+	public ArrayList<ArrayList<Integer>> getP1Hand(){return p1Hand;}
+	public ArrayList<ArrayList<Integer>> getP2Hand(){return p2Hand;}
+	public ArrayList<ArrayList<Integer>> getP3Hand(){return p3Hand;}
+	public ArrayList<ArrayList<Integer>> getP4Hand(){return p4Hand;}
 
 	@Override
 	public String toString() {
