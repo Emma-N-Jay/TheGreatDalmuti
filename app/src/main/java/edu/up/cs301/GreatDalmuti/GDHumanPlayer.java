@@ -87,6 +87,11 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		RevolutionAction declareRev = new RevolutionAction(this);
 		declareRev.revolution(firstCopy.getTurn(), firstCopy.getDeck());
 
+		int[] taxCards = {1, 2};
+		PayTaxesAction payTax = new PayTaxesAction(this, taxCards);
+		payTax.payTaxes(firstCopy.getTurn(), firstCopy.getDeck());
+
+
 	}// onClick
 	
 	/**
