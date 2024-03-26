@@ -68,13 +68,35 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	/**
 	 * this method gets called when the user clicks the '+' or '-' button. It
 	 * creates a new CounterMoveAction to return to the parent activity.
-	 * 
+	 *
+	 * [60%] Modify the onClick() method in the human player class so that it does the
+	 * following things in this order:
+	 * ◦ Any text currently displayed in in the multi-line EditText (probably from a previous
+	 * test run) should be cleared.
+	 * ◦ A new instance of the game state class is created using the default constructor and
+	 * assigned to a variable named firstInstance.
+	 * ◦ Use your other constructor to create a deep copy of firstInstance from the
+	 * perspective of player one. Assign this copy to a variable named firstCopy.
+	 * ◦ Repeatedly call methods in the firstInstance object such that an entire game is
+	 * played from start to finish. It should call each method in the game state class at least
+	 * once as the game is played. In each case it should be making a legal move in the
+	 * game. For each method call, a brief, but clear, description of the action taken should
+	 * be printed to the multi-line EditText. (e.g., “Player 1 has moved his pawn from
+	 * position 10 to position 14.” or “Player 3 has rolled the dice. She rolled a 9.” New
+	 * messages should be append to previous ones, not overwrite them. The final message
+	 * should announce the winner of this faux game
+	 *
 	 * @param button
 	 * 		the button that was clicked
 	 */
 	public void onClick(View button) {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
+
+		if(button.getId() == R.id.run_test){
+
+		}
+
 	}// onClick
 	
 	/**
