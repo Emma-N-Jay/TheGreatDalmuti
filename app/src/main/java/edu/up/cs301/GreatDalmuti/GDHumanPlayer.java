@@ -75,23 +75,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	public void onClick(View button) {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
-
-		// Construct the action and send it to the game
-		GameAction action = null;
-		if (button.getId() == R.id.plusButton) {
-			// plus button: create "increment" action
-			action = new edu.up.cs301.GreatDalmuti.GDMoveAction(this, true);
-		}
-		else if (button.getId() == R.id.minusButton) {
-			// minus button: create "decrement" action
-			action = new edu.up.cs301.GreatDalmuti.GDMoveAction(this, false);
-		}
-		else {
-			// something else was pressed: ignore
-			return;
-		}
-		
-		game.sendAction(action); // send action to the game
 	}// onClick
 	
 	/**
