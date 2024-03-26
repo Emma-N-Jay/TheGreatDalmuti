@@ -50,7 +50,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * Returns the GUI's top view object
 	 * 
 	 * @return
-	 * 		the top object in the GUI's view heirarchy
+	 * 		the top object in the GUI's view hierarchy
 	 */
 	//TODO CHECK ID
 	public View getTopView() {
@@ -75,6 +75,11 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	public void onClick(View button) {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
+
+		if(button.getId() == R.id.run_test){
+
+		}
+
 
 		GDState firstInstance = new GDState();
 		GDState firstCopy = new GDState(firstInstance, 1);
