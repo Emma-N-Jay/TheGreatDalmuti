@@ -86,6 +86,7 @@ public class GDState extends GameState {
 	public void setExchangingTaxes(boolean update){
 		exchangingTaxes = update;
 	}
+	public ArrayList<ArrayList<Integer>> getDeck(){return deck;}
 
 	@Override
 	public String toString() {

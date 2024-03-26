@@ -35,8 +35,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	//An array of the players hand
 	private Card[] hand;
 
-
-	//lalalalaallalalaala
 	// CONSTRUCTORS ********************************************************************************
 	/**
 	 * constructor
@@ -79,7 +77,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		if (game == null) return;
 
 		if(button.getId() == R.id.run_test){
-
+			//tbd
 		}
 
 
@@ -87,7 +85,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		GDState firstCopy = new GDState(firstInstance, 1);
 
 		RevolutionAction declareRev = new RevolutionAction(this);
-		declareRev.revolution(hand);
+		declareRev.revolution(firstCopy.getTurn(), firstCopy.getDeck());
 
 	}// onClick
 	
