@@ -54,7 +54,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	//TODO CHECK ID
 	public View getTopView() {
-		return myActivity.findViewById(R.id.run_test);
+		return myActivity.findViewById(R.id.editTextTextMultiLine);
 	}
 	
 	/**
@@ -107,7 +107,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.myActivity = activity;
 		
 	    // Load the layout resource for our GUI
-		activity.setContentView(R.layout.game_main2);
+		activity.setContentView(R.layout.run_test_main);
 
 		this.testResultsTextView =
 				(TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
