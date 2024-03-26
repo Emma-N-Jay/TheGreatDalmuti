@@ -50,7 +50,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * Returns the GUI's top view object
 	 * 
 	 * @return
-	 * 		the top object in the GUI's view heirarchy
+	 * 		the top object in the GUI's view hierarchy
 	 */
 	//TODO CHECK ID
 	public View getTopView() {
