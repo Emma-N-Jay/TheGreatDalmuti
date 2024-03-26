@@ -55,7 +55,7 @@ public class GDState extends GameState {
 		 this.numInPile = 0;
 		 this.rankInPile = 0;
 		 this.hasLowestInRound = false;
-		 this.hasLead = 0;
+		 this.hasLead = 0; //this should assign the lead to default to GDalmuti but also could be 1 instead of 0
 		 this.revolutionIsVisible = false;
 	 } // GDState
 	

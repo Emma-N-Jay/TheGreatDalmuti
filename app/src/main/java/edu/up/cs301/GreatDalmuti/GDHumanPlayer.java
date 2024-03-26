@@ -75,6 +75,13 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	public void onClick(View button) {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
+
+		GDState firstInstance = new GDState();
+		GDState firstCopy = new GDState(firstInstance, 1);
+
+		RevolutionAction declareRev = new RevolutionAction(this);
+		declareRev.revolution(hand);
+
 	}// onClick
 	
 	/**

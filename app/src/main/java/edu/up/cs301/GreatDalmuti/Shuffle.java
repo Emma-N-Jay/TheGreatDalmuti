@@ -23,6 +23,7 @@ public class Shuffle{
      * @param card
      */
     public Shuffle(Card card) {
+
     }
 
     // METHODS *************************************************************************************
