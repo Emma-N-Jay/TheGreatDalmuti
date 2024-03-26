@@ -107,23 +107,12 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.myActivity = activity;
 		
 	    // Load the layout resource for our GUI
-		activity.setContentView(R.layout.gd_human_player);
-		
-		// make this object the listener for both the '+' and '-' 'buttons
-		Button plusButton = (Button) activity.findViewById(R.id.plusButton);
-		plusButton.setOnClickListener(this);
-		Button minusButton = (Button) activity.findViewById(R.id.minusButton);
-		minusButton.setOnClickListener(this);
+		activity.setContentView(R.layout.game_main2);
 
-		// remember the field that we update to display the counter's value
 		this.testResultsTextView =
 				(TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
 		
-		// if we have a game state, "simulate" that we have just received
-		// the state from the game so that the GUI values are updated
-		if (state != null) {
-			receiveInfo(state);
-		}
+		//TODO ADD CODE TO REGISTER THE HUMAN PLAYER AS A LISTENER FOR RUN TEST BUTTON
 	} // setAsGui
 
 	//TODO fix this
