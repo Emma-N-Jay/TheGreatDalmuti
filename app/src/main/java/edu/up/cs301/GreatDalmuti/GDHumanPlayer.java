@@ -111,8 +111,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		this.testResultsTextView =
 				(TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
-		
-		//TODO ADD CODE TO REGISTER THE HUMAN PLAYER AS A LISTENER FOR RUN TEST BUTTON
+
+		Button runTestButton = activity.findViewById(R.id.run_test);
+		runTestButton.setOnClickListener(this);
+
 	} // setAsGui
 
 	//TODO fix this
