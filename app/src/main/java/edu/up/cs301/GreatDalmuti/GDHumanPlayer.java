@@ -35,6 +35,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	//An array of the players hand
 	private Card[] hand;
 
+
+	//lalalalaallalalaala
 	// CONSTRUCTORS ********************************************************************************
 	/**
 	 * constructor
