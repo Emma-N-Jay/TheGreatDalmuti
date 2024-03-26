@@ -24,7 +24,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	// INSTANCE VARIABLES **************************************************************************
 	
 	// The TextView the displays the current counter value
-	private TextView counterValueTextView;
+	private TextView testResultsTextView;
 	
 	// the most recent game state, as given to us by the CounterLocalGame
 	private edu.up.cs301.GreatDalmuti.GDState state;
@@ -52,8 +52,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * @return
 	 * 		the top object in the GUI's view heirarchy
 	 */
+	//TODO CHECK ID
 	public View getTopView() {
-		return myActivity.findViewById(R.id.top_gui_layout);
+		return myActivity.findViewById(R.id.run_test);
 	}
 	
 	/**
@@ -61,7 +62,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	*/
 	protected void updateDisplay() {
 		// set the text in the appropriate widget
-		//counterValueTextView.setText("" + state.getCounter());
+		//testResultsTextView.setText("" + state.getCounter());
 	} // updateDisplay
 
 	/**
@@ -132,7 +133,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		minusButton.setOnClickListener(this);
 
 		// remember the field that we update to display the counter's value
-		this.counterValueTextView =
+		this.testResultsTextView =
 				(TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
 		
 		// if we have a game state, "simulate" that we have just received
