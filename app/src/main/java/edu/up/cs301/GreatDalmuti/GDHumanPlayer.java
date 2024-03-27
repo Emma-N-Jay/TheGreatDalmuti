@@ -146,6 +146,16 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		textBox.setText(textBox.getText() + "The Great Dalmuti has played the rest of their hand" +
 				" and gone out!\n");
 		textBox.setText(textBox.getText() + "Great Dalmuti has won!!!!!\n");
+
+
+		// secondInstance
+		GDState secondInstance = new GDState();
+		// deep copy of secondInstance assigned to secondCopy
+		GDState secondCopy = new GDState(secondInstance, 4);
+
+		// call to toString() on firstCopy and secondCopy
+		firstCopy.toString();
+		secondCopy.toString();
 	}// onClick
 	
 	/**
