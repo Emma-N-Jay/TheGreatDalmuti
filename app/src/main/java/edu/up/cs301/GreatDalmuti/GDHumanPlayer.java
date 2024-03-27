@@ -16,6 +16,7 @@ import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
@@ -78,9 +79,14 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
 
-		if(button.getId() == R.id.run_test){
+		if(button.getId() == R.id.editTextTextMultiLine){
 			//tbd
 		}
+
+		// I cannot overstate how long I took me to figure out this needed to be called on
+		// myActivity and not that for some reason nothing works for no reason
+		EditText textBox = myActivity.findViewById(R.id.editTextTextMultiLine);
+		textBox.setText("");
 
 		GDState firstInstance = new GDState();
 		GDState firstCopy = new GDState(firstInstance, 4);
@@ -94,6 +100,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//greater peon declares revolution
 		RevolutionAction declareRev = new RevolutionAction(gamePlayers[3]);
 		declareRev.revolution(firstCopy.getTurn(), firstCopy.getP4Hand()); //swaps positions
+		textBox.setText(textBox.getText() + "The Lesser Dalmuti has declared a revolution!\n");
 
 		//greater dalmuti and peon exchange taxes
 		int[] taxCards = {1, 2}; //cards that will be exchanged during taxes
@@ -101,6 +108,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		payTax.greatTaxes(3, firstCopy.getP1Hand(), 1, 2);
 		PayTaxesAction payTax2 = new PayTaxesAction(gamePlayers[0], taxCards); //greater peons cards for taxes
 		payTax2.payTaxes(firstCopy.getTurn(), firstCopy.getP3Hand());
+		textBox.setText(textBox.getText() + "Taxes have been exchanged!\n");
 
 		//great dalmuti plays
 		ArrayList<ArrayList<Integer>> playingCards = new ArrayList<>();
@@ -110,11 +118,34 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		foo.add(2);
 		PlayCardAction playCards = new PlayCardAction(gamePlayers[0]);
 		playCards.play(firstCopy.getTurn(), firstCopy.getDeck(), playingCards);
+		textBox.setText(textBox.getText() + "The Great Dalmuti has played!\n");
 
 		//lesser dalmuti passes
 		PassAction passCards = new PassAction(gamePlayers[1]);
 		passCards.pass(firstCopy.getTurn());
+		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
 
+		//lesser peon passes
+		PassAction passCards1 = new PassAction(gamePlayers[2]);
+		passCards.pass(firstCopy.getTurn());
+		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
+
+		//greater peon passes
+		PassAction passCards2 = new PassAction(gamePlayers[3]);
+		passCards.pass(firstCopy.getTurn());
+		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
+
+		//great dalmuti plays again
+		ArrayList<ArrayList<Integer>> playingCards2 = new ArrayList<>();
+		ArrayList<Integer> foo2 = new ArrayList<>();
+		playingCards2.add(foo2);
+		foo.add(1);
+		foo.add(2);
+		PlayCardAction playCards2 = new PlayCardAction(gamePlayers[0]);
+		playCards2.play(firstCopy.getTurn(), firstCopy.getDeck(), playingCards);
+		textBox.setText(textBox.getText() + "The Great Dalmuti has played the rest of their hand" +
+				" and gone out!\n");
+		textBox.setText(textBox.getText() + "Great Dalmuti has won!!!!!\n");
 	}// onClick
 	
 	/**
