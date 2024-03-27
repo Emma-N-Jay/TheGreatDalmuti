@@ -82,30 +82,38 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			//tbd
 		}
 
-
 		GDState firstInstance = new GDState();
-		GDState firstCopy = new GDState(firstInstance, 1);
+		GDState firstCopy = new GDState(firstInstance, 4);
 
-		RevolutionAction declareRev = new RevolutionAction(this);
-		declareRev.revolution(firstCopy.getTurn(), firstCopy.getP1Hand());
+		GDHumanPlayer[] gamePlayers = new GDHumanPlayer[4]; //array of all players in game
+		gamePlayers[0] = new GDHumanPlayer("Great Dalmuti");
+		gamePlayers[1] = new GDHumanPlayer("Lesser Dalmuti");
+		gamePlayers[2] = new GDHumanPlayer("Lesser Peon");
+		gamePlayers[3] = new GDHumanPlayer("Greater Peon");
 
-		int[] taxCards = {1, 2};
-		PayTaxesAction payTax = new PayTaxesAction(this, taxCards);
-		payTax.payTaxes(firstCopy.getTurn(), firstCopy.getP1Hand());
+		//greater peon declares revolution
+		RevolutionAction declareRev = new RevolutionAction(gamePlayers[3]);
+		declareRev.revolution(firstCopy.getTurn(), firstCopy.getP4Hand()); //swaps positions
 
-		PassAction passCards = new PassAction(this);
-		passCards.pass(firstCopy.getTurn());
+		//greater dalmuti and peon exchange taxes
+		int[] taxCards = {1, 2}; //cards that will be exchanged during taxes
+		PayTaxesAction payTax = new PayTaxesAction(gamePlayers[3], taxCards); //great dalmutis cards for taxes
+		payTax.greatTaxes(3, firstCopy.getP1Hand(), 1, 2);
+		PayTaxesAction payTax2 = new PayTaxesAction(gamePlayers[0], taxCards); //greater peons cards for taxes
+		payTax2.payTaxes(firstCopy.getTurn(), firstCopy.getP3Hand());
 
+		//great dalmuti plays
 		ArrayList<ArrayList<Integer>> playingCards = new ArrayList<>();
 		ArrayList<Integer> foo = new ArrayList<>();
 		playingCards.add(foo);
 		foo.add(1);
 		foo.add(2);
-		PlayCardAction playCards = new PlayCardAction(this);
+		PlayCardAction playCards = new PlayCardAction(gamePlayers[0]);
 		playCards.play(firstCopy.getTurn(), firstCopy.getDeck(), playingCards);
 
-
-
+		//lesser dalmuti passes
+		PassAction passCards = new PassAction(gamePlayers[1]);
+		passCards.pass(firstCopy.getTurn());
 
 	}// onClick
 	
