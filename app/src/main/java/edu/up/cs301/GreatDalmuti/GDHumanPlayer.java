@@ -5,7 +5,7 @@
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 19 2024
+ * @version March 26 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
@@ -146,6 +146,20 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		textBox.setText(textBox.getText() + "The Great Dalmuti has played the rest of their hand" +
 				" and gone out!\n");
 		textBox.setText(textBox.getText() + "Great Dalmuti has won!!!!!\n");
+
+
+		// secondInstance
+		GDState secondInstance = new GDState();
+		// deep copy of secondInstance assigned to secondCopy
+		GDState secondCopy = new GDState(secondInstance, 4);
+
+		// call to toString() on firstCopy and secondCopy
+		firstCopy.toString();
+		secondCopy.toString();
+
+		// prints strings to the multi-line EditText for visual inspection
+		textBox.setText(textBox.getText() + "" + firstInstance.toString());
+		textBox.setText(textBox.getText() + "" + secondInstance.toString());
 	}// onClick
 	
 	/**
