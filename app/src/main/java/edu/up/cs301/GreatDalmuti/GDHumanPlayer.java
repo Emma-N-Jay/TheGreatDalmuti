@@ -101,13 +101,13 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		gamePlayers[3] = new GDHumanPlayer("Greater Peon");
 
 		//greater peon declares revolution
-		game.revolution(firstCopy.getTurn(), firstCopy.getP4Hand()); //swaps positions
+		state.revolution(firstCopy.getTurn(), firstCopy.getP4Hand()); //swaps positions
 		textBox.setText(textBox.getText() + "The Lesser Dalmuti has declared a revolution!\n");
 
 		//greater dalmuti and peon exchange taxes
 		int[] taxCards = {1, 2}; //cards that will be exchanged during taxes
-		game.greatTaxes(3, firstCopy.getP1Hand(), 1, 2);
-		game.payTaxes(firstCopy.getTurn(), firstCopy.getP3Hand());
+		state.greatTaxes(3, firstCopy.getP1Hand(), 1, 2);
+		state.payTaxes(firstCopy.getTurn(), firstCopy.getP3Hand());
 		textBox.setText(textBox.getText() + "Taxes have been exchanged!\n");
 
 		//great dalmuti plays
@@ -116,19 +116,19 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		playingCards.add(foo);
 		foo.add(1);
 		foo.add(2);
-		game.play(firstCopy.getTurn(), firstCopy.getDeck(), playingCards);
+		state.play(firstCopy.getTurn(), firstCopy.getDeck(), playingCards);
 		textBox.setText(textBox.getText() + "The Great Dalmuti has played!\n");
 
 		//lesser dalmuti passes
-		game.pass(firstCopy.getTurn());
+		state.pass(firstCopy.getTurn());
 		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
 
 		//lesser peon passes
-		game.pass(firstCopy.getTurn());
+		state.pass(firstCopy.getTurn());
 		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
 
 		//greater peon passes
-		game.pass(firstCopy.getTurn());
+		state.pass(firstCopy.getTurn());
 		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
 
 		//great dalmuti plays again
@@ -137,7 +137,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		playingCards2.add(foo2);
 		foo.add(1);
 		foo.add(2);
-		game.play(firstCopy.getTurn(), firstCopy.getDeck(), playingCards);
+		state.play(firstCopy.getTurn(), firstCopy.getDeck(), playingCards);
 		textBox.setText(textBox.getText() + "The Great Dalmuti has played the rest of their hand" +
 				" and gone out!\n");
 		textBox.setText(textBox.getText() + "Great Dalmuti has won!!!!!\n");
