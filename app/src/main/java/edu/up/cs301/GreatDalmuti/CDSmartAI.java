@@ -14,6 +14,7 @@ import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.utilities.Tickable;
 
+
 public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 	// INSTANCE VARIABLES **************************************************************************
