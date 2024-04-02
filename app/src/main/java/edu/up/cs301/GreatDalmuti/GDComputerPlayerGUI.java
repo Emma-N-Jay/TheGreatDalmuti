@@ -18,7 +18,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class GDComputerPlayerGUI extends edu.up.cs301.GreatDalmuti.GDComputerPlayer1 {
+public class GDComputerPlayerGUI extends GDDumbAI {
 	
 	// INSTANCE VARIABLES **************************************************************************
 	

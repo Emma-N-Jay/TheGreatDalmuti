@@ -1,5 +1,5 @@
 /**
- * This contains the computer player one for the Great Dalmuti game.
+ * This contains the computer player two for the Great Dalmuti game.
  *
  * @author Tramanh Best
  * @author Emma Jeppesen
@@ -10,29 +10,29 @@
 
 package edu.up.cs301.GreatDalmuti;
 
-import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
+import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.utilities.Tickable;
 
-public class GDComputerPlayer1 extends GameComputerPlayer implements Tickable {
+public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 	// INSTANCE VARIABLES **************************************************************************
 
 	// CONSTRUCTORS ********************************************************************************
     /**
      * Constructor for objects of class CounterComputerPlayer1
-     * 
+     *
      * @param name
      * 		the player's name
      */
-    public GDComputerPlayer1(String name) {
+    public CDSmartAI(String name) {
         // invoke superclass constructor
         super(name);
         
         // start the timer, ticking 20 times per second
         getTimer().setInterval(50);
         getTimer().start();
-    } // GDComputerPlayer1
+    } // GDComputerPlayer2
 
 	// METHODS *************************************************************************************
     /**
@@ -59,7 +59,7 @@ public class GDComputerPlayer1 extends GameComputerPlayer implements Tickable {
 		boolean move = Math.random() >= 0.5;
 		
 		// send the move-action to the game
-		game.sendAction(new edu.up.cs301.GreatDalmuti.GDMoveAction(this, move));
+		game.sendAction(new GDMoveAction(this, move));
 	} // timerTicked
 
-} // GDComputerPlayer1 class
+} // GDComputerPlayer2
