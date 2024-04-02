@@ -20,10 +20,6 @@ public class GDState extends GameState {
 	private static final long serialVersionUID = 7737393762469851826L;
 
 	// instances of specific actions taken in the game
-	private RevolutionAction revolution;
-	private PlayCardAction playCard;
-	private PassAction pass;
-
 	private ArrayList<ArrayList<Integer>> deck; //this is literally the entire deck of cards
 	private ArrayList<ArrayList<Integer>> p1Hand;
 	private ArrayList<ArrayList<Integer>> p2Hand;
@@ -102,10 +98,6 @@ public class GDState extends GameState {
 
 	@Override
 	public String toString() {
-		System.out.println("Revolution is visible - " + this.revolution);
-		System.out.println("Card is played - " + this.playCard);
-		System.out.println("Pass action - " + this.pass);
-
 		System.out.println("Taxes have been exchanged - " + this.exchangingTaxes);
 		System.out.println("Deck of cards - " + this.deck);
 		System.out.println("Hand is variable - " + this.handIsVisible);
