@@ -38,6 +38,10 @@ public class GDState extends GameState {
 	private int hasLead; // who currently has the lead
 	private int turn; // who's turn is it
 
+	/** ALL OF THE F0LLOWING INSTANCE VARIABLES ARE FROM THE ACTION CLASSES */
+	public int[] taxCardIndexes;
+	public int indexHand;
+
 	// CONSTRUCTORS ********************************************************************************
 	/**
 	 * constructor
@@ -112,5 +116,104 @@ public class GDState extends GameState {
 		System.out.println("Revolution is visible - " + this.revolutionIsVisible);
 		return null;
 	} // toString
+
+	// PASS METHOD
+	public boolean pass(int turn){
+		if(turn == 4 ){
+			this.setTurn(1);
+		} else {
+			this.setTurn(turn + 1);
+		}
+		return true;
+	} // pass
+
+	/** THESE METHODS ARE ALL RELATED TO THE PAYING AND RECEIVING OF TAXES */
+	//finds index of players lowest card (best)
+	public int findLowest(ArrayList<ArrayList<Integer>> cards, int player) {
+		int lowestIndex = 0;
+		for (int i = 0; i < cards.get(player).size(); i++) {
+			if(cards.get(player).get(i) > 0){
+				return i;
+			}
+		}
+		return lowestIndex;
+	} // findLowest
+	public boolean payTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards){
+
+		//lesser peon gives lesser dalmuti their cards, 3 should be changed to a named variable
+		if(playerRank == 3){
+			//adds lowest card to greater dalmuti
+			int low = findLowest(cards, playerRank);
+			cards.get(2).set(low, cards.get(2).get(low) + 1);
+			//takes away card from original holder
+			cards.get(playerRank).set(low, cards.get(playerRank).get(low) - 1);
+		}
+		//great peon gives greater dalmuti 2 of their cards, 4 should be changed to a named variable
+		else if(playerRank == 4){
+			//adds lowest card
+			int low = findLowest(cards, playerRank);
+			cards.get(1).set(low, cards.get(4).get(low) + 1);
+			//takes away card from original holder
+			cards.get(playerRank).set(low, cards.get(playerRank).get(low) - 1);
+		}
+		return true;
+	} // payTaxes
+
+	//taxes for the greater dalmuti, ranks should be changed to named variables
+	public boolean greatTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards, int indexTax, int indexTax2){
+		//adds first taxes
+		cards.get(4).set(indexTax, cards.get(4).get(indexTax) + 1);
+		cards.get(4).set(indexTax2, cards.get(4).get(indexTax) + 1);
+		//takes away cards from original holder
+		cards.get(1).set(indexTax, cards.get(1).get(indexTax) - 1);
+		cards.get(1).set(indexTax2, cards.get(1).get(indexTax2) - 1);
+		return true;
+	} // greatTaxes
+
+	//taxes for the lesser dalmuti, ranks should be changed to named variables
+	public boolean lesserTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards, int indexTax){
+		//adds first taxes
+		cards.get(3).set(indexTax, cards.get(3).get(indexTax) + 1);
+		//takes away cards from original holder
+		cards.get(2).set(indexTax, cards.get(2).get(indexTax) - 1);
+		return true;
+	} // lesserTaxes
+
+	//this method allows a player to play a card
+	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, ArrayList<ArrayList<Integer>> selected){
+		for(int i = 0; i < decks.get(player).size(); i++){
+			if(selected.get(player).get(i) > 0){
+				decks.get(player).set(i, decks.get(player).get(i) - selected.get(player).get(i));
+			}
+		}
+		if(this.getTurn() == 4 ){
+			this.setTurn(1);
+		} else {
+			this.setTurn(this.getTurn() + 1);
+		}
+
+		return decks;
+	} // play
+
+	//given that the player that has the jesters calls the revolution, carries out revolution
+	public boolean revolution(int player, ArrayList<ArrayList<Integer>> cards){
+		if(cards.get(player).get(13) == 2){
+			if(player == 2){
+				this.setExchangingTaxes(false);
+			} else if(player == 3){
+
+				//switches player 1 for 4 & 2 for 3
+				ArrayList<ArrayList<Integer>> newCards = null;
+				for(int j = 0; j < cards.get(1).size(); j++) {
+					newCards.get(3).set(j, cards.get(0).get(j));
+					newCards.get(2).set(j, cards.get(1).get(j));
+					newCards.get(1).set(j, cards.get(2).get(j));
+					newCards.get(0).set(j, cards.get(3).get(j));
+				}
+			}
+		}
+		return true;
+	} // revolution
+
 
 } // GDState class
