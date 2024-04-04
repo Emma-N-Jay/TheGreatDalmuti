@@ -17,6 +17,7 @@ import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
@@ -39,6 +40,13 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	//An array of the players hand
 	private Card[] hand;
+
+	//pass and hold buttons
+	private Button passButton = null;
+	private Button playButton = null;
+
+	//for image button
+	private ImageButton  revolutionButton = null;
 
 
 	// CONSTRUCTORS ********************************************************************************
@@ -85,6 +93,22 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		if(button.getId() == R.id.editTextTextMultiLine){
 			//tbd
 		}
+
+
+		//what happens when player hits buttons
+		if(button == playButton){
+			//currently no way of selecting cards
+			//	state.play(this.playerNum, state.getDeck(), SELECTED CARDS)
+
+		}
+
+		else if(button == passButton){
+		state.pass(state.getTurn());
+		}
+		else if(button == revolutionButton){
+		state.revolution(this.playerNum, state.getDeck());
+		}
+
 
 		// I cannot overstate how long I took me to figure out this needed to be called on
 		// myActivity and not that for some reason nothing works for no reason
@@ -172,6 +196,23 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// update our state; then update the display
 		this.state = (edu.up.cs301.GreatDalmuti.GDState)info;
 		updateDisplay();
+
+
+		GDState postType = (GDState) info;
+
+		// image of revolution image button set if possible
+
+		if(postType.getDeck().get(this.playerNum).get(13) == 2){
+			if(this.playerNum < 1) {
+				revolutionButton.setImageResource(R.drawable.revolutionbutton);
+			}
+
+		} else {
+			revolutionButton.setImageResource(R.drawable.blankspace);
+		}
+
+
+
 	} // receiveInfo
 	
 	/**
@@ -194,6 +235,22 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		Button runTestButton = activity.findViewById(R.id.run_test);
 		runTestButton.setOnClickListener(this);
+
+
+		//image button
+		this.revolutionButton = (ImageButton)activity.findViewById(R.id.revolutionButton);
+
+		//player action buttons
+		this.passButton = (Button) activity.findViewById(R.id.passButton);
+		this.playButton = (Button) activity.findViewById(R.id.playButton);
+
+		//listens for button presses
+		passButton.setOnClickListener(this);
+		playButton.setOnClickListener(this);
+
+		//sets image button listener
+		revolutionButton.setOnClickListener(this);
+
 
 	} // setAsGui
 

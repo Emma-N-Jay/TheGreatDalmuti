@@ -111,8 +111,8 @@ public class GDState extends GameState {
 
 	// PASS METHOD
 	public boolean pass(int turn){
-		if(turn == 4 ){
-			this.setTurn(1);
+		if(turn == 3 ){
+			this.setTurn(0);
 		} else {
 			this.setTurn(turn + 1);
 		}
@@ -133,18 +133,18 @@ public class GDState extends GameState {
 	public boolean payTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards){
 
 		//lesser peon gives lesser dalmuti their cards, 3 should be changed to a named variable
-		if(playerRank == 3){
+		if(playerRank == 2){
 			//adds lowest card to greater dalmuti
 			int low = findLowest(cards, playerRank);
-			cards.get(2).set(low, cards.get(2).get(low) + 1);
+			cards.get(1).set(low, cards.get(1).get(low) + 1);
 			//takes away card from original holder
 			cards.get(playerRank).set(low, cards.get(playerRank).get(low) - 1);
 		}
 		//great peon gives greater dalmuti 2 of their cards, 4 should be changed to a named variable
-		else if(playerRank == 4){
+		else if(playerRank == 3){
 			//adds lowest card
 			int low = findLowest(cards, playerRank);
-			cards.get(1).set(low, cards.get(4).get(low) + 1);
+			cards.get(0).set(low, cards.get(3).get(low) + 1);
 			//takes away card from original holder
 			cards.get(playerRank).set(low, cards.get(playerRank).get(low) - 1);
 		}
@@ -154,20 +154,20 @@ public class GDState extends GameState {
 	//taxes for the greater dalmuti, ranks should be changed to named variables
 	public boolean greatTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards, int indexTax, int indexTax2){
 		//adds first taxes
-		cards.get(4).set(indexTax, cards.get(4).get(indexTax) + 1);
-		cards.get(4).set(indexTax2, cards.get(4).get(indexTax) + 1);
+		cards.get(3).set(indexTax, cards.get(3).get(indexTax) + 1);
+		cards.get(3).set(indexTax2, cards.get(3).get(indexTax) + 1);
 		//takes away cards from original holder
-		cards.get(1).set(indexTax, cards.get(1).get(indexTax) - 1);
-		cards.get(1).set(indexTax2, cards.get(1).get(indexTax2) - 1);
+		cards.get(0).set(indexTax, cards.get(0).get(indexTax) - 1);
+		cards.get(0).set(indexTax2, cards.get(0).get(indexTax2) - 1);
 		return true;
 	} // greatTaxes
 
 	//taxes for the lesser dalmuti, ranks should be changed to named variables
 	public boolean lesserTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards, int indexTax){
 		//adds first taxes
-		cards.get(3).set(indexTax, cards.get(3).get(indexTax) + 1);
+		cards.get(2).set(indexTax, cards.get(2).get(indexTax) + 1);
 		//takes away cards from original holder
-		cards.get(2).set(indexTax, cards.get(2).get(indexTax) - 1);
+		cards.get(1).set(indexTax, cards.get(1).get(indexTax) - 1);
 		return true;
 	} // lesserTaxes
 
@@ -178,8 +178,8 @@ public class GDState extends GameState {
 				decks.get(player).set(i, decks.get(player).get(i) - selected.get(player).get(i));
 			}
 		}
-		if(this.getTurn() == 4 ){
-			this.setTurn(1);
+		if(this.getTurn() == 3 ){
+			this.setTurn(0);
 		} else {
 			this.setTurn(this.getTurn() + 1);
 		}
