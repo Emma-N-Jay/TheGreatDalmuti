@@ -47,8 +47,17 @@
             android:id="@+id/playButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="play"
+            android:text="Play"
             android:backgroundTint="#402264"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/revolutionButton"
+            android:src="@drawable/revolutionbutton"
+            android:background="@null"
+            />
+
 
     </LinearLayout>
 
