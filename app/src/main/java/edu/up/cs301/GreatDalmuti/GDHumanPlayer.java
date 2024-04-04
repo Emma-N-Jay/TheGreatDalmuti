@@ -203,12 +203,11 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// image of revolution image button set if possible
 
 		if(postType.getDeck().get(this.playerNum).get(13) == 2){
-			if(this.playerNum < 1) {
 				revolutionButton.setImageResource(R.drawable.revolutionbutton);
-			}
 
 		} else {
 			revolutionButton.setImageResource(R.drawable.blankspace);
+
 		}
 
 
