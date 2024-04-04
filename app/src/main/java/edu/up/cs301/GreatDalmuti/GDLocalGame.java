@@ -84,18 +84,17 @@ public class GDLocalGame extends LocalGame {
 			edu.up.cs301.GreatDalmuti.GDMoveAction cma = (edu.up.cs301.GreatDalmuti.GDMoveAction) action;
 
 			int id = gameState.getTurn();
-			if (action instanceof GDMoveAction) {
-
-				//for calling revolution
-				if (id == 3) {
-					gameState.setExchangingTaxes(false);
-					if (id == 3) {
-						gameState.setTurn(0);
-					} else {
-						gameState.setTurn(id + 1);
+			if (cma instanceof RevolutionAction) {
+					//for calling revolution
+					if (id == 2) {
+						gameState.setExchangingTaxes(false);
+						if (id == 3) {
+							gameState.setTurn(0);
+						} else {
+							gameState.setTurn(id + 1);
+						}
+						return true;
 					}
-					return true;
-				}
 			}
 
 			// denote that this was a legal/successful move
