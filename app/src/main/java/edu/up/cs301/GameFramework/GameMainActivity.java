@@ -34,6 +34,7 @@ import edu.up.cs301.GameFramework.utilities.IPCoder;
 import edu.up.cs301.GameFramework.utilities.Logger;
 import edu.up.cs301.GameFramework.utilities.MessageBox;
 import edu.up.cs301.GameFramework.utilities.Saving;
+import edu.up.cs301.GreatDalmuti.GDState;
 import edu.up.cs301.GreatDalmuti.R;
 
 /**
@@ -505,6 +506,12 @@ public abstract class GameMainActivity extends Activity implements
         v = findViewById(R.id.debugLogging);
         v.setOnClickListener(this);
 
+        //adding great dalmuti buttons
+        v = findViewById(R.id.passButton);
+        v.setOnClickListener(this);
+        v = findViewById(R.id.playButton);
+        v.setOnClickListener(this);
+
 
         String ipCode = IPCoder.encodeLocalIP();
         String ipAddress = IPCoder.getLocalIpAddress();
@@ -629,6 +636,19 @@ public abstract class GameMainActivity extends Activity implements
                 Logger.setDebugValue(false);
             }
         }
+
+        //added Great Dalmuti buttons
+        else if(button.getId() == R.id.passButton){
+
+
+        }
+
+        else if(button.getId() == R.id.playButton){
+
+
+        }
+
+
 
     }// onClick
 
