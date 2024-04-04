@@ -79,15 +79,25 @@ public class GDLocalGame extends LocalGame {
 		Log.i("action", action.getClass().toString());
 		
 		if (action instanceof edu.up.cs301.GreatDalmuti.GDMoveAction) {
-		
-			// cast so that we Java knows it's a CounterMoveAction
-			edu.up.cs301.GreatDalmuti.GDMoveAction cma = (edu.up.cs301.GreatDalmuti.GDMoveAction)action;
 
-			//TODO Change this as needed
-			// Update the counter values based upon the action
-			//int result = gameState.getCounter() + (cma.isPlus() ? 1 : -1);
-			//gameState.setCounter(result);
-			
+			// cast so that we Java knows it's a GDAction
+			edu.up.cs301.GreatDalmuti.GDMoveAction cma = (edu.up.cs301.GreatDalmuti.GDMoveAction) action;
+
+			int id = gameState.getTurn();
+			if (action instanceof GDMoveAction) {
+
+				//for calling revolution
+				if (id == 3) {
+					gameState.setExchangingTaxes(false);
+					if (id == 3) {
+						gameState.setTurn(0);
+					} else {
+						gameState.setTurn(id + 1);
+					}
+					return true;
+				}
+			}
+
 			// denote that this was a legal/successful move
 			return true;
 		}
