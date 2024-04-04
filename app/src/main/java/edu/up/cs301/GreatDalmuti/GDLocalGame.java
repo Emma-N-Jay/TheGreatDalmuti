@@ -84,7 +84,7 @@ public class GDLocalGame extends LocalGame {
 			edu.up.cs301.GreatDalmuti.GDMoveAction cma = (edu.up.cs301.GreatDalmuti.GDMoveAction) action;
 
 			int id = gameState.getTurn();
-			if (cma instanceof RevolutionAction) {
+			if (action instanceof GDRevolutionAction) {
 					//for calling revolution
 					if (id == 2) {
 						gameState.setExchangingTaxes(false);
