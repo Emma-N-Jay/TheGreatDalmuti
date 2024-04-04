@@ -97,19 +97,17 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//what happens when player hits buttons
 		if(button == playButton){
-			//this is where we would send action but no action classes so bring this up in
-			//a meeting tomorrow
+			//currently no way of selecting cards
+			//	state.play(this.playerNum, state.getDeck(), SELECTED CARDS)
 
 		}
 
 		else if(button == passButton){
-
+		state.pass(state.getTurn());
 		}
-
 		else if(button == revolutionButton){
-
+		state.revolution(this.playerNum, state.getDeck());
 		}
-
 
 
 		// I cannot overstate how long I took me to figure out this needed to be called on
