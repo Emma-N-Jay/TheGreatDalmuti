@@ -119,6 +119,7 @@ public class GDState extends GameState {
 		return true;
 	} // pass
 
+
 	/** THESE METHODS ARE ALL RELATED TO THE PAYING AND RECEIVING OF TAXES */
 	//finds index of players lowest card (best)
 	public int findLowest(ArrayList<ArrayList<Integer>> cards, int player) {
