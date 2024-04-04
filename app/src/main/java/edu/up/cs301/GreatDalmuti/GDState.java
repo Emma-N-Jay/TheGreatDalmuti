@@ -5,7 +5,7 @@
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 26 2024
+ * @version April 4 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
@@ -207,7 +207,5 @@ public class GDState extends GameState {
 		}
 		return true;
 	} // revolution
-
-
 
 } // GDState class

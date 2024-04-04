@@ -10,18 +10,18 @@
 
 package edu.up.cs301.GreatDalmuti;
 
-import edu.up.cs301.GameFramework.players.GameHumanPlayer;
-import edu.up.cs301.GameFramework.GameMainActivity;
-import edu.up.cs301.GameFramework.actionMessage.GameAction;
-import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
 
 import java.util.ArrayList;
+
+import edu.up.cs301.GameFramework.GameMainActivity;
+import edu.up.cs301.GameFramework.infoMessage.GameInfo;
+import edu.up.cs301.GameFramework.players.GameHumanPlayer;
 
 public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	//TODO: make shuffle method for deck
@@ -94,12 +94,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			//tbd
 		}
 
-
 		//what happens when player hits buttons
 		if(button == playButton){
 			//currently no way of selecting cards
 			//	state.play(this.playerNum, state.getDeck(), SELECTED CARDS)
-
 		}
 
 		else if(button == passButton){
@@ -108,7 +106,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		else if(button == revolutionButton){
 		state.revolution(this.playerNum, state.getDeck());
 		}
-
 
 		// I cannot overstate how long I took me to figure out this needed to be called on
 		// myActivity and not that for some reason nothing works for no reason
@@ -197,7 +194,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.state = (edu.up.cs301.GreatDalmuti.GDState)info;
 		updateDisplay();
 
-
 		GDState postType = (GDState) info;
 
 		// image of revolution image button set if possible
@@ -209,8 +205,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			revolutionButton.setImageResource(R.drawable.blankspace);
 
 		}
-
-
 
 	} // receiveInfo
 	
