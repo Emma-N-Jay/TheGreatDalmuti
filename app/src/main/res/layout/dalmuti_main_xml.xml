@@ -41,14 +41,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="pass"
-            android:backgroundTint="#402264"/>
+            android:backgroundTint="#402264"
+            android:textColor="#BC9BFF"/>
 
         <Button
             android:id="@+id/playButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Play"
-            android:backgroundTint="#402264"/>
+            android:backgroundTint="#402264"
+            android:textColor="#BC9BFF"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -57,7 +59,6 @@
             android:src="@drawable/blankspace"
             android:background="@null"
             />
-
 
     </LinearLayout>
 
