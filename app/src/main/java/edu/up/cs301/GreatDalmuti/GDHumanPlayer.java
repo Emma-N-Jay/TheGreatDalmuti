@@ -46,7 +46,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private Button playButton = null;
 
 	//for image button
-	private ImageButton  revButton = null;
+	private ImageButton  revolutionButton = null;
 
 
 	// CONSTRUCTORS ********************************************************************************
@@ -94,14 +94,22 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			//tbd
 		}
 
+
 		//what happens when player hits buttons
 		if(button == playButton){
+			//this is where we would send action but no action classes so bring this up in
+			//a meeting tomorrow
 
 		}
 
 		else if(button == passButton){
 
 		}
+
+		else if(button == revolutionButton){
+
+		}
+
 
 
 		// I cannot overstate how long I took me to figure out this needed to be called on
@@ -190,6 +198,23 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// update our state; then update the display
 		this.state = (edu.up.cs301.GreatDalmuti.GDState)info;
 		updateDisplay();
+
+
+		GDState postType = (GDState) info;
+
+		// image of revolution image button set if possible
+
+		if(postType.getDeck().get(this.playerNum).get(13) == 2){
+			if(this.playerNum < 1) {
+				revolutionButton.setImageResource(R.drawable.revolutionbutton);
+			}
+
+		} else {
+			revolutionButton.setImageResource(R.drawable.blankspace);
+		}
+
+
+
 	} // receiveInfo
 	
 	/**
@@ -214,6 +239,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		runTestButton.setOnClickListener(this);
 
 
+		//image button
+		this.revolutionButton = (ImageButton)activity.findViewById(R.id.revolutionButton);
 
 		//player action buttons
 		this.passButton = (Button) activity.findViewById(R.id.passButton);
@@ -222,6 +249,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//listens for button presses
 		passButton.setOnClickListener(this);
 		playButton.setOnClickListener(this);
+
+		//sets image button listener
+		revolutionButton.setOnClickListener(this);
 
 
 	} // setAsGui
