@@ -16,6 +16,7 @@ import java.util.Random;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
+
 public class GDState extends GameState {
 	// INSTANCE VARIABLES **************************************************************************
 	// to satisfy Serializable interface
