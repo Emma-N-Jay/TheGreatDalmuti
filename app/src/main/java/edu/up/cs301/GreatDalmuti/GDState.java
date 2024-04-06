@@ -264,4 +264,8 @@ public class GDState extends GameState {
 		return true;
 	} // revolution
 
+
+	public boolean isLegalMove(){
+		return false;
+	} // isLegalMove
 } // GDState class
