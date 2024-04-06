@@ -35,10 +35,53 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="10"
         android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <Button
+                android:id="@+id/passButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#402264"
+                android:text="pass"
+                android:textColor="#BC9BFF" />
+
+            <Button
+                android:id="@+id/playButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#402264"
+                android:text="play"
+                android:textColor="#BC9BFF" />
+
+            <ImageButton
+                android:id="@+id/revolutionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/newRevButton"
+                android:layout_marginLeft="1dp"
+                android:contentDescription="TODO" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/jester"
@@ -157,6 +200,8 @@
             android:src="@drawable/peasant"
             />
 
+        </LinearLayout>
+
 
     </LinearLayout>
 
@@ -165,30 +210,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/passButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#402264"
-            android:text="pass"
-            android:textColor="#BC9BFF" />
 
-        <Button
-            android:id="@+id/playButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#402264"
-            android:text="play"
-            android:textColor="#BC9BFF" />
-
-        <ImageButton
-            android:id="@+id/revolutionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/blankspace"
-            android:layout_marginLeft="1dp"
-            android:contentDescription="TODO" />
 
     </LinearLayout>
 
