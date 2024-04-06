@@ -28,9 +28,138 @@
 
         <SurfaceView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></SurfaceView>
+            android:layout_height="match_parent"
+            ></SurfaceView>
 
     </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/jester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="4dp"
+            />
+
+        <ImageButton
+            android:id="@+id/one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            android:layout_marginRight="3dp"
+            />
+
+        <ImageButton
+            android:id="@+id/two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            android:layout_marginRight="3dp"
+            />
+
+        <ImageButton
+            android:id="@+id/three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            android:layout_marginRight="3dp"
+            />
+
+        <ImageButton
+            android:id="@+id/four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            android:layout_marginRight="3dp"
+            />
+
+        <ImageButton
+            android:id="@+id/five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            android:layout_marginRight="3dp"
+            />
+
+        <ImageButton
+            android:id="@+id/six"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            android:layout_marginRight="3dp"
+            />
+
+        <ImageButton
+            android:id="@+id/seven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            android:layout_marginRight="3dp"
+            />
+
+        <ImageButton
+            android:id="@+id/eight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            android:layout_marginRight="3dp"
+            />
+
+        <ImageButton
+            android:id="@+id/nine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            android:layout_marginRight="3dp"
+            />
+
+        <ImageButton
+            android:id="@+id/ten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            android:layout_marginRight="3dp"
+            />
+
+        <ImageButton
+            android:id="@+id/eleven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            android:layout_marginRight="3dp"
+            />
+
+        <ImageButton
+            android:id="@+id/twelve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/evennewer"
+            />
+
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
