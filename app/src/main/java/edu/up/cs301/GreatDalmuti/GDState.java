@@ -11,6 +11,8 @@
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
@@ -20,11 +22,11 @@ public class GDState extends GameState {
 	private static final long serialVersionUID = 7737393762469851826L;
 
 	// instances of specific actions taken in the game
-	private ArrayList<ArrayList<Integer>> deck; //this is literally the entire deck of cards
-	private ArrayList<ArrayList<Integer>> p1Hand;
-	private ArrayList<ArrayList<Integer>> p2Hand;
-	private ArrayList<ArrayList<Integer>> p3Hand;
-	private ArrayList<ArrayList<Integer>> p4Hand;
+	private ArrayList<Integer> deck; //this is literally the entire deck of cards
+	private ArrayList<Integer> p1Hand;
+	private ArrayList<Integer> p2Hand;
+	private ArrayList<Integer> p3Hand;
+	private ArrayList<Integer> p4Hand;
 	private boolean handIsVisible; //if a players hand is visible for a specific device
 	private boolean revolutionIsVisible; //is the revolution button visible
 	private boolean exchangingTaxes; //are we currently exchanging taxes
@@ -54,7 +56,11 @@ public class GDState extends GameState {
 	 public GDState(){
 		 // makes a deep copy of all variables so far
 		 this.exchangingTaxes = true;
-		 this.deck = new ArrayList<ArrayList<Integer>>();
+		 this.deck = new ArrayList<Integer>();
+		 this.p1Hand = new ArrayList<Integer>();
+		 this.p2Hand = new ArrayList<Integer>();
+		 this.p3Hand = new ArrayList<Integer>();
+		 this.p4Hand = new ArrayList<Integer>();
 		 this.handIsVisible = false;
 		 this.numInPile = 0;
 		 this.rankInPile = 0;
@@ -73,6 +79,10 @@ public class GDState extends GameState {
 		// makes a deep copy of all variables so far
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.deck = orig.deck;
+		this.p1Hand = new ArrayList<Integer>();
+		this.p2Hand = new ArrayList<Integer>();
+		this.p3Hand = new ArrayList<Integer>();
+		this.p4Hand = new ArrayList<Integer>();
 		this.handIsVisible = orig.handIsVisible;
 		this.numInPile = orig.numInPile;
 		this.rankInPile = orig.rankInPile;
@@ -90,11 +100,11 @@ public class GDState extends GameState {
 	public void setExchangingTaxes(boolean update){
 		exchangingTaxes = update;
 	}
-	public ArrayList<ArrayList<Integer>> getDeck(){return deck;}
-	public ArrayList<ArrayList<Integer>> getP1Hand(){return p1Hand;}
-	public ArrayList<ArrayList<Integer>> getP2Hand(){return p2Hand;}
-	public ArrayList<ArrayList<Integer>> getP3Hand(){return p3Hand;}
-	public ArrayList<ArrayList<Integer>> getP4Hand(){return p4Hand;}
+	public ArrayList<Integer> getDeck(){return deck;}
+	public ArrayList<Integer> getP1Hand(){return p1Hand;}
+	public ArrayList<Integer> getP2Hand(){return p2Hand;}
+	public ArrayList<Integer> getP3Hand(){return p3Hand;}
+	public ArrayList<Integer> getP4Hand(){return p4Hand;}
 
 	@Override
 	public String toString() {
@@ -108,6 +118,52 @@ public class GDState extends GameState {
 		System.out.println("Revolution is visible - " + this.revolutionIsVisible);
 		return null;
 	} // toString
+
+	//SHUFFLES DECK
+	public void shuffle(){
+		int[] deckArray = new int[80];
+		int pos = 0;
+		for(int i = 1; i <= 12; i++){
+			for(int j = 1; j <= i; j++){
+				deckArray[pos] = i;
+				pos++;
+			}
+		}
+		deckArray[pos] = 13;
+		deckArray[pos + 1] = 13;
+
+		Random rnd = new Random();
+		for (int i = deckArray.length - 1; i > 0; i--)
+		{
+			/**
+			 External Citation
+			 Date: 6 April 2024
+			 Problem: Was struggling to make a shuffle method for 2d arraylist
+			 Resource: https://stackoverflow.com/questions/1519736/random-shuffling-of-an-array
+			 Solution: Switched to array and used some of the code from above
+			 */
+			int index = rnd.nextInt(i + 1);
+			// Simple swap
+			int a = deckArray[index];
+			deckArray[index] = deckArray[i];
+			deckArray[i] = a;
+		}
+
+		for(int i = 0; i < 80; i++){
+			if(i < 20){
+				p1Hand.add(deckArray[i]);
+			}
+			else if(i < 40){
+				p2Hand.add(deckArray[i]);
+			}
+			else if(i < 60){
+				p3Hand.add(deckArray[i]);
+			}
+			else if(i < 80){
+				p4Hand.add(deckArray[i]);
+			}
+		}
+	}
 
 	// PASS METHOD
 	public boolean pass(int turn){
@@ -189,7 +245,7 @@ public class GDState extends GameState {
 	} // play
 
 	//given that the player that has the jesters calls the revolution, carries out revolution
-	public boolean revolution(int player, ArrayList<ArrayList<Integer>> cards){
+	public boolean revolution(int player, ArrayList<Integer> cards){
 		if(cards.get(player).get(13) == 2){
 			if(player == 2){
 				this.setExchangingTaxes(false);
