@@ -60,7 +60,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		boolean move = Math.random() >= 0.5;
 		
 		// send the move-action to the game
-		game.sendAction(new edu.up.cs301.GreatDalmuti.GDMoveAction(this, move));
+		//game.sendAction(new edu.up.cs301.GreatDalmuti.GDMoveAction(this, move));
 	} // timerTicked
 
 } // GDComputerPlayer1 class

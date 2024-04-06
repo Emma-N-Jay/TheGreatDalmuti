@@ -60,7 +60,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		boolean move = Math.random() >= 0.5;
 		
 		// send the move-action to the game
-		game.sendAction(new GDMoveAction(this, move));
+		//game.sendAction(new GDMoveAction(this, move));
 	} // timerTicked
 
 } // GDComputerPlayer2
