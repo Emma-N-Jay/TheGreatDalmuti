@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/jesteryetagain"
+            android:src="@drawable/great_dalmuti"
             android:layout_marginRight="4dp"
             />
 
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/jesteryetagain"
+            android:src="@drawable/arch_bishop"
             android:layout_marginRight="4dp"
             />
 
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/jesteryetagain"
+            android:src="@drawable/earl_marshal"
             android:layout_marginRight="4dp"
             />
 
@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/jesteryetagain"
+            android:src="@drawable/baroness"
             android:layout_marginRight="4dp"
             />
 
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/jesteryetagain"
+            android:src="@drawable/abbess"
             android:layout_marginRight="4dp"
             />
 
@@ -100,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/jesteryetagain"
+            android:src="@drawable/knight"
             android:layout_marginRight="4dp"
             />
 
@@ -109,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/jesteryetagain"
+            android:src="@drawable/seamstress"
             android:layout_marginRight="4dp"
             />
 
@@ -118,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/jesteryetagain"
+            android:src="@drawable/mason"
             android:layout_marginRight="4dp"
             />
 
@@ -127,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/jesteryetagain"
+            android:src="@drawable/cook"
             android:layout_marginRight="4dp"
             />
 
@@ -136,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/jesteryetagain"
+            android:src="@drawable/sheperdess"
             android:layout_marginRight="4dp"
             />
 
@@ -145,7 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/jesteryetagain"
+            android:src="@drawable/stonecutter"
             android:layout_marginRight="4dp"
             />
 
@@ -154,7 +154,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/jesteryetagain"
+            android:src="@drawable/peasant"
             />
 
 
