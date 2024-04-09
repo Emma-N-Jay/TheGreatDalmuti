@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.view.SurfaceView;
 
 public class surfaceDraw extends SurfaceView {
@@ -19,6 +20,7 @@ public class surfaceDraw extends SurfaceView {
 
         test = Bitmap.createScaledBitmap(test, 100, 100, false);
 
-        //canvas.drawBitmap(SurfaceView);
+        //canvas.drawBitmap(test);
+        canvas.drawBitmap(test,0, 0, Color.BLACK);
     }
 }

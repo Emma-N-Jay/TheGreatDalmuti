@@ -26,10 +26,10 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <SurfaceView
+        <edu.up.cs301.GreatDalmuti.surfaceDraw
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            ></SurfaceView>
+            ></edu.up.cs301.GreatDalmuti.surfaceDraw>
 
     </LinearLayout>
 
