@@ -44,9 +44,28 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	//pass and hold buttons
 	private Button passButton = null;
 	private Button playButton = null;
+	private Button plusB = null;
+	private Button minusB = null;
 
 	//for image button
-	private ImageButton  revolutionButton = null;
+	private ImageButton revolutionButton = null;
+	private ImageButton jester = null;
+	private ImageButton one = null;
+	private ImageButton two = null;
+	private ImageButton three = null;
+	private ImageButton four = null;
+	private ImageButton five = null;
+	private ImageButton six = null;
+	private ImageButton seven = null;
+	private ImageButton eight = null;
+	private ImageButton nine = null;
+	private ImageButton ten = null;
+	private ImageButton eleven = null;
+	private ImageButton twelve = null;
+
+
+	//text for number of cards
+	private TextView cardsNum = null;
 
 
 	// CONSTRUCTORS ********************************************************************************
@@ -99,13 +118,53 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			//currently no way of selecting cards
 			//	state.play(this.playerNum, state.getDeck(), SELECTED CARDS)
 		}
-
 		else if(button == passButton){
 		state.pass(state.getTurn());
 		}
 		else if(button == revolutionButton){
 		state.revolution(this.playerNum, state.getDeck());
 		}
+		else if(button == jester){
+			cardsNum.setText(state.getP1Hand().get(13));
+		}
+		else if(button == one){
+			cardsNum.setText(state.getP1Hand().get(1));
+		}
+		else if(button == two){
+			cardsNum.setText(state.getP1Hand().get(2));
+		}
+		else if(button == three){
+			cardsNum.setText(state.getP1Hand().get(3));
+		}
+		else if(button == four){
+			cardsNum.setText(state.getP1Hand().get(4));
+		}
+		else if(button == five){
+			cardsNum.setText(state.getP1Hand().get(5));
+		}
+		else if(button == six){
+			cardsNum.setText(state.getP1Hand().get(6));
+		}
+		else if(button == seven){
+			cardsNum.setText(state.getP1Hand().get(7));
+		}
+		else if(button == eight){
+			cardsNum.setText(state.getP1Hand().get(8));
+		}
+		else if(button == nine){
+			cardsNum.setText(state.getP1Hand().get(9));
+		}
+		else if(button == ten){
+			cardsNum.setText(state.getP1Hand().get(10));
+		}
+		else if(button == eleven){
+			cardsNum.setText(state.getP1Hand().get(11));
+		}
+		else if(button == twelve){
+			cardsNum.setText(state.getP1Hand().get(12));
+		}
+
+
 
 		// I cannot overstate how long I took me to figure out this needed to be called on
 		// myActivity and not that for some reason nothing works for no reason
@@ -196,15 +255,100 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		GDState postType = (GDState) info;
 
-		// image of revolution image button set if possible
-
-		if(postType.getDeck().get(this.playerNum).get(13) == 2){
-				revolutionButton.setImageResource(R.drawable.newRevButton);
-
-		} else {
-			revolutionButton.setImageResource(R.drawable.blankspace);
-
+		// image of revolution image button set if possible, lots of ifs unfortunately without
+		if(this.playerNum == 1) {
+			if (postType.getP1Hand().get(13) == 2) {
+				revolutionButton.setImageResource(R.drawable.newrevbutton);
+			} else {
+				revolutionButton.setImageResource(R.drawable.blankspace);
+			}
+		} else if(this.playerNum == 2) {
+			if (postType.getP2Hand().get(13) == 2) {
+				revolutionButton.setImageResource(R.drawable.newrevbutton);
+			} else {
+				revolutionButton.setImageResource(R.drawable.blankspace);
+			}
+		} else if(this.playerNum == 3) {
+			if (postType.getP3Hand().get(13) == 2) {
+				revolutionButton.setImageResource(R.drawable.newrevbutton);
+			} else {
+				revolutionButton.setImageResource(R.drawable.blankspace);
+			}
+		} else if(this.playerNum == 4) {
+			if (postType.getP4Hand().get(13) == 2) {
+				revolutionButton.setImageResource(R.drawable.newrevbutton);
+			} else {
+				revolutionButton.setImageResource(R.drawable.blankspace);
+			}
 		}
+
+		//if number of cards is more than 0
+		if(postType.getP1Hand().get(1) >= 1){
+			one.setImageResource(R.drawable.great_dalmuti);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(2) >= 1){
+			one.setImageResource(R.drawable.arch_bishop);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(3) >= 1){
+			one.setImageResource(R.drawable.earl_marshal);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(4) >= 1){
+			one.setImageResource(R.drawable.baroness);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(5) >= 1){
+			one.setImageResource(R.drawable.abbess);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(6) >= 1){
+			one.setImageResource(R.drawable.knight);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(7) >= 1){
+			one.setImageResource(R.drawable.seamstress);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(8) >= 1){
+			one.setImageResource(R.drawable.mason);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(9) >= 1){
+			one.setImageResource(R.drawable.cook);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(10) >= 1){
+			one.setImageResource(R.drawable.sheperdess);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(11) >= 1){
+			one.setImageResource(R.drawable.stonecutter);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(12) >= 1){
+			one.setImageResource(R.drawable.peasant);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(13) >= 1){
+			one.setImageResource(R.drawable.jesteryetagain);
+		} else {
+			//gray
+		}
+
 
 	} // receiveInfo
 	
@@ -230,19 +374,52 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		runTestButton.setOnClickListener(this);
 
 
-		//image button
+		//image button for rev and the cards
 		this.revolutionButton = (ImageButton)activity.findViewById(R.id.revolutionButton);
+		this.one = (ImageButton)activity.findViewById(R.id.one);
+		this.two = (ImageButton)activity.findViewById(R.id.two);
+		this.three = (ImageButton)activity.findViewById(R.id.three);
+		this.four = (ImageButton)activity.findViewById(R.id.four);
+		this.five = (ImageButton)activity.findViewById(R.id.five);
+		this.six = (ImageButton)activity.findViewById(R.id.six);
+		this.seven = (ImageButton)activity.findViewById(R.id.seven);
+		this.eight = (ImageButton)activity.findViewById(R.id.eight);
+		this.nine = (ImageButton)activity.findViewById(R.id.nine);
+		this.ten = (ImageButton)activity.findViewById(R.id.ten);
+		this.eleven = (ImageButton)activity.findViewById(R.id.eleven);
+		this.twelve = (ImageButton)activity.findViewById(R.id.twelve);
+		this.jester = (ImageButton)activity.findViewById(R.id.jester);
 
 		//player action buttons
 		this.passButton = (Button) activity.findViewById(R.id.passButton);
 		this.playButton = (Button) activity.findViewById(R.id.playButton);
+		this.plusB = (Button) activity.findViewById(R.id.plusButton);
+		this.minusB = (Button) activity.findViewById(R.id.minusButton);
 
 		//listens for button presses
 		passButton.setOnClickListener(this);
 		playButton.setOnClickListener(this);
+		plusB.setOnClickListener(this);
+		minusB.setOnClickListener(this);
 
 		//sets image button listener
 		revolutionButton.setOnClickListener(this);
+		one.setOnClickListener(this);
+		two.setOnClickListener(this);
+		three.setOnClickListener(this);
+		four.setOnClickListener(this);
+		five.setOnClickListener(this);
+		six.setOnClickListener(this);
+		seven.setOnClickListener(this);
+		eight.setOnClickListener(this);
+		nine.setOnClickListener(this);
+		ten.setOnClickListener(this);
+		eleven.setOnClickListener(this);
+		twelve.setOnClickListener(this);
+		jester.setOnClickListener(this);
+
+		//text view
+		this.cardsNum = (TextView) activity.findViewById(R.id.cardnum);
 
 
 	} // setAsGui
