@@ -44,44 +44,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            >
-
-            <Button
-                android:id="@+id/passButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#402264"
-                android:text="pass"
-                android:textColor="#BC9BFF" />
-
-            <Button
-                android:id="@+id/playButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#402264"
-                android:text="play"
-                android:textColor="#BC9BFF" />
-
-            <ImageButton
-                android:id="@+id/revolutionButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:src="@drawable/newrevbutton"
-                android:layout_marginLeft="1dp"
-                android:contentDescription="TODO" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
         <ImageButton
             android:id="@+id/jester"
@@ -90,7 +55,7 @@
             android:background="@null"
             android:src="@drawable/jesteryetagain"
             android:layout_marginRight="4dp"
-            android:layout_marginLeft="4dp"
+            android:layout_marginLeft="6dp"
             />
 
         <ImageButton
@@ -205,12 +170,83 @@
 
     </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="left"
+            >
 
+            <Button
+                android:id="@+id/passButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#402264"
+                android:text="pass"
+                android:textColor="#BC9BFF" />
+
+            <Button
+                android:id="@+id/playButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#402264"
+                android:text="play"
+                android:textColor="#BC9BFF" />
+
+            <ImageButton
+                android:id="@+id/revolutionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/newrevbutton"
+                android:layout_marginLeft="1dp"
+                android:contentDescription="TODO" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#402264"
+                android:text="+"
+                android:textColor="#BC9BFF" />
+
+            <TextView
+                android:id="@+id/cardnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="##"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#402264"
+                android:textColorHighlight="#000000"
+                android:textSize="18dp"
+                android:textStyle="italic"
+                android:typeface="serif"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"/>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#402264"
+                android:text="-"
+                android:textColor="#BC9BFF" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
