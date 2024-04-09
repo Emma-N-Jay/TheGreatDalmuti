@@ -26,11 +26,8 @@ public class GDState extends GameState {
 	// instances of specific actions taken in the game
 
 	//TODO: SORTED BY PERSON AND THEN THAT PERSONS HAND (IF YOU DO NOT UNDERSTAND THIS ASK ALEX)
+	// from theresa: thank you
 	private ArrayList<ArrayList<Integer>> deck; //this is literally the entire deck of cards
-	private ArrayList<Integer> p1Hand;
-	private ArrayList<Integer> p2Hand;
-	private ArrayList<Integer> p3Hand;
-	private ArrayList<Integer> p4Hand;
 	private boolean handIsVisible; //if a players hand is visible for a specific device
 	private boolean revolutionIsVisible; //is the revolution button visible
 	private boolean exchangingTaxes; //are we currently exchanging taxes
@@ -39,6 +36,10 @@ public class GDState extends GameState {
 	private boolean hasLowestInRound; // who is in line to get the lead next
 	private int hasLead; // who currently has the lead
 	private int turn; // who's turn is it
+	private ArrayList<Integer> p1Hand;
+	private ArrayList<Integer> p2Hand;
+	private ArrayList<Integer> p3Hand;
+	private ArrayList<Integer> p4Hand;
 
 	/** ALL OF THE F0LLOWING INSTANCE VARIABLES ARE FROM THE ACTION CLASSES */
 	public int[] taxCardIndexes;
@@ -61,10 +62,6 @@ public class GDState extends GameState {
 		 // makes a deep copy of all variables so far
 		 this.exchangingTaxes = true;
 		 this.deck = new ArrayList<ArrayList<Integer>>();
-		 this.p1Hand = new ArrayList<Integer>();
-		 this.p2Hand = new ArrayList<Integer>();
-		 this.p3Hand = new ArrayList<Integer>();
-		 this.p4Hand = new ArrayList<Integer>();
 		 this.handIsVisible = false;
 		 this.numInPile = 0;
 		 this.rankInPile = 0;
@@ -83,10 +80,6 @@ public class GDState extends GameState {
 		// makes a deep copy of all variables so far
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.deck = orig.deck;
-		this.p1Hand = new ArrayList<Integer>();
-		this.p2Hand = new ArrayList<Integer>();
-		this.p3Hand = new ArrayList<Integer>();
-		this.p4Hand = new ArrayList<Integer>();
 		this.handIsVisible = orig.handIsVisible;
 		this.numInPile = orig.numInPile;
 		this.rankInPile = orig.rankInPile;
@@ -100,15 +93,14 @@ public class GDState extends GameState {
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
 	public GDState getState(){return this;}
-
 	public void setExchangingTaxes(boolean update){
 		exchangingTaxes = update;
 	}
-	public ArrayList<Integer> getDeck(){return deck;}
-	public ArrayList<Integer> getP1Hand(){return p1Hand;}
-	public ArrayList<Integer> getP2Hand(){return p2Hand;}
-	public ArrayList<Integer> getP3Hand(){return p3Hand;}
-	public ArrayList<Integer> getP4Hand(){return p4Hand;}
+	public ArrayList<ArrayList<Integer>> getDeck(){return deck;}
+	public ArrayList<Integer>getP1Hand(){return deck.get(0);}
+	public ArrayList<Integer>getP2Hand(){return deck.get(1);}
+	public ArrayList<Integer>getP3Hand(){return deck.get(2);}
+	public ArrayList<Integer>getP4Hand(){return deck.get(3);}
 
 	@Override
 	public String toString() {

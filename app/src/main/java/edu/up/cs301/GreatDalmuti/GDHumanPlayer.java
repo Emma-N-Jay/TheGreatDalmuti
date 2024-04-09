@@ -205,8 +205,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//greater dalmuti and peon exchange taxes
 		int[] taxCards = {1, 2}; //cards that will be exchanged during taxes
-		state.greatTaxes(3, firstCopy.getP1Hand(), 1, 2);
-		state.payTaxes(firstCopy.getTurn(), firstCopy.getP3Hand());
+		state.greatTaxes(3, firstCopy.getDeck(), 1, 2);
+		state.payTaxes(firstCopy.getTurn(), firstCopy.getDeck());
 		textBox.setText(textBox.getText() + "Taxes have been exchanged!\n");
 
 		//great dalmuti plays
@@ -215,7 +215,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		playingCards.add(foo);
 		foo.add(1);
 		foo.add(2);
-		state.play(firstCopy.getTurn(), firstCopy.getDeck(), playingCards);
+		state.play(firstCopy.getTurn(), firstCopy.getDeck(), 1, 1);
 		textBox.setText(textBox.getText() + "The Great Dalmuti has played!\n");
 
 		//lesser dalmuti passes
@@ -236,7 +236,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		playingCards2.add(foo2);
 		foo.add(1);
 		foo.add(2);
-		state.play(firstCopy.getTurn(), firstCopy.getDeck(), playingCards);
+		state.play(firstCopy.getTurn(), firstCopy.getDeck(), 1, 1);
 		textBox.setText(textBox.getText() + "The Great Dalmuti has played the rest of their hand" +
 				" and gone out!\n");
 		textBox.setText(textBox.getText() + "Great Dalmuti has won!!!!!\n");
