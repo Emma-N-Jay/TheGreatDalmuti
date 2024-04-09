@@ -75,7 +75,7 @@ public class GDLocalGame extends LocalGame {
 	 * our canMove method
 	 * checks the selected cards against the rules of the game to ensure the move is legal
 	 */
-	protected boolean isLegalMove(int player, ArrayList<Integer> deck, ArrayList<Integer> selection) {
+	protected boolean isLegalMove(int player, ArrayList<ArrayList<Integer>> decks, int cardNumSelected, int numSelected) {
 		return false;
 	}
 

@@ -230,7 +230,7 @@ public class GDState extends GameState {
 	} // lesserTaxes
 
 	//this method allows a player to play a card
-	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, ArrayList<ArrayList<Integer>> selected){
+	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int cardNumSelected, int numSelected){
 		for(int i = 0; i < decks.get(player).size(); i++){
 			if(selected.get(player).get(i) > 0){
 				decks.get(player).set(i, decks.get(player).get(i) - selected.get(player).get(i));
