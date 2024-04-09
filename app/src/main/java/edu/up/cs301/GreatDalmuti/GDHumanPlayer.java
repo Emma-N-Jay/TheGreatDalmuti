@@ -23,6 +23,7 @@ import edu.up.cs301.GameFramework.GameMainActivity;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.players.GameHumanPlayer;
 
+
 public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	//TODO: make shuffle method for deck
 
@@ -209,7 +210,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		textBox.setText(textBox.getText() + "Taxes have been exchanged!\n");
 
 		//great dalmuti plays
-		ArrayList<ArrayList<Integer>> playingCards = new ArrayList<>();
+		ArrayList<Integer> playingCards = new ArrayList<>();
 		ArrayList<Integer> foo = new ArrayList<>();
 		playingCards.add(foo);
 		foo.add(1);

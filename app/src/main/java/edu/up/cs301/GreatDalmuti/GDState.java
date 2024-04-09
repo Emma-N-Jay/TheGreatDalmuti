@@ -17,13 +17,16 @@ import edu.up.cs301.GameFramework.infoMessage.GameState;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
 
+
 public class GDState extends GameState {
 	// INSTANCE VARIABLES **************************************************************************
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;
 
 	// instances of specific actions taken in the game
-	private ArrayList<Integer> deck; //this is literally the entire deck of cards
+
+	//TODO: SORTED BY PERSON AND THEN THAT PERSONS HAND (IF YOU DO NOT UNDERSTAND THIS ASK ALEX)
+	private ArrayList<ArrayList<Integer>> deck; //this is literally the entire deck of cards
 	private ArrayList<Integer> p1Hand;
 	private ArrayList<Integer> p2Hand;
 	private ArrayList<Integer> p3Hand;
@@ -57,7 +60,7 @@ public class GDState extends GameState {
 	 public GDState(){
 		 // makes a deep copy of all variables so far
 		 this.exchangingTaxes = true;
-		 this.deck = new ArrayList<Integer>();
+		 this.deck = new ArrayList<ArrayList<Integer>>();
 		 this.p1Hand = new ArrayList<Integer>();
 		 this.p2Hand = new ArrayList<Integer>();
 		 this.p3Hand = new ArrayList<Integer>();
@@ -153,15 +156,19 @@ public class GDState extends GameState {
 		for(int i = 0; i < 80; i++){
 			if(i < 20){
 				p1Hand.add(deckArray[i]);
+				deck.add(p1Hand);
 			}
 			else if(i < 40){
 				p2Hand.add(deckArray[i]);
+				deck.add(p2Hand);
 			}
 			else if(i < 60){
 				p3Hand.add(deckArray[i]);
+				deck.add(p3Hand);
 			}
 			else if(i < 80){
 				p4Hand.add(deckArray[i]);
+				deck.add(p4Hand);
 			}
 		}
 	}
@@ -230,10 +237,10 @@ public class GDState extends GameState {
 	} // lesserTaxes
 
 	//this method allows a player to play a card
-	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, ArrayList<ArrayList<Integer>> selected){
+	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int cardNumSelected, int numSelected){
 		for(int i = 0; i < decks.get(player).size(); i++){
-			if(selected.get(player).get(i) > 0){
-				decks.get(player).set(i, decks.get(player).get(i) - selected.get(player).get(i));
+			if(selected.get(i) > 0){
+				decks.get(player).set(i, decks.get(player).get(i) - selected.get(i));
 			}
 		}
 		if(this.getTurn() == 3 ){
@@ -246,7 +253,7 @@ public class GDState extends GameState {
 	} // play
 
 	//given that the player that has the jesters calls the revolution, carries out revolution
-	public boolean revolution(int player, ArrayList<Integer> cards){
+	public boolean revolution(int player, ArrayList<ArrayList<Integer>> cards){
 		if(cards.get(player).get(13) == 2){
 			if(player == 2){
 				this.setExchangingTaxes(false);
