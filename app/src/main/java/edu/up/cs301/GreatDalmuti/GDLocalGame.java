@@ -64,12 +64,21 @@ public class GDLocalGame extends LocalGame {
 	// METHODS *************************************************************************************
 	/**
 	 * can this player move
-	 *TODO Change this to if they can play cards. Maybe make another class called isLegalPlay
 	 */
 	@Override
 	protected boolean canMove(int playerIdx) {
-		return true;
+		// this is needed so that the class can extend LocalGame
+		return false;
+	} // canMove
+
+	/**
+	 * our canMove method
+	 * checks the selected cards against the rules of the game to ensure the move is legal
+	 */
+	protected boolean isLegalMove(int player, ArrayList<Integer> deck, ArrayList<Integer> selection) {
+		return false;
 	}
+
 
 	/**
 	 * The only type of GameAction that should be sent is CounterMoveAction

@@ -266,7 +266,8 @@ public class GDState extends GameState {
 	} // revolution
 
 
-	public boolean isLegalMove(){
+	public boolean isLegalMove(int player){
+		
 		return false;
 	} // isLegalMove
 } // GDState class
