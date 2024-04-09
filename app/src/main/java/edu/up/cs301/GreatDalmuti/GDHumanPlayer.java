@@ -23,6 +23,7 @@ import edu.up.cs301.GameFramework.GameMainActivity;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.players.GameHumanPlayer;
 
+
 public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	//TODO: make shuffle method for deck
 
