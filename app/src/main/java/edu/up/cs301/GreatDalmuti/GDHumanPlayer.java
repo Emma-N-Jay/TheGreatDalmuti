@@ -209,7 +209,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		textBox.setText(textBox.getText() + "Taxes have been exchanged!\n");
 
 		//great dalmuti plays
-		ArrayList<ArrayList<Integer>> playingCards = new ArrayList<>();
+		ArrayList<Integer> playingCards = new ArrayList<>();
 		ArrayList<Integer> foo = new ArrayList<>();
 		playingCards.add(foo);
 		foo.add(1);
