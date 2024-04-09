@@ -66,6 +66,20 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	//text for number of cards
 	private TextView cardsNum = null;
+	private TextView jesterNum = null;
+	private TextView oneNum = null;
+	private TextView twoNum = null;
+	private TextView threeNum = null;
+	private TextView fourNum = null;
+	private TextView fiveNum = null;
+	private TextView sixNum = null;
+	private TextView sevenNum = null;
+	private TextView eightNum = null;
+	private TextView nineNum = null;
+	private TextView tenNum = null;
+	private TextView elevenNum = null;
+	private TextView twelveNum = null;
+
 
 
 	// CONSTRUCTORS ********************************************************************************
@@ -106,6 +120,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * 		the button that was clicked
 	 */
 	public void onClick(View button) {
+		//current selected card
+		int c = 0;
+
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
 
@@ -124,46 +141,47 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		else if(button == revolutionButton){
 		state.revolution(this.playerNum, state.getDeck());
 		}
-		else if(button == jester){
-			cardsNum.setText(state.getP1Hand().get(13));
-		}
-		else if(button == one){
-			cardsNum.setText(state.getP1Hand().get(1));
-		}
-		else if(button == two){
-			cardsNum.setText(state.getP1Hand().get(2));
-		}
-		else if(button == three){
-			cardsNum.setText(state.getP1Hand().get(3));
-		}
-		else if(button == four){
-			cardsNum.setText(state.getP1Hand().get(4));
-		}
-		else if(button == five){
-			cardsNum.setText(state.getP1Hand().get(5));
-		}
-		else if(button == six){
-			cardsNum.setText(state.getP1Hand().get(6));
-		}
-		else if(button == seven){
-			cardsNum.setText(state.getP1Hand().get(7));
-		}
-		else if(button == eight){
-			cardsNum.setText(state.getP1Hand().get(8));
-		}
-		else if(button == nine){
-			cardsNum.setText(state.getP1Hand().get(9));
-		}
-		else if(button == ten){
-			cardsNum.setText(state.getP1Hand().get(10));
-		}
-		else if(button == eleven){
-			cardsNum.setText(state.getP1Hand().get(11));
-		}
-		else if(button == twelve){
-			cardsNum.setText(state.getP1Hand().get(12));
-		}
 
+		//selected cards/display for selected cards
+		else if(button == jester){
+			 c = 13;
+		} else if(button == one){
+			c = 1;
+		} else if(button == two){
+			c = 2;
+		} else if(button == three){
+			c = 3;
+		} else if(button == four){
+			c = 4;
+		} else if(button == five){
+			c = 5;
+		} else if(button == six){
+			c = 6;
+		} else if(button == seven){
+			c = 7;
+		} else if(button == eight){
+			c = 8;;
+		} else if(button == nine){
+			c = 9;
+		} else if(button == ten){
+			c = 10;
+		} else if(button == eleven){
+			c = 11;
+		} else if(button == twelve){
+			c = 12;
+		}
+		cardsNum.setText(state.getP1Hand().get(c));
+
+		//more or less cards
+		 if(button == plusB){
+			String nString = cardsNum.getText().toString();
+			int n = Integer.parseInt(nString);
+			cardsNum.setText((n + 1));
+		} else if(button == minusB){
+			 String nString = cardsNum.getText().toString();
+			 int n = Integer.parseInt(nString);
+			 cardsNum.setText((n - 1));
+		}
 
 
 		// I cannot overstate how long I took me to figure out this needed to be called on
@@ -280,6 +298,65 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			} else {
 				revolutionButton.setImageResource(R.drawable.blankspace);
 			}
+		}
+
+		//displays total cards numbers
+		if(playerNum == 1) {
+			jesterNum.setText(postType.getP1Hand().get(13));
+			oneNum.setText(postType.getP1Hand().get(1));
+			twoNum.setText(postType.getP1Hand().get(2));
+			threeNum.setText(postType.getP1Hand().get(3));
+			fourNum.setText(postType.getP1Hand().get(4));
+			fiveNum.setText(postType.getP1Hand().get(5));
+			sixNum.setText(postType.getP1Hand().get(6));
+			sevenNum.setText(postType.getP1Hand().get(7));
+			eightNum.setText(postType.getP1Hand().get(8));
+			nineNum.setText(postType.getP1Hand().get(9));
+			tenNum.setText(postType.getP1Hand().get(10));
+			elevenNum.setText(postType.getP1Hand().get(11));
+			twelveNum.setText(postType.getP1Hand().get(12));
+		} else if (playerNum == 2) {
+			jesterNum.setText(postType.getP2Hand().get(13));
+			oneNum.setText(postType.getP2Hand().get(1));
+			twoNum.setText(postType.getP2Hand().get(2));
+			threeNum.setText(postType.getP2Hand().get(3));
+			fourNum.setText(postType.getP2Hand().get(4));
+			fiveNum.setText(postType.getP2Hand().get(5));
+			sixNum.setText(postType.getP2Hand().get(6));
+			sevenNum.setText(postType.getP2Hand().get(7));
+			eightNum.setText(postType.getP2Hand().get(8));
+			nineNum.setText(postType.getP2Hand().get(9));
+			tenNum.setText(postType.getP2Hand().get(10));
+			elevenNum.setText(postType.getP2Hand().get(11));
+			twelveNum.setText(postType.getP2Hand().get(12));
+		} else if (playerNum == 3) {
+			jesterNum.setText(postType.getP3Hand().get(13));
+			oneNum.setText(postType.getP3Hand().get(1));
+			twoNum.setText(postType.getP3Hand().get(2));
+			threeNum.setText(postType.getP3Hand().get(3));
+			fourNum.setText(postType.getP3Hand().get(4));
+			fiveNum.setText(postType.getP3Hand().get(5));
+			sixNum.setText(postType.getP3Hand().get(6));
+			sevenNum.setText(postType.getP3Hand().get(7));
+			eightNum.setText(postType.getP3Hand().get(8));
+			nineNum.setText(postType.getP3Hand().get(9));
+			tenNum.setText(postType.getP3Hand().get(10));
+			elevenNum.setText(postType.getP3Hand().get(11));
+			twelveNum.setText(postType.getP3Hand().get(12));
+		} else if (playerNum == 4) {
+			jesterNum.setText(postType.getP4Hand().get(13));
+			oneNum.setText(postType.getP4Hand().get(1));
+			twoNum.setText(postType.getP4Hand().get(2));
+			threeNum.setText(postType.getP4Hand().get(3));
+			fourNum.setText(postType.getP4Hand().get(4));
+			fiveNum.setText(postType.getP4Hand().get(5));
+			sixNum.setText(postType.getP4Hand().get(6));
+			sevenNum.setText(postType.getP4Hand().get(7));
+			eightNum.setText(postType.getP4Hand().get(8));
+			nineNum.setText(postType.getP4Hand().get(9));
+			tenNum.setText(postType.getP4Hand().get(10));
+			elevenNum.setText(postType.getP4Hand().get(11));
+			twelveNum.setText(postType.getP4Hand().get(12));
 		}
 
 		//if number of cards is more than 0
@@ -418,9 +495,21 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		twelve.setOnClickListener(this);
 		jester.setOnClickListener(this);
 
-		//text view
+		//text views
 		this.cardsNum = (TextView) activity.findViewById(R.id.cardnum);
-
+		this.jesterNum = (TextView) activity.findViewById(R.id.jesterNum);
+		this.oneNum = (TextView) activity.findViewById(R.id.oneNum);
+		this.twoNum = (TextView) activity.findViewById(R.id.twoNum);
+		this.threeNum = (TextView) activity.findViewById(R.id.threeNum);
+		this.fourNum = (TextView) activity.findViewById(R.id.fourNum);
+		this.fiveNum = (TextView) activity.findViewById(R.id.fiveNum);
+		this.sixNum = (TextView) activity.findViewById(R.id.sixNum);
+		this.sevenNum = (TextView) activity.findViewById(R.id.sevenNum);
+		this.eightNum = (TextView) activity.findViewById(R.id.eightNum);
+		this.nineNum = (TextView) activity.findViewById(R.id.nineNum);
+		this.tenNum = (TextView) activity.findViewById(R.id.tenNum);
+		this.elevenNum = (TextView) activity.findViewById(R.id.elevenNum);
+		this.twelveNum = (TextView) activity.findViewById(R.id.twelveNum);
 
 	} // setAsGui
 

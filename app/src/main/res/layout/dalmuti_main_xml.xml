@@ -48,6 +48,26 @@
             android:orientation="horizontal"
             android:gravity="center">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/jesterNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
+
         <ImageButton
             android:id="@+id/jester"
             android:layout_width="wrap_content"
@@ -57,6 +77,27 @@
             android:layout_marginRight="4dp"
             android:layout_marginLeft="6dp"
             />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/oneNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
 
         <ImageButton
             android:id="@+id/one"
@@ -66,6 +107,27 @@
             android:src="@drawable/great_dalmuti"
             android:layout_marginRight="4dp"
             />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/twoNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
 
         <ImageButton
             android:id="@+id/two"
@@ -76,6 +138,28 @@
             android:layout_marginRight="4dp"
             />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/threeNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
+
         <ImageButton
             android:id="@+id/three"
             android:layout_width="wrap_content"
@@ -84,6 +168,28 @@
             android:src="@drawable/earl_marshal"
             android:layout_marginRight="4dp"
             />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/fourNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
 
         <ImageButton
             android:id="@+id/four"
@@ -94,6 +200,28 @@
             android:layout_marginRight="4dp"
             />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/fiveNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
+
         <ImageButton
             android:id="@+id/five"
             android:layout_width="wrap_content"
@@ -102,6 +230,27 @@
             android:src="@drawable/abbess"
             android:layout_marginRight="4dp"
             />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/sixNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
 
         <ImageButton
             android:id="@+id/six"
@@ -111,6 +260,27 @@
             android:src="@drawable/knight"
             android:layout_marginRight="4dp"
             />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/sevenNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
 
         <ImageButton
             android:id="@+id/seven"
@@ -120,6 +290,27 @@
             android:src="@drawable/seamstress"
             android:layout_marginRight="4dp"
             />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/eightNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
 
         <ImageButton
             android:id="@+id/eight"
@@ -129,6 +320,27 @@
             android:src="@drawable/mason"
             android:layout_marginRight="4dp"
             />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/nineNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
 
         <ImageButton
             android:id="@+id/nine"
@@ -138,7 +350,27 @@
             android:src="@drawable/cook"
             android:layout_marginRight="4dp"
             />
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tenNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
         <ImageButton
             android:id="@+id/ten"
             android:layout_width="wrap_content"
@@ -147,6 +379,27 @@
             android:src="@drawable/sheperdess"
             android:layout_marginRight="4dp"
             />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/elevenNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
 
         <ImageButton
             android:id="@+id/eleven"
@@ -156,7 +409,27 @@
             android:src="@drawable/stonecutter"
             android:layout_marginRight="4dp"
             />
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/twelveNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif">
+                </TextView>
         <ImageButton
             android:id="@+id/twelve"
             android:layout_width="wrap_content"
@@ -164,6 +437,7 @@
             android:background="@null"
             android:src="@drawable/peasant"
             />
+            </LinearLayout>
 
         </LinearLayout>
 
