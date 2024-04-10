@@ -29,7 +29,8 @@
         <edu.up.cs301.GreatDalmuti.surfaceDraw
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            ></edu.up.cs301.GreatDalmuti.surfaceDraw>
+            />
+
 
     </LinearLayout>
 

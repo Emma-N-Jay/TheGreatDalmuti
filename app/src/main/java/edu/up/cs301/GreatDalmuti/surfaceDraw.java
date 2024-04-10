@@ -5,11 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.util.AttributeSet;
 import android.view.SurfaceView;
 
 public class surfaceDraw extends SurfaceView {
-    public surfaceDraw(Context context) {
-        super(context);
+    public surfaceDraw(Context context, AttributeSet attr) {
+        super(context, attr);
+        setWillNotDraw(false);
     }
 
     @Override
@@ -21,6 +24,6 @@ public class surfaceDraw extends SurfaceView {
         test = Bitmap.createScaledBitmap(test, 100, 100, false);
 
         //canvas.drawBitmap(test);
-        canvas.drawBitmap(test,0, 0, Color.BLACK);
+        canvas.drawBitmap(test,0, 10, null);
     }
 }
