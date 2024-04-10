@@ -74,8 +74,28 @@ public class GDLocalGame extends LocalGame {
 	/**
 	 * our canMove method
 	 * checks the selected cards against the rules of the game to ensure the move is legal
+	 * REMEMBER DECK IS SORTED BY PLAYER AND THEN HAND
 	 */
-	protected boolean isLegalMove(int player, ArrayList<ArrayList<Integer>> decks, int cardNumSelected, int numSelected) {
+	protected boolean isLegalMove(int player, ArrayList<ArrayList<Integer>> deck, int cardNumSelected, int numSelected) {
+		if (player == gameState.getTurn()) {
+
+			if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
+					&& ( deck.get(player).get(cardNumSelected)) > 0) {
+
+				if( numSelected == gameState.getNumInPile() ) {
+
+					if ( cardNumSelected < gameState.getRankInPile() ) {
+
+						return true;
+
+					}
+
+				}
+
+			}
+
+		}
+
 		return false;
 	}
 

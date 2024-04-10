@@ -96,6 +96,8 @@ public class GDState extends GameState {
 	public void setExchangingTaxes(boolean update){
 		exchangingTaxes = update;
 	}
+	public int getNumInPile(){return this.numInPile;}
+	public int getRankInPile(){return this.rankInPile;}
 	public ArrayList<ArrayList<Integer>> getDeck(){return deck;}
 	public ArrayList<Integer>getP1Hand(){return deck.get(0);}
 	public ArrayList<Integer>getP2Hand(){return deck.get(1);}
