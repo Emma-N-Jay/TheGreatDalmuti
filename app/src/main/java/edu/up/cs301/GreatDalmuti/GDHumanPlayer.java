@@ -222,8 +222,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		textBox.setText(textBox.getText() + "The Lesser Dalmuti has declared a revolution!\n");
 
 		//greater dalmuti and peon exchange taxes
-		int[] taxCards = {1, 2}; //cards that will be exchanged during taxes
-		state.payTaxes(0 , 1, 2);
+		state.GDPayTaxes(1, 2);
 		textBox.setText(textBox.getText() + "Taxes have been exchanged!\n");
 
 		//great dalmuti plays
