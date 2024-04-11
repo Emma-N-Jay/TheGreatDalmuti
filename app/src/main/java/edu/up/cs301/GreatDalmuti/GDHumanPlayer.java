@@ -45,12 +45,16 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	int c = 0;
 	//selected number of cards
 	int n = 0;
+	int j = 0;
 
 	//pass and hold buttons
 	private Button passButton = null;
 	private Button playButton = null;
 	private Button plusB = null;
 	private Button minusB = null;
+	private Button jplusB = null;
+	private Button jminusB = null;
+
 
 	//for image button
 	private ImageButton revolutionButton = null;
@@ -71,6 +75,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	//text for number of cards
 	private TextView cardsNum = null;
+	private TextView jesterSelected = null;
 	private TextView jesterNum = null;
 	private TextView oneNum = null;
 	private TextView twoNum = null;
@@ -184,6 +189,17 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			 String nString = cardsNum.getText().toString();
 			 n = Integer.parseInt(nString);
 			 cardsNum.setText((n - 1));
+		}
+
+		 //more or less jesters selected
+		if(button == jplusB){
+			String nString = jesterSelected.getText().toString();
+			n = Integer.parseInt(nString);
+			jesterSelected.setText((n + 1));
+		} else if(button == jminusB){
+			String nString = jesterSelected.getText().toString();
+			n = Integer.parseInt(nString);
+			jesterSelected.setText((n - 1));
 		}
 
 
@@ -413,12 +429,16 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.playButton = (Button) activity.findViewById(R.id.playButton);
 		this.plusB = (Button) activity.findViewById(R.id.addbutton);
 		this.minusB = (Button) activity.findViewById(R.id.minusbutton);
+		this.jplusB = (Button) activity.findViewById(R.id.addjbutton);
+		this.jminusB = (Button) activity.findViewById(R.id.minusjbutton);
 
 		//listens for button presses
 		passButton.setOnClickListener(this);
 		playButton.setOnClickListener(this);
 		plusB.setOnClickListener(this);
 		minusB.setOnClickListener(this);
+		jplusB.setOnClickListener(this);
+		jminusB.setOnClickListener(this);
 
 		//sets image button listener
 		revolutionButton.setOnClickListener(this);
@@ -438,6 +458,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//text views
 		this.cardsNum = (TextView) activity.findViewById(R.id.cardnum);
+		this.jesterSelected = (TextView) activity.findViewById(R.id.jesterNumSelected);
 		this.jesterNum = (TextView) activity.findViewById(R.id.jesterNum);
 		this.oneNum = (TextView) activity.findViewById(R.id.oneNum);
 		this.twoNum = (TextView) activity.findViewById(R.id.twoNum);
