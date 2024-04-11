@@ -12,7 +12,8 @@ import android.view.SurfaceView;
 public class surfaceDraw extends SurfaceView {
 
     //Paint pallette
-    Paint purple = new Paint();
+    public Paint purple = new Paint();
+    private GDState state;
 
 
     public surfaceDraw(Context context, AttributeSet attr) {
@@ -20,21 +21,31 @@ public class surfaceDraw extends SurfaceView {
         setWillNotDraw(false);
     }
 
+    public void setCurrentGameState(){
+        //state = GDState();
+    }
     @Override
     protected void onDraw(Canvas canvas){
 
         //set the purple color
         purple.setColor(0xFF402264);
-        purple.setStyle(Paint.Style.FILL);
+        purple.setTextSize(50);
+        //purple.setStyle(Paint.Style.FILL);
+
+
 
         //Create a bitmap that contains image
         Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.card_back);
         Bitmap backleft = BitmapFactory.decodeResource(getResources(), R.drawable.card_leftside);
         Bitmap backright = BitmapFactory.decodeResource(getResources(), R.drawable.card_rightside);
+        Bitmap dalmuti = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
 
+
+        //scale the bitmap
         back = Bitmap.createScaledBitmap(back, 250, 350, false);
         backleft = Bitmap.createScaledBitmap(backleft, 350, 250, false);
         backright = Bitmap.createScaledBitmap(backright, 350, 250, false);
+        dalmuti = Bitmap.createScaledBitmap(dalmuti, 350, 250, false);
 
         //draw the top hand
         canvas.drawBitmap(back,650, 10, null);
@@ -73,7 +84,11 @@ public class surfaceDraw extends SurfaceView {
         canvas.drawBitmap(backright,2160, 600, null);
         canvas.drawBitmap(backright,2160, 650, null);
 
-        canvas.drawText("# played:", 1500, 1500, purple);
+        //Draw text??
+        //canvas.drawText("# played:" + getNumInPile() , 1500, 1500, purple);
+
+        //Time to do the pile!
+        canvas.drawBitmap(dalmuti,1500, 1500, null);
 
     }
 }
