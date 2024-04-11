@@ -66,6 +66,12 @@ public class GDState extends GameState {
 		 this.hasLowestInRound = false;
 		 this.hasLead = 0; //this should assign the lead to default to GDalmuti but also could be 1 instead of 0
 		 this.revolutionIsVisible = false;
+		 GDHumanPlayer[] gamePlayers = new GDHumanPlayer[4]; //array of all players in game
+		 gamePlayers[0] = new GDHumanPlayer("Great Dalmuti");
+		 gamePlayers[1] = new GDHumanPlayer("Lesser Dalmuti");
+		 gamePlayers[2] = new GDHumanPlayer("Lesser Peon");
+		 gamePlayers[3] = new GDHumanPlayer("Greater Peon");
+		 setPlayers(gamePlayers);
 	 } // GDState
 	
 	/**
@@ -114,6 +120,31 @@ public class GDState extends GameState {
 		System.out.println("Revolution is visible - " + this.revolutionIsVisible);
 		return null;
 	} // toString
+
+	private void setPlayers(GDHumanPlayer[] players) {
+		int zero = (int) (Math.random() * 4) + 1;
+
+		players[zero] = new GDHumanPlayer("Great Dalmuti");
+
+		int one = (int) (Math.random() * 4) + 1;
+		while (zero == one){
+			one = (int) (Math.random() * 4) + 1;
+		}
+		players[one] = new GDHumanPlayer("Lesser Dalmuti");
+
+		int two = (int) (Math.random() * 4) + 1;
+		while ( (zero == two) || (one == two)){
+			two = (int) (Math.random() * 4) + 1;
+		}
+		players[two] = new GDHumanPlayer("Greater Peon");
+
+		int three = (int) (Math.random() * 4) + 1;
+		while ( (zero == three) || (one == three) || (two == three) ){
+			three = (int) (Math.random() * 4) + 1;
+		}
+		players[three] = new GDHumanPlayer("Lesser Dalmuti");
+
+	}
 
 	//SHUFFLES DECK
 	public void shuffle(){
