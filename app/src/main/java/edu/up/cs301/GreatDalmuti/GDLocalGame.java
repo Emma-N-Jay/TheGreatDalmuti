@@ -76,7 +76,7 @@ public class GDLocalGame extends LocalGame {
 	 * checks the selected cards against the rules of the game to ensure the move is legal
 	 * REMEMBER DECK IS SORTED BY PLAYER AND THEN HAND
 	 */
-	//TODO add jester info and possibly check for multiple suits
+	//TODO possibly check for multiple suits
 	protected boolean isLegalMove(int player, ArrayList<ArrayList<Integer>> deck, int cardNumSelected,
 								  int numSelected, int jestersSelected) {
 		if (jestersSelected == 0) {
