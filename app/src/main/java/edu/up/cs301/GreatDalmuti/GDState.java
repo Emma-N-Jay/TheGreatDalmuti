@@ -96,7 +96,7 @@ public class GDState extends GameState {
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
 	public GDState getState(){return this;}
-	public boolean getExhangingTaxes(){return this.exchangingTaxes;}
+	public boolean getExchangingTaxes(){return this.exchangingTaxes;}
 	public void setExchangingTaxes(boolean update){exchangingTaxes = update;}
 	public int getNumInPile(){return this.numInPile;}
 	public int getRankInPile(){return this.rankInPile;}
@@ -274,14 +274,15 @@ public class GDState extends GameState {
 	} // GDPayTaxes
 
 	//this method allows a player to play a card
-	// TODO: add code for jester, if can't play will pass
 	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int rankSelected,
 											  int numSelected, int jestersSelected){
+
 		GDLocalGame local = new GDLocalGame(this);
 		if( (numSelected > 0) && (local.isLegalMove(player, decks, rankSelected, numSelected, jestersSelected)) ){
-				decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - numSelected);
+				decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - (numSelected + jestersSelected) );
 		}
-		if(this.getTurn() == 3 ){
+
+		if(this.getTurn() == 3){
 			this.setTurn(0);
 		} else {
 			this.setTurn(this.getTurn() + 1);

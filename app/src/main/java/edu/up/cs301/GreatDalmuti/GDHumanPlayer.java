@@ -10,7 +10,6 @@
 
 package edu.up.cs301.GreatDalmuti;
 
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -316,7 +315,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 		//image of pay taxes button if during that phase of the game
-		if(postType.getExhangingTaxes()){
+		if(postType.getExchangingTaxes()){
 			paytaxesButton.setImageResource(R.drawable.paytaxesimage);
 		} else {
 			paytaxesButton.setImageResource(R.drawable.blankspace);
