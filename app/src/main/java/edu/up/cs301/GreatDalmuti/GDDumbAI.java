@@ -40,15 +40,15 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
         getTimer().start();
 
 		//will give us a sorted version of this players hand
-		state.getDeck().getWHICHEVERPLAYERIAM();
-		for(int i = state.getDeck().getWHICHEVERPLAYERIAM().size() - 1; i >= 0; i--){
-			if(i < state.getRankInPile()){
-				if(numOfRank(state.getRankInPile(), state.getDeck().getWHICHEVERPLAYERIAM()) >= state.getNumInPile()){
-					state.play(WHICHEVERPLAYERIAM, state.getDeck(), );
-					played = true;
-				}
-			}
-		}
+//		state.getDeck().getWHICHEVERPLAYERIAM();
+//		for(int i = state.getDeck().getWHICHEVERPLAYERIAM().size() - 1; i >= 0; i--){
+//			if(i < state.getRankInPile()){
+//				if(numOfRank(state.getRankInPile(), state.getDeck().getWHICHEVERPLAYERIAM()) >= state.getNumInPile()){
+//					state.play(WHICHEVERPLAYERIAM, state.getDeck(), );
+//					played = true;
+//				}
+//			}
+//		}
 		state.pass(state.getTurn());
     } // GDComputerPlayer1
 
