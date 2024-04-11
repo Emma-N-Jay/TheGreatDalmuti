@@ -10,6 +10,7 @@
 
 package edu.up.cs301.GreatDalmuti;
 
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -91,7 +92,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private TextView elevenNum = null;
 	private TextView twelveNum = null;
 
-
+	//the canvas
+	private surfaceDraw canvas = null;
 
 	// CONSTRUCTORS ********************************************************************************
 	/**
@@ -119,6 +121,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * sets the counter value in the text view
 	*/
 	protected void updateDisplay() {
+		canvas.invalidate();
 		// set the text in the appropriate widget
 		//testResultsTextView.setText("" + state.getCounter());
 	} // updateDisplay
@@ -296,9 +299,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	public void receiveInfo(GameInfo info) {
 		// ignore the message if it's not a CounterState message
 		if (!(info instanceof edu.up.cs301.GreatDalmuti.GDState)) return;
-		
+
 		// update our state; then update the display
 		this.state = (edu.up.cs301.GreatDalmuti.GDState)info;
+		canvas.setCurrentGameState(this.state);
 		updateDisplay();
 
 		GDState postType = (GDState) info;
@@ -493,6 +497,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.tenNum = (TextView) activity.findViewById(R.id.tenNum);
 		this.elevenNum = (TextView) activity.findViewById(R.id.elevenNum);
 		this.twelveNum = (TextView) activity.findViewById(R.id.twelveNum);
+
+		//find the surface view
+		this.canvas = (surfaceDraw)activity.findViewById(R.id.the_canvas);
 
 	} // setAsGui
 
