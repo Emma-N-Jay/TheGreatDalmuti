@@ -34,6 +34,7 @@ public class GDState extends GameState {
 	private boolean hasLowestInRound; // who is in line to get the lead next
 	private int hasLead; // who currently has the lead
 	private int turn; // who's turn is it
+	private int numPass;
 	private ArrayList<Integer> p1Hand;
 	private ArrayList<Integer> p2Hand;
 	private ArrayList<Integer> p3Hand;
@@ -205,6 +206,7 @@ public class GDState extends GameState {
 		} else {
 			this.setTurn(turn + 1);
 		}
+		numPass++;
 		return true;
 	} // pass
 
