@@ -19,11 +19,49 @@ public class surfaceDraw extends SurfaceView {
     protected void onDraw(Canvas canvas){
 
         //Create a bitmap that contains image
-        Bitmap test = BitmapFactory.decodeResource(getResources(), R.drawable.card_back);
+        Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.card_back);
+        Bitmap backleft = BitmapFactory.decodeResource(getResources(), R.drawable.card_leftside);
+        Bitmap backright = BitmapFactory.decodeResource(getResources(), R.drawable.card_rightside);
 
-        test = Bitmap.createScaledBitmap(test, 100, 100, false);
+        back = Bitmap.createScaledBitmap(back, 250, 350, false);
+        backleft = Bitmap.createScaledBitmap(backleft, 350, 250, false);
+        backright = Bitmap.createScaledBitmap(backright, 350, 250, false);
 
-        //canvas.drawBitmap(test);
-        canvas.drawBitmap(test,0, 10, null);
+        //draw the top hand
+        canvas.drawBitmap(back,650, 10, null);
+        canvas.drawBitmap(back,750, 10, null);
+        canvas.drawBitmap(back,850, 10, null);
+        canvas.drawBitmap(back,950, 10, null);
+        canvas.drawBitmap(back,1050, 10, null);
+        canvas.drawBitmap(back,1150, 10, null);
+        canvas.drawBitmap(back,1250, 10, null);
+        canvas.drawBitmap(back,1350, 10, null);
+        canvas.drawBitmap(back,1450, 10, null);
+        canvas.drawBitmap(back,1550, 10, null);
+
+        //draw the left players hand
+        canvas.drawBitmap(backleft,10, 200, null);
+        canvas.drawBitmap(backleft,10, 250, null);
+        canvas.drawBitmap(backleft,10, 300, null);
+        canvas.drawBitmap(backleft,10, 350, null);
+        canvas.drawBitmap(backleft,10, 400, null);
+        canvas.drawBitmap(backleft,10, 450, null);
+        canvas.drawBitmap(backleft,10, 500, null);
+        canvas.drawBitmap(backleft,10, 550, null);
+        canvas.drawBitmap(backleft,10, 600, null);
+        canvas.drawBitmap(backleft,10, 650, null);
+
+
+        //draw the right players hand
+        canvas.drawBitmap(backright,2150, 200, null);
+        canvas.drawBitmap(backright,10, 250, null);
+        canvas.drawBitmap(backright,10, 300, null);
+        canvas.drawBitmap(backright,10, 350, null);
+        canvas.drawBitmap(backright,10, 400, null);
+        canvas.drawBitmap(backright,10, 450, null);
+        canvas.drawBitmap(backright,10, 500, null);
+        canvas.drawBitmap(backright,10, 550, null);
+        canvas.drawBitmap(backright,10, 600, null);
+        canvas.drawBitmap(backright,10, 650, null);
     }
 }
