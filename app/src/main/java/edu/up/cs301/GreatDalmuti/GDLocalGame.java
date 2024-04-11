@@ -77,26 +77,49 @@ public class GDLocalGame extends LocalGame {
 	 * REMEMBER DECK IS SORTED BY PLAYER AND THEN HAND
 	 */
 	//TODO add jester info and possibly check for multiple suits
-	protected boolean isLegalMove(int player, ArrayList<ArrayList<Integer>> deck, int cardNumSelected, int numSelected) {
-		if (player == gameState.getTurn()) {
+	protected boolean isLegalMove(int player, ArrayList<ArrayList<Integer>> deck, int cardNumSelected,
+								  int numSelected, int jestersSelected) {
+		if (jestersSelected == 0) {
+			if (player == gameState.getTurn()) {
 
-			if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
-					&& ( deck.get(player).get(cardNumSelected)) > 0) {
+				if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
+						&& ( deck.get(player).get(cardNumSelected)) > 0) {
 
-				if( numSelected == gameState.getNumInPile() ) {
+					if( numSelected == gameState.getNumInPile() ) {
 
-					if ( cardNumSelected < gameState.getRankInPile() ) {
+						if ( cardNumSelected < gameState.getRankInPile() ) {
 
-						return true;
+							return true;
+
+						}
 
 					}
 
 				}
 
 			}
-
 		}
 
+		else if ( (jestersSelected == 1) || (jestersSelected == 2) ){
+			if (player == gameState.getTurn()) {
+
+				if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
+						&& ( deck.get(player).get(cardNumSelected)) > 0) {
+
+					if( (numSelected  + jestersSelected) == gameState.getNumInPile() ) {
+
+						if ( cardNumSelected < gameState.getRankInPile() ) {
+
+							return true;
+
+						}
+
+					}
+
+				}
+
+			}
+		}
 		return false;
 	}
 
