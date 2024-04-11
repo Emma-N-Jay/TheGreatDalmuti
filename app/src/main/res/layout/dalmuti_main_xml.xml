@@ -501,7 +501,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:src="@drawable/payTaxesImage"
+                android:src="@drawable/paytaxesimage"
                 android:layout_marginLeft="3dp"
                 android:contentDescription="TODOO"
                 android:layout_marginTop="2dp"/>
