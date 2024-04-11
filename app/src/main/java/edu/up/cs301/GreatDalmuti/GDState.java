@@ -270,7 +270,8 @@ public class GDState extends GameState {
 	} // GDPayTaxes
 
 	//this method allows a player to play a card
-	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int rankSelected, int numSelected){
+	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int rankSelected,
+											  int numSelected, int jestersSelected){
 		GDLocalGame local = new GDLocalGame(this);
 		if( (numSelected > 0) && (local.isLegalMove(player, decks, rankSelected, numSelected)) ){
 				decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - numSelected);

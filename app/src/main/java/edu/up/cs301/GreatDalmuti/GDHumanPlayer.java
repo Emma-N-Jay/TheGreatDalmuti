@@ -145,7 +145,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//what happens when player hits buttons
 		if(button == playButton){
-			state.play(this.playerNum, state.getDeck(), c, n);
+			state.play(this.playerNum, state.getDeck(), c, n, j);
 		}
 		else if(button == passButton){
 		state.pass(state.getTurn());
@@ -247,7 +247,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		playingCards.add(foo);
 		foo.add(1);
 		foo.add(2);
-		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n);
+		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n, j);
 		textBox.setText(textBox.getText() + "The Great Dalmuti has played!\n");
 
 		//lesser dalmuti passes
@@ -268,7 +268,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		playingCards2.add(foo2);
 		foo.add(1);
 		foo.add(2);
-		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n);
+		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n, j);
 		textBox.setText(textBox.getText() + "The Great Dalmuti has played the rest of their hand" +
 				" and gone out!\n");
 		textBox.setText(textBox.getText() + "Great Dalmuti has won!!!!!\n");
@@ -317,7 +317,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//image of pay taxes button if during that phase of the game
 		if(postType.getExhangingTaxes()){
-			paytaxesButton.setImageResource(R.drawable.payTaxesImage);
+			paytaxesButton.setImageResource(R.drawable.paytaxesimage);
 		} else {
 			paytaxesButton.setImageResource(R.drawable.blankspace);
 		}
