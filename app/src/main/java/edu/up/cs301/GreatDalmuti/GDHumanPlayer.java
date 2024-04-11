@@ -131,7 +131,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * 		the button that was clicked
 	 */
 	public void onClick(View button) {
-		//current selected card
+		//current selected card is c, number is n
 
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
@@ -151,7 +151,15 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		state.revolution(this.playerNum, state.getDeck());
 		}
 		else if(button == paytaxesButton){
-
+			if(playerNum == 3){
+				state.GPPayTaxes();
+			} else if(playerNum == 2){
+				state.LPPayTaxes();
+			} else if(playerNum == 1){
+				state.LDPayTaxes(c);
+			} else if(playerNum == 0){
+				state.LDPayTaxes(c);
+			}
 
 		}
 
