@@ -41,6 +41,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	//An array of the players hand
 	private Card[] hand;
+	//selected card
+	int c = 0;
+	//selected number of cards
+	int n = 0;
 
 	//pass and hold buttons
 	private Button passButton = null;
@@ -122,7 +126,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	public void onClick(View button) {
 		//current selected card
-		int c = 0;
 
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
@@ -133,8 +136,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//what happens when player hits buttons
 		if(button == playButton){
-			//currently no way of selecting cards
-			//	state.play(this.playerNum, state.getDeck(), SELECTED CARDS)
+			state.play(this.playerNum, state.getDeck(), c, n);
 		}
 		else if(button == passButton){
 		state.pass(state.getTurn());
@@ -176,11 +178,11 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//more or less cards
 		 if(button == plusB){
 			String nString = cardsNum.getText().toString();
-			int n = Integer.parseInt(nString);
+			n = Integer.parseInt(nString);
 			cardsNum.setText((n + 1));
 		} else if(button == minusB){
 			 String nString = cardsNum.getText().toString();
-			 int n = Integer.parseInt(nString);
+			 n = Integer.parseInt(nString);
 			 cardsNum.setText((n - 1));
 		}
 
@@ -205,7 +207,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//greater dalmuti and peon exchange taxes
 		int[] taxCards = {1, 2}; //cards that will be exchanged during taxes
-		state.greatTaxes(3, firstCopy.getDeck(), 1, 2);
+		state.greatTaxes(3, firstCopy.getDeck(), c, c);
 		state.payTaxes(firstCopy.getTurn(), firstCopy.getDeck());
 		textBox.setText(textBox.getText() + "Taxes have been exchanged!\n");
 
@@ -215,7 +217,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		playingCards.add(foo);
 		foo.add(1);
 		foo.add(2);
-		state.play(firstCopy.getTurn(), firstCopy.getDeck(), 1, 1);
+		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n);
 		textBox.setText(textBox.getText() + "The Great Dalmuti has played!\n");
 
 		//lesser dalmuti passes
@@ -236,7 +238,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		playingCards2.add(foo2);
 		foo.add(1);
 		foo.add(2);
-		state.play(firstCopy.getTurn(), firstCopy.getDeck(), 1, 1);
+		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n);
 		textBox.setText(textBox.getText() + "The Great Dalmuti has played the rest of their hand" +
 				" and gone out!\n");
 		textBox.setText(textBox.getText() + "Great Dalmuti has won!!!!!\n");
@@ -274,93 +276,32 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		GDState postType = (GDState) info;
 
-		// image of revolution image button set if possible, lots of ifs unfortunately without
-		if(this.playerNum == 1) {
-			if (postType.getP1Hand().get(13) == 2) {
-				revolutionButton.setImageResource(R.drawable.newrevbutton);
-			} else {
-				revolutionButton.setImageResource(R.drawable.blankspace);
-			}
-		} else if(this.playerNum == 2) {
-			if (postType.getP2Hand().get(13) == 2) {
-				revolutionButton.setImageResource(R.drawable.newrevbutton);
-			} else {
-				revolutionButton.setImageResource(R.drawable.blankspace);
-			}
-		} else if(this.playerNum == 3) {
-			if (postType.getP3Hand().get(13) == 2) {
-				revolutionButton.setImageResource(R.drawable.newrevbutton);
-			} else {
-				revolutionButton.setImageResource(R.drawable.blankspace);
-			}
-		} else if(this.playerNum == 4) {
-			if (postType.getP4Hand().get(13) == 2) {
-				revolutionButton.setImageResource(R.drawable.newrevbutton);
-			} else {
-				revolutionButton.setImageResource(R.drawable.blankspace);
-			}
+
+		// image of revolution image button set if possible
+		if( postType.getDeck().get(playerNum).get(13) == 2){
+			revolutionButton.setImageResource(R.drawable.newrevbutton);
+		} else {
+			revolutionButton.setImageResource(R.drawable.blankspace);
 		}
 
-		//displays total cards numbers
-		if(playerNum == 1) {
-			jesterNum.setText(postType.getP1Hand().get(13));
-			oneNum.setText(postType.getP1Hand().get(1));
-			twoNum.setText(postType.getP1Hand().get(2));
-			threeNum.setText(postType.getP1Hand().get(3));
-			fourNum.setText(postType.getP1Hand().get(4));
-			fiveNum.setText(postType.getP1Hand().get(5));
-			sixNum.setText(postType.getP1Hand().get(6));
-			sevenNum.setText(postType.getP1Hand().get(7));
-			eightNum.setText(postType.getP1Hand().get(8));
-			nineNum.setText(postType.getP1Hand().get(9));
-			tenNum.setText(postType.getP1Hand().get(10));
-			elevenNum.setText(postType.getP1Hand().get(11));
-			twelveNum.setText(postType.getP1Hand().get(12));
-		} else if (playerNum == 2) {
-			jesterNum.setText(postType.getP2Hand().get(13));
-			oneNum.setText(postType.getP2Hand().get(1));
-			twoNum.setText(postType.getP2Hand().get(2));
-			threeNum.setText(postType.getP2Hand().get(3));
-			fourNum.setText(postType.getP2Hand().get(4));
-			fiveNum.setText(postType.getP2Hand().get(5));
-			sixNum.setText(postType.getP2Hand().get(6));
-			sevenNum.setText(postType.getP2Hand().get(7));
-			eightNum.setText(postType.getP2Hand().get(8));
-			nineNum.setText(postType.getP2Hand().get(9));
-			tenNum.setText(postType.getP2Hand().get(10));
-			elevenNum.setText(postType.getP2Hand().get(11));
-			twelveNum.setText(postType.getP2Hand().get(12));
-		} else if (playerNum == 3) {
-			jesterNum.setText(postType.getP3Hand().get(13));
-			oneNum.setText(postType.getP3Hand().get(1));
-			twoNum.setText(postType.getP3Hand().get(2));
-			threeNum.setText(postType.getP3Hand().get(3));
-			fourNum.setText(postType.getP3Hand().get(4));
-			fiveNum.setText(postType.getP3Hand().get(5));
-			sixNum.setText(postType.getP3Hand().get(6));
-			sevenNum.setText(postType.getP3Hand().get(7));
-			eightNum.setText(postType.getP3Hand().get(8));
-			nineNum.setText(postType.getP3Hand().get(9));
-			tenNum.setText(postType.getP3Hand().get(10));
-			elevenNum.setText(postType.getP3Hand().get(11));
-			twelveNum.setText(postType.getP3Hand().get(12));
-		} else if (playerNum == 4) {
-			jesterNum.setText(postType.getP4Hand().get(13));
-			oneNum.setText(postType.getP4Hand().get(1));
-			twoNum.setText(postType.getP4Hand().get(2));
-			threeNum.setText(postType.getP4Hand().get(3));
-			fourNum.setText(postType.getP4Hand().get(4));
-			fiveNum.setText(postType.getP4Hand().get(5));
-			sixNum.setText(postType.getP4Hand().get(6));
-			sevenNum.setText(postType.getP4Hand().get(7));
-			eightNum.setText(postType.getP4Hand().get(8));
-			nineNum.setText(postType.getP4Hand().get(9));
-			tenNum.setText(postType.getP4Hand().get(10));
-			elevenNum.setText(postType.getP4Hand().get(11));
-			twelveNum.setText(postType.getP4Hand().get(12));
-		}
 
-		//if number of cards is more than 0
+		//displays total cards numbers for every card
+			jesterNum.setText(postType.getDeck().get(playerNum).get(13));
+			oneNum.setText(postType.getDeck().get(playerNum).get(1));
+			twoNum.setText(postType.getDeck().get(playerNum).get(2));
+			threeNum.setText(postType.getDeck().get(playerNum).get(3));
+			fourNum.setText(postType.getDeck().get(playerNum).get(4));
+			fiveNum.setText(postType.getDeck().get(playerNum).get(5));
+			sixNum.setText(postType.getDeck().get(playerNum).get(6));
+			sevenNum.setText(postType.getDeck().get(playerNum).get(7));
+			eightNum.setText(postType.getDeck().get(playerNum).get(8));
+			nineNum.setText(postType.getDeck().get(playerNum).get(9));
+			tenNum.setText(postType.getDeck().get(playerNum).get(10));
+			elevenNum.setText(postType.getDeck().get(playerNum).get(11));
+			twelveNum.setText(postType.getDeck().get(playerNum).get(12));
+
+
+		//if number of cards is more than 0, else grey once imported
 		if(postType.getP1Hand().get(1) >= 1){
 			one.setImageResource(R.drawable.great_dalmuti);
 		} else {
