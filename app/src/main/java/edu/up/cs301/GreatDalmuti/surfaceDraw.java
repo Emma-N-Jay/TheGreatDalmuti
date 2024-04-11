@@ -44,13 +44,17 @@ public class surfaceDraw extends SurfaceView {
 
             //Actual cards
             Bitmap dalmuti = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
-//            Bitmap dalmuti = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
-//            Bitmap dalmuti = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
-//            Bitmap dalmuti = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
-//            Bitmap dalmuti = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
-//            Bitmap dalmuti = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
-//            Bitmap dalmuti = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
-
+            Bitmap archbish = BitmapFactory.decodeResource(getResources(), R.drawable.arch_bishop);
+            Bitmap earlmarsh = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
+            Bitmap baroness = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
+            Bitmap abbess = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
+            Bitmap knight = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
+            Bitmap seamstress = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
+            Bitmap mason = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
+            Bitmap cook = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
+            Bitmap shepherdess = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
+            Bitmap stone_cutter = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
+            Bitmap peasant = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
 
 
             //scale the bitmaps
