@@ -34,7 +34,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
     public GDDumbAI(String name) {
         // invoke superclass constructor
         super(name);
-        
+        boolean played = false;
         // start the timer, ticking 20 times per second
         getTimer().setInterval(50);
         getTimer().start();
@@ -44,12 +44,12 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		for(int i = state.getDeck().getWHICHEVERPLAYERIAM().size() - 1; i >= 0; i--){
 			if(i < state.getRankInPile()){
 				if(numOfRank(state.getRankInPile(), state.getDeck().getWHICHEVERPLAYERIAM()) >= state.getNumInPile()){
-					state.play(WHICHEVERPLAYERIAM, state.getDeck(), )
+					state.play(WHICHEVERPLAYERIAM, state.getDeck(), );
+					played = true;
 				}
 			}
 		}
-
-
+		state.pass(state.getTurn());
     } // GDComputerPlayer1
 
 	public int numOfRank(int rank, ArrayList<Integer> playerHand){
