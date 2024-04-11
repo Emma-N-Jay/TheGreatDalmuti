@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import edu.up.cs301.GameFramework.infoMessage.GameState;
-import edu.up.cs301.GameFramework.players.GamePlayer;
-
 
 
 public class GDState extends GameState {
@@ -232,9 +230,9 @@ public class GDState extends GameState {
 
 	//this method allows a player to play a card
 	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int cardNumSelected, int numSelected){
-			if(numSelected > 0){
+		if( (numSelected > 0) && (isLegalMove(player, decks, cardNumSelected, numSelected)) ){
 				decks.get(player).set(cardNumSelected, decks.get(player).get(cardNumSelected) - numSelected);
-			}
+		}
 		if(this.getTurn() == 3 ){
 			this.setTurn(0);
 		} else {
@@ -265,7 +263,7 @@ public class GDState extends GameState {
 	} // revolution
 
 
-	public boolean isLegalMove(int player){
+	public boolean isLegalMove(int player, ArrayList<ArrayList<Integer>> decks, int cardNumSelected, int numSelected){
 		
 		return false;
 	} // isLegalMove

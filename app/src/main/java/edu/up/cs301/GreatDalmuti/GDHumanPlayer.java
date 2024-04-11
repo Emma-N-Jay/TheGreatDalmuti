@@ -200,7 +200,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		gamePlayers[3] = new GDHumanPlayer("Greater Peon");
 
 		//greater peon declares revolution
-		state.revolution(firstCopy.getTurn(), firstCopy.getP4Hand()); //swaps positions
+		state.revolution(firstCopy.getTurn(), firstCopy.getDeck()); //swaps positions
 		textBox.setText(textBox.getText() + "The Lesser Dalmuti has declared a revolution!\n");
 
 		//greater dalmuti and peon exchange taxes
@@ -210,7 +210,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		textBox.setText(textBox.getText() + "Taxes have been exchanged!\n");
 
 		//great dalmuti plays
-		ArrayList<Integer> playingCards = new ArrayList<>();
+		ArrayList<ArrayList<Integer>> playingCards = new ArrayList<>();
 		ArrayList<Integer> foo = new ArrayList<>();
 		playingCards.add(foo);
 		foo.add(1);
