@@ -17,7 +17,7 @@ public class surfaceDraw extends SurfaceView {
 
     @Override
     protected void onDraw(Canvas canvas){
-
+    //lalalallalalalalala
         //Create a bitmap that contains image
         Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.card_back);
         Bitmap backleft = BitmapFactory.decodeResource(getResources(), R.drawable.card_leftside);
