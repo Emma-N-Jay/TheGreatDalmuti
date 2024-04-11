@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.SurfaceView;
 
 public class surfaceDraw extends SurfaceView {
-
+//lalalalala
     //Paint pallette
     public Paint purple = new Paint();
     private GDState state;
