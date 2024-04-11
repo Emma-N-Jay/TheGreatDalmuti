@@ -273,7 +273,7 @@ public class GDState extends GameState {
 	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int rankSelected,
 											  int numSelected, int jestersSelected){
 		GDLocalGame local = new GDLocalGame(this);
-		if( (numSelected > 0) && (local.isLegalMove(player, decks, rankSelected, numSelected)) ){
+		if( (numSelected > 0) && (local.isLegalMove(player, decks, rankSelected, numSelected, jestersSelected)) ){
 				decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - numSelected);
 		}
 		if(this.getTurn() == 3 ){
