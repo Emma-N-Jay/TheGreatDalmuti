@@ -92,11 +92,10 @@ public class GDState extends GameState {
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
 	public GDState getState(){return this;}
-	public void setExchangingTaxes(boolean update){
-		exchangingTaxes = update;
-	}
+	public void setExchangingTaxes(boolean update){ exchangingTaxes = update;}
 	public int getNumInPile(){return this.numInPile;}
 	public int getRankInPile(){return this.rankInPile;}
+	public int getHasLead(){return this.hasLead;}
 	public ArrayList<ArrayList<Integer>> getDeck(){return deck;}
 	public ArrayList<Integer>getP1Hand(){return deck.get(0);}
 	public ArrayList<Integer>getP2Hand(){return deck.get(1);}
