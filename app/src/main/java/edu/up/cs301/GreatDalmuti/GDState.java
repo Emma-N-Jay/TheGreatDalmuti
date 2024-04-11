@@ -206,7 +206,7 @@ public class GDState extends GameState {
 		} else {
 			this.setTurn(turn + 1);
 		}
-		numPass++;
+		//numPass++;
 		return true;
 	} // pass
 
@@ -270,6 +270,7 @@ public class GDState extends GameState {
 	} // GDPayTaxes
 
 	//this method allows a player to play a card
+	//TODO figure out how to set has lead based on the number of passes. After 3 passes, set lead
 	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int rankSelected,
 											  int numSelected, int jestersSelected){
 		GDLocalGame local = new GDLocalGame(this);
