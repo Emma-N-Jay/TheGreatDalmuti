@@ -412,8 +412,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//player action buttons
 		this.passButton = (Button) activity.findViewById(R.id.passButton);
 		this.playButton = (Button) activity.findViewById(R.id.playButton);
-		this.plusB = (Button) activity.findViewById(R.id.plusButton);
-		this.minusB = (Button) activity.findViewById(R.id.minusButton);
+		this.plusB = (Button) activity.findViewById(R.id.addbutton);
+		this.minusB = (Button) activity.findViewById(R.id.minusbutton);
 
 		//listens for button presses
 		passButton.setOnClickListener(this);

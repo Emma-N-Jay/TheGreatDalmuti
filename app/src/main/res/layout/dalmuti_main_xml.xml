@@ -482,18 +482,81 @@
                 android:layout_marginLeft="1dp"
                 android:contentDescription="TODO" />
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right">
 
+                <TextView
+                    android:id="@+id/label1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Jesters selected:"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"/>
+
+                <Button
+                    android:id="@+id/addjbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#402264"
+                    android:text="+"
+                    android:textColor="#BC9BFF" />
+
+                <TextView
+                    android:id="@+id/jesternum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="##"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"/>
+
+                <Button
+                    android:id="@+id/minusjbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#402264"
+                    android:text="-"
+                    android:textColor="#BC9BFF"
+                    android:layout_marginRight="60dp"/>
+
+                <TextView
+                    android:id="@+id/label2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Cards selected:"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"/>
+
             <Button
+                android:id="@+id/addbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#402264"
                 android:text="+"
                 android:textColor="#BC9BFF" />
+
 
             <TextView
                 android:id="@+id/cardnum"
@@ -512,6 +575,7 @@
 
 
             <Button
+                android:id="@+id/minusbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#402264"
