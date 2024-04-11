@@ -279,6 +279,11 @@ public class GDState extends GameState {
 		} else {
 			this.setTurn(this.getTurn() + 1);
 		}
+
+		//sets cards in pile to match played cards
+		this.rankInPile = rankSelected;
+		this.numInPile = numSelected;
+
 		return decks;
 	} // play
 
