@@ -39,17 +39,50 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
         getTimer().setInterval(50);
         getTimer().start();
 
+		/**
+		 * GIVING TAXES
+		 */
+		//when it is the great dalmuti it will automatically pass its two highest cards
+		if(state.getDeck().getWHICHEVERPLAYERIAM() == 3){
+			//I know this looks like a mess BUT its just passing in the two highest cards, thats it
+			state.GDPayTaxes(rankOfCard(state.getDeck().getWHICHEVERPLAYERIAM().size() - 1,
+					state.getDeck().getWHICHEVERPLAYERIAM()),
+					rankOfCard(state.getDeck().getWHICHEVERPLAYERIAM().size() - 2,
+							state.getDeck().getWHICHEVERPLAYERIAM()));
+		}
+		//when it is the lesser dalmuti it will automatically pass its two highest cards
+		if(state.getDeck().getWHICHEVERPLAYERIAM() == 3){
+			state.LDPayTaxes(rankOfCard(state.getDeck().getWHICHEVERPLAYERIAM().size() - 1,
+					state.getDeck().getWHICHEVERPLAYERIAM()));
+		}
+
+		/**
+		 * GETTING THE LEAD (should this somehow happen)
+		 */
+		int tempRank = rankOfCard(state.getDeck().getWHICHEVERPLAYERIAM().size() - 1,
+				state.getDeck().getWHICHEVERPLAYERIAM());
+
+		if(state.getHasLead() == WHICHEVERPLAYERIAM){
+			state.play(WHICHEVERPLAYERIAM, state.getDeck(), tempRank,
+					numOfRank(tempRank,state.getDeck().getWHICHEVERPLAYERIAM()));
+		}
+
+		/**
+		 * PASSING AND PLAYING CARDS WITH THE DUMB AI
+		 */
 		//will give us a sorted version of this players hand
-//		state.getDeck().getWHICHEVERPLAYERIAM();
-//		for(int i = state.getDeck().getWHICHEVERPLAYERIAM().size() - 1; i >= 0; i--){
-//			if(i < state.getRankInPile()){
-//				if(numOfRank(state.getRankInPile(), state.getDeck().getWHICHEVERPLAYERIAM()) >= state.getNumInPile()){
-//					state.play(WHICHEVERPLAYERIAM, state.getDeck(), );
-//					played = true;
-//				}
-//			}
-//		}
-		state.pass(state.getTurn());
+		state.getDeck().getWHICHEVERPLAYERIAM();
+		for(int i = state.getDeck().getWHICHEVERPLAYERIAM().size() - 1; i >= 0; i--){
+			if(i < state.getRankInPile()){
+				if(numOfRank(state.getRankInPile(), state.getDeck().getWHICHEVERPLAYERIAM()) >= state.getNumInPile()){
+					state.play(WHICHEVERPLAYERIAM, state.getDeck(), i, state.getNumInPile());
+					played = true;
+				}
+			}
+		}
+		if(played == false){
+			state.pass(state.getTurn());
+		}
     } // GDComputerPlayer1
 
 	public int numOfRank(int rank, ArrayList<Integer> playerHand){
@@ -60,6 +93,10 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 			}
 		}
 		return numCards;
+	}
+
+	public int rankOfCard(int index, ArrayList<Integer> playerHand){
+		return playerHand.get(index);
 	}
 
 	// METHODS *************************************************************************************

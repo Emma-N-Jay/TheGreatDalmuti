@@ -21,7 +21,6 @@ public class GDState extends GameState {
 	// INSTANCE VARIABLES **************************************************************************
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;
-
 	// instances of specific actions taken in the game
 
 	//TODO: SORTED BY PERSON AND THEN THAT PERSONS HAND (IF YOU DO NOT UNDERSTAND THIS ASK ALEX)
@@ -92,11 +91,11 @@ public class GDState extends GameState {
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
 	public GDState getState(){return this;}
-	public void setExchangingTaxes(boolean update){
-		exchangingTaxes = update;
-	}
+	public boolean getExhangingTaxes(){return this.exchangingTaxes;}
+	public void setExchangingTaxes(boolean update){exchangingTaxes = update;}
 	public int getNumInPile(){return this.numInPile;}
 	public int getRankInPile(){return this.rankInPile;}
+	public int getHasLead(){return this.hasLead;}
 	public ArrayList<ArrayList<Integer>> getDeck(){return deck;}
 	public ArrayList<Integer>getP1Hand(){return deck.get(0);}
 	public ArrayList<Integer>getP2Hand(){return deck.get(1);}
@@ -193,24 +192,27 @@ public class GDState extends GameState {
 		return lowestIndex;
 	} // findLowest
 
-	public boolean payTaxes(int LDTaxCard, int GDTaxCard1, int GDTaxCard2){
-
+	public void LPPayTaxes () {
 		//lesser peon gives lesser dalmuti their cards
 		int low = findLowest(2);
 		//adds lowest card to lesser dalmuti
 		deck.get(1).set(low, deck.get(1).get(low) + 1);
 		//takes away card from original holder
 		deck.get(2).set(low, deck.get(2).get(low) - 1);
+	} //LPPayTaxes
 
+	public void LDPayTaxes (int LDTaxCard) {
 		//lesser peon gives lesser dalmuti their cards
 		//adds highest card to lesser dalmuti
 		int high = LDTaxCard;
 		deck.get(1).set(high, deck.get(1).get(high) + 1);
 		//takes away card from original holder
 		deck.get(2).set(high, deck.get(2).get(high) - 1);
+	} //LDPayTaxes
 
+	public void GPPayTaxes () {
 		//great peon gives greater dalmuti 2 of their cards
-		low = findLowest(3);
+		int low = findLowest(3);
 		//adds lowest card
 		deck.get(0).set(low, deck.get(0).get(low) + 1);
 		//takes away card from original holder
@@ -219,10 +221,12 @@ public class GDState extends GameState {
 		deck.get(0).set(low, deck.get(0).get(low) + 1);
 		//takes away card from original holder
 		deck.get(3).set(low, deck.get(3).get(low) - 1);
+	} //GPPayTaxes
 
+	public boolean GDPayTaxes(int GDTaxCard1, int GDTaxCard2){
 		//great dalmuti gives greater peon 2 of their cards
 		//adds lowest card
-		high = GDTaxCard1;
+		int high = GDTaxCard1;
 		deck.get(3).set(high, deck.get(3).get(high) + 1);
 		//takes away card from original holder
 		deck.get(0).set(high, deck.get(0).get(high) - 1);
@@ -232,7 +236,7 @@ public class GDState extends GameState {
 		deck.get(0).set(high, deck.get(0).get(high) - 1);
 
 		return true;
-	} // payTaxes
+	} // GDPayTaxes
 
 	//this method allows a player to play a card
 	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int rankSelected, int numSelected){
