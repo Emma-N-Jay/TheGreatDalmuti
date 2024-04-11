@@ -59,7 +59,6 @@ public class GDMainActivity extends GameMainActivity {
 			public GamePlayer createPlayer(String name) {
 				return new GDDumbAI(name);
 			}});
-
 		
 		// a computer player type (player type 2)
 		playerTypes.add(new GamePlayerType("Computer Player (GUI)") {
