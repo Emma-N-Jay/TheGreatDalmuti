@@ -10,6 +10,11 @@ import android.util.AttributeSet;
 import android.view.SurfaceView;
 
 public class surfaceDraw extends SurfaceView {
+
+    //Paint pallette
+    Paint purple = new Paint();
+
+
     public surfaceDraw(Context context, AttributeSet attr) {
         super(context, attr);
         setWillNotDraw(false);
@@ -18,8 +23,7 @@ public class surfaceDraw extends SurfaceView {
     @Override
     protected void onDraw(Canvas canvas){
 
-        //Paint pallette
-        Paint purple = new Paint(0xFF402264);
+        //set the purple color
         purple.setColor(0xFF402264);
         purple.setStyle(Paint.Style.FILL);
 
