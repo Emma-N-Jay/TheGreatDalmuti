@@ -11,6 +11,7 @@
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 import edu.up.cs301.GameFramework.infoMessage.GameState;
@@ -148,18 +149,22 @@ public class GDState extends GameState {
 		for(int i = 0; i < 80; i++){
 			if(i < 20){
 				p1Hand.add(deckArray[i]);
+				Collections.sort(p1Hand);
 				deck.add(p1Hand);
 			}
 			else if(i < 40){
 				p2Hand.add(deckArray[i]);
+				Collections.sort(p2Hand);
 				deck.add(p2Hand);
 			}
 			else if(i < 60){
 				p3Hand.add(deckArray[i]);
+				Collections.sort(p3Hand);
 				deck.add(p3Hand);
 			}
 			else if(i < 80){
 				p4Hand.add(deckArray[i]);
+				Collections.sort(p4Hand);
 				deck.add(p4Hand);
 			}
 		}
@@ -174,6 +179,7 @@ public class GDState extends GameState {
 		}
 		return true;
 	} // pass
+
 
 	/** THESE METHODS ARE ALL RELATED TO THE PAYING AND RECEIVING OF TAXES */
 	//finds index of players lowest card (best)

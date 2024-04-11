@@ -10,6 +10,9 @@
 
 package edu.up.cs301.GreatDalmuti;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.utilities.Tickable;
@@ -18,6 +21,8 @@ import edu.up.cs301.GameFramework.utilities.Tickable;
 public class GDDumbAI extends GameComputerPlayer implements Tickable {
 
 	// INSTANCE VARIABLES **************************************************************************
+	private edu.up.cs301.GreatDalmuti.GDState state;
+
 
 	// CONSTRUCTORS ********************************************************************************
     /**
@@ -33,7 +38,29 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
         // start the timer, ticking 20 times per second
         getTimer().setInterval(50);
         getTimer().start();
+
+		//will give us a sorted version of this players hand
+		state.getDeck().getWHICHEVERPLAYERIAM();
+		for(int i = state.getDeck().getWHICHEVERPLAYERIAM().size() - 1; i >= 0; i--){
+			if(i < state.getRankInPile()){
+				if(numOfRank(state.getRankInPile(), state.getDeck().getWHICHEVERPLAYERIAM()) >= state.getNumInPile()){
+					state.play(WHICHEVERPLAYERIAM, state.getDeck(), )
+				}
+			}
+		}
+
+
     } // GDComputerPlayer1
+
+	public int numOfRank(int rank, ArrayList<Integer> playerHand){
+		int numCards = 0;
+		for(int i = 0; i >= playerHand.size(); i++){
+			if(playerHand.get(i) == rank){
+				numCards++;
+			}
+		}
+		return numCards;
+	}
 
 	// METHODS *************************************************************************************
     /**
