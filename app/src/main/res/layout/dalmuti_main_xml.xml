@@ -502,7 +502,7 @@
                 android:background="@null"
                 android:src="@drawable/payTaxesImage"
                 android:layout_marginLeft="3dp"
-                android:contentDescription="TODO"
+                android:contentDescription="TODOO"
                 android:layout_marginTop="2dp"/>
 
             <LinearLayout
