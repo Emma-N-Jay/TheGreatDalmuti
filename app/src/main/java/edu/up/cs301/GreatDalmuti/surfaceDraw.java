@@ -53,15 +53,15 @@ public class surfaceDraw extends SurfaceView {
 
 
         //draw the right players hand
-        canvas.drawBitmap(backright,2150, 200, null);
-        canvas.drawBitmap(backright,10, 250, null);
-        canvas.drawBitmap(backright,10, 300, null);
-        canvas.drawBitmap(backright,10, 350, null);
-        canvas.drawBitmap(backright,10, 400, null);
-        canvas.drawBitmap(backright,10, 450, null);
-        canvas.drawBitmap(backright,10, 500, null);
-        canvas.drawBitmap(backright,10, 550, null);
-        canvas.drawBitmap(backright,10, 600, null);
-        canvas.drawBitmap(backright,10, 650, null);
+        canvas.drawBitmap(backright,2160, 200, null);
+        canvas.drawBitmap(backright,2160, 250, null);
+        canvas.drawBitmap(backright,2160, 300, null);
+        canvas.drawBitmap(backright,2160, 350, null);
+        canvas.drawBitmap(backright,2160, 400, null);
+        canvas.drawBitmap(backright,2160, 450, null);
+        canvas.drawBitmap(backright,2160, 500, null);
+        canvas.drawBitmap(backright,2160, 550, null);
+        canvas.drawBitmap(backright,2160, 600, null);
+        canvas.drawBitmap(backright,2160, 650, null);
     }
 }
