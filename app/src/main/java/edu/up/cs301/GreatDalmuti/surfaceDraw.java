@@ -19,7 +19,7 @@ public class surfaceDraw extends SurfaceView {
     protected void onDraw(Canvas canvas){
 
         //Create a bitmap that contains image
-        Bitmap test = BitmapFactory.decodeResource(getResources(), R.drawable.abbess);
+        Bitmap test = BitmapFactory.decodeResource(getResources(), R.drawable.card_back);
 
         test = Bitmap.createScaledBitmap(test, 100, 100, false);
 
