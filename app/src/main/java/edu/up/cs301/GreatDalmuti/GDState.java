@@ -175,62 +175,73 @@ public class GDState extends GameState {
 		return true;
 	} // pass
 
-
 	/** THESE METHODS ARE ALL RELATED TO THE PAYING AND RECEIVING OF TAXES */
 	//finds index of players lowest card (best)
 	public int findLowest(ArrayList<ArrayList<Integer>> cards, int player) {
-		int lowestIndex = 0;
+		int lowestIndex = cards.get(player).get(1);
 		for (int i = 0; i < cards.get(player).size(); i++) {
-			if(cards.get(player).get(i) > 0){
-				return i;
+			if( (cards.get(player).get(i) < lowestIndex) && (cards.get(player).get(i) != 0) ){
+				lowestIndex = cards.get(player).get(i);
 			}
 		}
 		return lowestIndex;
 	} // findLowest
-	public boolean payTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards){
 
-		//lesser peon gives lesser dalmuti their cards, 3 should be changed to a named variable
-		if(playerRank == 2){
-			//adds lowest card to greater dalmuti
-			int low = findLowest(cards, playerRank);
-			cards.get(1).set(low, cards.get(1).get(low) + 1);
-			//takes away card from original holder
-			cards.get(playerRank).set(low, cards.get(playerRank).get(low) - 1);
+	public int findHighest(ArrayList<ArrayList<Integer>> cards, int player) {
+		int highestIndex = cards.get(player).get(1);
+		for (int i = 0; i < cards.get(player).size(); i++) {
+			if( (cards.get(player).get(i) > highestIndex) && (cards.get(player).get(i) != 0) ){
+				highestIndex = cards.get(player).get(i);
+			}
 		}
-		//great peon gives greater dalmuti 2 of their cards, 4 should be changed to a named variable
-		else if(playerRank == 3){
-			//adds lowest card
-			int low = findLowest(cards, playerRank);
-			cards.get(0).set(low, cards.get(3).get(low) + 1);
-			//takes away card from original holder
-			cards.get(playerRank).set(low, cards.get(playerRank).get(low) - 1);
-		}
+		return highestIndex;
+	} // findHighest
+
+	public boolean payTaxes(ArrayList<ArrayList<Integer>> cards){
+
+		//lesser dalmuti gives lesser peon their cards
+		//adds lowest card to lesser peon
+		int low = findLowest(cards, 1);
+		cards.get(2).set(low, cards.get(2).get(low) + 1);
+		//takes away card from original holder
+		cards.get(1).set(low, cards.get(1).get(low) - 1);
+
+		//lesser peon gives lesser dalmuti their cards
+		//adds highest card to lesser dalmuti
+		int high = findHighest(cards, 2);
+		cards.get(1).set(high, cards.get(1).get(high) + 1);
+		//takes away card from original holder
+		cards.get(2).set(high, cards.get(2).get(high) - 1);
+
+		//great peon gives greater dalmuti 2 of their cards
+		//adds lowest card
+		high = findHighest(cards, 3);
+		cards.get(0).set(high, cards.get(0).get(high) + 1);
+		//takes away card from original holder
+		cards.get(3).set(high, cards.get(3).get(high) - 1);
+		high = findLowest(cards, 3);
+		cards.get(0).set(high, cards.get(0).get(high) + 1);
+		//takes away card from original holder
+		cards.get(3).set(high, cards.get(3).get(high) - 1);
+
+		//great peon gives greater dalmuti 2 of their cards
+		//adds lowest card
+		low = findLowest(cards, 0);
+		cards.get(3).set(low, cards.get(3).get(low) + 1);
+		//takes away card from original holder
+		cards.get(0).set(low, cards.get(0).get(low) - 1);
+		low = findLowest(cards, 0);
+		cards.get(3).set(low, cards.get(3).get(low) + 1);
+		//takes away card from original holder
+		cards.get(0).set(low, cards.get(0).get(low) - 1);
+
 		return true;
 	} // payTaxes
 
-	//taxes for the greater dalmuti, ranks should be changed to named variables
-	public boolean greatTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards, int indexTax, int indexTax2){
-		//adds first taxes
-		cards.get(3).set(indexTax, cards.get(3).get(indexTax) + 1);
-		cards.get(3).set(indexTax2, cards.get(3).get(indexTax) + 1);
-		//takes away cards from original holder
-		cards.get(0).set(indexTax, cards.get(0).get(indexTax) - 1);
-		cards.get(0).set(indexTax2, cards.get(0).get(indexTax2) - 1);
-		return true;
-	} // greatTaxes
-
-	//taxes for the lesser dalmuti, ranks should be changed to named variables
-	public boolean lesserTaxes(int playerRank, ArrayList<ArrayList<Integer>> cards, int indexTax){
-		//adds first taxes
-		cards.get(2).set(indexTax, cards.get(2).get(indexTax) + 1);
-		//takes away cards from original holder
-		cards.get(1).set(indexTax, cards.get(1).get(indexTax) - 1);
-		return true;
-	} // lesserTaxes
-
 	//this method allows a player to play a card
 	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int cardNumSelected, int numSelected){
-		if( (numSelected > 0) && (isLegalMove(player, decks, cardNumSelected, numSelected)) ){
+		GDLocalGame local = new GDLocalGame(this);
+		if( (numSelected > 0) && (local.isLegalMove(player, decks, cardNumSelected, numSelected)) ){
 				decks.get(player).set(cardNumSelected, decks.get(player).get(cardNumSelected) - numSelected);
 		}
 		if(this.getTurn() == 3 ){
@@ -238,7 +249,6 @@ public class GDState extends GameState {
 		} else {
 			this.setTurn(this.getTurn() + 1);
 		}
-
 		return decks;
 	} // play
 
@@ -248,7 +258,6 @@ public class GDState extends GameState {
 			if(player == 2){
 				this.setExchangingTaxes(false);
 			} else if(player == 3){
-
 				//switches player 1 for 4 & 2 for 3
 				ArrayList<ArrayList<Integer>> newCards = null;
 				for(int j = 0; j < cards.get(1).size(); j++) {
@@ -261,10 +270,4 @@ public class GDState extends GameState {
 		}
 		return true;
 	} // revolution
-
-
-	public boolean isLegalMove(int player, ArrayList<ArrayList<Integer>> decks, int cardNumSelected, int numSelected){
-		
-		return false;
-	} // isLegalMove
 } // GDState class
