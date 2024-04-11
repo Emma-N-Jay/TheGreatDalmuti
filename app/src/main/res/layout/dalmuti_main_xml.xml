@@ -27,6 +27,7 @@
         android:orientation="horizontal">
 
         <edu.up.cs301.GreatDalmuti.surfaceDraw
+            android:id="@+id/the_canvas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />

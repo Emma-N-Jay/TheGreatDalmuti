@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.SurfaceView;
 
 public class surfaceDraw extends SurfaceView {
-
+//lalalalala
     //Paint pallette
     public Paint purple = new Paint();
     private GDState state;
@@ -21,8 +21,8 @@ public class surfaceDraw extends SurfaceView {
         setWillNotDraw(false);
     }
 
-    public void setCurrentGameState(){
-        //state = GDState();
+    public void setCurrentGameState(GDState state){
+        this.state = state;
     }
     @Override
     protected void onDraw(Canvas canvas){
@@ -42,10 +42,10 @@ public class surfaceDraw extends SurfaceView {
 
 
         //scale the bitmap
-        back = Bitmap.createScaledBitmap(back, 250, 350, false);
-        backleft = Bitmap.createScaledBitmap(backleft, 350, 250, false);
-        backright = Bitmap.createScaledBitmap(backright, 350, 250, false);
-        dalmuti = Bitmap.createScaledBitmap(dalmuti, 350, 250, false);
+        back = Bitmap.createScaledBitmap(back, 50, 150, false);
+        backleft = Bitmap.createScaledBitmap(backleft, 50, 150, false);
+        backright = Bitmap.createScaledBitmap(backright, 50, 150, false);
+        dalmuti = Bitmap.createScaledBitmap(dalmuti, 50, 100, false);
 
         //draw the top hand
         canvas.drawBitmap(back,650, 10, null);
@@ -85,7 +85,7 @@ public class surfaceDraw extends SurfaceView {
         canvas.drawBitmap(backright,2160, 650, null);
 
         //Draw text??
-        //canvas.drawText("# played:" + getNumInPile() , 1500, 1500, purple);
+        canvas.drawText("# played:" + state.getNumInPile() , 1500, 1500, purple);
 
         //Time to do the pile!
         canvas.drawBitmap(dalmuti,1500, 1500, null);

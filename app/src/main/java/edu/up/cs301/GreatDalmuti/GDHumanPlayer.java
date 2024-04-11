@@ -10,6 +10,7 @@
 
 package edu.up.cs301.GreatDalmuti;
 
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -58,6 +59,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	//for image button
 	private ImageButton revolutionButton = null;
+	private ImageButton paytaxesButton = null;
 	private ImageButton jester = null;
 	private ImageButton one = null;
 	private ImageButton two = null;
@@ -90,7 +92,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private TextView elevenNum = null;
 	private TextView twelveNum = null;
 
-
+	//the canvas
+	private surfaceDraw canvas = null;
 
 	// CONSTRUCTORS ********************************************************************************
 	/**
@@ -118,6 +121,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * sets the counter value in the text view
 	*/
 	protected void updateDisplay() {
+		canvas.invalidate();
 		// set the text in the appropriate widget
 		//testResultsTextView.setText("" + state.getCounter());
 	} // updateDisplay
@@ -130,7 +134,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * 		the button that was clicked
 	 */
 	public void onClick(View button) {
-		//current selected card
+		//current selected card is c, number is n
 
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
@@ -148,6 +152,18 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 		else if(button == revolutionButton){
 		state.revolution(this.playerNum, state.getDeck());
+		}
+		else if(button == paytaxesButton){
+			if(playerNum == 3){
+				state.GPPayTaxes();
+			} else if(playerNum == 2){
+				state.LPPayTaxes();
+			} else if(playerNum == 1){
+				state.LDPayTaxes(c);
+			} else if(playerNum == 0){
+				state.LDPayTaxes(c);
+			}
+
 		}
 
 		//selected cards/display for selected cards
@@ -283,9 +299,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	public void receiveInfo(GameInfo info) {
 		// ignore the message if it's not a CounterState message
 		if (!(info instanceof edu.up.cs301.GreatDalmuti.GDState)) return;
-		
+
 		// update our state; then update the display
 		this.state = (edu.up.cs301.GreatDalmuti.GDState)info;
+		canvas.setCurrentGameState(this.state);
 		updateDisplay();
 
 		GDState postType = (GDState) info;
@@ -296,6 +313,13 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			revolutionButton.setImageResource(R.drawable.revbutton);
 		} else {
 			revolutionButton.setImageResource(R.drawable.blankspace);
+		}
+
+		//image of pay taxes button if during that phase of the game
+		if(postType.getExhangingTaxes()){
+			paytaxesButton.setImageResource(R.drawable.payTaxesImage);
+		} else {
+			paytaxesButton.setImageResource(R.drawable.blankspace);
 		}
 
 
@@ -409,6 +433,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//image button for rev and the cards
 		this.revolutionButton = (ImageButton)activity.findViewById(R.id.revolutionButton);
+		this.paytaxesButton = (ImageButton)activity.findViewById(R.id.payTaxesButton);
 		this.one = (ImageButton)activity.findViewById(R.id.one);
 		this.two = (ImageButton)activity.findViewById(R.id.two);
 		this.three = (ImageButton)activity.findViewById(R.id.three);
@@ -441,6 +466,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//sets image button listener
 		revolutionButton.setOnClickListener(this);
+		paytaxesButton.setOnClickListener(this);
 		one.setOnClickListener(this);
 		two.setOnClickListener(this);
 		three.setOnClickListener(this);
@@ -471,6 +497,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.tenNum = (TextView) activity.findViewById(R.id.tenNum);
 		this.elevenNum = (TextView) activity.findViewById(R.id.elevenNum);
 		this.twelveNum = (TextView) activity.findViewById(R.id.twelveNum);
+
+		//find the surface view
+		this.canvas = (surfaceDraw)activity.findViewById(R.id.the_canvas);
 
 	} // setAsGui
 

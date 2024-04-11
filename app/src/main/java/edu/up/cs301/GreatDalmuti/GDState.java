@@ -21,7 +21,6 @@ public class GDState extends GameState {
 	// INSTANCE VARIABLES **************************************************************************
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;
-
 	// instances of specific actions taken in the game
 
 	//TODO: SORTED BY PERSON AND THEN THAT PERSONS HAND (IF YOU DO NOT UNDERSTAND THIS ASK ALEX)
@@ -98,11 +97,11 @@ public class GDState extends GameState {
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
 	public GDState getState(){return this;}
-	public void setExchangingTaxes(boolean update){
-		exchangingTaxes = update;
-	}
+	public boolean getExhangingTaxes(){return this.exchangingTaxes;}
+	public void setExchangingTaxes(boolean update){exchangingTaxes = update;}
 	public int getNumInPile(){return this.numInPile;}
 	public int getRankInPile(){return this.rankInPile;}
+	public int getHasLead(){return this.hasLead;}
 	public ArrayList<ArrayList<Integer>> getDeck(){return deck;}
 	public ArrayList<Integer>getP1Hand(){return deck.get(0);}
 	public ArrayList<Integer>getP2Hand(){return deck.get(1);}
