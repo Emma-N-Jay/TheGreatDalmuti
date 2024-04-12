@@ -20,11 +20,11 @@ import edu.up.cs301.GameFramework.utilities.Tickable;
 
 public class GDDumbAI extends GameComputerPlayer implements Tickable {
 
-	// INSTANCE VARIABLES **************************************************************************
+	// INSTANCE VARIABLES *********************************************************************
 	private edu.up.cs301.GreatDalmuti.GDState state;
 
 
-	// CONSTRUCTORS ********************************************************************************
+	// CONSTRUCTORS ***************************************************************************
     /**
      * Constructor for objects of class CounterComputerPlayer1
      * 
@@ -43,27 +43,27 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		 * GIVING TAXES
 		 */
 		//when it is the great dalmuti it will automatically pass its two highest cards
-		if(state.getDeck().getWHICHEVERPLAYERIAM() == 3){
+		if(state.getDeck().get(playerNum) == 3){
 			//I know this looks like a mess BUT its just passing in the two highest cards, thats it
-			state.GDPayTaxes(rankOfCard(state.getDeck().getWHICHEVERPLAYERIAM().size() - 1,
+			state.GDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
 					state.getDeck().getWHICHEVERPLAYERIAM()),
-					rankOfCard(state.getDeck().getWHICHEVERPLAYERIAM().size() - 2,
+					rankOfCard(state.getDeck().get(playerNum).size() - 2,
 							state.getDeck().getWHICHEVERPLAYERIAM()));
 		}
 		//when it is the lesser dalmuti it will automatically pass its two highest cards
-		if(state.getDeck().getWHICHEVERPLAYERIAM() == 3){
-			state.LDPayTaxes(rankOfCard(state.getDeck().getWHICHEVERPLAYERIAM().size() - 1,
+		if(state.getDeck().get(playerNum) == 3){
+			state.LDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
 					state.getDeck().getWHICHEVERPLAYERIAM()));
 		}
 
 		/**
 		 * GETTING THE LEAD (should this somehow happen)
 		 */
-		int tempRank = rankOfCard(state.getDeck().getWHICHEVERPLAYERIAM().size() - 1,
+		int tempRank = rankOfCard(state.getDeck().get(playerNum).size() - 1,
 				state.getDeck().getWHICHEVERPLAYERIAM());
 
-		if(state.getHasLead() == WHICHEVERPLAYERIAM){
-			state.play(WHICHEVERPLAYERIAM, state.getDeck(), tempRank,
+		if(state.getHasLead() == playerNum){
+			state.play(playerNum, state.getDeck(), tempRank,
 					numOfRank(tempRank,state.getDeck().getWHICHEVERPLAYERIAM()));
 		}
 
@@ -71,11 +71,11 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		 * PASSING AND PLAYING CARDS WITH THE DUMB AI
 		 */
 		//will give us a sorted version of this players hand
-		state.getDeck().getWHICHEVERPLAYERIAM();
-		for(int i = state.getDeck().getWHICHEVERPLAYERIAM().size() - 1; i >= 0; i--){
+		state.getDeck().get(playerNum);
+		for(int i = state.getDeck().get(playerNum).size() - 1; i >= 0; i--){
 			if(i < state.getRankInPile()){
 				if(numOfRank(state.getRankInPile(), state.getDeck().getWHICHEVERPLAYERIAM()) >= state.getNumInPile()){
-					state.play(WHICHEVERPLAYERIAM, state.getDeck(), i, state.getNumInPile());
+					state.play(playerNum, state.getDeck(), i, state.getNumInPile());
 					played = true;
 				}
 			}

@@ -45,7 +45,7 @@ public class GDState extends GameState {
 	public int indexHand;
 
 	//rank of each player
-	public String[] ranks = new String[4];
+	String[] ranks = new String[4];
 
 	// CONSTRUCTORS ********************************************************************************
 	/**
@@ -96,17 +96,23 @@ public class GDState extends GameState {
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
 	public GDState getState(){return this;}
-	public boolean getExchangingTaxes(){return this.exchangingTaxes;}
+	public boolean getExhangingTaxes(){return this.exchangingTaxes;}
 	public void setExchangingTaxes(boolean update){exchangingTaxes = update;}
 	public int getNumInPile(){return this.numInPile;}
 	public int getRankInPile(){return this.rankInPile;}
-	public int getNumPass(){return this.numPass;}
 	public int getHasLead(){return this.hasLead;}
 	public ArrayList<ArrayList<Integer>> getDeck(){return deck;}
 	public ArrayList<Integer>getP1Hand(){return deck.get(0);}
 	public ArrayList<Integer>getP2Hand(){return deck.get(1);}
 	public ArrayList<Integer>getP3Hand(){return deck.get(2);}
 	public ArrayList<Integer>getP4Hand(){return deck.get(3);}
+	public ArrayList<Integer>getHand(int foo){
+		if(foo == 1){return deck.get(0);}
+		else if(foo == 2){return deck.get(1);}
+		else if(foo == 3){return deck.get(2);}
+		else {return deck.get(3);}
+
+	}
 
 	@Override
 	public String toString() {
@@ -143,6 +149,7 @@ public class GDState extends GameState {
 			three = (int) (Math.random() * 4) + 1;
 		}
 		ranks[three] = "Lesser Dalmuti";
+
 	}
 
 	//SHUFFLES DECK
@@ -201,15 +208,14 @@ public class GDState extends GameState {
 
 	// PASS METHOD
 	public boolean pass(int turn){
-
 		if(turn == 3 ){
 			this.setTurn(0);
 		} else {
 			this.setTurn(turn + 1);
 		}
-		numPass++;
 		return true;
 	} // pass
+
 
 	/** THESE METHODS ARE ALL RELATED TO THE PAYING AND RECEIVING OF TAXES */
 	//finds index of players lowest card (best)
@@ -224,29 +230,24 @@ public class GDState extends GameState {
 	} // findLowest
 
 	public void LPPayTaxes () {
-		exchangingTaxes = true;
 		//lesser peon gives lesser dalmuti their cards
 		int low = findLowest(2);
 		//adds lowest card to lesser dalmuti
 		deck.get(1).set(low, deck.get(1).get(low) + 1);
 		//takes away card from original holder
 		deck.get(2).set(low, deck.get(2).get(low) - 1);
-		exchangingTaxes = false;
 	} //LPPayTaxes
 
 	public void LDPayTaxes (int LDTaxCard) {
-		exchangingTaxes = true;
 		//lesser peon gives lesser dalmuti their cards
 		//adds highest card to lesser dalmuti
 		int high = LDTaxCard;
 		deck.get(1).set(high, deck.get(1).get(high) + 1);
 		//takes away card from original holder
 		deck.get(2).set(high, deck.get(2).get(high) - 1);
-		exchangingTaxes = false;
 	} //LDPayTaxes
 
 	public void GPPayTaxes () {
-		exchangingTaxes = true;
 		//great peon gives greater dalmuti 2 of their cards
 		int low = findLowest(3);
 		//adds lowest card
@@ -257,11 +258,9 @@ public class GDState extends GameState {
 		deck.get(0).set(low, deck.get(0).get(low) + 1);
 		//takes away card from original holder
 		deck.get(3).set(low, deck.get(3).get(low) - 1);
-		exchangingTaxes = false;
 	} //GPPayTaxes
 
-	public void GDPayTaxes(int GDTaxCard1, int GDTaxCard2){
-		exchangingTaxes = true;
+	public boolean GDPayTaxes(int GDTaxCard1, int GDTaxCard2){
 		//great dalmuti gives greater peon 2 of their cards
 		//adds lowest card
 		int high = GDTaxCard1;
@@ -272,41 +271,26 @@ public class GDState extends GameState {
 		deck.get(3).set(high, deck.get(3).get(high) + 1);
 		//takes away card from original holder
 		deck.get(0).set(high, deck.get(0).get(high) - 1);
-		exchangingTaxes = false;
+
+		return true;
 	} // GDPayTaxes
 
 	//this method allows a player to play a card
 	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int rankSelected,
 											  int numSelected, int jestersSelected){
-
 		GDLocalGame local = new GDLocalGame(this);
-		boolean temp = false; //is true when the play was legal and actually happened
-
-		//for when a new round starts for the player who has the lead
-		if(numPass == 3 && player == hasLead && local.leadIsLegalMove(player, decks, rankSelected, numSelected, jestersSelected)){
-			this.rankInPile = rankSelected;
-			this.numInPile = numSelected + jestersSelected;
-			decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - (numSelected) );
-			decks.get(player).set(13, decks.get(player).get(13) - (jestersSelected) );
-			temp = true;
+		if( (numSelected > 0) && (local.isLegalMove(player, decks, rankSelected, numSelected, jestersSelected)) ){
+				decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - numSelected);
+		}
+		if(this.getTurn() == 3 ){
+			this.setTurn(0);
+		} else {
+			this.setTurn(this.getTurn() + 1);
 		}
 
-		//for any other time cards are played
-		else if( (numSelected > 0) && (local.isLegalMove(player, decks, rankSelected, numSelected, jestersSelected)) ){
-				decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - (numSelected + jestersSelected) );
-				temp = true;
-		}
-
-		//happens for any play
-		if(temp == true) {
-			if (this.getTurn() == 3) {
-				this.setTurn(0);
-			} else {
-				this.setTurn(this.getTurn() + 1);
-			}
-			this.hasLead = player;
-			this.numPass = 0;
-		}
+		//sets cards in pile to match played cards
+		this.rankInPile = rankSelected;
+		this.numInPile = numSelected;
 
 		return decks;
 	} // play

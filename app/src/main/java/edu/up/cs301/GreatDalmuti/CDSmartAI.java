@@ -10,6 +10,8 @@
 
 package edu.up.cs301.GreatDalmuti;
 
+import java.util.ArrayList;
+
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.utilities.Tickable;
@@ -18,6 +20,7 @@ import edu.up.cs301.GameFramework.utilities.Tickable;
 public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 	// INSTANCE VARIABLES **************************************************************************
+	private edu.up.cs301.GreatDalmuti.GDState state;
 
 	// CONSTRUCTORS ********************************************************************************
     /**
@@ -33,7 +36,81 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
         // start the timer, ticking 20 times per second
         getTimer().setInterval(50);
         getTimer().start();
+
+
+		/**
+		 * GIVING TAXES
+		 */
+		//when it is the great dalmuti it will automatically pass its two highest cards
+		if(state.getDeck().getWHICHEVERPLAYERIAM() == 3){
+			//I know this looks like a mess BUT its just passing in the two highest cards, thats it
+			state.GDPayTaxes(rankOfCard(state.getDeck().getWHICHEVERPLAYERIAM().size() - 1,
+							state.getDeck().getWHICHEVERPLAYERIAM()),
+					rankOfCard(state.getDeck().getWHICHEVERPLAYERIAM().size() - 2,
+							state.getDeck().getWHICHEVERPLAYERIAM()));
+		}
+		//when it is the lesser dalmuti it will automatically pass its two highest cards
+		if(state.getDeck().getWHICHEVERPLAYERIAM() == 3){
+			state.LDPayTaxes(rankOfCard(state.getDeck().getWHICHEVERPLAYERIAM().size() - 1,
+					state.getDeck().getWHICHEVERPLAYERIAM()));
+		}
+
+		/**
+		 * GETTING THE LEAD (should this somehow happen)
+		 */
+		int tempRank = rankOfCard(state.getDeck().getWHICHEVERPLAYERIAM().size() - 1,
+				state.getDeck().getWHICHEVERPLAYERIAM());
+
+		if(state.getHasLead() == WHICHEVERPLAYERIAM){
+			state.play(WHICHEVERPLAYERIAM, state.getDeck(), tempRank,
+					numOfRank(tempRank,state.getDeck().getWHICHEVERPLAYERIAM()));
+		}
+
+		/**
+		 * PASSING AND PLAYING CARDS WITH THE DUMB AI
+		 */
+		for(int i = state.getDeck().getWHICHEVERPLAYERIAM().size() - 1; i >= 0; i--){
+			if(i < state.getRankInPile()){
+				if(numOfRank(state.getRankInPile(), state.getDeck().getWHICHEVERPLAYERIAM()) >= state.getNumInPile()){
+					state.play(WHICHEVERPLAYERIAM, state.getDeck(), i, state.getNumInPile());
+					played = true;
+				}
+			}
+		}
+		if(played == false){
+			state.pass(state.getTurn());
+		}
     } // GDComputerPlayer2
+
+	// HELPER METHODS ******************************************************************************
+
+	/** finds the number of cards a player has that has that specific rank */
+	public int numOfRank(int rank, ArrayList<Integer> playerHand){
+		int numCards = 0;
+		for(int i = 0; i >= playerHand.size(); i++){
+			if(playerHand.get(i) == rank){
+				numCards++;
+			}
+		}
+		return numCards;
+	}
+
+	/** finds the rank of a card at a specified index */
+	public int rankOfCard(int index, ArrayList<Integer> playerHand){
+		return playerHand.get(index);
+	}
+
+	/** locates highest single card*/
+	public int highSingle(ArrayList<Integer> playerHand){
+		int num = -1;
+		for(int i = 0; i < playerHand.size(); i++){
+			if(numOfRank(i,playerHand) == 1){
+				num = i;
+			}
+		}
+		return num;
+	}
+
 
 	// METHODS *************************************************************************************
     /**
