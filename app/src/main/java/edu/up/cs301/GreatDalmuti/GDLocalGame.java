@@ -123,6 +123,25 @@ public class GDLocalGame extends LocalGame {
 		return false;
 	}
 
+	//is legal move specifically for when the player has the lead
+	protected boolean leadIsLegalMove(int player, ArrayList<ArrayList<Integer>> deck, int rankSelected,
+									  int numSelected, int jestersSelected){
+		boolean temp = true;
+		//sets to false if they don't have the cards to play
+		if(numSelected + jestersSelected <= 0){
+			temp = false;
+		}
+		if ( deck.get(player).get(rankSelected) < numSelected){
+			temp = false;
+		}
+		if ( deck.get(player).get(13) < jestersSelected){
+			temp = false;
+		}
+
+
+		return temp;
+	}
+
 
 	/**
 	 * The only type of GameAction that should be sent is CounterMoveAction
