@@ -5,7 +5,7 @@
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 19 2024
+ * @version April 12 2024
  *
  * A class that represents the state of a game. In The Great Dalmuti, we need to know the cards,
  * players hands, rank, revolution status, taxes, player turn, and who is in the lead.
@@ -76,50 +76,55 @@ public class GDLocalGame extends LocalGame {
 	 * checks the selected cards against the rules of the game to ensure the move is legal
 	 * REMEMBER DECK IS SORTED BY PLAYER AND THEN HAND
 	 */
-	//TODO possibly check for multiple suits
 	protected boolean isLegalMove(int player, ArrayList<ArrayList<Integer>> deck, int cardNumSelected,
 								  int numSelected, int jestersSelected) {
-		if (jestersSelected == 0) {
-			if (player == gameState.getTurn()) {
 
-				if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
-						&& ( deck.get(player).get(cardNumSelected)) > 0) {
+		if( (cardNumSelected > 0) && (cardNumSelected < 13) ){
 
-					if( numSelected == gameState.getNumInPile() ) {
+			if (jestersSelected == 0) {
+				if (player == gameState.getTurn()) {
 
-						if ( cardNumSelected < gameState.getRankInPile() ) {
+					if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
+							&& ( deck.get(player).get(cardNumSelected)) > 0) {
 
-							return true;
+						if( numSelected == gameState.getNumInPile() ) {
 
-						}
+							if ( cardNumSelected < gameState.getRankInPile() ) {
 
-					}
+								return true;
 
-				}
-
-			}
-		}
-
-		else if ( (jestersSelected == 1) || (jestersSelected == 2) ){
-			if (player == gameState.getTurn()) {
-
-				if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
-						&& ( deck.get(player).get(cardNumSelected)) > 0) {
-
-					if( (numSelected  + jestersSelected) == gameState.getNumInPile() ) {
-
-						if ( cardNumSelected < gameState.getRankInPile() ) {
-
-							return true;
+							}
 
 						}
 
 					}
 
 				}
-
 			}
+
+			else if ( (jestersSelected == 1) || (jestersSelected == 2) ){
+				if (player == gameState.getTurn()) {
+
+					if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
+							&& ( deck.get(player).get(cardNumSelected)) > 0) {
+
+						if( (numSelected  + jestersSelected) == gameState.getNumInPile() ) {
+
+							if ( cardNumSelected < gameState.getRankInPile() ) {
+
+								return true;
+
+							}
+
+						}
+
+					}
+
+				}
+			}
+
 		}
+
 		return false;
 	}
 
