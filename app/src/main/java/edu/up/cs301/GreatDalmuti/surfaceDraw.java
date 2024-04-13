@@ -1,3 +1,13 @@
+/**
+ * This contains the surfaceView for the GreatDalmuti game.
+ *
+ * @author Tramanh Best
+ * @author Emma Jeppesen
+ * @author Alex Burns
+ * @author Theresa Wunderlich
+ * @version April 13 2024
+ */
+
 package edu.up.cs301.GreatDalmuti;
 
 import android.content.Context;
