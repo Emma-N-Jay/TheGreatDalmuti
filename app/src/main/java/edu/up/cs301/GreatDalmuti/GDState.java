@@ -96,6 +96,7 @@ public class GDState extends GameState {
 	public void setTurn(int turn){this.turn = turn;}
 	public GDState getState(){return this;}
 	public boolean getExhangingTaxes(){return this.exchangingTaxes;}
+	public int getNumPass(){return this.numPass;}
 	public void setExchangingTaxes(boolean update){exchangingTaxes = update;}
 	public int getNumInPile(){return this.numInPile;}
 	public int getRankInPile(){return this.rankInPile;}
@@ -212,6 +213,8 @@ public class GDState extends GameState {
 		} else {
 			this.setTurn(turn + 1);
 		}
+		numPass++;
+
 		return true;
 	} // pass
 
@@ -278,18 +281,33 @@ public class GDState extends GameState {
 	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int rankSelected,
 											  int numSelected, int jestersSelected){
 		GDLocalGame local = new GDLocalGame(this);
-		if( (numSelected > 0) && (local.isLegalMove(player, decks, rankSelected, numSelected, jestersSelected)) ){
-				decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - numSelected);
-		}
-		if(this.getTurn() == 3 ){
-			this.setTurn(0);
-		} else {
-			this.setTurn(this.getTurn() + 1);
+
+		boolean temp = false; //is true when the play was legal and actually happened
+
+		//for when a new round starts for the player who has the lead
+		if(numPass == 3 && player == hasLead && local.leadIsLegalMove(player, decks, rankSelected, numSelected, jestersSelected)){
+			this.rankInPile = rankSelected;
+			this.numInPile = numSelected + jestersSelected;
+			decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - (numSelected) );
+			decks.get(player).set(13, decks.get(player).get(13) - (jestersSelected) );
+			temp = true;
 		}
 
-		//sets cards in pile to match played cards
-		this.rankInPile = rankSelected;
-		this.numInPile = numSelected;
+		if( (numSelected > 0) && (local.isLegalMove(player, decks, rankSelected, numSelected, jestersSelected)) ){
+				decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - numSelected);
+				temp = true;
+		}
+
+
+		if(temp == true) {
+			if (this.getTurn() == 3) {
+				this.setTurn(0);
+			} else {
+				this.setTurn(this.getTurn() + 1);
+			}
+			this.hasLead = player;
+			this.numPass = 0;
+		}
 
 		return decks;
 	} // play
