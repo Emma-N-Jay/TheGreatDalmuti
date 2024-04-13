@@ -96,7 +96,7 @@ public class GDState extends GameState {
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
 	public GDState getState(){return this;}
-	public boolean getExhangingTaxes(){return this.exchangingTaxes;}
+	public boolean getExhangtingTaxes(){return this.exchangingTaxes;}
 	public int getNumPass(){return this.numPass;}
 	public void setExchangingTaxes(boolean update){exchangingTaxes = update;}
 	public int getNumInPile(){return this.numInPile;}

@@ -315,7 +315,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 		//image of pay taxes button if during that phase of the game
-		if(state.getExhangingTaxes()){
+		if(state.getExhangtingTaxes()){
 			paytaxesButton.setImageResource(R.drawable.paytaxesimage);
 		} else {
 			paytaxesButton.setImageResource(R.drawable.blankspace);
