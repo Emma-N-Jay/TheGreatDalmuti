@@ -1,3 +1,13 @@
+/**
+ * This contains the surfaceView for the GreatDalmuti game.
+ *
+ * @author Tramanh Best
+ * @author Emma Jeppesen
+ * @author Alex Burns
+ * @author Theresa Wunderlich
+ * @version April 13 2024
+ */
+
 package edu.up.cs301.GreatDalmuti;
 
 import android.content.Context;
@@ -14,6 +24,10 @@ public class surfaceDraw extends SurfaceView {
     //Paint pallette
     public Paint purple = new Paint();
     private GDState state;
+    private final int GD = 0;
+    private final int LD = 1;
+    private final int GP = 2;
+    private final int LP = 3;
 
 
     public surfaceDraw(Context context, AttributeSet attr) {
@@ -162,8 +176,10 @@ public class surfaceDraw extends SurfaceView {
 
              */
             //Set the text based on rank and num cards
+            int humanNum;
             if(state.ranks[0] == "Great Dalmuti"){
                     //name labels
+                    humanNum = GD;
                     canvas.drawText("Lesser Dalmuti", 25, 75, purple);
                     canvas.drawText("Lesser Peon", 275, 25, purple);
                     canvas.drawText("Great Peon", 1810, 75, purple);
@@ -172,6 +188,7 @@ public class surfaceDraw extends SurfaceView {
 
             }
             if(state.ranks[0] == "Lesser Dalmuti"){
+                    humanNum = LD;
                     //name labels
                     canvas.drawText("Lesser Dalmuti", 25, 75, purple);
                     canvas.drawText("Great Peon" , 275, 25, purple);
@@ -181,11 +198,14 @@ public class surfaceDraw extends SurfaceView {
 
             }if(state.ranks[0] == "Lesser Peon"){
                     //name labels
+                    humanNum = LP;
                     canvas.drawText("Great Dalmuti", 25, 75, purple);
                     canvas.drawText("Lesser Peon" , 275, 25, purple);
                     canvas.drawText( "Great Peon", 1810, 75, purple);
                     canvas.drawText("Lesser Dalmuti"  , 750, 700, purple);
             }if(state.ranks[0] == "Great Peon"){
+                    //left blank until I figure out how to determine which player is which
+                    humanNum = GP;
                     //name labels
                     canvas.drawText("Great Dalmuti", 25, 75, purple);
                     canvas.drawText("Lesser Dalmuti", 275, 25, purple);
