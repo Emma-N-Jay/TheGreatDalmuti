@@ -68,6 +68,7 @@ public class surfaceDraw extends SurfaceView {
             Bitmap shepherdess = BitmapFactory.decodeResource(getResources(), R.drawable.sheperdess);
             Bitmap stone_cutter = BitmapFactory.decodeResource(getResources(), R.drawable.stonecutter);
             Bitmap peasant = BitmapFactory.decodeResource(getResources(), R.drawable.peasant);
+            Bitmap jester = BitmapFactory.decodeResource(getResources(), R.drawable.jesteryetagain);
 
 
             //scale the bitmaps
@@ -89,9 +90,23 @@ public class surfaceDraw extends SurfaceView {
             shepherdess = Bitmap.createScaledBitmap(shepherdess, 125, 175, false);
             stone_cutter = Bitmap.createScaledBitmap(stone_cutter, 125, 175, false);
             peasant = Bitmap.createScaledBitmap(peasant, 125, 175, false);
+            jester = Bitmap.createScaledBitmap(jester, 125, 175, false);
 
             //scale the play pile cards
             deckDal = Bitmap.createScaledBitmap(dalmuti, 175, 225, false);
+            deckArch = Bitmap.createScaledBitmap(archbish, 175, 225, false);
+            deckEarl = Bitmap.createScaledBitmap(earlmarsh, 175, 225, false);
+            deckBaron= Bitmap.createScaledBitmap(baroness, 175, 225, false);
+            deckAbb = Bitmap.createScaledBitmap(abbess, 175, 225, false);
+            deckKnight = Bitmap.createScaledBitmap(knight, 175, 225, false);
+            deckSeam = Bitmap.createScaledBitmap(seamstress, 175, 225, false);
+            deckMason = Bitmap.createScaledBitmap(mason, 175, 225, false);
+            deckCook = Bitmap.createScaledBitmap(cook, 175, 225, false);
+            deckShep = Bitmap.createScaledBitmap(shepherdess, 175, 225, false);
+            deckStonecut = Bitmap.createScaledBitmap(stone_cutter, 175, 225, false);
+            deckPeasant = Bitmap.createScaledBitmap(peasant, 175, 225, false);
+            deckJester = Bitmap.createScaledBitmap(jester, 175, 225, false);
+
 
             //draw the top hand
             canvas.drawBitmap(back, 450, 10, null);
@@ -131,14 +146,99 @@ public class surfaceDraw extends SurfaceView {
             canvas.drawBitmap(backright, 1785, 325, null);
 
             //Draw text for num card
-            canvas.drawText("# played:" + state.getNumInPile(),  750, 500, purple);
+            canvas.drawText("# played:",  750, 500, purple);
+            canvas.drawText(" " + state.getNumInPile(), 885, 500, purple);
+
+
+
+
+            //TODO make sure this is based on set ranks. Need to find way to access players.
+            //draw labels of player (This is temporary placeholder to see how it would look)
+            canvas.drawText("Great Dalmuti", 25, 75, purple);
+            canvas.drawText("Lesser Dalmuti", 275, 25, purple);
+            canvas.drawText("Lesser Peon", 1810, 75, purple);
+            canvas.drawText("Great Peon", 750, 700, purple);
+
+            /**
+            Assuming that player 0 is always the human player
+             */
+            if(state.ranks[0] == "Great Dalmuti"){
+                    canvas.drawText("Lesser Dalmuti", 25, 75, purple);
+                    canvas.drawText("Lesser Peon", 275, 25, purple);
+                    canvas.drawText("Great Peon", 1810, 75, purple);
+                    canvas.drawText("Great Dalmuti", 750, 700, purple);
+            }
+            if(state.ranks[0] == "Lesser Dalmuti"){
+                    canvas.drawText("Lesser Dalmuti", 25, 75, purple);
+                    canvas.drawText("Great Peon" , 275, 25, purple);
+                    canvas.drawText("Lesser Peon", 1810, 75, purple);
+                    canvas.drawText("Great Dalmuti" , 750, 700, purple);
+            }if(state.ranks[0] == "Lesser Peon"){
+                    canvas.drawText("Great Dalmuti", 25, 75, purple);
+                    canvas.drawText("Lesser Peon" , 275, 25, purple);
+                    canvas.drawText( "Great Peon", 1810, 75, purple);
+                    canvas.drawText("Lesser Dalmuti"  , 750, 700, purple);
+            }if(state.ranks[0] == "Great Peon"){
+                    //left blank until I figure out how to determine which player is which
+                    canvas.drawText("Great Dalmuti", 25, 75, purple);
+                    canvas.drawText("Lesser Dalmuti", 275, 25, purple);
+                    canvas.drawText("Lesser Peon", 1810, 75, purple);
+                    canvas.drawText("Great Peon", 750, 700, purple);
+            }
+
+            //TODO fix which player is what rank. Might end up being a bunch of annoying ifs. Maybe make a method?
+            //TODO maybe do get playerRank
+            //draw num cards of GD
+            canvas.drawText("# cards:", 25, 475, purple);
+            canvas.drawText(" "+ state.getP1Hand().size(), 125 , 475, purple);
+            //draw num cards of LD
+            canvas.drawText("# cards:", 275, 50, purple);
+            canvas.drawText(" " + state.getP2Hand().size(), 375 , 50, purple);
+            //draw num cards of LP
+            canvas.drawText(" " + state.getP3Hand().size(), 750, 700, purple);
+            canvas.drawText("10", 850 , 700, purple);
+
+            //draw num cards of GP
+            //canvas.drawText("# cards:", 1810, 475, purple);
+            //canvas.drawText("10", 1910 , 475, purple);
+
+            //Time to do the pile!
+            canvas.drawBitmap(deckDal,900, 250, null);
+
+
 
             //Time to do the pile!
             canvas.drawBitmap(deckDal, 900, 250, null);
 
             //TODO Fix what card is placed on the pile based on what card was just played
             if(state.getRankInPile() == 0){
-                canvas.drawBitmap(dalmuti, 900, 250, null);
+                canvas.drawBitmap(deckDal, 900, 250, null);
+            }else if(state.getRankInPile() == 1) {
+                    canvas.drawBitmap(deckArch, 900, 250, null);
+            }else if(state.getRankInPile() == 2) {
+                    canvas.drawBitmap(deckEarl, 900, 250, null);
+            }else if(state.getRankInPile() == 3) {
+                    canvas.drawBitmap(deckBaron, 900, 250, null);
+            }else if(state.getRankInPile() == 4) {
+                    canvas.drawBitmap(deckAbb, 900, 250, null);
+            }else if(state.getRankInPile() == 5) {
+                    canvas.drawBitmap(deckKnight, 900, 250, null);
+            }else if(state.getRankInPile() == 6) {
+                    canvas.drawBitmap(deckSeam, 900, 250, null);
+            }else if(state.getRankInPile() == 7) {
+                    canvas.drawBitmap(deckMason, 900, 250, null);
+            }else if(state.getRankInPile() == 8) {
+                    canvas.drawBitmap(deckCook, 900, 250, null);
+            }else if(state.getRankInPile() == 9) {
+                    canvas.drawBitmap(deckShep, 900, 250, null);
+            }else if(state.getRankInPile() == 10) {
+                    canvas.drawBitmap(deckStonecut, 900, 250, null);
+            }else if(state.getRankInPile() == 11) {
+                    canvas.drawBitmap(deckPeasant, 900, 250, null);
+            }else if(state.getRankInPile() == 12) {
+                    canvas.drawBitmap(deckJester, 900, 250, null);
+            }else if(state.getRankInPile() == 13) {
+                    canvas.drawBitmap(deckJester, 900, 250, null);
             }
 
     }
