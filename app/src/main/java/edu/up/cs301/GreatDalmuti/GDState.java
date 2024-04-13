@@ -5,7 +5,7 @@
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version April 4 2024
+ * @version April 12 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
@@ -24,7 +24,6 @@ public class GDState extends GameState {
 	// instances of specific actions taken in the game
 
 	//TODO: SORTED BY PERSON AND THEN THAT PERSONS HAND (IF YOU DO NOT UNDERSTAND THIS ASK ALEX)
-	// from theresa: thank you
 	private ArrayList<ArrayList<Integer>> deck; //this is literally the entire deck of cards
 	private boolean handIsVisible; //if a players hand is visible for a specific device
 	private boolean revolutionIsVisible; //is the revolution button visible
