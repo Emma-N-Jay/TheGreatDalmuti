@@ -287,6 +287,7 @@ public class GDState extends GameState {
 
 		if( (numSelected > 0) && (local.isLegalMove(player, decks, rankSelected, numSelected, jestersSelected)) ){
 				decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - numSelected);
+				decks.get(player).set(13, decks.get(player).get(13) - (jestersSelected) );
 				temp = true;
 		}
 
