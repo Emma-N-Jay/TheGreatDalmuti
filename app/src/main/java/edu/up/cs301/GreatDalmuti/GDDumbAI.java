@@ -23,6 +23,10 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 	// INSTANCE VARIABLES *********************************************************************
 	private edu.up.cs301.GreatDalmuti.GDState state;
 
+	/**
+	 * TODO: IF THERE IS A PROBLEM WITH THIS CLASS IT IS LIKELY BECAUSE IT IS REFERENCING A
+	 * CERTAIN SET OF NUMBERS (GD = 0, LD = 1, LP = 2 GP = 3)
+	 */
 
 	// CONSTRUCTORS ***************************************************************************
     /**
@@ -43,28 +47,28 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		 * GIVING TAXES
 		 */
 		//when it is the great dalmuti it will automatically pass its two highest cards
-		if(state.getDeck().get(playerNum) == 3){
+		if(playerNum == 3){
 			//I know this looks like a mess BUT its just passing in the two highest cards, thats it
 			state.GDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
-					state.getDeck().getWHICHEVERPLAYERIAM()),
+					state.getDeck().get(playerNum)),
 					rankOfCard(state.getDeck().get(playerNum).size() - 2,
-							state.getDeck().getWHICHEVERPLAYERIAM()));
+							state.getDeck().get(playerNum)));
 		}
-		//when it is the lesser dalmuti it will automatically pass its two highest cards
-		if(state.getDeck().get(playerNum) == 3){
+		//when it is the lesser dalmuti it will automatically pass its highest
+		if(playerNum == 2){
 			state.LDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
-					state.getDeck().getWHICHEVERPLAYERIAM()));
+					state.getDeck().get(playerNum)));
 		}
 
 		/**
 		 * GETTING THE LEAD (should this somehow happen)
 		 */
 		int tempRank = rankOfCard(state.getDeck().get(playerNum).size() - 1,
-				state.getDeck().getWHICHEVERPLAYERIAM());
+				state.getDeck().get(playerNum));
 
 		if(state.getHasLead() == playerNum){
 			state.play(playerNum, state.getDeck(), tempRank,
-					numOfRank(tempRank,state.getDeck().getWHICHEVERPLAYERIAM()));
+					numOfRank(tempRank,state.getDeck().get(playerNum)), 0);
 		}
 
 		/**
@@ -74,8 +78,8 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		state.getDeck().get(playerNum);
 		for(int i = state.getDeck().get(playerNum).size() - 1; i >= 0; i--){
 			if(i < state.getRankInPile()){
-				if(numOfRank(state.getRankInPile(), state.getDeck().getWHICHEVERPLAYERIAM()) >= state.getNumInPile()){
-					state.play(playerNum, state.getDeck(), i, state.getNumInPile());
+				if(numOfRank(state.getRankInPile(), state.getDeck().get(playerNum)) >= state.getNumInPile()){
+					state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0);
 					played = true;
 				}
 			}

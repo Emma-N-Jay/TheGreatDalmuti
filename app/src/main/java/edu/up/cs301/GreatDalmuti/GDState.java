@@ -106,13 +106,6 @@ public class GDState extends GameState {
 	public ArrayList<Integer>getP2Hand(){return deck.get(1);}
 	public ArrayList<Integer>getP3Hand(){return deck.get(2);}
 	public ArrayList<Integer>getP4Hand(){return deck.get(3);}
-	public ArrayList<Integer>getHand(int foo){
-		if(foo == 1){return deck.get(0);}
-		else if(foo == 2){return deck.get(1);}
-		else if(foo == 3){return deck.get(2);}
-		else {return deck.get(3);}
-
-	}
 
 	@Override
 	public String toString() {
