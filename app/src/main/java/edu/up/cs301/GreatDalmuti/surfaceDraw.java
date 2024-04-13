@@ -204,13 +204,16 @@ public class surfaceDraw extends SurfaceView {
                     canvas.drawText( "Great Peon", 1810, 75, purple);
                     canvas.drawText("Lesser Dalmuti"  , 750, 700, purple);
             }if(state.ranks[0] == "Great Peon"){
-                    //left blank until I figure out how to determine which player is which
                     humanNum = GP;
-                    //name labels
+                    //Draw text for num card
+                    canvas.drawText("# played:", 775, 500, purple);
+                    canvas.drawText("4", 885, 500, purple);
+
+                    //draw labels of player
                     canvas.drawText("Great Dalmuti", 25, 75, purple);
                     canvas.drawText("Lesser Dalmuti", 275, 25, purple);
                     canvas.drawText("Lesser Peon", 1810, 75, purple);
-                    canvas.drawText("Great Peon", 750, 700, purple);
+                    canvas.drawText("Great Peon", 925, 575, purple);
 
                     //Num cards labels
                     //draw num cards of GD
