@@ -500,6 +500,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//find the surface view
 		this.canvas = (surfaceDraw)activity.findViewById(R.id.the_canvas);
 
+		// Load the layout resource for our GUI
+		activity.setContentView(R.layout.dalmuti_main_xml);
+
 	} // setAsGui
 
 	//TODO fix this
