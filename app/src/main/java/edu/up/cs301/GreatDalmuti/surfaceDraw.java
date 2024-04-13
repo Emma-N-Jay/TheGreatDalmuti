@@ -214,14 +214,8 @@ public class surfaceDraw extends SurfaceView {
             //canvas.drawText("# cards:", 1810, 475, purple);
             //canvas.drawText("10", 1910 , 475, purple);
 
-            //Time to do the pile!
-            canvas.drawBitmap(deckDal,900, 250, null);
-
-
 
             //Time to do the pile!
-            canvas.drawBitmap(deckDal, 900, 250, null);
-
             //TODO Fix what card is placed on the pile based on what card was just played
             if(state.getRankInPile() == 1){
                 canvas.drawBitmap(deckDal, 900, 250, null);
@@ -250,6 +244,5 @@ public class surfaceDraw extends SurfaceView {
             }else if(state.getRankInPile() == 13) {
                     canvas.drawBitmap(deckJester, 900, 250, null);
             }
-
     }
 }
