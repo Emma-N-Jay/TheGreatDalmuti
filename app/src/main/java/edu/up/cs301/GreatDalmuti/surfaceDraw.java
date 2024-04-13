@@ -159,6 +159,7 @@ public class surfaceDraw extends SurfaceView {
 
             /**
            JUST NEED TO FIND RANK OF HUMAN PLAYER
+
              */
             //Set the text based on rank and num cards
             if(state.ranks[0] == "Great Dalmuti"){
@@ -167,6 +168,8 @@ public class surfaceDraw extends SurfaceView {
                     canvas.drawText("Lesser Peon", 275, 25, purple);
                     canvas.drawText("Great Peon", 1810, 75, purple);
                     canvas.drawText("Great Dalmuti", 750, 700, purple);
+
+
             }
             if(state.ranks[0] == "Lesser Dalmuti"){
                     //name labels
@@ -174,6 +177,8 @@ public class surfaceDraw extends SurfaceView {
                     canvas.drawText("Great Peon" , 275, 25, purple);
                     canvas.drawText("Lesser Peon", 1810, 75, purple);
                     canvas.drawText("Great Dalmuti" , 750, 700, purple);
+
+
             }if(state.ranks[0] == "Lesser Peon"){
                     //name labels
                     canvas.drawText("Great Dalmuti", 25, 75, purple);
