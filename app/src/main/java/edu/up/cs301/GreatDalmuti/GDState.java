@@ -175,6 +175,10 @@ public class GDState extends GameState {
 			deckArray[index] = deckArray[i];
 			deckArray[i] = a;
 		}
+		deck.add(new ArrayList<Integer>());
+		deck.add(new ArrayList<Integer>());
+		deck.add(new ArrayList<Integer>());
+		deck.add(new ArrayList<Integer>());
 
 		for(int i = 0; i < 80; i++){
 			if(i < 20){
