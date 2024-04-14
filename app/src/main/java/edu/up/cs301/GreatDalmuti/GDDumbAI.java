@@ -41,7 +41,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
         // start the timer, ticking 20 times per second
         getTimer().setInterval(50);
         getTimer().start();
-
+		state = new GDState();
 		/**
 		 * GIVING TAXES
 		 */
