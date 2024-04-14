@@ -15,7 +15,6 @@ import java.util.Collections;
 import java.util.Random;
 
 import edu.up.cs301.GameFramework.infoMessage.GameState;
-
 public class GDState extends GameState {
 	// INSTANCE VARIABLES **************************************************************************
 	// to satisfy Serializable interface
@@ -156,6 +155,7 @@ public class GDState extends GameState {
 				pos++;
 			}
 		}
+
 		deckArray[pos] = 13;
 		deckArray[pos + 1] = 13;
 
@@ -180,22 +180,22 @@ public class GDState extends GameState {
 			if(i < 20){
 				p1Hand.add(deckArray[i]);
 				Collections.sort(p1Hand);
-				deck.add(p1Hand);
+				deck.get(1).add(deckArray[i]);
 			}
 			else if(i < 40){
 				p2Hand.add(deckArray[i]);
 				Collections.sort(p2Hand);
-				deck.add(p2Hand);
+				deck.get(2).add(deckArray[i]);
 			}
 			else if(i < 60){
 				p3Hand.add(deckArray[i]);
 				Collections.sort(p3Hand);
-				deck.add(p3Hand);
+				deck.get(3).add(deckArray[i]);
 			}
 			else if(i < 80){
 				p4Hand.add(deckArray[i]);
 				Collections.sort(p4Hand);
-				deck.add(p4Hand);
+				deck.get(4).add(deckArray[i]);
 			}
 		}
 	}
