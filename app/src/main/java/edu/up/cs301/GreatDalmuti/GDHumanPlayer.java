@@ -138,9 +138,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
 
-		if(button.getId() == R.id.editTextTextMultiLine){
-			//tbd
-		}
+//		if(button.getId() == R.id.editTextTextMultiLine){
+//			//tbd
+//		}
 
 		//what happens when player hits buttons
 		if(button == playButton){
@@ -218,73 +218,73 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 
-		// I cannot overstate how long I took me to figure out this needed to be called on
-		// myActivity and not that for some reason nothing works for no reason
-		EditText textBox = myActivity.findViewById(R.id.editTextTextMultiLine);
-		textBox.setText("");
-
-		GDState firstInstance = new GDState();
-		GDState firstCopy = new GDState(firstInstance, 4);
-
-		GDHumanPlayer[] gamePlayers = new GDHumanPlayer[4]; //array of all players in game
-		gamePlayers[0] = new GDHumanPlayer("Great Dalmuti");
-		gamePlayers[1] = new GDHumanPlayer("Lesser Dalmuti");
-		gamePlayers[2] = new GDHumanPlayer("Lesser Peon");
-		gamePlayers[3] = new GDHumanPlayer("Greater Peon");
-
-		//greater peon declares revolution
-		state.revolution(firstCopy.getTurn(), firstCopy.getDeck()); //swaps positions
-		textBox.setText(textBox.getText() + "The Lesser Dalmuti has declared a revolution!\n");
-
-		//greater dalmuti and peon exchange taxes
-		state.GDPayTaxes(1, 2);
-		textBox.setText(textBox.getText() + "Taxes have been exchanged!\n");
-
-		//great dalmuti plays
-		ArrayList<ArrayList<Integer>> playingCards = new ArrayList<>();
-		ArrayList<Integer> foo = new ArrayList<>();
-		playingCards.add(foo);
-		foo.add(1);
-		foo.add(2);
-		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n, j);
-		textBox.setText(textBox.getText() + "The Great Dalmuti has played!\n");
-
-		//lesser dalmuti passes
-		state.pass(firstCopy.getTurn());
-		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
-
-		//lesser peon passes
-		state.pass(firstCopy.getTurn());
-		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
-
-		//greater peon passes
-		state.pass(firstCopy.getTurn());
-		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
-
-		//great dalmuti plays again
-		ArrayList<ArrayList<Integer>> playingCards2 = new ArrayList<>();
-		ArrayList<Integer> foo2 = new ArrayList<>();
-		playingCards2.add(foo2);
-		foo.add(1);
-		foo.add(2);
-		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n, j);
-		textBox.setText(textBox.getText() + "The Great Dalmuti has played the rest of their hand" +
-				" and gone out!\n");
-		textBox.setText(textBox.getText() + "Great Dalmuti has won!!!!!\n");
-
-
-		// secondInstance
-		GDState secondInstance = new GDState();
-		// deep copy of secondInstance assigned to secondCopy
-		GDState secondCopy = new GDState(secondInstance, 4);
-
-		// call to toString() on firstCopy and secondCopy
-		firstCopy.toString();
-		secondCopy.toString();
-
-		// prints strings to the multi-line EditText for visual inspection
-		textBox.setText(textBox.getText() + "" + firstInstance.toString());
-		textBox.setText(textBox.getText() + "" + secondInstance.toString());
+//		// I cannot overstate how long I took me to figure out this needed to be called on
+//		// myActivity and not that for some reason nothing works for no reason
+//		EditText textBox = myActivity.findViewById(R.id.editTextTextMultiLine);
+//		textBox.setText("");
+//
+//		GDState firstInstance = new GDState();
+//		GDState firstCopy = new GDState(firstInstance, 4);
+//
+//		GDHumanPlayer[] gamePlayers = new GDHumanPlayer[4]; //array of all players in game
+//		gamePlayers[0] = new GDHumanPlayer("Great Dalmuti");
+//		gamePlayers[1] = new GDHumanPlayer("Lesser Dalmuti");
+//		gamePlayers[2] = new GDHumanPlayer("Lesser Peon");
+//		gamePlayers[3] = new GDHumanPlayer("Greater Peon");
+//
+//		//greater peon declares revolution
+//		state.revolution(firstCopy.getTurn(), firstCopy.getDeck()); //swaps positions
+//		textBox.setText(textBox.getText() + "The Lesser Dalmuti has declared a revolution!\n");
+//
+//		//greater dalmuti and peon exchange taxes
+//		state.GDPayTaxes(1, 2);
+//		textBox.setText(textBox.getText() + "Taxes have been exchanged!\n");
+//
+//		//great dalmuti plays
+//		ArrayList<ArrayList<Integer>> playingCards = new ArrayList<>();
+//		ArrayList<Integer> foo = new ArrayList<>();
+//		playingCards.add(foo);
+//		foo.add(1);
+//		foo.add(2);
+//		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n, j);
+//		textBox.setText(textBox.getText() + "The Great Dalmuti has played!\n");
+//
+//		//lesser dalmuti passes
+//		state.pass(firstCopy.getTurn());
+//		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
+//
+//		//lesser peon passes
+//		state.pass(firstCopy.getTurn());
+//		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
+//
+//		//greater peon passes
+//		state.pass(firstCopy.getTurn());
+//		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
+//
+//		//great dalmuti plays again
+//		ArrayList<ArrayList<Integer>> playingCards2 = new ArrayList<>();
+//		ArrayList<Integer> foo2 = new ArrayList<>();
+//		playingCards2.add(foo2);
+//		foo.add(1);
+//		foo.add(2);
+//		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n, j);
+//		textBox.setText(textBox.getText() + "The Great Dalmuti has played the rest of their hand" +
+//				" and gone out!\n");
+//		textBox.setText(textBox.getText() + "Great Dalmuti has won!!!!!\n");
+//
+//
+//		// secondInstance
+//		GDState secondInstance = new GDState();
+//		// deep copy of secondInstance assigned to secondCopy
+//		GDState secondCopy = new GDState(secondInstance, 4);
+//
+//		// call to toString() on firstCopy and secondCopy
+//		firstCopy.toString();
+//		secondCopy.toString();
+//
+//		// prints strings to the multi-line EditText for visual inspection
+//		textBox.setText(textBox.getText() + "" + firstInstance.toString());
+//		textBox.setText(textBox.getText() + "" + secondInstance.toString());
 	}// onClick
 	
 	/**
