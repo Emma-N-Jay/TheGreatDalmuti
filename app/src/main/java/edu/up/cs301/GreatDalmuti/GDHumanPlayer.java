@@ -503,3 +503,4 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 } // GDHumanPlayer class
 
+
