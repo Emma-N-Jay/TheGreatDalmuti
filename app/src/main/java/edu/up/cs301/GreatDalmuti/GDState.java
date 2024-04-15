@@ -96,22 +96,22 @@ public class GDState extends GameState {
 			 if(i < 20){
 				 p1Hand.add(deckArray[i]);
 				 Collections.sort(p1Hand);
-				 deck.get(1).add(deckArray[i]);
+				 deck.get(0).add(deckArray[i]);
 			 }
 			 else if(i < 40){
 				 p2Hand.add(deckArray[i]);
 				 Collections.sort(p2Hand);
-				 deck.get(2).add(deckArray[i]);
+				 deck.get(1).add(deckArray[i]);
 			 }
 			 else if(i < 60){
 				 p3Hand.add(deckArray[i]);
 				 Collections.sort(p3Hand);
-				 deck.get(3).add(deckArray[i]);
+				 deck.get(2).add(deckArray[i]);
 			 }
 			 else if(i < 80){
 				 p4Hand.add(deckArray[i]);
 				 Collections.sort(p4Hand);
-				 deck.get(4).add(deckArray[i]);
+				 deck.get(3).add(deckArray[i]);
 			 }
 		 }
 		 //this.shuffle();
@@ -171,22 +171,22 @@ public class GDState extends GameState {
 			if(i < 20){
 				p1Hand.add(deckArray[i]);
 				Collections.sort(p1Hand);
-				deck.get(1).add(deckArray[i]);
+				deck.get(0).add(deckArray[i]);
 			}
 			else if(i < 40){
 				p2Hand.add(deckArray[i]);
 				Collections.sort(p2Hand);
-				deck.get(2).add(deckArray[i]);
+				deck.get(1).add(deckArray[i]);
 			}
 			else if(i < 60){
 				p3Hand.add(deckArray[i]);
 				Collections.sort(p3Hand);
-				deck.get(3).add(deckArray[i]);
+				deck.get(2).add(deckArray[i]);
 			}
 			else if(i < 80){
 				p4Hand.add(deckArray[i]);
 				Collections.sort(p4Hand);
-				deck.get(4).add(deckArray[i]);
+				deck.get(3).add(deckArray[i]);
 			}
 		}
 		//this.shuffle();
@@ -293,25 +293,26 @@ public class GDState extends GameState {
 			if(i < 20){
 				p1Hand.add(deckArray[i]);
 				Collections.sort(p1Hand);
-				deck.get(1).add(deckArray[i]);
+				deck.get(0).add(deckArray[i]);
 			}
 			else if(i < 40){
 				p2Hand.add(deckArray[i]);
 				Collections.sort(p2Hand);
-				deck.get(2).add(deckArray[i]);
+				deck.get(1).add(deckArray[i]);
 			}
 			else if(i < 60){
 				p3Hand.add(deckArray[i]);
 				Collections.sort(p3Hand);
-				deck.get(3).add(deckArray[i]);
+				deck.get(2).add(deckArray[i]);
 			}
 			else if(i < 80){
 				p4Hand.add(deckArray[i]);
 				Collections.sort(p4Hand);
-				deck.get(4).add(deckArray[i]);
+				deck.get(3).add(deckArray[i]);
 			}
 		}
 	}
+
 
 	// PASS METHOD
 	public boolean pass(int turn){
