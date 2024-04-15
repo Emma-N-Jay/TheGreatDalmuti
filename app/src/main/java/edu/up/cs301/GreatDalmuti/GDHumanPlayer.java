@@ -218,10 +218,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 
-//		// I cannot overstate how long I took me to figure out this needed to be called on
-//		// myActivity and not that for some reason nothing works for no reason
-//		EditText textBox = myActivity.findViewById(R.id.editTextTextMultiLine);
-//		textBox.setText("");
+		// I cannot overstate how long I took me to figure out this needed to be called on
+		// myActivity and not that for some reason nothing works for no reason
+		EditText textBox = myActivity.findViewById(R.id.editTextTextMultiLine);
+		textBox.setText("");
 //
 //		GDState firstInstance = new GDState();
 //		GDState firstCopy = new GDState(firstInstance, 4);
@@ -428,7 +428,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		Button runTestButton = activity.findViewById(R.id.run_test);
 		runTestButton.setOnClickListener(this);
-
 
 		//image button for rev and the cards
 		this.revolutionButton = (ImageButton)activity.findViewById(R.id.revolutionButton);
