@@ -143,16 +143,16 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 //		}
 
 		//what happens when player hits buttons
-		if(button == playButton){
+		if(button.getId() == R.id.playButton){
 			state.play(this.playerNum, state.getDeck(), c, n, j);
 		}
-		else if(button == passButton){
+		else if(button.getId() == R.id.passButton){
 		state.pass(state.getTurn());
 		}
-		else if(button == revolutionButton){
+		else if(button.getId() == R.id.revolutionButton){
 		state.revolution(this.playerNum, state.getDeck());
 		}
-		else if(button == paytaxesButton){
+		else if(button.getId() == R.id.payTaxesButton){
 			if(playerNum == 3){
 				state.GPPayTaxes();
 			} else if(playerNum == 2){
@@ -166,52 +166,52 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 		//selected cards/display for selected cards
-		else if(button == jester){
+		else if(button.getId() == R.id.jester){
 			 c = 13;
-		} else if(button == one){
+		} else if(button.getId() == R.id.one){
 			c = 1;
-		} else if(button == two){
+		} else if(button.getId() == R.id.two){
 			c = 2;
-		} else if(button == three){
+		} else if(button.getId() == R.id.three){
 			c = 3;
-		} else if(button == four){
+		} else if(button.getId() == R.id.four){
 			c = 4;
-		} else if(button == five){
+		} else if(button.getId() == R.id.five){
 			c = 5;
-		} else if(button == six){
+		} else if(button.getId() == R.id.six){
 			c = 6;
-		} else if(button == seven){
+		} else if(button.getId() == R.id.seven){
 			c = 7;
-		} else if(button == eight){
+		} else if(button.getId() == R.id.eight){
 			c = 8;;
-		} else if(button == nine){
+		} else if(button.getId() == R.id.nine){
 			c = 9;
-		} else if(button == ten){
+		} else if(button.getId() == R.id.ten){
 			c = 10;
-		} else if(button == eleven){
+		} else if(button.getId() == R.id.eleven){
 			c = 11;
-		} else if(button == twelve){
+		} else if(button.getId() == R.id.twelve){
 			c = 12;
 		}
 		cardsNum.setText(state.getP1Hand().get(c));
 
 		//more or less cards
-		 if(button == plusB){
+		 if(button.getId() == R.id.addbutton){
 			String nString = cardsNum.getText().toString();
 			n = Integer.parseInt(nString);
 			cardsNum.setText((n + 1));
-		} else if(button == minusB){
+		} else if(button.getId() == R.id.minusbutton){
 			 String nString = cardsNum.getText().toString();
 			 n = Integer.parseInt(nString);
 			 cardsNum.setText((n - 1));
 		}
 
 		 //more or less jesters selected
-		if(button == jplusB){
+		if(button.getId() == R.id.addjbutton){
 			String nString = jesterSelected.getText().toString();
 			n = Integer.parseInt(nString);
 			jesterSelected.setText((n + 1));
-		} else if(button == jminusB){
+		} else if(button.getId() == R.id.minusjbutton){
 			String nString = jesterSelected.getText().toString();
 			n = Integer.parseInt(nString);
 			jesterSelected.setText((n - 1));
@@ -339,71 +339,71 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 
 		//if number of cards is more than 0, else grey once imported
-		if(postType.getP1Hand().get(1) >= 1){
-			one.setImageResource(R.drawable.great_dalmuti);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(2) >= 1){
-			one.setImageResource(R.drawable.arch_bishop);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(3) >= 1){
-			one.setImageResource(R.drawable.earl_marshal);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(4) >= 1){
-			one.setImageResource(R.drawable.baroness);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(5) >= 1){
-			one.setImageResource(R.drawable.abbess);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(6) >= 1){
-			one.setImageResource(R.drawable.knight);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(7) >= 1){
-			one.setImageResource(R.drawable.seamstress);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(8) >= 1){
-			one.setImageResource(R.drawable.mason);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(9) >= 1){
-			one.setImageResource(R.drawable.cook);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(10) >= 1){
-			one.setImageResource(R.drawable.sheperdess);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(11) >= 1){
-			one.setImageResource(R.drawable.stonecutter);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(12) >= 1){
-			one.setImageResource(R.drawable.peasant);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(13) >= 1){
-			one.setImageResource(R.drawable.jesteryetagain);
-		} else {
-			//gray
-		}
+//		if(postType.getP1Hand().get(1) >= 1){
+//			one.setImageResource(R.drawable.great_dalmuti);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(2) >= 1){
+//			one.setImageResource(R.drawable.arch_bishop);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(3) >= 1){
+//			one.setImageResource(R.drawable.earl_marshal);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(4) >= 1){
+//			one.setImageResource(R.drawable.baroness);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(5) >= 1){
+//			one.setImageResource(R.drawable.abbess);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(6) >= 1){
+//			one.setImageResource(R.drawable.knight);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(7) >= 1){
+//			one.setImageResource(R.drawable.seamstress);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(8) >= 1){
+//			one.setImageResource(R.drawable.mason);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(9) >= 1){
+//			one.setImageResource(R.drawable.cook);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(10) >= 1){
+//			one.setImageResource(R.drawable.sheperdess);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(11) >= 1){
+//			one.setImageResource(R.drawable.stonecutter);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(12) >= 1){
+//			one.setImageResource(R.drawable.peasant);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(13) >= 1){
+//			one.setImageResource(R.drawable.jesteryetagain);
+//		} else {
+//			//gray
+//		}
 
 
 	} // receiveInfo
