@@ -31,10 +31,6 @@ public class GDState extends GameState {
 	private int hasLead = 0; // who currently has the lead
 	private int turn = 0; // who's turn is it
 	private int numPass;
-	private ArrayList<Integer> p1Hand;
-	private ArrayList<Integer> p2Hand;
-	private ArrayList<Integer> p3Hand;
-	private ArrayList<Integer> p4Hand;
 
 	/** ALL OF THE F0LLOWING INSTANCE VARIABLES ARE FROM THE ACTION CLASSES */
 	public int[] taxCardIndexes;
@@ -59,61 +55,6 @@ public class GDState extends GameState {
 	 public GDState(){
 		 // makes a deep copy of all variables so far
 		 this.deck = new ArrayList<ArrayList<Integer>>();
-		 int[] deckArray = new int[80];
-		 int pos = 0;
-		 for(int i = 1; i <= 12; i++){
-			 for(int j = 1; j <= i; j++){
-				 deckArray[pos] = i;
-				 pos++;
-			 }
-		 }
-
-		 deckArray[pos] = 13;
-		 deckArray[pos + 1] = 13;
-
-		 Random rnd = new Random();
-		 for (int i = deckArray.length - 1; i > 0; i--)
-		 {
-			 /**
-			  External Citation
-			  Date: 6 April 2024
-			  Problem: Was struggling to make a shuffle method for 2d arraylist
-			  Resource: https://stackoverflow.com/questions/1519736/random-shuffling-of-an-array
-			  Solution: Switched to array and used some of the code from above
-			  */
-			 int index = rnd.nextInt(i + 1);
-			 // Simple swap
-			 int a = deckArray[index];
-			 deckArray[index] = deckArray[i];
-			 deckArray[i] = a;
-		 }
-		 deck.add(new ArrayList<Integer>());
-		 deck.add(new ArrayList<Integer>());
-		 deck.add(new ArrayList<Integer>());
-		 deck.add(new ArrayList<Integer>());
-
-		 for(int i = 0; i < 80; i++){
-			 if(i < 20){
-				 p1Hand.add(deckArray[i]);
-				 Collections.sort(p1Hand);
-				 deck.get(0).add(deckArray[i]);
-			 }
-			 else if(i < 40){
-				 p2Hand.add(deckArray[i]);
-				 Collections.sort(p2Hand);
-				 deck.get(1).add(deckArray[i]);
-			 }
-			 else if(i < 60){
-				 p3Hand.add(deckArray[i]);
-				 Collections.sort(p3Hand);
-				 deck.get(2).add(deckArray[i]);
-			 }
-			 else if(i < 80){
-				 p4Hand.add(deckArray[i]);
-				 Collections.sort(p4Hand);
-				 deck.get(3).add(deckArray[i]);
-			 }
-		 }
 		 //this.shuffle();
 		 this.exchangingTaxes = true;
 		 this.handIsVisible = false;
@@ -134,61 +75,6 @@ public class GDState extends GameState {
 	public GDState(edu.up.cs301.GreatDalmuti.GDState orig, int numPlayer) {
 		// makes a deep copy of all variables so far
 		this.deck = orig.deck;
-		int[] deckArray = new int[80];
-		int pos = 0;
-		for(int i = 1; i <= 12; i++){
-			for(int j = 1; j <= i; j++){
-				deckArray[pos] = i;
-				pos++;
-			}
-		}
-
-		deckArray[pos] = 13;
-		deckArray[pos + 1] = 13;
-
-		Random rnd = new Random();
-		for (int i = deckArray.length - 1; i > 0; i--)
-		{
-			/**
-			 External Citation
-			 Date: 6 April 2024
-			 Problem: Was struggling to make a shuffle method for 2d arraylist
-			 Resource: https://stackoverflow.com/questions/1519736/random-shuffling-of-an-array
-			 Solution: Switched to array and used some of the code from above
-			 */
-			int index = rnd.nextInt(i + 1);
-			// Simple swap
-			int a = deckArray[index];
-			deckArray[index] = deckArray[i];
-			deckArray[i] = a;
-		}
-		deck.add(new ArrayList<Integer>());
-		deck.add(new ArrayList<Integer>());
-		deck.add(new ArrayList<Integer>());
-		deck.add(new ArrayList<Integer>());
-
-		for(int i = 0; i < 80; i++){
-			if(i < 20){
-				p1Hand.add(deckArray[i]);
-				Collections.sort(p1Hand);
-				deck.get(0).add(deckArray[i]);
-			}
-			else if(i < 40){
-				p2Hand.add(deckArray[i]);
-				Collections.sort(p2Hand);
-				deck.get(1).add(deckArray[i]);
-			}
-			else if(i < 60){
-				p3Hand.add(deckArray[i]);
-				Collections.sort(p3Hand);
-				deck.get(2).add(deckArray[i]);
-			}
-			else if(i < 80){
-				p4Hand.add(deckArray[i]);
-				Collections.sort(p4Hand);
-				deck.get(3).add(deckArray[i]);
-			}
-		}
 		//this.shuffle();
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.handIsVisible = orig.handIsVisible;
@@ -256,6 +142,11 @@ public class GDState extends GameState {
 
 	//SHUFFLES DECK
 	public void shuffle(){
+		ArrayList<Integer> p1Hand = new ArrayList<Integer>();
+		ArrayList<Integer> p2Hand = new ArrayList<Integer>();
+		ArrayList<Integer> p3Hand = new ArrayList<Integer>();
+		ArrayList<Integer> p4Hand = new ArrayList<Integer>();
+
 		int[] deckArray = new int[80];
 		int pos = 0;
 		for(int i = 1; i <= 12; i++){
