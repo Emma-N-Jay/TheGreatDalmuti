@@ -29,8 +29,7 @@
         <edu.up.cs301.GreatDalmuti.surfaceDraw
             android:id="@+id/the_canvas"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
 
 
     </LinearLayout>
@@ -47,15 +46,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/jesterNum"
@@ -67,27 +66,25 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
+                    android:typeface="serif"></TextView>
 
-        <ImageButton
-            android:id="@+id/jester"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/jesteryetagain"
-            android:layout_marginRight="4dp"
-            android:layout_marginLeft="6dp"
-            android:contentDescription="jester card"
-            />
+                <ImageButton
+                    android:id="@+id/jester"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="4dp"
+                    android:background="@null"
+                    android:contentDescription="jester card"
+                    android:src="@drawable/jesteryetagain" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/oneNum"
@@ -99,26 +96,24 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
+                    android:typeface="serif"></TextView>
 
-        <ImageButton
-            android:id="@+id/one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/great_dalmuti"
-            android:layout_marginRight="4dp"
-            android:contentDescription="dalmuti card"
-            />
+                <ImageButton
+                    android:id="@+id/one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:background="@null"
+                    android:contentDescription="dalmuti card"
+                    android:src="@drawable/great_dalmuti" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/twoNum"
@@ -130,18 +125,16 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
+                    android:typeface="serif"></TextView>
 
-        <ImageButton
-            android:id="@+id/two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/arch_bishop"
-            android:layout_marginRight="4dp"
-            android:contentDescription="bishop card"
-            />
+                <ImageButton
+                    android:id="@+id/two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:background="@null"
+                    android:contentDescription="bishop card"
+                    android:src="@drawable/arch_bishop" />
 
             </LinearLayout>
 
@@ -149,8 +142,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/threeNum"
@@ -162,18 +155,16 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
+                    android:typeface="serif"></TextView>
 
-        <ImageButton
-            android:id="@+id/three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/earl_marshal"
-            android:layout_marginRight="4dp"
-            android:contentDescription="earl card"
-            />
+                <ImageButton
+                    android:id="@+id/three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:background="@null"
+                    android:contentDescription="earl card"
+                    android:src="@drawable/earl_marshal" />
 
             </LinearLayout>
 
@@ -181,8 +172,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/fourNum"
@@ -194,18 +185,16 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
+                    android:typeface="serif"></TextView>
 
-        <ImageButton
-            android:id="@+id/four"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/baroness"
-            android:layout_marginRight="4dp"
-            android:contentDescription="baroness card"
-            />
+                <ImageButton
+                    android:id="@+id/four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:background="@null"
+                    android:contentDescription="baroness card"
+                    android:src="@drawable/baroness" />
 
             </LinearLayout>
 
@@ -213,8 +202,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/fiveNum"
@@ -226,26 +215,24 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
+                    android:typeface="serif"></TextView>
 
-        <ImageButton
-            android:id="@+id/five"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/abbess"
-            android:layout_marginRight="4dp"
-            android:contentDescription="abbess card"
-            />
+                <ImageButton
+                    android:id="@+id/five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:background="@null"
+                    android:contentDescription="abbess card"
+                    android:src="@drawable/abbess" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/sixNum"
@@ -257,26 +244,24 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
+                    android:typeface="serif"></TextView>
 
-        <ImageButton
-            android:id="@+id/six"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/knight"
-            android:layout_marginRight="4dp"
-            android:contentDescription="knight card"
-            />
+                <ImageButton
+                    android:id="@+id/six"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:background="@null"
+                    android:contentDescription="knight card"
+                    android:src="@drawable/knight" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/sevenNum"
@@ -288,26 +273,24 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
+                    android:typeface="serif"></TextView>
 
-        <ImageButton
-            android:id="@+id/seven"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/seamstress"
-            android:layout_marginRight="4dp"
-            android:contentDescription="seamstress card"
-            />
+                <ImageButton
+                    android:id="@+id/seven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:background="@null"
+                    android:contentDescription="seamstress card"
+                    android:src="@drawable/seamstress" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/eightNum"
@@ -319,26 +302,24 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
+                    android:typeface="serif"></TextView>
 
-        <ImageButton
-            android:id="@+id/eight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/mason"
-            android:layout_marginRight="4dp"
-            android:contentDescription="mason card"
-            />
+                <ImageButton
+                    android:id="@+id/eight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:background="@null"
+                    android:contentDescription="mason card"
+                    android:src="@drawable/mason" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nineNum"
@@ -350,26 +331,24 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
+                    android:typeface="serif"></TextView>
 
-        <ImageButton
-            android:id="@+id/nine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/cook"
-            android:layout_marginRight="4dp"
-            android:contentDescription="cook card"
-            />
+                <ImageButton
+                    android:id="@+id/nine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:background="@null"
+                    android:contentDescription="cook card"
+                    android:src="@drawable/cook" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tenNum"
@@ -381,25 +360,24 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
-        <ImageButton
-            android:id="@+id/ten"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/sheperdess"
-            android:layout_marginRight="4dp"
-            android:contentDescription="sheperdess card"
-            />
+                    android:typeface="serif"></TextView>
+
+                <ImageButton
+                    android:id="@+id/ten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:background="@null"
+                    android:contentDescription="sheperdess card"
+                    android:src="@drawable/sheperdess" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/elevenNum"
@@ -411,26 +389,24 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
+                    android:typeface="serif"></TextView>
 
-        <ImageButton
-            android:id="@+id/eleven"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/stonecutter"
-            android:layout_marginRight="4dp"
-            android:contentDescription="stonecutter card"
-            />
+                <ImageButton
+                    android:id="@+id/eleven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:background="@null"
+                    android:contentDescription="stonecutter card"
+                    android:src="@drawable/stonecutter" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/twelveNum"
@@ -442,16 +418,15 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif">
-                </TextView>
-        <ImageButton
-            android:id="@+id/twelve"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/peasant"
-            android:contentDescription="peasant card"
-            />
+                    android:typeface="serif"></TextView>
+
+                <ImageButton
+                    android:id="@+id/twelve"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:contentDescription="peasant card"
+                    android:src="@drawable/peasant" />
             </LinearLayout>
 
         </LinearLayout>
@@ -467,9 +442,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal"
             android:gravity="left"
-            >
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/passButton"
@@ -491,20 +465,20 @@
                 android:id="@+id/revolutionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:src="@drawable/revbutton"
                 android:layout_marginLeft="1dp"
-                android:contentDescription="TODO" />
+                android:background="@null"
+                android:contentDescription="TODO"
+                android:src="@drawable/revbutton" />
 
             <ImageButton
                 android:id="@+id/payTaxesButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:src="@drawable/paytaxesimage"
                 android:layout_marginLeft="3dp"
+                android:layout_marginTop="2dp"
+                android:background="@null"
                 android:contentDescription="TODOO"
-                android:layout_marginTop="2dp"/>
+                android:src="@drawable/paytaxesimage" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -515,6 +489,8 @@
                     android:id="@+id/label1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
                     android:gravity="center"
                     android:text="Jesters selected:"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -522,9 +498,7 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"/>
+                    android:typeface="serif" />
 
                 <Button
                     android:id="@+id/addjbutton"
@@ -538,6 +512,8 @@
                     android:id="@+id/jesterNumSelected"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
                     android:gravity="center"
                     android:text="##"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -545,23 +521,23 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"/>
+                    android:typeface="serif" />
 
                 <Button
                     android:id="@+id/minusjbutton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="60dp"
                     android:backgroundTint="#402264"
                     android:text="-"
-                    android:textColor="#BC9BFF"
-                    android:layout_marginRight="60dp"/>
+                    android:textColor="#BC9BFF" />
 
                 <TextView
                     android:id="@+id/label2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
                     android:gravity="center"
                     android:text="Cards selected:"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -569,42 +545,40 @@
                     android:textColorHighlight="#000000"
                     android:textSize="18dp"
                     android:textStyle="italic"
-                    android:typeface="serif"
+                    android:typeface="serif" />
+
+                <Button
+                    android:id="@+id/addbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#402264"
+                    android:text="+"
+                    android:textColor="#BC9BFF" />
+
+
+                <TextView
+                    android:id="@+id/cardnum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"/>
-
-            <Button
-                android:id="@+id/addbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#402264"
-                android:text="+"
-                android:textColor="#BC9BFF" />
-
-
-            <TextView
-                android:id="@+id/cardnum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="##"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#402264"
-                android:textColorHighlight="#000000"
-                android:textSize="18dp"
-                android:textStyle="italic"
-                android:typeface="serif"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"/>
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:text="##"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#402264"
+                    android:textColorHighlight="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:typeface="serif" />
 
 
-            <Button
-                android:id="@+id/minusbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#402264"
-                android:text="-"
-                android:textColor="#BC9BFF" />
+                <Button
+                    android:id="@+id/minusbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#402264"
+                    android:text="-"
+                    android:textColor="#BC9BFF" />
 
             </LinearLayout>
 
