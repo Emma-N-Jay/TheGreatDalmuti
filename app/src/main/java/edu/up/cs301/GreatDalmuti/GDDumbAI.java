@@ -37,10 +37,38 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
     public GDDumbAI(String name) {
         // invoke superclass constructor
         super(name);
-        boolean played = false;
         // start the timer, ticking 20 times per second
         getTimer().setInterval(50);
         getTimer().start();
+    } // GDComputerPlayer1
+
+	public int numOfRank(int rank, ArrayList<Integer> playerHand){
+		int numCards = 0;
+		for(int i = 0; i >= playerHand.size(); i++){
+			if(playerHand.get(i) == rank){
+				numCards++;
+			}
+		}
+		return numCards;
+	}
+
+	public int rankOfCard(int index, ArrayList<Integer> playerHand){
+		return playerHand.get(index);
+	}
+
+	// METHODS *************************************************************************************
+    /**
+     * callback method--game's state has changed
+     * 
+     * @param info
+     * 		the information (presumably containing the game's state)
+	 *GDComputerPlayer1
+     */
+	@Override
+	protected void receiveInfo(GameInfo info) {
+		// Do nothing, as we ignore all state in deciding our next move. It
+		// depends totally on the timer and random numbers.
+		boolean played = false;
 		state = new GDState(state, 0);
 		/**
 		 * GIVING TAXES
@@ -49,7 +77,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		if(playerNum == 3){
 			//I know this looks like a mess BUT its just passing in the two highest cards, thats it
 			state.GDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
-					state.getDeck().get(playerNum)),
+							state.getDeck().get(playerNum)),
 					rankOfCard(state.getDeck().get(playerNum).size() - 2,
 							state.getDeck().get(playerNum)));
 		}
@@ -86,34 +114,6 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		if(played == false){
 			state.pass(state.getTurn());
 		}
-    } // GDComputerPlayer1
-
-	public int numOfRank(int rank, ArrayList<Integer> playerHand){
-		int numCards = 0;
-		for(int i = 0; i >= playerHand.size(); i++){
-			if(playerHand.get(i) == rank){
-				numCards++;
-			}
-		}
-		return numCards;
-	}
-
-	public int rankOfCard(int index, ArrayList<Integer> playerHand){
-		return playerHand.get(index);
-	}
-
-	// METHODS *************************************************************************************
-    /**
-     * callback method--game's state has changed
-     * 
-     * @param info
-     * 		the information (presumably containing the game's state)
-	 *GDComputerPlayer1
-     */
-	@Override
-	protected void receiveInfo(GameInfo info) {
-		// Do nothing, as we ignore all state in deciding our next move. It
-		// depends totally on the timer and random numbers.
 	} // receiveInfo
 	
 	/**
