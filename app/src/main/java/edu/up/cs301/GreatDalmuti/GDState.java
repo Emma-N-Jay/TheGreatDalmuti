@@ -57,7 +57,7 @@ public class GDState extends GameState {
 	 public GDState(){
 		 // makes a deep copy of all variables so far
 		 this.deck = new ArrayList<ArrayList<Integer>>();
-		 this.shuffle();
+		 shuffle();
 		 this.exchangingTaxes = true;
 		 this.handIsVisible = false;
 		 this.numInPile = 0;
@@ -77,7 +77,7 @@ public class GDState extends GameState {
 	public GDState(edu.up.cs301.GreatDalmuti.GDState orig, int numPlayer) {
 		// makes a deep copy of all variables so far
 		this.deck = orig.deck;
-		this.shuffle();
+		shuffle();
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.handIsVisible = orig.handIsVisible;
 		this.numInPile = orig.numInPile;
