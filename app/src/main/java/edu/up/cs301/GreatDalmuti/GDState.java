@@ -57,7 +57,6 @@ public class GDState extends GameState {
 	 public GDState(){
 		 // makes a deep copy of all variables so far
 		 this.deck = new ArrayList<ArrayList<Integer>>();
-		 shuffle();
 		 this.exchangingTaxes = true;
 		 this.handIsVisible = false;
 		 this.numInPile = 0;
@@ -66,6 +65,7 @@ public class GDState extends GameState {
 		 this.hasLead = 0; //this should assign the lead to default to GDalmuti but also could be 1 instead of 0
 		 this.revolutionIsVisible = false;
 		 setPlayers(ranks);
+		 shuffle();
 	 } // GDState
 	
 	/**
@@ -77,7 +77,6 @@ public class GDState extends GameState {
 	public GDState(edu.up.cs301.GreatDalmuti.GDState orig, int numPlayer) {
 		// makes a deep copy of all variables so far
 		this.deck = orig.deck;
-		shuffle();
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.handIsVisible = orig.handIsVisible;
 		this.numInPile = orig.numInPile;
@@ -85,6 +84,7 @@ public class GDState extends GameState {
 		this.hasLowestInRound = orig.hasLowestInRound;
 		this.hasLead = orig.hasLead;
 		this.revolutionIsVisible = orig.revolutionIsVisible;
+		shuffle();
 	} // GDState
 
 	// METHODS *************************************************************************************
