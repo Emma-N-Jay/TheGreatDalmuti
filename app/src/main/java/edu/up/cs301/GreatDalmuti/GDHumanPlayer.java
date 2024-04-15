@@ -304,11 +304,12 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 //		//TODO: this is the error
 //		// update our state; then update the display
 		this.state = (edu.up.cs301.GreatDalmuti.GDState) info;
-		canvas.setCurrentGameState(this.state);
+		System.out.println("HELP ME");
+		canvas.setCurrentGameState(state);
 		updateDisplay();
 
 		// image of revolution image button set if possible
-		if( postType.getDeck().get(playerNum).get(13) == 2){
+		if(state.getDeck().get(playerNum).get(13) == 2){
 			revolutionButton.setImageResource(R.drawable.revbutton);
 		} else {
 			revolutionButton.setImageResource(R.drawable.blankspace);
@@ -323,19 +324,19 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 
 //		//displays total cards numbers for every card
-//			jesterNum.setText(postType.getDeck().get(playerNum).get(13));
-//			oneNum.setText(postType.getDeck().get(playerNum).get(1));
-//			twoNum.setText(postType.getDeck().get(playerNum).get(2));
-//			threeNum.setText(postType.getDeck().get(playerNum).get(3));
-//			fourNum.setText(postType.getDeck().get(playerNum).get(4));
-//			fiveNum.setText(postType.getDeck().get(playerNum).get(5));
-//			sixNum.setText(postType.getDeck().get(playerNum).get(6));
-//			sevenNum.setText(postType.getDeck().get(playerNum).get(7));
-//			eightNum.setText(postType.getDeck().get(playerNum).get(8));
-//			nineNum.setText(postType.getDeck().get(playerNum).get(9));
-//			tenNum.setText(postType.getDeck().get(playerNum).get(10));
-//			elevenNum.setText(postType.getDeck().get(playerNum).get(11));
-//			twelveNum.setText(postType.getDeck().get(playerNum).get(12));
+			jesterNum.setText("" + postType.getDeck().get(playerNum).get(13));
+			oneNum.setText("" + postType.getDeck().get(playerNum).get(1));
+			twoNum.setText("" +postType.getDeck().get(playerNum).get(2));
+			threeNum.setText("" +postType.getDeck().get(playerNum).get(3));
+			fourNum.setText("" +postType.getDeck().get(playerNum).get(4));
+			fiveNum.setText("" +postType.getDeck().get(playerNum).get(5));
+			sixNum.setText("" +postType.getDeck().get(playerNum).get(6));
+			sevenNum.setText("" +postType.getDeck().get(playerNum).get(7));
+			eightNum.setText("" +postType.getDeck().get(playerNum).get(8));
+			nineNum.setText("" +postType.getDeck().get(playerNum).get(9));
+			tenNum.setText("" +postType.getDeck().get(playerNum).get(10));
+			elevenNum.setText("" +postType.getDeck().get(playerNum).get(11));
+			twelveNum.setText("" +postType.getDeck().get(playerNum).get(12));
 
 
 		//if number of cards is more than 0, else grey once imported
