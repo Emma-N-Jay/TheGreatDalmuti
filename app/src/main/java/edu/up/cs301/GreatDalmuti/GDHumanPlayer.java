@@ -48,51 +48,51 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	int j = 0;
 
 	//pass and hold buttons
-	private Button passButton = null;
-	private Button playButton = null;
-	private Button plusB = null;
-	private Button minusB = null;
-	private Button jplusB = null;
-	private Button jminusB = null;
+	private Button passButton;
+	private Button playButton;
+	private Button plusB;
+	private Button minusB;
+	private Button jplusB;
+	private Button jminusB;
 
 
 	//for image button
-	private ImageButton revolutionButton = null;
-	private ImageButton paytaxesButton = null;
-	private ImageButton jester = null;
-	private ImageButton one = null;
-	private ImageButton two = null;
-	private ImageButton three = null;
-	private ImageButton four = null;
-	private ImageButton five = null;
-	private ImageButton six = null;
-	private ImageButton seven = null;
-	private ImageButton eight = null;
-	private ImageButton nine = null;
-	private ImageButton ten = null;
-	private ImageButton eleven = null;
-	private ImageButton twelve = null;
+	private ImageButton revolutionButton;
+	private ImageButton paytaxesButton;
+	private ImageButton jester;
+	private ImageButton one;
+	private ImageButton two;
+	private ImageButton three;
+	private ImageButton four;
+	private ImageButton five;
+	private ImageButton six;
+	private ImageButton seven;
+	private ImageButton eight;
+	private ImageButton nine;
+	private ImageButton ten;
+	private ImageButton eleven;
+	private ImageButton twelve;
 
 
 	//text for number of cards
-	private TextView cardsNum = null;
-	private TextView jesterSelected = null;
-	private TextView jesterNum = null;
-	private TextView oneNum = null;
-	private TextView twoNum = null;
-	private TextView threeNum = null;
-	private TextView fourNum = null;
-	private TextView fiveNum = null;
-	private TextView sixNum = null;
-	private TextView sevenNum = null;
-	private TextView eightNum = null;
-	private TextView nineNum = null;
-	private TextView tenNum = null;
-	private TextView elevenNum = null;
-	private TextView twelveNum = null;
+	private TextView cardsNum;
+	private TextView jesterSelected ;
+	private TextView jesterNum;
+	private TextView oneNum;
+	private TextView twoNum;
+	private TextView threeNum;
+	private TextView fourNum;
+	private TextView fiveNum;
+	private TextView sixNum;
+	private TextView sevenNum;
+	private TextView eightNum;
+	private TextView nineNum;
+	private TextView tenNum;
+	private TextView elevenNum;
+	private TextView twelveNum;
 
 	//the canvas
-	private surfaceDraw canvas = null;
+	private surfaceDraw canvas;
 
 	// CONSTRUCTORS ********************************************************************************
 	/**
