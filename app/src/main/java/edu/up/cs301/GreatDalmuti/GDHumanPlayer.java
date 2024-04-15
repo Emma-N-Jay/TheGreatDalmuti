@@ -299,44 +299,43 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// ignore the message if it's not a CounterState message
 		if (!(info instanceof edu.up.cs301.GreatDalmuti.GDState)) return;
 
-		GDState postType = (GDState) info;
+		//GDState postType = (GDState) info;
 
 		// update our state; then update the display
-		this.state = (edu.up.cs301.GreatDalmuti.GDState)info;
-		canvas.setCurrentGameState(this.state);
-		updateDisplay();
+//		this.state = (edu.up.cs301.GreatDalmuti.GDState) info;
+//		canvas.setCurrentGameState(this.state);
+//		updateDisplay();
 
-
-		// image of revolution image button set if possible
-		if( postType.getDeck().get(playerNum).get(13) == 2){
-			revolutionButton.setImageResource(R.drawable.revbutton);
-		} else {
-			revolutionButton.setImageResource(R.drawable.blankspace);
-		}
-
-		//image of pay taxes button if during that phase of the game
-		if(state.getExhangtingTaxes()){
-			paytaxesButton.setImageResource(R.drawable.paytaxesimage);
-		} else {
-			paytaxesButton.setImageResource(R.drawable.blankspace);
-		}
-
-
-		//displays total cards numbers for every card
-			jesterNum.setText(postType.getDeck().get(playerNum).get(13));
-			oneNum.setText(postType.getDeck().get(playerNum).get(1));
-			twoNum.setText(postType.getDeck().get(playerNum).get(2));
-			threeNum.setText(postType.getDeck().get(playerNum).get(3));
-			fourNum.setText(postType.getDeck().get(playerNum).get(4));
-			fiveNum.setText(postType.getDeck().get(playerNum).get(5));
-			sixNum.setText(postType.getDeck().get(playerNum).get(6));
-			sevenNum.setText(postType.getDeck().get(playerNum).get(7));
-			eightNum.setText(postType.getDeck().get(playerNum).get(8));
-			nineNum.setText(postType.getDeck().get(playerNum).get(9));
-			tenNum.setText(postType.getDeck().get(playerNum).get(10));
-			elevenNum.setText(postType.getDeck().get(playerNum).get(11));
-			twelveNum.setText(postType.getDeck().get(playerNum).get(12));
-
+//		// image of revolution image button set if possible
+//		if( postType.getDeck().get(playerNum).get(13) == 2){
+//			revolutionButton.setImageResource(R.drawable.revbutton);
+//		} else {
+//			revolutionButton.setImageResource(R.drawable.blankspace);
+//		}
+//
+//		//image of pay taxes button if during that phase of the game
+//		if(state.getExhangtingTaxes()){
+//			paytaxesButton.setImageResource(R.drawable.paytaxesimage);
+//		} else {
+//			paytaxesButton.setImageResource(R.drawable.blankspace);
+//		}
+//
+//
+//		//displays total cards numbers for every card
+//			jesterNum.setText(postType.getDeck().get(playerNum).get(13));
+//			oneNum.setText(postType.getDeck().get(playerNum).get(1));
+//			twoNum.setText(postType.getDeck().get(playerNum).get(2));
+//			threeNum.setText(postType.getDeck().get(playerNum).get(3));
+//			fourNum.setText(postType.getDeck().get(playerNum).get(4));
+//			fiveNum.setText(postType.getDeck().get(playerNum).get(5));
+//			sixNum.setText(postType.getDeck().get(playerNum).get(6));
+//			sevenNum.setText(postType.getDeck().get(playerNum).get(7));
+//			eightNum.setText(postType.getDeck().get(playerNum).get(8));
+//			nineNum.setText(postType.getDeck().get(playerNum).get(9));
+//			tenNum.setText(postType.getDeck().get(playerNum).get(10));
+//			elevenNum.setText(postType.getDeck().get(playerNum).get(11));
+//			twelveNum.setText(postType.getDeck().get(playerNum).get(12));
+//
 
 		//if number of cards is more than 0, else grey once imported
 //		if(postType.getP1Hand().get(1) >= 1){
