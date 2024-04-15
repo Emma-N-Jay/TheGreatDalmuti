@@ -299,12 +299,12 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// ignore the message if it's not a CounterState message
 		if (!(info instanceof edu.up.cs301.GreatDalmuti.GDState)) return;
 
-		//GDState postType = (GDState) info;
-
-		//TODO: this is the error
-		// update our state; then update the display
-//		this.state = (edu.up.cs301.GreatDalmuti.GDState) info;
-//		canvas.setCurrentGameState(this.state);
+		GDState postType = (GDState) info;
+//
+//		//TODO: this is the error
+//		// update our state; then update the display
+		this.state = (edu.up.cs301.GreatDalmuti.GDState) info;
+		canvas.setCurrentGameState(this.state);
 //		updateDisplay();
 
 //		// image of revolution image button set if possible
@@ -421,12 +421,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.myActivity = activity;
 		
 	    // Load the layout resource for our GUI
-		activity.setContentView(R.layout.run_test_main);
+		activity.setContentView(R.layout.dalmuti_main_xml);
 
 		this.testResultsTextView = (TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
-
-		Button runTestButton = activity.findViewById(R.id.run_test);
-		runTestButton.setOnClickListener(this);
 
 		//image button for rev and the cards
 		this.revolutionButton = (ImageButton)activity.findViewById(R.id.revolutionButton);
