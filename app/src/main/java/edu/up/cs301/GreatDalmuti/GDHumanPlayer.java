@@ -121,6 +121,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	*/
 	protected void updateDisplay() {
 		canvas.invalidate();
+		// set the text in the appropriate widget
+		//testResultsTextView.setText("" + state.getCounter());
 	} // updateDisplay
 
 	/**
@@ -338,71 +340,71 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 
 		//if number of cards is more than 0, else grey once imported
-		if(postType.getP1Hand().get(1) >= 1){
-			one.setImageResource(R.drawable.great_dalmuti);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(2) >= 1){
-			one.setImageResource(R.drawable.arch_bishop);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(3) >= 1){
-			one.setImageResource(R.drawable.earl_marshal);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(4) >= 1){
-			one.setImageResource(R.drawable.baroness);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(5) >= 1){
-			one.setImageResource(R.drawable.abbess);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(6) >= 1){
-			one.setImageResource(R.drawable.knight);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(7) >= 1){
-			one.setImageResource(R.drawable.seamstress);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(8) >= 1){
-			one.setImageResource(R.drawable.mason);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(9) >= 1){
-			one.setImageResource(R.drawable.cook);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(10) >= 1){
-			one.setImageResource(R.drawable.sheperdess);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(11) >= 1){
-			one.setImageResource(R.drawable.stonecutter);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(12) >= 1){
-			one.setImageResource(R.drawable.peasant);
-		} else {
-			//gray
-		}
-		if(postType.getP1Hand().get(13) >= 1){
-			one.setImageResource(R.drawable.jesteryetagain);
-		} else {
-			//gray
-		}
+//		if(postType.getP1Hand().get(1) >= 1){
+//			one.setImageResource(R.drawable.great_dalmuti);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(2) >= 1){
+//			one.setImageResource(R.drawable.arch_bishop);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(3) >= 1){
+//			one.setImageResource(R.drawable.earl_marshal);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(4) >= 1){
+//			one.setImageResource(R.drawable.baroness);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(5) >= 1){
+//			one.setImageResource(R.drawable.abbess);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(6) >= 1){
+//			one.setImageResource(R.drawable.knight);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(7) >= 1){
+//			one.setImageResource(R.drawable.seamstress);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(8) >= 1){
+//			one.setImageResource(R.drawable.mason);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(9) >= 1){
+//			one.setImageResource(R.drawable.cook);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(10) >= 1){
+//			one.setImageResource(R.drawable.sheperdess);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(11) >= 1){
+//			one.setImageResource(R.drawable.stonecutter);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(12) >= 1){
+//			one.setImageResource(R.drawable.peasant);
+//		} else {
+//			//gray
+//		}
+//		if(postType.getP1Hand().get(13) >= 1){
+//			one.setImageResource(R.drawable.jesteryetagain);
+//		} else {
+//			//gray
+//		}
 
 
 	} // receiveInfo
@@ -495,9 +497,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.canvas = (surfaceDraw)activity.findViewById(R.id.the_canvas);
 
 		// Load the layout resource for our GUI
-		activity.setContentView(R.layout.dalmuti_main_xml);
+		//activity.setContentView(R.layout.dalmuti_main_xml);
 
 	} // setAsGui
 
 } // GDHumanPlayer class
+
 
