@@ -100,7 +100,9 @@ public class GDMainActivity extends GameMainActivity {
 	 */
 	@Override
 	public LocalGame createLocalGame(GameState state) {
-		if (state == null) state = new edu.up.cs301.GreatDalmuti.GDState(0);
+		if (state == null) {
+			state = new edu.up.cs301.GreatDalmuti.GDState(0);
+		}
 		return new edu.up.cs301.GreatDalmuti.GDLocalGame(state);
 	} // createLocalGame
 

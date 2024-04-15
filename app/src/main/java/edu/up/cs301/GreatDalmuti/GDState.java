@@ -9,11 +9,13 @@
  */
 
 package edu.up.cs301.GreatDalmuti;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
 import edu.up.cs301.GameFramework.infoMessage.GameState;
+
 public class GDState extends GameState {
 	// INSTANCE VARIABLES **************************************************************************
 	// to satisfy Serializable interface
@@ -175,6 +177,7 @@ public class GDState extends GameState {
 			deckArray[index] = deckArray[i];
 			deckArray[i] = a;
 		}
+
 		deck.add(new ArrayList<Integer>());
 		deck.add(new ArrayList<Integer>());
 		deck.add(new ArrayList<Integer>());
