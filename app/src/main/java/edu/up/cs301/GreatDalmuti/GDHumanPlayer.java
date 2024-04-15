@@ -193,28 +193,28 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		} else if(button.getId() == R.id.twelve){
 			c = 12;
 		}
-		cardsNum.setText(state.getP1Hand().get(c));
+		cardsNum.setText("" +state.getP1Hand().get(c));
 
 		//more or less cards
 		 if(button.getId() == R.id.addbutton){
 			String nString = cardsNum.getText().toString();
 			n = Integer.parseInt(nString);
-			cardsNum.setText((n + 1));
+			cardsNum.setText("" + (n + 1));
 		} else if(button.getId() == R.id.minusbutton){
 			 String nString = cardsNum.getText().toString();
 			 n = Integer.parseInt(nString);
-			 cardsNum.setText((n - 1));
+			 cardsNum.setText("" + (n - 1));
 		}
 
 		 //more or less jesters selected
 		if(button.getId() == R.id.addjbutton){
 			String nString = jesterSelected.getText().toString();
 			n = Integer.parseInt(nString);
-			jesterSelected.setText((n + 1));
+			jesterSelected.setText( "" +(n + 1));
 		} else if(button.getId() == R.id.minusjbutton){
 			String nString = jesterSelected.getText().toString();
 			n = Integer.parseInt(nString);
-			jesterSelected.setText((n - 1));
+			jesterSelected.setText("" + (n - 1));
 		}
 
 
@@ -222,69 +222,69 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// myActivity and not that for some reason nothing works for no reason
 		EditText textBox = myActivity.findViewById(R.id.editTextTextMultiLine);
 		textBox.setText("");
-//
-//		GDState firstInstance = new GDState();
-//		GDState firstCopy = new GDState(firstInstance, 4);
-//
-//		GDHumanPlayer[] gamePlayers = new GDHumanPlayer[4]; //array of all players in game
-//		gamePlayers[0] = new GDHumanPlayer("Great Dalmuti");
-//		gamePlayers[1] = new GDHumanPlayer("Lesser Dalmuti");
-//		gamePlayers[2] = new GDHumanPlayer("Lesser Peon");
-//		gamePlayers[3] = new GDHumanPlayer("Greater Peon");
-//
-//		//greater peon declares revolution
-//		state.revolution(firstCopy.getTurn(), firstCopy.getDeck()); //swaps positions
-//		textBox.setText(textBox.getText() + "The Lesser Dalmuti has declared a revolution!\n");
-//
-//		//greater dalmuti and peon exchange taxes
-//		state.GDPayTaxes(1, 2);
-//		textBox.setText(textBox.getText() + "Taxes have been exchanged!\n");
-//
-//		//great dalmuti plays
-//		ArrayList<ArrayList<Integer>> playingCards = new ArrayList<>();
-//		ArrayList<Integer> foo = new ArrayList<>();
-//		playingCards.add(foo);
-//		foo.add(1);
-//		foo.add(2);
-//		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n, j);
-//		textBox.setText(textBox.getText() + "The Great Dalmuti has played!\n");
-//
-//		//lesser dalmuti passes
-//		state.pass(firstCopy.getTurn());
-//		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
-//
-//		//lesser peon passes
-//		state.pass(firstCopy.getTurn());
-//		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
-//
-//		//greater peon passes
-//		state.pass(firstCopy.getTurn());
-//		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
-//
-//		//great dalmuti plays again
-//		ArrayList<ArrayList<Integer>> playingCards2 = new ArrayList<>();
-//		ArrayList<Integer> foo2 = new ArrayList<>();
-//		playingCards2.add(foo2);
-//		foo.add(1);
-//		foo.add(2);
-//		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n, j);
-//		textBox.setText(textBox.getText() + "The Great Dalmuti has played the rest of their hand" +
-//				" and gone out!\n");
-//		textBox.setText(textBox.getText() + "Great Dalmuti has won!!!!!\n");
-//
-//
-//		// secondInstance
-//		GDState secondInstance = new GDState();
-//		// deep copy of secondInstance assigned to secondCopy
-//		GDState secondCopy = new GDState(secondInstance, 4);
-//
-//		// call to toString() on firstCopy and secondCopy
-//		firstCopy.toString();
-//		secondCopy.toString();
-//
-//		// prints strings to the multi-line EditText for visual inspection
-//		textBox.setText(textBox.getText() + "" + firstInstance.toString());
-//		textBox.setText(textBox.getText() + "" + secondInstance.toString());
+
+		GDState firstInstance = new GDState();
+		GDState firstCopy = new GDState(firstInstance, 4);
+
+		GDHumanPlayer[] gamePlayers = new GDHumanPlayer[4]; //array of all players in game
+		gamePlayers[0] = new GDHumanPlayer("Great Dalmuti");
+		gamePlayers[1] = new GDHumanPlayer("Lesser Dalmuti");
+		gamePlayers[2] = new GDHumanPlayer("Lesser Peon");
+		gamePlayers[3] = new GDHumanPlayer("Greater Peon");
+
+		//greater peon declares revolution
+		state.revolution(firstCopy.getTurn(), firstCopy.getDeck()); //swaps positions
+		textBox.setText(textBox.getText() + "The Lesser Dalmuti has declared a revolution!\n");
+
+		//greater dalmuti and peon exchange taxes
+		state.GDPayTaxes(1, 2);
+		textBox.setText(textBox.getText() + "Taxes have been exchanged!\n");
+
+		//great dalmuti plays
+		ArrayList<ArrayList<Integer>> playingCards = new ArrayList<>();
+		ArrayList<Integer> foo = new ArrayList<>();
+		playingCards.add(foo);
+		foo.add(1);
+		foo.add(2);
+		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n, j);
+		textBox.setText(textBox.getText() + "The Great Dalmuti has played!\n");
+
+		//lesser dalmuti passes
+		state.pass(firstCopy.getTurn());
+		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
+
+		//lesser peon passes
+		state.pass(firstCopy.getTurn());
+		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
+
+		//greater peon passes
+		state.pass(firstCopy.getTurn());
+		textBox.setText(textBox.getText() + "Lesser Dalmuti has passed\n");
+
+		//great dalmuti plays again
+		ArrayList<ArrayList<Integer>> playingCards2 = new ArrayList<>();
+		ArrayList<Integer> foo2 = new ArrayList<>();
+		playingCards2.add(foo2);
+		foo.add(1);
+		foo.add(2);
+		state.play(firstCopy.getTurn(), firstCopy.getDeck(), c, n, j);
+		textBox.setText(textBox.getText() + "The Great Dalmuti has played the rest of their hand" +
+				" and gone out!\n");
+		textBox.setText(textBox.getText() + "Great Dalmuti has won!!!!!\n");
+
+
+		// secondInstance
+		GDState secondInstance = new GDState();
+		// deep copy of secondInstance assigned to secondCopy
+		GDState secondCopy = new GDState(secondInstance, 4);
+
+		// call to toString() on firstCopy and secondCopy
+		firstCopy.toString();
+		secondCopy.toString();
+
+		// prints strings to the multi-line EditText for visual inspection
+		textBox.setText(textBox.getText() + "" + firstInstance.toString());
+		textBox.setText(textBox.getText() + "" + secondInstance.toString());
 	}// onClick
 	
 	/**
@@ -304,11 +304,12 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 //		//TODO: this is the error
 //		// update our state; then update the display
 		this.state = (edu.up.cs301.GreatDalmuti.GDState) info;
-		canvas.setCurrentGameState(this.state);
+		System.out.println("HELP ME");
+		canvas.setCurrentGameState(state);
 		updateDisplay();
 
 		// image of revolution image button set if possible
-		if( postType.getDeck().get(playerNum).get(13) == 2){
+		if(state.getDeck().get(playerNum).get(13) == 2){
 			revolutionButton.setImageResource(R.drawable.revbutton);
 		} else {
 			revolutionButton.setImageResource(R.drawable.blankspace);
@@ -323,20 +324,19 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 
 //		//displays total cards numbers for every card
-
 			jesterNum.setText("" + postType.getDeck().get(playerNum).get(13));
-//			oneNum.setText(postType.getDeck().get(playerNum).get(1));
-//			twoNum.setText(postType.getDeck().get(playerNum).get(2));
-//			threeNum.setText(postType.getDeck().get(playerNum).get(3));
-//			fourNum.setText(postType.getDeck().get(playerNum).get(4));
-//			fiveNum.setText(postType.getDeck().get(playerNum).get(5));
-//			sixNum.setText(postType.getDeck().get(playerNum).get(6));
-//			sevenNum.setText(postType.getDeck().get(playerNum).get(7));
-//			eightNum.setText(postType.getDeck().get(playerNum).get(8));
-//			nineNum.setText(postType.getDeck().get(playerNum).get(9));
-//			tenNum.setText(postType.getDeck().get(playerNum).get(10));
-//			elevenNum.setText(postType.getDeck().get(playerNum).get(11));
-//			twelveNum.setText(postType.getDeck().get(playerNum).get(12));
+			oneNum.setText("" + postType.getDeck().get(playerNum).get(1));
+			twoNum.setText("" +postType.getDeck().get(playerNum).get(2));
+			threeNum.setText("" +postType.getDeck().get(playerNum).get(3));
+			fourNum.setText("" +postType.getDeck().get(playerNum).get(4));
+			fiveNum.setText("" +postType.getDeck().get(playerNum).get(5));
+			sixNum.setText("" +postType.getDeck().get(playerNum).get(6));
+			sevenNum.setText("" +postType.getDeck().get(playerNum).get(7));
+			eightNum.setText("" +postType.getDeck().get(playerNum).get(8));
+			nineNum.setText("" +postType.getDeck().get(playerNum).get(9));
+			tenNum.setText("" +postType.getDeck().get(playerNum).get(10));
+			elevenNum.setText("" +postType.getDeck().get(playerNum).get(11));
+			twelveNum.setText("" +postType.getDeck().get(playerNum).get(12));
 
 
 		//if number of cards is more than 0, else grey once imported
