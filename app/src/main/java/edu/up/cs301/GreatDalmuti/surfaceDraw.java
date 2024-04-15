@@ -5,7 +5,7 @@
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version April 13 2024
+ * @version April 15 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
@@ -29,13 +29,11 @@ public class surfaceDraw extends SurfaceView {
     private final int GP = 2;
     private final int LP = 3;
 
-
     public surfaceDraw(Context context, AttributeSet attr) {
         super(context, attr);
         setWillNotDraw(false);
     }
 
-        //NUX TOLD US TO DO THIS
     public void setCurrentGameState(GDState state){
         this.state = state;
     }
@@ -63,7 +61,6 @@ public class surfaceDraw extends SurfaceView {
             this.setBackgroundColor(0Xffffffff);
             purple.setStyle(Paint.Style.FILL);
 
-
             //Create a bitmap that contains image
             //back of the cards
             Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.card_back);
@@ -84,7 +81,6 @@ public class surfaceDraw extends SurfaceView {
             Bitmap stone_cutter = BitmapFactory.decodeResource(getResources(), R.drawable.stonecutter);
             Bitmap peasant = BitmapFactory.decodeResource(getResources(), R.drawable.peasant);
             Bitmap jester = BitmapFactory.decodeResource(getResources(), R.drawable.jesteryetagain);
-
 
             //scale the bitmaps
             //back of the card
@@ -122,7 +118,6 @@ public class surfaceDraw extends SurfaceView {
             deckPeasant = Bitmap.createScaledBitmap(peasant, 175, 225, false);
             deckJester = Bitmap.createScaledBitmap(jester, 175, 225, false);
 
-
             //draw the top hand
             canvas.drawBitmap(back, 450, 10, null);
             canvas.drawBitmap(back, 550, 10, null);
@@ -147,7 +142,6 @@ public class surfaceDraw extends SurfaceView {
             canvas.drawBitmap(backleft, 10, 300, null);
             canvas.drawBitmap(backleft, 10, 325, null);
 
-
             //draw the right players hand
             canvas.drawBitmap(backright, 1785, 100, null);
             canvas.drawBitmap(backright, 1785, 125, null);
@@ -165,17 +159,8 @@ public class surfaceDraw extends SurfaceView {
             canvas.drawText(" " + state.getNumInPile(), 885, 500, purple);
             //canvas.drawText("hello", 885, 500, purple);
 
-
-            //TODO find which rank human player is.
-            //draw labels of player (This is temporary placeholder to see how it would look)
-//            canvas.drawText("Great Dalmuti", 25, 75, purple);
-//            canvas.drawText("Lesser Dalmuti", 275, 25, purple);
-//            canvas.drawText("Lesser Peon", 1810, 75, purple);
-//            canvas.drawText("Great Peon", 750, 700, purple);
-
             /**
            JUST NEED TO FIND RANK OF HUMAN PLAYER
-
              */
             //Set the text based on rank and num cards
             int humanNum;
@@ -186,8 +171,6 @@ public class surfaceDraw extends SurfaceView {
                     canvas.drawText("Lesser Peon", 275, 25, purple);
                     canvas.drawText("Great Peon", 1810, 75, purple);
                     canvas.drawText("Great Dalmuti", 750, 700, purple);
-
-
             }
             if(state.ranks[0] == "Lesser Dalmuti"){
                     humanNum = LD;
@@ -196,7 +179,6 @@ public class surfaceDraw extends SurfaceView {
                     canvas.drawText("Great Peon" , 275, 25, purple);
                     canvas.drawText("Lesser Peon", 1810, 75, purple);
                     canvas.drawText("Great Dalmuti" , 750, 700, purple);
-
 
             }if(state.ranks[0] == "Lesser Peon"){
                     //name labels
@@ -225,25 +207,23 @@ public class surfaceDraw extends SurfaceView {
                     canvas.drawText("# cards:", 275, 50, purple);
                     canvas.drawText(" " + state.getP2Hand().size(), 375 , 50, purple);
                     //draw num cards of LP
+                    canvas.drawText("# cards:", 850 , 700, purple);
                     canvas.drawText(" " + state.getP3Hand().size(), 750, 700, purple);
-                    canvas.drawText("10", 850 , 700, purple);
             }
 
             //TODO fix which player is what rank.
             //draw num cards of GD
             canvas.drawText("# cards:", 25, 475, purple);
-            canvas.drawText(" "+ state.getP1Hand().size(), 125 , 475, purple);
+            canvas.drawText(" "+ state.totalP1Hand(), 125 , 475, purple);
             //draw num cards of LD
             canvas.drawText("# cards:", 275, 50, purple);
-            canvas.drawText(" " + state.getP2Hand().size(), 375 , 50, purple);
+            canvas.drawText(" " + state.totalP2Hand(), 375 , 50, purple);
             //draw num cards of LP
-            canvas.drawText(" " + state.getP3Hand().size(), 750, 700, purple);
-            canvas.drawText("10", 850 , 700, purple);
-
+            canvas.drawText("# cards", 850 , 700, purple);
+            canvas.drawText(" " + state.totalP3Hand(), 750, 700, purple);
             //draw num cards of GP
-            //canvas.drawText("# cards:", 1810, 475, purple);
-            //canvas.drawText("10", 1910 , 475, purple);
-
+            canvas.drawText("# cards:", 1810, 475, purple);
+            canvas.drawText(" " + state.totalP4Hand(), 1910 , 475, purple);
 
             //Time to do the pile!
             //TODO Fix what card is placed on the pile based on what card was just played

@@ -103,6 +103,34 @@ public class GDState extends GameState {
 	public ArrayList<Integer>getP2Hand(){return deck.get(1);}
 	public ArrayList<Integer>getP3Hand(){return deck.get(2);}
 	public ArrayList<Integer>getP4Hand(){return deck.get(3);}
+	public int totalP1Hand(){
+		int total = 0;
+		for(int i = 0; i < getP1Hand().size(); i++) {
+			total += getP1Hand().get(i);
+		}
+		return total;
+	}
+	public int totalP2Hand(){
+		int total = 0;
+		for(int i = 0; i < getP2Hand().size(); i++) {
+			total += getP2Hand().get(i);
+		}
+		return total;
+	}
+	public int totalP3Hand(){
+		int total = 0;
+		for(int i = 0; i < getP3Hand().size(); i++) {
+			total += getP3Hand().get(i);
+		}
+		return total;
+	}
+	public int totalP4Hand(){
+		int total = 0;
+		for(int i = 0; i < getP4Hand().size(); i++) {
+			total += getP4Hand().get(i);
+		}
+		return total;
+	}
 
 	@Override
 	public String toString() {
@@ -217,7 +245,6 @@ public class GDState extends GameState {
 		return total;
 	}
 
-
 	// PASS METHOD
 	public boolean pass(int turn){
 		if(turn == 3 ){
@@ -297,7 +324,8 @@ public class GDState extends GameState {
 		boolean temp = false; //is true when the play was legal and actually happened
 
 		//for when a new round starts for the player who has the lead
-		if(numPass == 3 && player == hasLead && local.leadIsLegalMove(player, decks, rankSelected, numSelected, jestersSelected)){
+		if( (numPass == 3) && (player == hasLead) && (numSelected > 0) &&
+				(local.leadIsLegalMove(player, decks, rankSelected, numSelected, jestersSelected) ) ){
 			this.rankInPile = rankSelected;
 			this.numInPile = numSelected + jestersSelected;
 			decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - (numSelected) );
@@ -305,12 +333,11 @@ public class GDState extends GameState {
 			temp = true;
 		}
 
-		if( (numSelected > 0) && (local.isLegalMove(player, decks, rankSelected, numSelected, jestersSelected)) ){
-				decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - numSelected);
-				decks.get(player).set(13, decks.get(player).get(13) - (jestersSelected) );
-				temp = true;
-		}
-
+//		if( (numSelected > 0) && (local.isLegalMove(player, decks, rankSelected, numSelected, jestersSelected)) ){
+//				decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - numSelected);
+//				decks.get(player).set(13, decks.get(player).get(13) - (jestersSelected) );
+//				temp = true;
+//		}
 
 		if(temp == true) {
 			if (this.getTurn() == 3) {
