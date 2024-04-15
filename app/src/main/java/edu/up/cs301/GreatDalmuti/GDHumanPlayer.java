@@ -301,6 +301,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//GDState postType = (GDState) info;
 
+		//TODO: this is the error
 		// update our state; then update the display
 //		this.state = (edu.up.cs301.GreatDalmuti.GDState) info;
 //		canvas.setCurrentGameState(this.state);
