@@ -35,6 +35,7 @@ public class surfaceDraw extends SurfaceView {
         setWillNotDraw(false);
     }
 
+        //NUX TOLD US TO DO THIS
     public void setCurrentGameState(GDState state){
         this.state = state;
     }
