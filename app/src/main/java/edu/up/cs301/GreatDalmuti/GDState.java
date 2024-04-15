@@ -27,12 +27,12 @@ public class GDState extends GameState {
 	private boolean handIsVisible; //if a players hand is visible for a specific device
 	private boolean revolutionIsVisible; //is the revolution button visible
 	private boolean exchangingTaxes; //are we currently exchanging taxes
-	private int numInPile; // number of the current rank of cards in the middle
-	private int rankInPile; // the number of the rank in the pile
-	private int hasLowestInRound; // who is in line to get the lead next
+	private int numInPile = 0; // number of the current rank of cards in the middle
+	private int rankInPile = 0; // the number of the rank in the pile
+	private int hasLowestInRound = 0; // who is in line to get the lead next
 	private int hasLead = 0; // who currently has the lead
 	private int turn = 0; // who's turn is it
-	private int numPass;
+	private int numPass = 0;
 
 	/** ALL OF THE F0LLOWING INSTANCE VARIABLES ARE FROM THE ACTION CLASSES */
 	public int[] taxCardIndexes;
