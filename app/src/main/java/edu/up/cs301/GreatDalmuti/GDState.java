@@ -195,6 +195,11 @@ public class GDState extends GameState {
 				deckCopy.get(3).add(deckArray[i]);
 			}
 		}
+		deck.get(0).add(0);
+		deck.get(0).add(1);
+		deck.get(0).add(2);
+		deck.get(0).add(3);
+
 		for (int i = 0; i < 4; i++) {
 			for (int j = 1; j <= 13; j++) {
 				deck.get(i).add(getNumOf(deckCopy.get(i), j));
