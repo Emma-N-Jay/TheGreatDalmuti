@@ -505,11 +505,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	} // setAsGui
 
-	//TODO fix this
-//	  public ArrayList<Card> getPlayerHand() {
-//        return playerHand;
-//    }
-
 	public Card[] getHand(){return hand;}
 	public void setHand(Card[] playerHand){
 		this.hand = playerHand;
