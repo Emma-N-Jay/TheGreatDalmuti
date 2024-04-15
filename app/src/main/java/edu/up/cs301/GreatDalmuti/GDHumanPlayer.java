@@ -299,12 +299,12 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// ignore the message if it's not a CounterState message
 		if (!(info instanceof edu.up.cs301.GreatDalmuti.GDState)) return;
 
+		GDState postType = (GDState) info;
+
 		// update our state; then update the display
 		this.state = (edu.up.cs301.GreatDalmuti.GDState)info;
 		canvas.setCurrentGameState(this.state);
 		updateDisplay();
-
-		GDState postType = (GDState) info;
 
 
 		// image of revolution image button set if possible

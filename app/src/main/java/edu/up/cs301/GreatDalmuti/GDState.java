@@ -39,7 +39,7 @@ public class GDState extends GameState {
 	public int indexHand;
 
 	//rank of each player
-	String[] ranks = new String[4];
+	public String[] ranks = new String[4];
 
 	// CONSTRUCTORS ********************************************************************************
 	/**

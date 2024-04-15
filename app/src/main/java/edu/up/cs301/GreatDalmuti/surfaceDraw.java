@@ -162,7 +162,8 @@ public class surfaceDraw extends SurfaceView {
 
             //Draw text for num card
             canvas.drawText("# played:",  750, 500, purple);
-            canvas.drawText(" " + state.getNumInPile(), 885, 500, purple);
+            //canvas.drawText(" " + state.getNumInPile(), 885, 500, purple);
+            canvas.drawText("hello", 885, 500, purple);
 
 
             //TODO find which rank human player is.
@@ -177,101 +178,101 @@ public class surfaceDraw extends SurfaceView {
 
              */
             //Set the text based on rank and num cards
-            int humanNum;
-            if(state.ranks[0] == "Great Dalmuti"){
-                    //name labels
-                    humanNum = GD;
-                    canvas.drawText("Lesser Dalmuti", 25, 75, purple);
-                    canvas.drawText("Lesser Peon", 275, 25, purple);
-                    canvas.drawText("Great Peon", 1810, 75, purple);
-                    canvas.drawText("Great Dalmuti", 750, 700, purple);
-
-
-            }
-            if(state.ranks[0] == "Lesser Dalmuti"){
-                    humanNum = LD;
-                    //name labels
-                    canvas.drawText("Lesser Dalmuti", 25, 75, purple);
-                    canvas.drawText("Great Peon" , 275, 25, purple);
-                    canvas.drawText("Lesser Peon", 1810, 75, purple);
-                    canvas.drawText("Great Dalmuti" , 750, 700, purple);
-
-
-            }if(state.ranks[0] == "Lesser Peon"){
-                    //name labels
-                    humanNum = LP;
-                    canvas.drawText("Great Dalmuti", 25, 75, purple);
-                    canvas.drawText("Lesser Peon" , 275, 25, purple);
-                    canvas.drawText( "Great Peon", 1810, 75, purple);
-                    canvas.drawText("Lesser Dalmuti"  , 750, 700, purple);
-            }if(state.ranks[0] == "Great Peon"){
-                    humanNum = GP;
-                    //Draw text for num card
-                    canvas.drawText("# played:", 775, 500, purple);
-                    canvas.drawText("4", 885, 500, purple);
-
-                    //draw labels of player
-                    canvas.drawText("Great Dalmuti", 25, 75, purple);
-                    canvas.drawText("Lesser Dalmuti", 275, 25, purple);
-                    canvas.drawText("Lesser Peon", 1810, 75, purple);
-                    canvas.drawText("Great Peon", 925, 575, purple);
-
-                    //Num cards labels
-                    //draw num cards of GD
-                    canvas.drawText("# cards:", 25, 475, purple);
-                    canvas.drawText(" "+ state.getP1Hand().size(), 125 , 475, purple);
-                    //draw num cards of LD
-                    canvas.drawText("# cards:", 275, 50, purple);
-                    canvas.drawText(" " + state.getP2Hand().size(), 375 , 50, purple);
-                    //draw num cards of LP
-                    canvas.drawText(" " + state.getP3Hand().size(), 750, 700, purple);
-                    canvas.drawText("10", 850 , 700, purple);
-            }
-
-            //TODO fix which player is what rank.
-            //draw num cards of GD
-            canvas.drawText("# cards:", 25, 475, purple);
-            canvas.drawText(" "+ state.getP1Hand().size(), 125 , 475, purple);
-            //draw num cards of LD
-            canvas.drawText("# cards:", 275, 50, purple);
-            canvas.drawText(" " + state.getP2Hand().size(), 375 , 50, purple);
-            //draw num cards of LP
-            canvas.drawText(" " + state.getP3Hand().size(), 750, 700, purple);
-            canvas.drawText("10", 850 , 700, purple);
-
-            //draw num cards of GP
-            //canvas.drawText("# cards:", 1810, 475, purple);
-            //canvas.drawText("10", 1910 , 475, purple);
-
-
-            //Time to do the pile!
-            //TODO Fix what card is placed on the pile based on what card was just played
-            if(state.getRankInPile() == 1){
-                canvas.drawBitmap(deckDal, 900, 250, null);
-            }else if(state.getRankInPile() == 2) {
-                    canvas.drawBitmap(deckArch, 900, 250, null);
-            }else if(state.getRankInPile() == 3) {
-                    canvas.drawBitmap(deckEarl, 900, 250, null);
-            }else if(state.getRankInPile() == 4) {
-                    canvas.drawBitmap(deckBaron, 900, 250, null);
-            }else if(state.getRankInPile() == 5) {
-                    canvas.drawBitmap(deckAbb, 900, 250, null);
-            }else if(state.getRankInPile() == 6) {
-                    canvas.drawBitmap(deckKnight, 900, 250, null);
-            }else if(state.getRankInPile() == 7) {
-                    canvas.drawBitmap(deckSeam, 900, 250, null);
-            }else if(state.getRankInPile() == 8) {
-                    canvas.drawBitmap(deckMason, 900, 250, null);
-            }else if(state.getRankInPile() == 9) {
-                    canvas.drawBitmap(deckCook, 900, 250, null);
-            }else if(state.getRankInPile() == 10) {
-                    canvas.drawBitmap(deckShep, 900, 250, null);
-            }else if(state.getRankInPile() == 11) {
-                    canvas.drawBitmap(deckStonecut, 900, 250, null);
-            }else if(state.getRankInPile() == 12) {
-                    canvas.drawBitmap(deckPeasant, 900, 250, null);
-            }else if(state.getRankInPile() == 13) {
-                    canvas.drawBitmap(deckJester, 900, 250, null);
-            }
+//            int humanNum;
+//            if(state.ranks[0] == "Great Dalmuti"){
+//                    //name labels
+//                    humanNum = GD;
+//                    canvas.drawText("Lesser Dalmuti", 25, 75, purple);
+//                    canvas.drawText("Lesser Peon", 275, 25, purple);
+//                    canvas.drawText("Great Peon", 1810, 75, purple);
+//                    canvas.drawText("Great Dalmuti", 750, 700, purple);
+//
+//
+//            }
+//            if(state.ranks[0] == "Lesser Dalmuti"){
+//                    humanNum = LD;
+//                    //name labels
+//                    canvas.drawText("Lesser Dalmuti", 25, 75, purple);
+//                    canvas.drawText("Great Peon" , 275, 25, purple);
+//                    canvas.drawText("Lesser Peon", 1810, 75, purple);
+//                    canvas.drawText("Great Dalmuti" , 750, 700, purple);
+//
+//
+//            }if(state.ranks[0] == "Lesser Peon"){
+//                    //name labels
+//                    humanNum = LP;
+//                    canvas.drawText("Great Dalmuti", 25, 75, purple);
+//                    canvas.drawText("Lesser Peon" , 275, 25, purple);
+//                    canvas.drawText( "Great Peon", 1810, 75, purple);
+//                    canvas.drawText("Lesser Dalmuti"  , 750, 700, purple);
+//            }if(state.ranks[0] == "Great Peon"){
+//                    humanNum = GP;
+//                    //Draw text for num card
+//                    canvas.drawText("# played:", 775, 500, purple);
+//                    canvas.drawText("4", 885, 500, purple);
+//
+//                    //draw labels of player
+//                    canvas.drawText("Great Dalmuti", 25, 75, purple);
+//                    canvas.drawText("Lesser Dalmuti", 275, 25, purple);
+//                    canvas.drawText("Lesser Peon", 1810, 75, purple);
+//                    canvas.drawText("Great Peon", 925, 575, purple);
+//
+//                    //Num cards labels
+//                    //draw num cards of GD
+//                    canvas.drawText("# cards:", 25, 475, purple);
+//                    canvas.drawText(" "+ state.getP1Hand().size(), 125 , 475, purple);
+//                    //draw num cards of LD
+//                    canvas.drawText("# cards:", 275, 50, purple);
+//                    canvas.drawText(" " + state.getP2Hand().size(), 375 , 50, purple);
+//                    //draw num cards of LP
+//                    canvas.drawText(" " + state.getP3Hand().size(), 750, 700, purple);
+//                    canvas.drawText("10", 850 , 700, purple);
+//            }
+//
+//            //TODO fix which player is what rank.
+//            //draw num cards of GD
+//            canvas.drawText("# cards:", 25, 475, purple);
+//            canvas.drawText(" "+ state.getP1Hand().size(), 125 , 475, purple);
+//            //draw num cards of LD
+//            canvas.drawText("# cards:", 275, 50, purple);
+//            canvas.drawText(" " + state.getP2Hand().size(), 375 , 50, purple);
+//            //draw num cards of LP
+//            canvas.drawText(" " + state.getP3Hand().size(), 750, 700, purple);
+//            canvas.drawText("10", 850 , 700, purple);
+//
+//            //draw num cards of GP
+//            //canvas.drawText("# cards:", 1810, 475, purple);
+//            //canvas.drawText("10", 1910 , 475, purple);
+//
+//
+//            //Time to do the pile!
+//            //TODO Fix what card is placed on the pile based on what card was just played
+//            if(state.getRankInPile() == 1){
+//                canvas.drawBitmap(deckDal, 900, 250, null);
+//            }else if(state.getRankInPile() == 2) {
+//                    canvas.drawBitmap(deckArch, 900, 250, null);
+//            }else if(state.getRankInPile() == 3) {
+//                    canvas.drawBitmap(deckEarl, 900, 250, null);
+//            }else if(state.getRankInPile() == 4) {
+//                    canvas.drawBitmap(deckBaron, 900, 250, null);
+//            }else if(state.getRankInPile() == 5) {
+//                    canvas.drawBitmap(deckAbb, 900, 250, null);
+//            }else if(state.getRankInPile() == 6) {
+//                    canvas.drawBitmap(deckKnight, 900, 250, null);
+//            }else if(state.getRankInPile() == 7) {
+//                    canvas.drawBitmap(deckSeam, 900, 250, null);
+//            }else if(state.getRankInPile() == 8) {
+//                    canvas.drawBitmap(deckMason, 900, 250, null);
+//            }else if(state.getRankInPile() == 9) {
+//                    canvas.drawBitmap(deckCook, 900, 250, null);
+//            }else if(state.getRankInPile() == 10) {
+//                    canvas.drawBitmap(deckShep, 900, 250, null);
+//            }else if(state.getRankInPile() == 11) {
+//                    canvas.drawBitmap(deckStonecut, 900, 250, null);
+//            }else if(state.getRankInPile() == 12) {
+//                    canvas.drawBitmap(deckPeasant, 900, 250, null);
+//            }else if(state.getRankInPile() == 13) {
+//                    canvas.drawBitmap(deckJester, 900, 250, null);
+//            }
     }
 }
