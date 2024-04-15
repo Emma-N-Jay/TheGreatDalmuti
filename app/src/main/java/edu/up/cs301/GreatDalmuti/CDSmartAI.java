@@ -36,77 +36,77 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		getTimer().setInterval(50);
 		getTimer().start();
 
-		/**
-		 * GIVING TAXES
-		 */
-		//when it is the great dalmuti it will automatically pass its two highest cards
-		if(playerNum == 3){
-			//I know this looks like a mess BUT its just passing in the two highest cards, thats it
-			state.GDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
-							state.getDeck().get(playerNum)),
-					rankOfCard(state.getDeck().get(playerNum).size() - 2,
-							state.getDeck().get(playerNum)));
-		}
-		//when it is the lesser dalmuti it will automatically pass its highest
-		if(playerNum == 2){
-			state.LDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
-					state.getDeck().get(playerNum)));
-		}
-
-		/**
-		 * GETTING THE LEAD (should this somehow happen)
-		 */
-		int tempRank = rankOfCard(state.getDeck().get(playerNum).size() - 1,
-				state.getDeck().get(playerNum));
-
-		if(state.getHasLead() == playerNum){
-			state.play(playerNum, state.getDeck(), tempRank,
-					numOfRank(tempRank,state.getDeck().get(playerNum)), 0);
-		}
-
-		/**
-		 * PASSING AND PLAYING CARDS WITH THE DUMB AI
-		 */
-		//will give us a sorted version of this players hand
-		state.getDeck().get(playerNum);
-		for(int i = state.getDeck().get(playerNum).size() - 1; i >= 0; i--){
-			if(i < state.getRankInPile()){
-				if(numOfRank(state.getRankInPile(), state.getDeck().get(playerNum)) >= state.getNumInPile()){
-					state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0);
-					played = true;
-				}
-			}
-		}
-		if(played == false){
-			state.pass(state.getTurn());
-		}
+//		/**
+//		 * GIVING TAXES
+//		 */
+//		//when it is the great dalmuti it will automatically pass its two highest cards
+//		if(playerNum == 3){
+//			//I know this looks like a mess BUT its just passing in the two highest cards, thats it
+//			state.GDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
+//							state.getDeck().get(playerNum)),
+//					rankOfCard(state.getDeck().get(playerNum).size() - 2,
+//							state.getDeck().get(playerNum)));
+//		}
+//		//when it is the lesser dalmuti it will automatically pass its highest
+//		if(playerNum == 2){
+//			state.LDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
+//					state.getDeck().get(playerNum)));
+//		}
+//
+//		/**
+//		 * GETTING THE LEAD (should this somehow happen)
+//		 */
+//		int tempRank = rankOfCard(state.getDeck().get(playerNum).size() - 1,
+//				state.getDeck().get(playerNum));
+//
+//		if(state.getHasLead() == playerNum){
+//			state.play(playerNum, state.getDeck(), tempRank,
+//					numOfRank(tempRank,state.getDeck().get(playerNum)), 0);
+//		}
+//
+//		/**
+//		 * PASSING AND PLAYING CARDS WITH THE DUMB AI
+//		 */
+//		//will give us a sorted version of this players hand
+//		state.getDeck().get(playerNum);
+//		for(int i = state.getDeck().get(playerNum).size() - 1; i >= 0; i--){
+//			if(i < state.getRankInPile()){
+//				if(numOfRank(state.getRankInPile(), state.getDeck().get(playerNum)) >= state.getNumInPile()){
+//					state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0);
+//					played = true;
+//				}
+//			}
+//		}
+//		if(played == false){
+//			state.pass(state.getTurn());
+//		}
 	} // GDComputerPlayer1
 
-	public int numOfRank(int rank, ArrayList<Integer> playerHand){
-		int numCards = 0;
-		for(int i = 0; i >= playerHand.size(); i++){
-			if(playerHand.get(i) == rank){
-				numCards++;
-			}
-		}
-		return numCards;
-	}
-
-	public int rankOfCard(int index, ArrayList<Integer> playerHand){
-		return playerHand.get(index);
-	}
-
-	/** locates highest single card*/
-	public int highSingle(ArrayList<Integer> playerHand){
-		int num = -1;
-		for(int i = 0; i < playerHand.size(); i++){
-			if(numOfRank(i,playerHand) == 1){
-				num = i;
-			}
-		}
-		return num;
-	}
-
+//	public int numOfRank(int rank, ArrayList<Integer> playerHand){
+//		int numCards = 0;
+//		for(int i = 0; i >= playerHand.size(); i++){
+//			if(playerHand.get(i) == rank){
+//				numCards++;
+//			}
+//		}
+//		return numCards;
+//	}
+//
+//	public int rankOfCard(int index, ArrayList<Integer> playerHand){
+//		return playerHand.get(index);
+//	}
+//
+//	/** locates highest single card*/
+//	public int highSingle(ArrayList<Integer> playerHand){
+//		int num = -1;
+//		for(int i = 0; i < playerHand.size(); i++){
+//			if(numOfRank(i,playerHand) == 1){
+//				num = i;
+//			}
+//		}
+//		return num;
+//	}
+//
 
 	// METHODS *************************************************************************************
     /**
