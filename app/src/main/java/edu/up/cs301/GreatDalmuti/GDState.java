@@ -65,6 +65,7 @@ public class GDState extends GameState {
 		 this.hasLead = 0; //this should assign the lead to default to GDalmuti but also could be 1 instead of 0
 		 this.revolutionIsVisible = false;
 		 setPlayers(ranks);
+		 shuffle();
 	 } // GDState
 	
 	/**
@@ -116,25 +117,25 @@ public class GDState extends GameState {
 	} // toString
 
 	private void setPlayers(String [] ranks) {
-		int zero = (int) (Math.random() * 4) + 1;
+		int zero = (int) (Math.random() * 4);
 
 		ranks[zero] ="Great Dalmuti";
 
-		int one = (int) (Math.random() * 4) + 1;
+		int one = (int) (Math.random() * 4);
 		while (zero == one){
-			one = (int) (Math.random() * 4) + 1;
+			one = (int) (Math.random() * 4);
 		}
 		ranks[one] = "Lesser Dalmuti";
 
-		int two = (int) (Math.random() * 4) + 1;
+		int two = (int) (Math.random() * 4);
 		while ( (zero == two) || (one == two)){
-			two = (int) (Math.random() * 4) + 1;
+			two = (int) (Math.random() * 4);
 		}
 		ranks[two] = "Greater Peon";
 
-		int three = (int) (Math.random() * 4) + 1;
+		int three = (int) (Math.random() * 4);
 		while ( (zero == three) || (one == three) || (two == three) ){
-			three = (int) (Math.random() * 4) + 1;
+			three = (int) (Math.random() * 4);
 		}
 		ranks[three] = "Lesser Dalmuti";
 
