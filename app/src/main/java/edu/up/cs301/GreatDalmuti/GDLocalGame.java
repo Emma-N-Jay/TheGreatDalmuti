@@ -36,11 +36,6 @@ import java.util.ArrayList;
 public class GDLocalGame extends LocalGame {
 
 	//TODO Change this comment to pertain to Dalmuti
-	// When a counter game is played, any number of players. The first player
-	// is trying to get the counter value to TARGET_MAGNITUDE; the second player,
-	// if present, is trying to get the counter to -TARGET_MAGNITUDE. The
-	// remaining players are neither winners nor losers, but can interfere by
-	// modifying the counter.
 
 	// INSTANCE VARIABLES **************************************************************************
 	public static final int TARGET_MAGNITUDE = 10;
@@ -61,6 +56,12 @@ public class GDLocalGame extends LocalGame {
 		super.state = state;
 	} //GDLocalGame
 
+
+	public void start(GamePlayer[] players){
+		super.start(players);
+		super.state = new GDState(players.length);
+		state = (GDState)super.state;
+	}
 	// METHODS *************************************************************************************
 	/**
 	 * can this player move
