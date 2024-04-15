@@ -70,7 +70,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		// Do nothing, as we ignore all state in deciding our next move. It
 		// depends totally on the timer and random numbers.
 		boolean played = false;
-		state = new GDState(state, 0);
+		state = new GDState();
 		/**
 		 * GIVING TAXES
 		 */

@@ -421,12 +421,12 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.myActivity = activity;
 		
 	    // Load the layout resource for our GUI
-		//activity.setContentView(R.layout.run_test_main);
+		activity.setContentView(R.layout.run_test_main);
 
-		//this.testResultsTextView = (TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
+		this.testResultsTextView = (TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
 
-		//Button runTestButton = activity.findViewById(R.id.run_test);
-		//runTestButton.setOnClickListener(this);
+		Button runTestButton = activity.findViewById(R.id.run_test);
+		runTestButton.setOnClickListener(this);
 
 		//image button for rev and the cards
 		this.revolutionButton = (ImageButton)activity.findViewById(R.id.revolutionButton);
