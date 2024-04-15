@@ -81,7 +81,7 @@ public class GDMainActivity extends GameMainActivity {
 		defaultConfig.addPlayer("Computer 2", 2); // player 3: a computer player
 		defaultConfig.addPlayer("Computer 3", 3); // player 4: a computer player
 
-		
+
 		// Set the default remote-player setup:
 		// - player name: "Remote Player"
 		// - IP code: (empty string)
