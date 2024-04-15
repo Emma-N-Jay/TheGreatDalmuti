@@ -138,9 +138,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
 
-//		if(button.getId() == R.id.editTextTextMultiLine){
-//			//tbd
-//		}
+		if(button.getId() == R.id.editTextTextMultiLine){
+			//tbd
+		}
 
 		//what happens when player hits buttons
 		if(button.getId() == R.id.playButton){
@@ -454,29 +454,29 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.jminusB = (Button) activity.findViewById(R.id.minusjbutton);
 
 		//listens for button presses
-		passButton.setOnClickListener(this);
-		playButton.setOnClickListener(this);
-		plusB.setOnClickListener(this);
-		minusB.setOnClickListener(this);
-		jplusB.setOnClickListener(this);
-		jminusB.setOnClickListener(this);
-
-		//sets image button listener
-		revolutionButton.setOnClickListener(this);
-		paytaxesButton.setOnClickListener(this);
-		one.setOnClickListener(this);
-		two.setOnClickListener(this);
-		three.setOnClickListener(this);
-		four.setOnClickListener(this);
-		five.setOnClickListener(this);
-		six.setOnClickListener(this);
-		seven.setOnClickListener(this);
-		eight.setOnClickListener(this);
-		nine.setOnClickListener(this);
-		ten.setOnClickListener(this);
-		eleven.setOnClickListener(this);
-		twelve.setOnClickListener(this);
-		jester.setOnClickListener(this);
+//		passButton.setOnClickListener(this);
+//		playButton.setOnClickListener(this);
+//		plusB.setOnClickListener(this);
+//		minusB.setOnClickListener(this);
+//		jplusB.setOnClickListener(this);
+//		jminusB.setOnClickListener(this);
+//
+//		//sets image button listener
+//		revolutionButton.setOnClickListener(this);
+//		paytaxesButton.setOnClickListener(this);
+//		one.setOnClickListener(this);
+//		two.setOnClickListener(this);
+//		three.setOnClickListener(this);
+//		four.setOnClickListener(this);
+//		five.setOnClickListener(this);
+//		six.setOnClickListener(this);
+//		seven.setOnClickListener(this);
+//		eight.setOnClickListener(this);
+//		nine.setOnClickListener(this);
+//		ten.setOnClickListener(this);
+//		eleven.setOnClickListener(this);
+//		twelve.setOnClickListener(this);
+//		jester.setOnClickListener(this);
 
 		//text views
 		this.cardsNum = (TextView) activity.findViewById(R.id.cardnum);
