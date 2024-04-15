@@ -42,10 +42,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	//An array of the players hand
 	private Card[] hand;
 	//selected card
-	int c = 0;
+	int c;
 	//selected number of cards
-	int n = 0;
-	int j = 0;
+	int n;
+	int j;
 
 	//pass and hold buttons
 	private Button passButton;
@@ -138,9 +138,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
 
-//		if(button.getId() == R.id.editTextTextMultiLine){
-//			//tbd
-//		}
+		if(button.getId() == R.id.editTextTextMultiLine){
+			//tbd
+		}
 
 		//what happens when player hits buttons
 		if(button == playButton){
