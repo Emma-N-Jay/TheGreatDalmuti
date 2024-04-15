@@ -196,9 +196,9 @@ public class GDState extends GameState {
 			}
 		}
 		deck.get(0).add(0);
-		deck.get(0).add(1);
-		deck.get(0).add(2);
-		deck.get(0).add(3);
+		deck.get(1).add(1);
+		deck.get(2).add(2);
+		deck.get(3).add(3);
 
 		for (int i = 0; i < 4; i++) {
 			for (int j = 1; j <= 13; j++) {
