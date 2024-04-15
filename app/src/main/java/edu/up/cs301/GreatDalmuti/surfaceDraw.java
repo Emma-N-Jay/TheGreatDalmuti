@@ -168,10 +168,10 @@ public class surfaceDraw extends SurfaceView {
 
             //TODO find which rank human player is.
             //draw labels of player (This is temporary placeholder to see how it would look)
-            canvas.drawText("Great Dalmuti", 25, 75, purple);
-            canvas.drawText("Lesser Dalmuti", 275, 25, purple);
-            canvas.drawText("Lesser Peon", 1810, 75, purple);
-            canvas.drawText("Great Peon", 750, 700, purple);
+//            canvas.drawText("Great Dalmuti", 25, 75, purple);
+//            canvas.drawText("Lesser Dalmuti", 275, 25, purple);
+//            canvas.drawText("Lesser Peon", 1810, 75, purple);
+//            canvas.drawText("Great Peon", 750, 700, purple);
 
             /**
            JUST NEED TO FIND RANK OF HUMAN PLAYER
