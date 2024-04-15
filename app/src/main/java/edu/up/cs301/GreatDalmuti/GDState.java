@@ -57,7 +57,7 @@ public class GDState extends GameState {
 	 public GDState(){
 		 // makes a deep copy of all variables so far
 		 this.deck = new ArrayList<ArrayList<Integer>>();
-		 //this.shuffle();
+		 this.shuffle();
 		 this.exchangingTaxes = true;
 		 this.handIsVisible = false;
 		 this.numInPile = 0;
