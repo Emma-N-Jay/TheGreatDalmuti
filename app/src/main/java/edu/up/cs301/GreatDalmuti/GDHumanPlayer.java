@@ -193,7 +193,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		} else if(button.getId() == R.id.twelve){
 			c = 12;
 		}
-		cardsNum.setText("" +state.getP1Hand().get(c));
+		cardsNum.setText(state.getP1Hand().get(c));
 
 		//more or less cards
 		 if(button.getId() == R.id.addbutton){
@@ -210,7 +210,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		if(button.getId() == R.id.addjbutton){
 			String nString = jesterSelected.getText().toString();
 			n = Integer.parseInt(nString);
-			jesterSelected.setText( "" +(n + 1));
+			jesterSelected.setText((n + 1));
 		} else if(button.getId() == R.id.minusjbutton){
 			String nString = jesterSelected.getText().toString();
 			n = Integer.parseInt(nString);

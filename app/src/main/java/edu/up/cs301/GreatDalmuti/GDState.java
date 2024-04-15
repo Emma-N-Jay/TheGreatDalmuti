@@ -144,15 +144,12 @@ public class GDState extends GameState {
 
 	//SHUFFLES DECK
 	public void shuffle(){
-		ArrayList<Integer> p1Hand = new ArrayList<Integer>();
-		ArrayList<Integer> p2Hand = new ArrayList<Integer>();
-		ArrayList<Integer> p3Hand = new ArrayList<Integer>();
-		ArrayList<Integer> p4Hand = new ArrayList<Integer>();
+		ArrayList<ArrayList<Integer>> deckCopy = new ArrayList<ArrayList<Integer>>();
 
 		int[] deckArray = new int[80];
 		int pos = 0;
-		for(int i = 1; i <= 12; i++){
-			for(int j = 1; j <= i; j++){
+		for (int i = 1; i <= 12; i++) {
+			for (int j = 1; j <= i; j++) {
 				deckArray[pos] = i;
 				pos++;
 			}
@@ -162,8 +159,7 @@ public class GDState extends GameState {
 		deckArray[pos + 1] = 13;
 
 		Random rnd = new Random();
-		for (int i = deckArray.length - 1; i > 0; i--)
-		{
+		for (int i = deckArray.length - 1; i > 0; i--) {
 			/**
 			 External Citation
 			 Date: 6 April 2024
@@ -183,28 +179,37 @@ public class GDState extends GameState {
 		deck.add(new ArrayList<Integer>());
 		deck.add(new ArrayList<Integer>());
 
-		for(int i = 0; i < 80; i++){
-			if(i < 20){
-				p1Hand.add(deckArray[i]);
-				Collections.sort(p1Hand);
-				deck.get(0).add(deckArray[i]);
-			}
-			else if(i < 40){
-				p2Hand.add(deckArray[i]);
-				Collections.sort(p2Hand);
-				deck.get(1).add(deckArray[i]);
-			}
-			else if(i < 60){
-				p3Hand.add(deckArray[i]);
-				Collections.sort(p3Hand);
-				deck.get(2).add(deckArray[i]);
-			}
-			else if(i < 80){
-				p4Hand.add(deckArray[i]);
-				Collections.sort(p4Hand);
-				deck.get(3).add(deckArray[i]);
+		deckCopy.add(new ArrayList<Integer>());
+		deckCopy.add(new ArrayList<Integer>());
+		deckCopy.add(new ArrayList<Integer>());
+		deckCopy.add(new ArrayList<Integer>());
+
+		for (int i = 0; i < 80; i++) {
+			if (i < 20) {
+				deckCopy.get(0).add(deckArray[i]);
+			} else if (i < 40) {
+				deckCopy.get(1).add(deckArray[i]);
+			} else if (i < 60) {
+				deckCopy.get(2).add(deckArray[i]);
+			} else if (i < 80) {
+				deckCopy.get(3).add(deckArray[i]);
 			}
 		}
+		for (int i = 0; i < 4; i++) {
+			for (int j = 1; j <= 13; j++) {
+				deck.get(i).add(getNumOf(deckCopy.get(i), j));
+			}
+		}
+	}
+
+	public static int getNumOf(ArrayList<Integer> foo, int num){
+		int total = 0;
+		for(int i = 0; i < foo.size(); i++){
+			if(foo.get(i) == num){
+				total++;
+			}
+		}
+		return total;
 	}
 
 
