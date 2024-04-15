@@ -121,8 +121,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	*/
 	protected void updateDisplay() {
 		canvas.invalidate();
-		// set the text in the appropriate widget
-		//testResultsTextView.setText("" + state.getCounter());
 	} // updateDisplay
 
 	/**
@@ -193,28 +191,28 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		} else if(button.getId() == R.id.twelve){
 			c = 12;
 		}
-		cardsNum.setText(state.getP1Hand().get(c));
+		cardsNum.setText("" +state.getP1Hand().get(c));
 
 		//more or less cards
 		 if(button.getId() == R.id.addbutton){
 			String nString = cardsNum.getText().toString();
 			n = Integer.parseInt(nString);
-			cardsNum.setText((n + 1));
+			cardsNum.setText("" + (n + 1));
 		} else if(button.getId() == R.id.minusbutton){
 			 String nString = cardsNum.getText().toString();
 			 n = Integer.parseInt(nString);
-			 cardsNum.setText((n - 1));
+			 cardsNum.setText("" + (n - 1));
 		}
 
 		 //more or less jesters selected
 		if(button.getId() == R.id.addjbutton){
 			String nString = jesterSelected.getText().toString();
 			n = Integer.parseInt(nString);
-			jesterSelected.setText((n + 1));
+			jesterSelected.setText( "" +(n + 1));
 		} else if(button.getId() == R.id.minusjbutton){
 			String nString = jesterSelected.getText().toString();
 			n = Integer.parseInt(nString);
-			jesterSelected.setText((n - 1));
+			jesterSelected.setText("" + (n - 1));
 		}
 
 
