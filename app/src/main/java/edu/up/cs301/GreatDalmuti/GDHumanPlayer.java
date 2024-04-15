@@ -305,23 +305,23 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 //		// update our state; then update the display
 		this.state = (edu.up.cs301.GreatDalmuti.GDState) info;
 		canvas.setCurrentGameState(this.state);
-//		updateDisplay();
+		updateDisplay();
 
-//		// image of revolution image button set if possible
-//		if( postType.getDeck().get(playerNum).get(13) == 2){
-//			revolutionButton.setImageResource(R.drawable.revbutton);
-//		} else {
-//			revolutionButton.setImageResource(R.drawable.blankspace);
-//		}
-//
-//		//image of pay taxes button if during that phase of the game
-//		if(state.getExhangtingTaxes()){
-//			paytaxesButton.setImageResource(R.drawable.paytaxesimage);
-//		} else {
-//			paytaxesButton.setImageResource(R.drawable.blankspace);
-//		}
-//
-//
+		// image of revolution image button set if possible
+		if( postType.getDeck().get(playerNum).get(13) == 2){
+			revolutionButton.setImageResource(R.drawable.revbutton);
+		} else {
+			revolutionButton.setImageResource(R.drawable.blankspace);
+		}
+
+		//image of pay taxes button if during that phase of the game
+		if(state.getExhangtingTaxes()){
+			paytaxesButton.setImageResource(R.drawable.paytaxesimage);
+		} else {
+			paytaxesButton.setImageResource(R.drawable.blankspace);
+		}
+
+
 //		//displays total cards numbers for every card
 //			jesterNum.setText(postType.getDeck().get(playerNum).get(13));
 //			oneNum.setText(postType.getDeck().get(playerNum).get(1));
@@ -336,74 +336,74 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 //			tenNum.setText(postType.getDeck().get(playerNum).get(10));
 //			elevenNum.setText(postType.getDeck().get(playerNum).get(11));
 //			twelveNum.setText(postType.getDeck().get(playerNum).get(12));
-//
+
 
 		//if number of cards is more than 0, else grey once imported
-//		if(postType.getP1Hand().get(1) >= 1){
-//			one.setImageResource(R.drawable.great_dalmuti);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(2) >= 1){
-//			one.setImageResource(R.drawable.arch_bishop);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(3) >= 1){
-//			one.setImageResource(R.drawable.earl_marshal);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(4) >= 1){
-//			one.setImageResource(R.drawable.baroness);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(5) >= 1){
-//			one.setImageResource(R.drawable.abbess);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(6) >= 1){
-//			one.setImageResource(R.drawable.knight);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(7) >= 1){
-//			one.setImageResource(R.drawable.seamstress);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(8) >= 1){
-//			one.setImageResource(R.drawable.mason);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(9) >= 1){
-//			one.setImageResource(R.drawable.cook);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(10) >= 1){
-//			one.setImageResource(R.drawable.sheperdess);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(11) >= 1){
-//			one.setImageResource(R.drawable.stonecutter);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(12) >= 1){
-//			one.setImageResource(R.drawable.peasant);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(13) >= 1){
-//			one.setImageResource(R.drawable.jesteryetagain);
-//		} else {
-//			//gray
-//		}
+		if(postType.getP1Hand().get(1) >= 1){
+			one.setImageResource(R.drawable.great_dalmuti);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(2) >= 1){
+			one.setImageResource(R.drawable.arch_bishop);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(3) >= 1){
+			one.setImageResource(R.drawable.earl_marshal);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(4) >= 1){
+			one.setImageResource(R.drawable.baroness);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(5) >= 1){
+			one.setImageResource(R.drawable.abbess);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(6) >= 1){
+			one.setImageResource(R.drawable.knight);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(7) >= 1){
+			one.setImageResource(R.drawable.seamstress);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(8) >= 1){
+			one.setImageResource(R.drawable.mason);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(9) >= 1){
+			one.setImageResource(R.drawable.cook);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(10) >= 1){
+			one.setImageResource(R.drawable.sheperdess);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(11) >= 1){
+			one.setImageResource(R.drawable.stonecutter);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(12) >= 1){
+			one.setImageResource(R.drawable.peasant);
+		} else {
+			//gray
+		}
+		if(postType.getP1Hand().get(13) >= 1){
+			one.setImageResource(R.drawable.jesteryetagain);
+		} else {
+			//gray
+		}
 
 
 	} // receiveInfo
