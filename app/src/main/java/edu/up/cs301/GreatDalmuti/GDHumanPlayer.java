@@ -138,9 +138,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
 
-		if(button.getId() == R.id.editTextTextMultiLine){
-			//tbd
-		}
+//		if(button.getId() == R.id.editTextTextMultiLine){
+//			//tbd
+//		}
 
 		//what happens when player hits buttons
 		if(button == playButton){
