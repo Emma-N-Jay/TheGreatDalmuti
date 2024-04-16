@@ -5,7 +5,7 @@
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version April 12 2024
+ * @version April 15 2024
  *
  * A class that represents the state of a game. In The Great Dalmuti, we need to know the cards,
  * players hands, rank, revolution status, taxes, player turn, and who is in the lead.
@@ -35,8 +35,6 @@ import java.util.ArrayList;
 
 public class GDLocalGame extends LocalGame {
 
-	//TODO Change this comment to pertain to Dalmuti
-
 	// INSTANCE VARIABLES **************************************************************************
 	public static final int TARGET_MAGNITUDE = 10;
 
@@ -45,7 +43,7 @@ public class GDLocalGame extends LocalGame {
 
 	// CONSTRUCTORS ********************************************************************************
 	/**
-	 * This ctor should be called when a new Dalmuti game is started
+	 * This constructor should be called when a new Dalmuti game is started
 	 */
 	public GDLocalGame(GameState state) {
 		// initialize the game state, with the counter value starting at 0
@@ -145,7 +143,6 @@ public class GDLocalGame extends LocalGame {
 			temp = false;
 		}
 
-
 		return temp;
 	}
 
@@ -176,7 +173,6 @@ public class GDLocalGame extends LocalGame {
 		// this is a perfect-information game, so we'll make a
 		// complete copy of the state to send to the player
 		p.sendInfo(new edu.up.cs301.GreatDalmuti.GDState(this.gameState, this.getPlayerIdx(p)));
-		
 	} // sendUpdatedSate
 	
 	/**
@@ -190,8 +186,6 @@ public class GDLocalGame extends LocalGame {
 	 */
 	@Override
 	protected String checkIfGameOver() {
-
-		//TODO change as needed or delete
 		// get the value of the counter
 //		int counterVal = this.gameState.getCounter();
 //
