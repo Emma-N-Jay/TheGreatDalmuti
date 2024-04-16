@@ -105,28 +105,28 @@ public class GDState extends GameState {
 	public ArrayList<Integer>getP4Hand(){return deck.get(3);}
 	public int totalP1Hand(){
 		int total = 0;
-		for(int i = 0; i < getP1Hand().size(); i++) {
+		for(int i = 1; i < getP1Hand().size(); i++) {
 			total += getP1Hand().get(i);
 		}
 		return total;
 	}
 	public int totalP2Hand(){
 		int total = 0;
-		for(int i = 0; i < getP2Hand().size(); i++) {
+		for(int i = 1; i < getP2Hand().size(); i++) {
 			total += getP2Hand().get(i);
 		}
 		return total;
 	}
 	public int totalP3Hand(){
 		int total = 0;
-		for(int i = 0; i < getP3Hand().size(); i++) {
+		for(int i = 1; i < getP3Hand().size(); i++) {
 			total += getP3Hand().get(i);
 		}
 		return total;
 	}
 	public int totalP4Hand(){
 		int total = 0;
-		for(int i = 0; i < getP4Hand().size(); i++) {
+		for(int i = 1; i < getP4Hand().size(); i++) {
 			total += getP4Hand().get(i);
 		}
 		return total;

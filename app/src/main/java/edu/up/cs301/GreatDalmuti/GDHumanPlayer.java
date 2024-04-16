@@ -5,7 +5,7 @@
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version April 12 2024
+ * @version April 15 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
@@ -25,7 +25,6 @@ import edu.up.cs301.GameFramework.players.GameHumanPlayer;
 
 
 public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
-	//TODO: make shuffle method for deck
 
 	// INSTANCE VARIABLES **************************************************************************
 	
@@ -56,7 +55,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private Button jplusB;
 	private Button jminusB;
 
-
 	//for image button
 	private ImageButton revolutionButton;
 	private ImageButton paytaxesButton;
@@ -73,7 +71,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private ImageButton ten;
 	private ImageButton eleven;
 	private ImageButton twelve;
-
 
 	//text for number of cards
 	private TextView cardsNum;
