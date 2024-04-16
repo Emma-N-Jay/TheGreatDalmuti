@@ -32,7 +32,7 @@ public class GDState extends GameState {
 	private int hasLowestInRound = 0; // who is in line to get the lead next
 	private int hasLead = 0; // who currently has the lead
 	private int turn = 0; // who's turn is it
-	private int numPass = 0;
+	private int numPass = 3;
 
 	/** ALL OF THE F0LLOWING INSTANCE VARIABLES ARE FROM THE ACTION CLASSES */
 	public int[] taxCardIndexes;
@@ -324,7 +324,7 @@ public class GDState extends GameState {
 		boolean temp = false; //is true when the play was legal and actually happened
 
 		//for when a new round starts for the player who has the lead
-		if( (numPass == 3) && (player == hasLead) && (numSelected > 0) &&
+		if( (numPass >= 3) && (player == hasLead) && (numSelected > 0) &&
 				(local.leadIsLegalMove(player, decks, rankSelected, numSelected, jestersSelected) ) ){
 			this.rankInPile = rankSelected;
 			this.numInPile = numSelected + jestersSelected;
