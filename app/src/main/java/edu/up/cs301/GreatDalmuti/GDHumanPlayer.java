@@ -151,16 +151,24 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		state.revolution(this.playerNum, state.getDeck());
 		}
 		else if(button.getId() == R.id.payTaxesButton){
-			if(playerNum == 3){
-				state.GPPayTaxes();
-			} else if(playerNum == 2){
-				state.LPPayTaxes();
-			} else if(playerNum == 1){
+//			if(playerNum == 3){
+//				state.GPPayTaxes();
+//			} else if(playerNum == 2){
+//				state.LPPayTaxes();
+//			} else if(playerNum == 1){
+//				state.LDPayTaxes(c);
+//			} else if(playerNum == 0){
+//				//TODO: THIS WILL WORK FOR NOW BUT NEED TO FIND A FIX
+//				state.GDPayTaxes(c, c);
+//			}
+
+			state.GPPayTaxes();
+			state.LPPayTaxes();
+			if(playerNum == 1){
 				state.LDPayTaxes(c);
 			} else if(playerNum == 0){
 				state.GDPayTaxes(c, c);
 			}
-
 		}
 
 		//selected cards/display for selected cards
