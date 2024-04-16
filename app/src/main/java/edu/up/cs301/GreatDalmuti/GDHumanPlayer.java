@@ -271,6 +271,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		tenNum.setText("" + state.getDeck().get(playerNum).get(10));
 		elevenNum.setText("" + state.getDeck().get(playerNum).get(11));
 		twelveNum.setText("" + state.getDeck().get(playerNum).get(12));
+		canvas.invalidate();
 
 
 //		// I cannot overstate how long I took me to figure out this needed to be called on
