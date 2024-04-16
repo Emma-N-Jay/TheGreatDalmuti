@@ -21,7 +21,7 @@ import edu.up.cs301.GameFramework.utilities.Tickable;
 public class GDDumbAI extends GameComputerPlayer implements Tickable {
 
 	// INSTANCE VARIABLES *********************************************************************
-	private edu.up.cs301.GreatDalmuti.GDState state;
+	//private edu.up.cs301.GreatDalmuti.GDState state;
 
 	/**
 	 * TODO: IF THERE IS A PROBLEM WITH THIS CLASS IT IS LIKELY BECAUSE IT IS REFERENCING A
@@ -68,10 +68,12 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
      */
 	@Override
 	protected void receiveInfo(GameInfo info) {
-		// Do nothing, as we ignore all state in deciding our next move. It
-		// depends totally on the timer and random numbers.
+		if (!(info instanceof GDState)) return;
+
+		GDState state = (GDState) info;
+
 		boolean played = false;
-		state = new GDState();
+
 		/**
 		 * GIVING TAXES
 		 */

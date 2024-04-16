@@ -23,19 +23,19 @@ public class GDComputerPlayerGUI extends GDDumbAI {
 	// INSTANCE VARIABLES **************************************************************************
 	
 	// the most recent game state, as given to us by the CounterLocalGame
-	private GDState currentGameState = null;
+	private GDState currentGameState;
 	
 	// If this player is running the GUI, the activity (null if the player is
 	// not running a GUI).
-	private Activity activityForGui = null;
+	private Activity activityForGui;
 	
 	// If this player is running the GUI, the widget containing the counter's
 	// value (otherwise, null);
-	private TextView counterValueTextView = null;
+	private TextView counterValueTextView;
 	
 	// If this player is running the GUI, the handler for the GUI thread (otherwise
 	// null)
-	private Handler guiHandler = null;
+	private Handler guiHandler;
 
 	// CONSTRUCTORS ********************************************************************************
 
