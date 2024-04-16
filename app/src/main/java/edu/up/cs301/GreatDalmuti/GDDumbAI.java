@@ -43,18 +43,19 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
         getTimer().start();
     } // GDComputerPlayer1
 
-	public int numOfRank(int rank, ArrayList<Integer> playerHand){
-		int numCards = 0;
-		for(int i = 0; i >= playerHand.size(); i++){
-			if(playerHand.get(i) == rank){
-				numCards++;
-			}
-		}
-		return numCards;
-	}
 
 	public int rankOfCard(int index, ArrayList<Integer> playerHand){
 		return playerHand.get(index);
+	}
+
+	public int highestCard(ArrayList<Integer> playerHand){
+		int highCard = 1;
+		for(int i = playerHand.size() - 1; i >= 0; i--){
+			if(playerHand.get(i) != 0){
+				highCard = i;
+			}
+		}
+		return highCard;
 	}
 
 	// METHODS *************************************************************************************
@@ -91,22 +92,24 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		/**
 		 * GETTING THE LEAD (should this somehow happen)
 		 */
-		int tempRank = rankOfCard(state.getDeck().get(playerNum).size() - 1,
-				state.getDeck().get(playerNum));
 
+		//this is the index of the current highest card
+		int tempRank = highestCard(state.getDeck().get(playerNum));
+
+		//this has the player play their highest set of cards
 		if(state.getHasLead() == playerNum){
 			state.play(playerNum, state.getDeck(), tempRank,
-					numOfRank(tempRank,state.getDeck().get(playerNum)), 0);
+					state.getDeck().get(playerNum).get(tempRank), 0);
 		}
 
 		/**
 		 * PASSING AND PLAYING CARDS WITH THE DUMB AI
 		 */
-		//will give us a sorted version of this players hand
-		state.getDeck().get(playerNum);
-		for(int i = state.getDeck().get(playerNum).size() - 1; i >= 0; i--){
+		for(int i = state.getDeck().get(playerNum).size() - 1; i >= 1; i--){
+			//checks for highest rank below the current rank in the pile
 			if(i < state.getRankInPile()){
-				if(numOfRank(state.getRankInPile(), state.getDeck().get(playerNum)) >= state.getNumInPile()){
+				//checks to make sure the dumb ai has enough of that card
+				if(state.getDeck().get(playerNum).get(i) >= state.getNumInPile()){
 					state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0);
 					played = true;
 				}
