@@ -168,32 +168,45 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//selected cards/display for selected cards
 		else if(button.getId() == R.id.jester){
 			 c = 13;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		} else if(button.getId() == R.id.one){
 			c = 1;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		} else if(button.getId() == R.id.two){
 			c = 2;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		} else if(button.getId() == R.id.three){
 			c = 3;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		} else if(button.getId() == R.id.four){
 			c = 4;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		} else if(button.getId() == R.id.five){
 			c = 5;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		} else if(button.getId() == R.id.six){
 			c = 6;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		} else if(button.getId() == R.id.seven){
 			c = 7;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		} else if(button.getId() == R.id.eight){
 			c = 8;;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		} else if(button.getId() == R.id.nine){
 			c = 9;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		} else if(button.getId() == R.id.ten){
 			c = 10;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		} else if(button.getId() == R.id.eleven){
 			c = 11;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		} else if(button.getId() == R.id.twelve){
 			c = 12;
+			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 		}
-		cardsNum.setText("" + state.getP1Hand().get(c));
+
 
 		//more or less cards
 		 if(button.getId() == R.id.addbutton){
@@ -208,13 +221,13 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		 //more or less jesters selected
 		if(button.getId() == R.id.addjbutton){
-			String nString = jesterSelected.getText().toString();
-			n = Integer.parseInt(nString);
-			jesterSelected.setText( "" + (n + 1));
+			String jString = jesterSelected.getText().toString();
+			j = Integer.parseInt(jString) + 1;
+			jesterSelected.setText( "" + j);
 		} else if(button.getId() == R.id.minusjbutton){
 			String nString = jesterSelected.getText().toString();
-			n = Integer.parseInt(nString);
-			jesterSelected.setText("" + (n - 1));
+			j = Integer.parseInt(nString) - 1;
+			jesterSelected.setText("" + j);
 		}
 
 
