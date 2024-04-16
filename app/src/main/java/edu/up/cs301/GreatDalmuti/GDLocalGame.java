@@ -146,7 +146,6 @@ public class GDLocalGame extends LocalGame {
 		return temp;
 	}
 
-
 	/**
 	 * The only type of GameAction that should be sent is CounterMoveAction
 	 */
