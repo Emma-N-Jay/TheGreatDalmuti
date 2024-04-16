@@ -158,7 +158,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			} else if(playerNum == 1){
 				state.LDPayTaxes(c);
 			} else if(playerNum == 0){
-				state.LDPayTaxes(c);
+				state.GDPayTaxes(c, c);
 			}
 
 		}
