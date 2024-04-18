@@ -324,7 +324,7 @@ public class GDState extends GameState {
 
 	//this method allows a player to play a card
 	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int rankSelected,
-											  int numSelected, int jestersSelected){
+											  int numSelected, int jestersSelected, PlayAction action){
 		GDLocalGame local = new GDLocalGame(this);
 
 		boolean temp = false; //is true when the play was legal and actually happened
@@ -359,7 +359,7 @@ public class GDState extends GameState {
 	} // play
 
 	//given that the player that has the jesters calls the revolution, carries out revolution
-	public boolean revolution(int player, ArrayList<ArrayList<Integer>> cards){
+	public boolean revolution(int player, ArrayList<ArrayList<Integer>> cards, RevolutionAction action){
 		if(cards.get(player).get(13) == 2){
 			if(player == 2){
 				this.setExchangingTaxes(false);
