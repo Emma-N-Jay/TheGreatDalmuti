@@ -21,7 +21,6 @@ import android.view.SurfaceView;
 
 public class surfaceDraw extends SurfaceView {
 
-    //Paint pallette
     public Paint purple = new Paint();
     private GDState state = new GDState();
     private final int GD = 0;
@@ -161,7 +160,11 @@ public class surfaceDraw extends SurfaceView {
 
             /**
            JUST NEED TO FIND RANK OF HUMAN PLAYER
+
+             if(player.getRank == the rank)
+
              */
+
             //Set the text based on rank and num cards
             int humanNum;
             if(state.ranks[0] == "Great Dalmuti"){
