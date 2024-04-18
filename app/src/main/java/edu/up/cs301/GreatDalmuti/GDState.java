@@ -22,6 +22,12 @@ public class GDState extends GameState {
 	private static final long serialVersionUID = 7737393762469851826L;
 	// instances of specific actions taken in the game
 
+	//Very important variables
+	int bob;
+	boolean bobby;
+	long bobert;
+	String bobbete;
+
 	//TODO: SORTED BY PERSON AND THEN THAT PERSONS HAND (IF YOU DO NOT UNDERSTAND THIS ASK ALEX)
 	private ArrayList<ArrayList<Integer>> deck; //this is literally the entire deck of cards
 	private boolean handIsVisible; //if a players hand is visible for a specific device
