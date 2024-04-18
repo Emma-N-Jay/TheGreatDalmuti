@@ -102,6 +102,9 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		if(state.getHasLead() == playerNum){
 			state.play(playerNum, state.getDeck(), tempRank,
 					state.getDeck().get(playerNum).get(tempRank), 0);
+
+			PlayAction play = new PlayAction(this);
+			game.sendAction(play);
 		}
 
 		/**
