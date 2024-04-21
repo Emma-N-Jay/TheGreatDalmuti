@@ -10,6 +10,7 @@
 
 package edu.up.cs301.GreatDalmuti;
 
+import android.media.MediaPlayer;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -43,13 +44,16 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	int j;
 	String nString;
 
-	//pass and hold buttons
+	//all of the buttons galore
 	private Button passButton;
 	private Button playButton;
 	private Button plusB;
 	private Button minusB;
 	private Button jplusB;
 	private Button jminusB;
+	private Button musicB;
+	//For background music
+	MediaPlayer music;
 
 	//for image button
 	private ImageButton revolutionButton;
@@ -245,6 +249,12 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			String nString = jesterSelected.getText().toString();
 			j = Integer.parseInt(nString) - 1;
 			jesterSelected.setText("" + j);
+		}
+
+		//plays the background music
+		if(button.getId() == R.id.musicButton){
+			music = MediaPlayer.create(myActivity, R.raw.emmatemp);
+			music.start();
 		}
 
 		//updates number of cards
@@ -492,6 +502,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.minusB = (Button) activity.findViewById(R.id.minusbutton);
 		this.jplusB = (Button) activity.findViewById(R.id.addjbutton);
 		this.jminusB = (Button) activity.findViewById(R.id.minusjbutton);
+		this.musicB = (Button) activity.findViewById(R.id.musicButton);
 
 		//listens for button presses
 		passButton.setOnClickListener(this);
@@ -500,6 +511,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		minusB.setOnClickListener(this);
 		jplusB.setOnClickListener(this);
 		jminusB.setOnClickListener(this);
+		musicB.setOnClickListener(this);
 
 		//sets image button listener
 		revolutionButton.setOnClickListener(this);
