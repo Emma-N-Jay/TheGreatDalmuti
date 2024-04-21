@@ -5,7 +5,7 @@
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version April 15 2024
+ * @version April 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
@@ -23,7 +23,6 @@ import edu.up.cs301.GameFramework.GameMainActivity;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.players.GameHumanPlayer;
 
-
 public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	// INSTANCE VARIABLES **************************************************************************
@@ -33,13 +32,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	
 	// the most recent game state, as given to us by the CounterLocalGame
 	private edu.up.cs301.GreatDalmuti.GDState state;
-	//private GDState state;
 	
 	// the android activity that we are running
 	private GameMainActivity myActivity;
 
-	//An array of the players hand
-	private Card[] hand;
 	//selected card
 	int c;
 	//selected number of cards
@@ -109,23 +105,20 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * @return
 	 * 		the top object in the GUI's view hierarchy
 	 */
-	//TODO CHECK ID
 	public View getTopView() {
 		return myActivity.findViewById(R.id.editTextTextMultiLine);
 	}
 	
 	/**
-	 * sets the counter value in the text view
+	 * redraws canvas
+	 *
+	 * no parameters or return statements
 	*/
 	protected void updateDisplay() {
 		canvas.invalidate();
-		// set the text in the appropriate widget
-		//testResultsTextView.setText("" + state.getCounter());
 	} // updateDisplay
 
 	/**
-	 * this method gets called when the user clicks the '+' or '-' button. It
-	 * creates a new CounterMoveAction to return to the parent activity.
 	 * 
 	 * @param button
 	 * 		the button that was clicked
@@ -133,54 +126,35 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	public void onClick(View button) {
 		//current selected card is c, number is n
 
-		// if we are not yet connected to a game, ignore
+		// if we are not yet connected to a game
 		if (game == null) return;
-
 		if(button.getId() == R.id.editTextTextMultiLine){
-			//tbd
 		}
 
-		//what happens when player hits buttons
 		if(button.getId() == R.id.playButton){
-			state.play(this.playerNum, state.getDeck(), c, n, j);
-
-			// PlayAction playAction = new PlayAction(this, c, n, j);
-			// game.sendAction(playAction);
+			PlayAction playAction = new PlayAction(this);
+			game.sendAction(playAction);
 		}
 		else if(button.getId() == R.id.passButton){
-		state.pass(state.getTurn()); // delete later
-
 		PassAction passAction = new PassAction(this);
 		game.sendAction(passAction);
 		}
 		else if(button.getId() == R.id.revolutionButton){
-		state.revolution(this.playerNum, state.getDeck());
-
 		RevolutionAction revolutionAction = new RevolutionAction(this);
 		game.sendAction(revolutionAction);
 		}
 		else if(button.getId() == R.id.payTaxesButton){
-//			if(playerNum == 3){
-//				state.GPPayTaxes();
-//			} else if(playerNum == 2){
-//				state.LPPayTaxes();
-//			} else if(playerNum == 1){
-//				state.LDPayTaxes(c);
-//			} else if(playerNum == 0){
-//				//TODO: THIS WILL WORK FOR NOW BUT NEED TO FIND A FIX
-//				state.GDPayTaxes(c, c);
-//			}
+			GDPayTaxesAction gdPayTaxesAction = new GDPayTaxesAction(this);
+			game.sendAction(gdPayTaxesAction);
 
-			state.GPPayTaxes();
-			state.LPPayTaxes();
-			if(playerNum == 1){
-				state.LDPayTaxes(c);
-			} else if(playerNum == 0){
-				state.GDPayTaxes(c, c);
-			}
+			GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
+			game.sendAction(gpPayTaxesAction);
 
-			// PayTaxesAction payTaxesAction = new PayTaxesAction(this, c);
-			// game.sendAction(payTaxesAction);
+			LDPayTaxesAction ldPayTaxesAction = new LDPayTaxesAction(this);
+			game.sendAction(ldPayTaxesAction);
+
+			LPPayTaxesAction lpPayTaxesAction = new LPPayTaxesAction(this);
+			game.sendAction(lpPayTaxesAction);
 		}
 
 		//selected cards/display for selected cards
@@ -250,7 +224,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			nString = state.getDeck().get(playerNum).get(c).toString();
 			n = Integer.parseInt(nString);
 		}
-
 
 		//more or less cards
 		 if(button.getId() == R.id.addbutton){
@@ -369,7 +342,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	@Override
 	public void receiveInfo(GameInfo info) {
-		// ignore the message if it's not a CounterState message
+
 		if (!(info instanceof edu.up.cs301.GreatDalmuti.GDState)) return;
 
 		GDState postType = (GDState) info;
@@ -393,8 +366,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			paytaxesButton.setImageResource(R.drawable.blankspace);
 		}
 
-
-//		//displays total cards numbers for every card
+		//displays total cards numbers for every card
 			jesterNum.setText("" + postType.getDeck().get(playerNum).get(13));
 			oneNum.setText("" + postType.getDeck().get(playerNum).get(1));
 			twoNum.setText("" +postType.getDeck().get(playerNum).get(2));
@@ -476,7 +448,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		} else {
 			jester.setImageResource(R.drawable.grey_jester);
 		}
-
 
 	} // receiveInfo
 	
@@ -567,11 +538,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//find the surface view
 		this.canvas = (surfaceDraw)activity.findViewById(R.id.the_canvas);
 
-		// Load the layout resource for our GUI
-		//activity.setContentView(R.layout.dalmuti_main_xml);
-
 	} // setAsGui
 
 } // GDHumanPlayer class
-
-

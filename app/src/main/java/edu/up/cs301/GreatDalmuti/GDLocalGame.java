@@ -246,7 +246,7 @@ public class GDLocalGame extends LocalGame {
 			return "The Lesser Peon has won!";
 		}
 		else {
-			return "Still playing";
+			return null;
 		}
 	} // checkIfGameOver
 
