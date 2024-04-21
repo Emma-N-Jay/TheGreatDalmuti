@@ -156,6 +156,8 @@ public class GDLocalGame extends LocalGame {
 		if (action instanceof GDPayTaxesAction) {
 			GDPayTaxesAction gdPayTaxesAction = (GDPayTaxesAction) action;
 			gameState.GDPayTaxes(gdPayTaxesAction);
+
+			//gameState.GDPayTaxes(gdPayTaxesAction);
 			return true;
 		}
 		else if (action instanceof GPPayTaxesAction) {

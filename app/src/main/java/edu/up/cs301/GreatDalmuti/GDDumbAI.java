@@ -115,13 +115,19 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 			if(i < state.getRankInPile()){
 				//checks to make sure the dumb ai has enough of that card
 				if(state.getDeck().get(playerNum).get(i) >= state.getNumInPile()){
-					state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0);
+					game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
 					played = true;
+
+					//This is what it was
+					// (new PlayAction(playerNum, state.getDeck(), i, state.getNumInPile(), 0));
 				}
 			}
 		}
 		if(played == false){
-			state.pass(state.getTurn());
+			game.sendAction(new PassAction(this));
+
+			//What is was
+			//state.pass(state.getTurn());
 		}
 	} // receiveInfo
 	
