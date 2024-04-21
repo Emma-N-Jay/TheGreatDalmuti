@@ -5,13 +5,12 @@
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version April 15 2024
+ * @version April 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
 import edu.up.cs301.GameFramework.infoMessage.GameState;
@@ -20,13 +19,6 @@ public class GDState extends GameState {
 	// INSTANCE VARIABLES **************************************************************************
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;
-	// instances of specific actions taken in the game
-
-	//Very important variables
-	int bob;
-	boolean bobby;
-	long bobert;
-	String bobbete;
 
 	//TODO: SORTED BY PERSON AND THEN THAT PERSONS HAND (IF YOU DO NOT UNDERSTAND THIS ASK ALEX)
 	private ArrayList<ArrayList<Integer>> deck; //this is literally the entire deck of cards
@@ -96,7 +88,7 @@ public class GDState extends GameState {
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
 	public GDState getState(){return this;}
-	public boolean getExhangtingTaxes(){return this.exchangingTaxes;}
+	public boolean getExchangingTaxes(){return this.exchangingTaxes;}
 	public int getNumPass(){return this.numPass;}
 	public void setExchangingTaxes(boolean update){exchangingTaxes = update;}
 	public int getNumInPile(){return this.numInPile;}
@@ -332,18 +324,18 @@ public class GDState extends GameState {
 	} // play
 
 	//given that the player that has the jesters calls the revolution, carries out revolution
-	public boolean revolution(int player, ArrayList<ArrayList<Integer>> cards, RevolutionAction action){
-		if(cards.get(player).get(13) == 2){
-			if(player == 2){
+	public boolean revolution (RevolutionAction action) {
+		if(deck.get(action.playerID).get(13) == 2){
+			if(action.playerID == 2){
 				this.setExchangingTaxes(false);
-			} else if(player == 3){
+			} else if(action.playerID == 3){
 				//switches player 1 for 4 & 2 for 3
 				ArrayList<ArrayList<Integer>> newCards = null;
-				for(int j = 0; j < cards.get(1).size(); j++) {
-					newCards.get(3).set(j, cards.get(0).get(j));
-					newCards.get(2).set(j, cards.get(1).get(j));
-					newCards.get(1).set(j, cards.get(2).get(j));
-					newCards.get(0).set(j, cards.get(3).get(j));
+				for(int j = 0; j < deck.get(1).size(); j++) {
+					newCards.get(3).set(j, deck.get(0).get(j));
+					newCards.get(2).set(j, deck.get(1).get(j));
+					newCards.get(1).set(j, deck.get(2).get(j));
+					newCards.get(0).set(j, deck.get(3).get(j));
 				}
 			}
 		}

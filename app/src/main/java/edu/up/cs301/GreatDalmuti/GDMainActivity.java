@@ -127,12 +127,10 @@ public class GDMainActivity extends GameMainActivity {
 		if(action instanceof GDPayTaxesAction){
 			GDPayTaxesAction gdp = (GDPayTaxesAction) action;
 
-			if(localGD.getExhangtingTaxes() == true){
+			if(localGD.getExchangingTaxes() == true){
 				//localGD.GDPayTaxes();
 				localGD.setExchangingTaxes(false);
 			}
-
-
 
 		}
 		//int playerNum = action.getPlayer().getPlayerNum();

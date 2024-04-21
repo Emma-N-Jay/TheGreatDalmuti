@@ -14,11 +14,8 @@ import android.media.MediaPlayer;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 import edu.up.cs301.GameFramework.GameMainActivity;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
@@ -132,6 +129,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		// if we are not yet connected to a game
 		if (game == null) return;
+
 		if(button.getId() == R.id.editTextTextMultiLine){
 		}
 
@@ -144,7 +142,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		game.sendAction(passAction);
 		}
 		else if(button.getId() == R.id.revolutionButton){
-		RevolutionAction revolutionAction = new RevolutionAction(this);
+		RevolutionAction revolutionAction = new RevolutionAction(this, playerNum);
 		game.sendAction(revolutionAction);
 		}
 		else if(button.getId() == R.id.payTaxesButton){
@@ -370,7 +368,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 		//image of pay taxes button if during that phase of the game
-		if(state.getExhangtingTaxes()){
+		if(state.getExchangingTaxes()){
 			paytaxesButton.setImageResource(R.drawable.paytaxesimage);
 		} else {
 			paytaxesButton.setImageResource(R.drawable.blankspace);
