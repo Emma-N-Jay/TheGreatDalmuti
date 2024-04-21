@@ -4,6 +4,11 @@ import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class PassAction extends GameAction {
+
+    // INSTANCE VARIABLES **************************************************************************
+    int playerId;
+
+    // CONSTRUCTORS ********************************************************************************
     /**
      * constructor for GameAction
      *
@@ -14,15 +19,9 @@ public class PassAction extends GameAction {
     public PassAction(GamePlayer player) {
         super(player);
     }
-    // PASS METHOD
-//	public boolean pass(int turn){
-//		if(turn == 3 ){
-//			this.setTurn(0);
-//		} else {
-//			this.setTurn(turn + 1);
-//		}
-//		numPass++;
-//
-//		return true;
-//	} // pass
+
+    public PassAction (GamePlayer player, int turn) {
+        super(player);
+        this.playerId = turn;
+    }
 }

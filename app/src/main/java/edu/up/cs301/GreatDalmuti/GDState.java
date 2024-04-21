@@ -217,11 +217,11 @@ public class GDState extends GameState {
 	}
 
 	// PASS METHOD
-	public boolean pass(int turn){
-		if(turn == 3 ){
+	public boolean pass(PassAction action){
+		if(action.playerId == 3 ){
 			this.setTurn(0);
 		} else {
-			this.setTurn(turn + 1);
+			this.setTurn(action.playerId + 1);
 		}
 		numPass++;
 
@@ -306,23 +306,17 @@ public class GDState extends GameState {
 			temp = true;
 		}
 
-//		if( (numSelected > 0) && (local.isLegalMove(player, decks, rankSelected, numSelected, jestersSelected)) ){
-//				decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - numSelected);
-//				decks.get(player).set(13, decks.get(player).get(13) - (jestersSelected) );
-//				temp = true;
-//		}
-
 		if(temp == true) {
 			if (this.getTurn() == 3) {
 				this.setTurn(0);
 			} else {
 				this.setTurn(this.getTurn() + 1);
 			}
-			this.hasLead = player;
+			this.hasLead = action.playerId;
 			this.numPass = 0;
 		}
 
-		return decks;
+		return deck;
 	} // play
 
 	//given that the player that has the jesters calls the revolution, carries out revolution
