@@ -34,78 +34,45 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		// start the timer, ticking 20 times per second
 		getTimer().setInterval(50);
 		getTimer().start();
-
-//		/**
-//		 * GIVING TAXES
-//		 */
-//		//when it is the great dalmuti it will automatically pass its two highest cards
-//		if(playerNum == 3){
-//			//I know this looks like a mess BUT its just passing in the two highest cards, thats it
-//			state.GDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
-//							state.getDeck().get(playerNum)),
-//					rankOfCard(state.getDeck().get(playerNum).size() - 2,
-//							state.getDeck().get(playerNum)));
-//		}
-//		//when it is the lesser dalmuti it will automatically pass its highest
-//		if(playerNum == 2){
-//			state.LDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
-//					state.getDeck().get(playerNum)));
-//		}
-//
-//		/**
-//		 * GETTING THE LEAD (should this somehow happen)
-//		 */
-//		int tempRank = rankOfCard(state.getDeck().get(playerNum).size() - 1,
-//				state.getDeck().get(playerNum));
-//
-//		if(state.getHasLead() == playerNum){
-//			state.play(playerNum, state.getDeck(), tempRank,
-//					numOfRank(tempRank,state.getDeck().get(playerNum)), 0);
-//		}
-//
-//		/**
-//		 * PASSING AND PLAYING CARDS WITH THE DUMB AI
-//		 */
-//		//will give us a sorted version of this players hand
-//		state.getDeck().get(playerNum);
-//		for(int i = state.getDeck().get(playerNum).size() - 1; i >= 0; i--){
-//			if(i < state.getRankInPile()){
-//				if(numOfRank(state.getRankInPile(), state.getDeck().get(playerNum)) >= state.getNumInPile()){
-//					state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0);
-//					played = true;
-//				}
-//			}
-//		}
-//		if(played == false){
-//			state.pass(state.getTurn());
-//		}
 	} // GDComputerPlayer1
 
-//	public int numOfRank(int rank, ArrayList<Integer> playerHand){
-//		int numCards = 0;
-//		for(int i = 0; i >= playerHand.size(); i++){
-//			if(playerHand.get(i) == rank){
-//				numCards++;
-//			}
-//		}
-//		return numCards;
-//	}
-//
-//	public int rankOfCard(int index, ArrayList<Integer> playerHand){
-//		return playerHand.get(index);
-//	}
-//
-//	/** locates highest single card*/
-//	public int highSingle(ArrayList<Integer> playerHand){
-//		int num = -1;
-//		for(int i = 0; i < playerHand.size(); i++){
-//			if(numOfRank(i,playerHand) == 1){
-//				num = i;
-//			}
-//		}
-//		return num;
-//	}
-//
+	public int numOfRank(int rank, ArrayList<Integer> playerHand){
+		int numCards = 0;
+		for(int i = 0; i >= playerHand.size(); i++){
+			if(playerHand.get(i) == rank){
+				numCards++;
+			}
+		}
+		return numCards;
+	}
+
+	public int rankOfCard(int index, ArrayList<Integer> playerHand){
+		return playerHand.get(index);
+	}
+
+	/** locates highest single card*/
+	public int highSingle(ArrayList<Integer> playerHand){
+		int num = 1; //given the first num in the arrayList is the players rank default highest is lowest card
+		for(int i = 0; i < playerHand.size(); i++){
+			if(numOfRank(i,playerHand) == 1){
+				return i;
+			}
+		}
+		return num;
+	}
+
+	//this method finds the index of the highest card
+	public int highestCard(ArrayList<Integer> playerHand){
+		int highCard = 1;
+		//this loop purposefully skips the jester
+		for(int i = playerHand.size() - 2; i >= 0; i--){
+			if(playerHand.get(i) != 0){
+				highCard = i;
+			}
+		}
+		return highCard;
+	}
+
 
 	// METHODS *************************************************************************************
     /**
@@ -117,8 +84,88 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
      */
 	@Override
 	protected void receiveInfo(GameInfo info) {
-		// Do nothing, as we ignore all state in deciding our next move. It
-		// depends totally on the timer and random numbers.
+		if (!(info instanceof GDState)) return;
+
+		GDState state = (GDState) info;
+
+		boolean played = false;
+
+		/**
+		 * GIVING TAXES
+		 */
+		//when it is the great dalmuti it will automatically pass its two highest cards
+
+
+		if(playerNum == 3){
+			boolean passedOnce = false;
+			boolean passedTwice = false;
+			// passes the highest single card if they have a single card that is a 6 or above (and isnt the jester)
+			if(highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13){
+				game.sendAction(new PassAction(this,highSingle(state.getDeck().get(playerNum))));
+				passedOnce = true;
+			}
+
+			// passes a second high single if it has one
+			if(highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13){
+				game.sendAction(new PassAction(this,highSingle(state.getDeck().get(playerNum))));
+				passedTwice = true;
+			}
+
+			//
+
+		}
+		//when it is the lesser dalmuti it will automatically pass its highest single card
+		if(playerNum == 2){
+			// passes the highest single card if they have a single card that is a 6 or above (and isnt the jester)
+			if(highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13){
+				game.sendAction(new PassAction(this,highSingle(state.getDeck().get(playerNum))));
+			}
+
+		}
+
+		/**
+		 * GETTING THE LEAD (should this somehow happen)
+		 */
+
+		//this is the index of the current highest card
+		int tempRank = highestCard(state.getDeck().get(playerNum));
+
+		//this has the player play their highest set of cards
+		if(state.getHasLead() == playerNum){
+//			state.play(playerNum, state.getDeck(), tempRank,
+//					state.getDeck().get(playerNum).get(tempRank), 0);
+
+			//TODO: add conditions for smartAI having the jester
+
+			//this should work same as above
+			PlayAction play = new PlayAction(this, playerNum, tempRank,
+					state.getDeck().get(playerNum).get(tempRank), 0);
+			game.sendAction(play);
+		}
+
+		/**
+		 * PASSING AND PLAYING CARDS WITH THE SMART AI
+		 */
+		for(int i = state.getDeck().get(playerNum).size() - 1; i >= 1; i--){
+			//checks for highest rank below the current rank in the pile
+			if(i < state.getRankInPile()){
+				//checks to make sure the dumb ai has enough of that card
+				if(state.getDeck().get(playerNum).get(i) >= state.getNumInPile()){
+					// originally was this:
+					// state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0, playCard);
+					game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
+					played = true;
+
+					// This is what it was
+					// (new PlayAction(playerNum, state.getDeck(), i, state.getNumInPile(), 0));
+				}
+			}
+		}
+		if(played == false){
+			game.sendAction(new PassAction(this));
+
+			//state.pass(state.getTurn());
+		}
 	} // receiveInfo
 	
 	/**

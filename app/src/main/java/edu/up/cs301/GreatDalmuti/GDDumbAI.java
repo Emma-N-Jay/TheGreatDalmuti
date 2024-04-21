@@ -48,6 +48,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		return playerHand.get(index);
 	}
 
+	//this method finds the index of the highest card
 	public int highestCard(ArrayList<Integer> playerHand){
 		int highCard = 1;
 		for(int i = playerHand.size() - 1; i >= 0; i--){
@@ -80,15 +81,18 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		//when it is the great dalmuti it will automatically pass its two highest cards
 		if(playerNum == 3){
 			//I know this looks like a mess BUT its just passing in the two highest cards, thats it
-			state.GDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
-							state.getDeck().get(playerNum)),
-					rankOfCard(state.getDeck().get(playerNum).size() - 2,
-							state.getDeck().get(playerNum)));
+//			state.GDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
+//							state.getDeck().get(playerNum)),
+//					rankOfCard(state.getDeck().get(playerNum).size() - 2,
+//							state.getDeck().get(playerNum)));
+			game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum)),
+					highestCard(state.getDeck().get(playerNum))));
 		}
 		//when it is the lesser dalmuti it will automatically pass its highest
 		if(playerNum == 2){
-			state.LDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
-					state.getDeck().get(playerNum)));
+//			state.LDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
+//					state.getDeck().get(playerNum)));
+			game.sendAction(new LDPayTaxesAction(this,state.getDeck().get(playerNum).size() - 1));
 		}
 
 		/**
@@ -115,6 +119,8 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 			if(i < state.getRankInPile()){
 				//checks to make sure the dumb ai has enough of that card
 				if(state.getDeck().get(playerNum).get(i) >= state.getNumInPile()){
+					// originally was this:
+					// state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0, playCard);
 					game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
 					played = true;
 
