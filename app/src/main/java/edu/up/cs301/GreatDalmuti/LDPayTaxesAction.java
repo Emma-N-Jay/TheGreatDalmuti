@@ -24,9 +24,7 @@ public class LDPayTaxesAction extends GameAction {
      *
      * @param player the player who created the action
      */
-    public LDPayTaxesAction(GamePlayer player) {
-        super(player);
-    }
+
 
     public LDPayTaxesAction (GamePlayer player, int cardChoice) {
         super(player);

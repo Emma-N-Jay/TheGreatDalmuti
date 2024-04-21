@@ -36,9 +36,6 @@ public class GDState extends GameState {
 	public int[] taxCardIndexes;
 	public int indexHand;
 
-	//rank of each player
-	public String[] ranks = new String[4];
-
 	// CONSTRUCTORS ********************************************************************************
 	/**
 	 * constructor
