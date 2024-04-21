@@ -26,6 +26,7 @@ public class GDMainActivity extends GameMainActivity {
 	// INSTANCE VARIABLES **************************************************************************
 	// the port number that this game will use when playing over the network
 	private static final int PORT_NUMBER = 2234;
+	GDState localGD;
 
 	// METHODS *************************************************************************************
 	/**
@@ -70,10 +71,10 @@ public class GDMainActivity extends GameMainActivity {
 			}});
 
 
-		// Create a game configuration class for Counter:
+		// Create a game configuration class for GD:
 		// - player types as given above
 		// - from 1 to 4 players
-		// - name of game is "Counter Game"
+		// - name of game is "The Great Dalmuti"
 		// - port number as defined above
 		GameConfig defaultConfig = new GameConfig(playerTypes, 1, 4, "Great Dalmuti",
 				PORT_NUMBER);
@@ -103,17 +104,38 @@ public class GDMainActivity extends GameMainActivity {
 	 */
 	@Override
 	public LocalGame createLocalGame(GameState state) {
-		if (state == null) {
+		if (state == null || !(state instanceof GDState)) {
 			state = new edu.up.cs301.GreatDalmuti.GDState();
 		}
+		this.localGD = (GDState) state;
 		return new edu.up.cs301.GreatDalmuti.GDLocalGame(state);
 	} // createLocalGame
+
+//	// initialize the game state, with the counter value starting at 0
+//        if (!(state instanceof RookState)) {
+//		state = new RookState();//was RookState(0)
+//	}
+//        this.rookState = (RookState) state;
+//        super.state = state;
+//}
+
 
 	protected boolean makeMove(GameAction action) {
 		Log.i("action", action.getClass().toString());
 		//need to check if the action is a game action  first make a return false if statement
 
-//		int playerNum = action.getPlayer().getPlayerNum();
+		if(action instanceof GDPayTaxesAction){
+			GDPayTaxesAction gdp = (GDPayTaxesAction) action;
+
+			if(localGD.getExhangtingTaxes() == true){
+				//localGD.GDPayTaxes();
+				localGD.setExchangingTaxes(false);
+			}
+
+
+
+		}
+		//int playerNum = action.getPlayer().getPlayerNum();
 
 //		if (action instanceof BidAction) {
 //			BidAction ba = (BidAction) action;
