@@ -143,12 +143,21 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//what happens when player hits buttons
 		if(button.getId() == R.id.playButton){
 			state.play(this.playerNum, state.getDeck(), c, n, j);
+
+			// PlayAction playAction = new PlayAction(this, c, n, j);
+			// game.sendAction(playAction);
 		}
 		else if(button.getId() == R.id.passButton){
-		state.pass(state.getTurn());
+		state.pass(state.getTurn()); // delete later
+
+		PassAction passAction = new PassAction(this);
+		game.sendAction(passAction);
 		}
 		else if(button.getId() == R.id.revolutionButton){
 		state.revolution(this.playerNum, state.getDeck());
+
+		RevolutionAction revolutionAction = new RevolutionAction(this);
+		game.sendAction(revolutionAction);
 		}
 		else if(button.getId() == R.id.payTaxesButton){
 //			if(playerNum == 3){
@@ -169,6 +178,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			} else if(playerNum == 0){
 				state.GDPayTaxes(c, c);
 			}
+
+			// PayTaxesAction payTaxesAction = new PayTaxesAction(this, c);
+			// game.sendAction(payTaxesAction);
 		}
 
 		//selected cards/display for selected cards
@@ -398,72 +410,72 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			twelveNum.setText("" +postType.getDeck().get(playerNum).get(12));
 
 
-		//if number of cards is more than 0, else grey once imported
-//		if(postType.getP1Hand().get(1) >= 1){
-//			one.setImageResource(R.drawable.great_dalmuti);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(2) >= 1){
-//			one.setImageResource(R.drawable.arch_bishop);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(3) >= 1){
-//			one.setImageResource(R.drawable.earl_marshal);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(4) >= 1){
-//			one.setImageResource(R.drawable.baroness);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(5) >= 1){
-//			one.setImageResource(R.drawable.abbess);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(6) >= 1){
-//			one.setImageResource(R.drawable.knight);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(7) >= 1){
-//			one.setImageResource(R.drawable.seamstress);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(8) >= 1){
-//			one.setImageResource(R.drawable.mason);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(9) >= 1){
-//			one.setImageResource(R.drawable.cook);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(10) >= 1){
-//			one.setImageResource(R.drawable.sheperdess);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(11) >= 1){
-//			one.setImageResource(R.drawable.stonecutter);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(12) >= 1){
-//			one.setImageResource(R.drawable.peasant);
-//		} else {
-//			//gray
-//		}
-//		if(postType.getP1Hand().get(13) >= 1){
-//			one.setImageResource(R.drawable.jesteryetagain);
-//		} else {
-//			//gray
-//		}
+		// if number of cards is more than 0, else grey once imported
+		if(postType.getDeck().get(playerNum).get(1) >= 1){
+			one.setImageResource(R.drawable.great_dalmuti);
+		} else {
+			one.setImageResource(R.drawable.grey_gd);
+		}
+		if(postType.getDeck().get(playerNum).get(2) >= 1){
+			two.setImageResource(R.drawable.arch_bishop);
+		} else {
+			two.setImageResource(R.drawable.grey_archbishop);
+		}
+		if(postType.getDeck().get(playerNum).get(3) >= 1){
+			three.setImageResource(R.drawable.earl_marshal);
+		} else {
+			three.setImageResource(R.drawable.grey_earl);
+		}
+		if(postType.getDeck().get(playerNum).get(4) >= 1){
+			four.setImageResource(R.drawable.baroness);
+		} else {
+			four.setImageResource(R.drawable.grey_baroness);
+		}
+		if(postType.getDeck().get(playerNum).get(5) >= 1){
+			five.setImageResource(R.drawable.abbess);
+		} else {
+			five.setImageResource(R.drawable.grey_abbess);
+		}
+		if(postType.getDeck().get(playerNum).get(6) >= 1){
+			six.setImageResource(R.drawable.knight);
+		} else {
+			six.setImageResource(R.drawable.grey_knight);
+		}
+		if(postType.getDeck().get(playerNum).get(7) >= 1){
+			seven.setImageResource(R.drawable.seamstress);
+		} else {
+			seven.setImageResource(R.drawable.grey_seamstress);
+		}
+		if(postType.getDeck().get(playerNum).get(8) >= 1){
+			eight.setImageResource(R.drawable.mason);
+		} else {
+			eight.setImageResource(R.drawable.grey_mason);
+		}
+		if(postType.getDeck().get(playerNum).get(9) >= 1){
+			nine.setImageResource(R.drawable.cook);
+		} else {
+			nine.setImageResource(R.drawable.grey_cook);
+		}
+		if(postType.getDeck().get(playerNum).get(10) >= 1){
+			ten.setImageResource(R.drawable.sheperdess);
+		} else {
+			ten.setImageResource(R.drawable.grey_shepherdress);
+		}
+		if(postType.getDeck().get(playerNum).get(11) >= 1){
+			eleven.setImageResource(R.drawable.stonecutter);
+		} else {
+			eleven.setImageResource(R.drawable.grey_stonecutter);
+		}
+		if(postType.getDeck().get(playerNum).get(12) >= 1){
+			twelve.setImageResource(R.drawable.peasant);
+		} else {
+			twelve.setImageResource(R.drawable.grey_peasant);
+		}
+		if(postType.getDeck().get(playerNum).get(13) >= 1){
+			jester.setImageResource(R.drawable.jesteryetagain);
+		} else {
+			jester.setImageResource(R.drawable.grey_jester);
+		}
 
 
 	} // receiveInfo
