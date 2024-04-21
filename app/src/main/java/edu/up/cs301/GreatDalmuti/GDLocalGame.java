@@ -169,8 +169,8 @@ public class GDLocalGame extends LocalGame {
 			return true;
 		}
 		else if (action instanceof LPPayTaxesAction) {
-			LDPayTaxesAction ldPayTaxesAction = (LDPayTaxesAction) action;
-			gameState.LPPayTaxes(ldPayTaxesAction);
+			LPPayTaxesAction lpPayTaxesAction = (LPPayTaxesAction) action;
+			gameState.LPPayTaxes(lpPayTaxesAction);
 			return true;
 		}
 		else if (action instanceof PassAction) {
@@ -181,10 +181,12 @@ public class GDLocalGame extends LocalGame {
 		else if (action instanceof PlayAction) {
 			PlayAction playAction = (PlayAction) action;
 			gameState.play(playAction);
+			return true;
 		}
 		else if (action instanceof RevolutionAction) {
 			RevolutionAction revolutionAction = (RevolutionAction) action;
 			gameState.revolution(revolutionAction);
+			return true;
 		}
 		else {
 			// denote that this was an illegal move

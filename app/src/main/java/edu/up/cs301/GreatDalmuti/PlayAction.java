@@ -1,3 +1,13 @@
+/**
+ * This contains the play action
+ *
+ * @author Tramanh Best
+ * @author Emma Jeppesen
+ * @author Alex Burns
+ * @author Theresa Wunderlich
+ * @version April 2024
+ */
+
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
