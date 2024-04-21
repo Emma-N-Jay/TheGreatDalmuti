@@ -10,9 +10,12 @@
 
 package edu.up.cs301.GreatDalmuti;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 import edu.up.cs301.GameFramework.GameMainActivity;
+import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 import edu.up.cs301.GameFramework.LocalGame;
@@ -105,5 +108,25 @@ public class GDMainActivity extends GameMainActivity {
 		}
 		return new edu.up.cs301.GreatDalmuti.GDLocalGame(state);
 	} // createLocalGame
+
+	protected boolean makeMove(GameAction action) {
+		Log.i("action", action.getClass().toString());
+		//need to check if the action is a game action  first make a return false if statement
+
+//		int playerNum = action.getPlayer().getPlayerNum();
+
+//		if (action instanceof BidAction) {
+//			BidAction ba = (BidAction) action;
+//			if (rookState.bid(ba)) {//if the action is legal
+//				rookState.setBidNum(ba.getTotalBid());//make the rookState bidNum equal to the
+//				changePlayerTurn(playerNum, false);
+//				if (ba.getTotalBid() == 120) {
+//					rookState.wonBid[playerNum] = true;
+//				}
+//				return true;
+//			}
+//		}
+		return false;
+	}
 
 } // GDMainActivity class
