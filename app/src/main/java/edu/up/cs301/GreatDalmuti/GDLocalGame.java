@@ -158,13 +158,6 @@ public class GDLocalGame extends LocalGame {
 			//we will want to synchronize taxes probably
 			//synchronized (GPPayTaxesAction);
 			gameState.GDPayTaxes(gdPayTaxesAction);
-
-			// rookState.setBidNum(ba.getTotalBid());//make the rookState bidNum equal to the
-			//  changePlayerTurn(playerNum,false);
-			//   if(ba.getTotalBid() == 120) {
-			//   rookState.wonBid[playerNum] = true;
-
-
 			return true;
 		}
 		else if (action instanceof GPPayTaxesAction) {

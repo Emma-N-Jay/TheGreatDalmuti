@@ -146,17 +146,22 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		game.sendAction(revolutionAction);
 		}
 		else if(button.getId() == R.id.payTaxesButton){
-			GDPayTaxesAction gdPayTaxesAction = new GDPayTaxesAction(this, c, c);
-			game.sendAction(gdPayTaxesAction);
-
-			GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
-			game.sendAction(gpPayTaxesAction);
-
-			LDPayTaxesAction ldPayTaxesAction = new LDPayTaxesAction(this, c);
-			game.sendAction(ldPayTaxesAction);
-
-			LPPayTaxesAction lpPayTaxesAction = new LPPayTaxesAction(this);
-			game.sendAction(lpPayTaxesAction);
+			if (playerNum == 0) {
+				GDPayTaxesAction gdPayTaxesAction = new GDPayTaxesAction(this, c, c);
+				game.sendAction(gdPayTaxesAction);
+			}
+			else if (playerNum == 1) {
+				GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
+				game.sendAction(gpPayTaxesAction);
+			}
+			else if (playerNum == 2) {
+				LDPayTaxesAction ldPayTaxesAction = new LDPayTaxesAction(this, c);
+				game.sendAction(ldPayTaxesAction);
+			}
+			else {
+				LPPayTaxesAction lpPayTaxesAction = new LPPayTaxesAction(this);
+				game.sendAction(lpPayTaxesAction);
+			}
 		}
 
 		//selected cards/display for selected cards
