@@ -288,19 +288,21 @@ public class GDState extends GameState {
 	} // GDPayTaxes
 
 	//this method allows a player to play a card
-	public ArrayList<ArrayList<Integer>> play(int player, ArrayList<ArrayList<Integer>> decks, int rankSelected,
-											  int numSelected, int jestersSelected, PlayAction action){
+	public ArrayList<ArrayList<Integer>> play(PlayAction action){
 		GDLocalGame local = new GDLocalGame(this);
 
 		boolean temp = false; //is true when the play was legal and actually happened
 
 		//for when a new round starts for the player who has the lead
-		if( (numPass >= 3) && (player == hasLead) && (numSelected > 0) &&
-				(local.leadIsLegalMove(player, decks, rankSelected, numSelected, jestersSelected) ) ){
-			this.rankInPile = rankSelected;
-			this.numInPile = numSelected + jestersSelected;
-			decks.get(player).set(rankSelected, decks.get(player).get(rankSelected) - (numSelected) );
-			decks.get(player).set(13, decks.get(player).get(13) - (jestersSelected) );
+		if( (numPass >= 3) && (action.playerId == hasLead) && (action.numSelected > 0) &&
+				(local.leadIsLegalMove(action.playerId, getDeck(), action.rankSelected,
+						action.numSelected, action.jesterSelected) ) ){
+			this.rankInPile = action.rankSelected;
+			this.numInPile = action.numSelected + action.jesterSelected;
+			deck.get(action.playerId).set(action.rankSelected,
+					deck.get(action.playerId).get(action.rankSelected) - (action.numSelected) );
+			deck.get(action.playerId).set(13,
+					deck.get(action.playerId).get(13) - (action.jesterSelected) );
 			temp = true;
 		}
 

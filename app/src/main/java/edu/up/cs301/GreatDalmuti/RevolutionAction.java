@@ -12,6 +12,7 @@ public class RevolutionAction extends GameAction {
     // INSTANCE VARIABLES **************************************************************************
     public int playerID;
 
+    // CONSTRUCTORS ********************************************************************************
     /**
      * constructor for GameAction
      *
@@ -21,7 +22,7 @@ public class RevolutionAction extends GameAction {
         super(player);
     }
 
-    public RevolutionAction(GamePlayer player, int id) {
+    public RevolutionAction (GamePlayer player, int id) {
         super(player);
         this.playerID = id;
     }

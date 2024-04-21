@@ -134,7 +134,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 		if(button.getId() == R.id.playButton){
-			PlayAction playAction = new PlayAction(this);
+			PlayAction playAction = new PlayAction(this, playerNum, c, n, j);
 			game.sendAction(playAction);
 		}
 		else if(button.getId() == R.id.passButton){
