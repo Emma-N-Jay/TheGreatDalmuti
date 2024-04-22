@@ -111,42 +111,4 @@ public class GDMainActivity extends GameMainActivity {
 		return new edu.up.cs301.GreatDalmuti.GDLocalGame(state);
 	} // createLocalGame
 
-//	// initialize the game state, with the counter value starting at 0
-//        if (!(state instanceof RookState)) {
-//		state = new RookState();//was RookState(0)
-//	}
-//        this.rookState = (RookState) state;
-//        super.state = state;
-//}
-
-
-	protected boolean makeMove(GameAction action) {
-		Log.i("action", action.getClass().toString());
-		//need to check if the action is a game action  first make a return false if statement
-
-		if(action instanceof GDPayTaxesAction){
-			GDPayTaxesAction gdp = (GDPayTaxesAction) action;
-
-			if(localGD.getExchangingTaxes() == true){
-				//localGD.GDPayTaxes();
-				localGD.setExchangingTaxes(false);
-			}
-
-		}
-		//int playerNum = action.getPlayer().getPlayerNum();
-
-//		if (action instanceof BidAction) {
-//			BidAction ba = (BidAction) action;
-//			if (rookState.bid(ba)) {//if the action is legal
-//				rookState.setBidNum(ba.getTotalBid());//make the rookState bidNum equal to the
-//				changePlayerTurn(playerNum, false);
-//				if (ba.getTotalBid() == 120) {
-//					rookState.wonBid[playerNum] = true;
-//				}
-//				return true;
-//			}
-//		}
-		return false;
-	}
-
 } // GDMainActivity class

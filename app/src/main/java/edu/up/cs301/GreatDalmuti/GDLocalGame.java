@@ -67,12 +67,10 @@ public class GDLocalGame extends LocalGame {
 	 */
 	@Override
 	protected boolean canMove(int playerIdx) {
-		// this is needed so that the class can extend LocalGame
-		return false;
+		return true;
 	} // canMove
 
 	/**
-	 * our canMove method
 	 * checks the selected cards against the rules of the game to ensure the move is legal
 	 * REMEMBER DECK IS SORTED BY PLAYER AND THEN HAND
 	 */
