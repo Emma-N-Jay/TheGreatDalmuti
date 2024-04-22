@@ -206,7 +206,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			nString = state.getDeck().get(playerNum).get(c).toString();
 			n = Integer.parseInt(nString);
 		} else if(button.getId() == R.id.eight){
-			c = 8;;
+			c = 8;
 			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
 			nString = state.getDeck().get(playerNum).get(c).toString();
 			n = Integer.parseInt(nString);
@@ -393,7 +393,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			tenNum.setText("" +postType.getDeck().get(playerNum).get(10));
 			elevenNum.setText("" +postType.getDeck().get(playerNum).get(11));
 			twelveNum.setText("" +postType.getDeck().get(playerNum).get(12));
-
 
 		// if number of cards is more than 0, else grey once imported
 		if(postType.getDeck().get(playerNum).get(1) >= 1){

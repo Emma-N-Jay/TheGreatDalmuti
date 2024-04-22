@@ -54,12 +54,11 @@ public class GDLocalGame extends LocalGame {
 		super.state = state;
 	} //GDLocalGame
 
-
-//	public void start(GamePlayer[] players){
-//		super.start(players);
-//		super.state = new GDState(players.length);
-//		state = (GDState)super.state;
-//	}
+	public void start(GamePlayer[] players){
+		super.start(players);
+		super.state = new GDState(players.length);
+		state = (GDState)super.state;
+	}
 
 	// METHODS *************************************************************************************
 	/**
@@ -67,7 +66,10 @@ public class GDLocalGame extends LocalGame {
 	 */
 	@Override
 	protected boolean canMove(int playerIdx) {
-		return true;
+		if (playerIdx == gameState.getTurn()) {
+			return true;
+		}
+		return false;
 	} // canMove
 
 	/**
