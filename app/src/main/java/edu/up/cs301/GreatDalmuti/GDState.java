@@ -33,7 +33,6 @@ public class GDState extends GameState {
 	private int hasLead = 0; // who currently has the lead
 	private int turn = 0; // who's turn is it
 	private int numPass = 3;
-	private int playerID = 0;
 
 	/** ALL OF THE F0LLOWING INSTANCE VARIABLES ARE FROM THE ACTION CLASSES */
 	public int[] taxCardIndexes;
@@ -224,7 +223,7 @@ public class GDState extends GameState {
 			this.setTurn(action.playerId + 1);
 		}
 		numPass++;
-
+		turn++;
 		return true;
 	} // pass
 
