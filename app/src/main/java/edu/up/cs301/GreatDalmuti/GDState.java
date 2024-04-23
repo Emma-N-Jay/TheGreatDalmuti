@@ -71,7 +71,7 @@ public class GDState extends GameState implements Serializable {
 	 * @param orig
 	 * 		the object from which the copy should be made
 	 */
-	public GDState(edu.up.cs301.GreatDalmuti.GDState orig) {
+	public GDState(GDState orig) {
 		// makes a deep copy of all variables so far
 		this.deck = orig.deck;
 		this.exchangingTaxes = orig.exchangingTaxes;
