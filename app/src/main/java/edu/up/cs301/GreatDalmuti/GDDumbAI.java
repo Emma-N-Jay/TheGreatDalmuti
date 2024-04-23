@@ -75,72 +75,86 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 
 		boolean played = false;
 
+
+		if (state.getTurn() != this.playerNum) {
+			return;
+		}
 		/**
 		 * GIVING TAXES
 		 */
 
+		if (state.getExchangingTaxes() && state.getDeck() != null) {
+			//when it is the great dalmuti it will automatically pass its two highest cards
+			if (playerNum == 3 && state.getTurn() == 3) {
+				//I know this looks like a mess BUT its just passing in the two highest cards, thats it
+				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+			}
 
-		//when it is the great dalmuti it will automatically pass its two highest cards
-		if(playerNum == 3 && state.getTurn() == 3){
-			//I know this looks like a mess BUT its just passing in the two highest cards, thats it
-			game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
-			game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
-		}
-		//when it is the lesser dalmuti it will automatically pass its highest
-		if(playerNum == 2 && state.getTurn() == 2){
-//			state.LDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
-//					state.getDeck().get(playerNum)));
-			game.sendAction(new LDPayTaxesAction(this,state.getDeck().get(playerNum).size() - 1));
-		}
+			//when it is the lesser dalmuti it will automatically pass its highest
+			if (playerNum == 2 && state.getTurn() == 2) {
+				game.sendAction(new LDPayTaxesAction(this, state.getDeck().get(playerNum).size() - 1));
+			}
 
-		/**
-		 * GETTING THE LEAD (should this somehow happen)
-		 */
+			//paytaxes for lesser peon (isLegal makes this move automatically)
+			if (playerNum == 1 && state.getTurn() == 1) {
+				game.sendAction(new LPPayTaxesAction(this));
+			}
 
-		//this is the index of the current highest card
-		int tempRank = highestCard(state.getDeck().get(playerNum));
+			//paytaxes for lesser peon (isLegal makes this move automatically)
+			if (playerNum == 0 && state.getTurn() == 0) {
+				game.sendAction(new LPPayTaxesAction(this));
+			}
 
-		//this has the player play their highest set of cards
-		if(state.getHasLead() == playerNum){
-			game.sendAction(new PlayAction(this, playerNum, tempRank,
-					state.getDeck().get(playerNum).get(tempRank), 0));
-		}
+			/**
+			 * GETTING THE LEAD (should this somehow happen)
+			 */
 
-		/**
-		 * PASSING AND PLAYING CARDS WITH THE DUMB AI
-		 */
-		for(int i = state.getDeck().get(playerNum).size() - 1; i >= 1; i--){
-			//checks for highest rank below the current rank in the pile
-			if(i < state.getRankInPile()){
-				//checks to make sure the dumb ai has enough of that card
-				if(state.getDeck().get(playerNum).get(i) >= state.getNumInPile()){
-					// originally was this:
-					// state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0, playCard);
-					game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
-					played = true;
+			//this is the index of the current highest card
+			int tempRank = highestCard(state.getDeck().get(playerNum));
+
+			//this has the player play their highest set of cards
+			if (state.getHasLead() == playerNum) {
+				game.sendAction(new PlayAction(this, playerNum, tempRank,
+						state.getDeck().get(playerNum).get(tempRank), 0));
+			}
+
+			/**
+			 * PASSING AND PLAYING CARDS WITH THE DUMB AI
+			 */
+			for (int i = state.getDeck().get(playerNum).size() - 1; i >= 1; i--) {
+				//checks for highest rank below the current rank in the pile
+				if (i < state.getRankInPile()) {
+					//checks to make sure the dumb ai has enough of that card
+					if (state.getDeck().get(playerNum).get(i) >= state.getNumInPile()) {
+						// originally was this:
+						// state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0, playCard);
+						game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
+						played = true;
+					}
 				}
 			}
-		}
-		if(played == false){
-			game.sendAction(new PassAction(this));
+			if (played == false) {
+				game.sendAction(new PassAction(this));
 
-			//What is was
-			//state.pass(state.getTurn());
+				//What is was
+				//state.pass(state.getTurn());
+			}
 		}
 	} // receiveInfo
-	
-	/**
-	 * callback method: the timer ticked
-	 */
-	protected void timerTicked() {
-		// 5% of the time, increment or decrement the counter
-		if (Math.random() >= 0.05) return; // do nothing 95% of the time
 
-		// "flip a coin" to determine whether to increment or decrement
-		boolean move = Math.random() >= 0.5;
-		
-		// send the move-action to the game
-		//game.sendAction(new edu.up.cs301.GreatDalmuti.GDMoveAction(this, move));
-	} // timerTicked
+		/**
+		 * callback method: the timer ticked
+		 */
+		protected void timerTicked () {
+			// 5% of the time, increment or decrement the counter
+			if (Math.random() >= 0.05) return; // do nothing 95% of the time
+
+			// "flip a coin" to determine whether to increment or decrement
+			boolean move = Math.random() >= 0.5;
+
+			// send the move-action to the game
+			//game.sendAction(new edu.up.cs301.GreatDalmuti.GDMoveAction(this, move));
+		} // timerTicked
 
 } // GDComputerPlayer1 class
