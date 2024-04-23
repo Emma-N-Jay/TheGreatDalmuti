@@ -74,13 +74,7 @@ public class GDState extends GameState implements Serializable {
 	 */
 	public GDState(GDState orig) {
 		// makes a deep copy of all variables so far
-
-//		for (int i = 0; i < 4; i++) {
-//			for (int j = 0; j < 13; j++) {
-//				this.deck.get(i).add(orig.deck.get(i).get(j));
-//			}
-//		}
-		this.deck = orig.deck;
+		this.deck = copyDeck(orig.deck);
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.handIsVisible = orig.handIsVisible;
 		this.numInPile = orig.numInPile;
@@ -212,6 +206,22 @@ public class GDState extends GameState implements Serializable {
 				deck.get(i).add(getNumOf(deckCopy.get(i), j));
 			}
 		}
+	}
+
+	public ArrayList<ArrayList<Integer>> copyDeck(ArrayList<ArrayList<Integer>> oldDeck){
+		ArrayList<ArrayList<Integer>> newDeck = new ArrayList<ArrayList<Integer>>();
+		newDeck.add(new ArrayList<Integer>());
+		newDeck.add(new ArrayList<Integer>());
+		newDeck.add(new ArrayList<Integer>());
+		newDeck.add(new ArrayList<Integer>());
+
+		for(int i = 0; i < oldDeck.size(); i++){
+			for(int j = 0; j < oldDeck.get(i).size(); j++){
+				newDeck.get(i).add(j, oldDeck.get(i).get(j));
+			}
+		}
+
+		return newDeck;
 	}
 
 	public static int getNumOf(ArrayList<Integer> foo, int num){
