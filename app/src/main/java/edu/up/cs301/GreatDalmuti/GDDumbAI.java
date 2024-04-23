@@ -79,6 +79,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		if (state.getTurn() != this.playerNum) {
 			return;
 		}
+
 		/**
 		 * GIVING TAXES
 		 */
