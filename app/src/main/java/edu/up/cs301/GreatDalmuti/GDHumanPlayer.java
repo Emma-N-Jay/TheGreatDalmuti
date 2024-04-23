@@ -239,8 +239,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			cardsNum.setText("" + n);
 		} else if(button.getId() == R.id.minusbutton){
 			 nString = cardsNum.getText().toString();
-			 n = Integer.parseInt(nString) - 1;
-			 cardsNum.setText("" + n);
+			 if(n > 0) {
+				 n = Integer.parseInt(nString) - 1;
+				 cardsNum.setText("" + n);
+			 }
 		}
 
 		 //more or less jesters selected
