@@ -27,13 +27,13 @@ public class GDState extends GameState implements Serializable {
 	private boolean revolutionIsVisible; //is the revolution button visible
 	private boolean exchangingTaxes; //are we currently exchanging taxes
 	private boolean[] taxesPayed = {false, false, false, false}; // is all true when everyone payed their taxes
-	private int dalmutiTaxes = 0; //keeps track of the number of cards the great dalmuti has payed in taxes
-	private int numInPile = 0; // number of the current rank of cards in the middle
-	private int rankInPile = 0; // the number of the rank in the pile
-	private int hasLowestInRound = 0; // who is in line to get the lead next
-	private int hasLead = 0; // who currently has the lead
+	private int dalmutiTaxes; //keeps track of the number of cards the great dalmuti has payed in taxes
+	private int numInPile; // number of the current rank of cards in the middle
+	private int rankInPile; // the number of the rank in the pile
+	private int hasLowestInRound; // who is in line to get the lead next
+	private int hasLead; // who currently has the lead
 	private int turn; // who's turn is it
-	private int numPass = 3;
+	private int numPass;
 
 	/** ALL OF THE F0LLOWING INSTANCE VARIABLES ARE FROM THE ACTION CLASSES */
 	public int[] taxCardIndexes;
