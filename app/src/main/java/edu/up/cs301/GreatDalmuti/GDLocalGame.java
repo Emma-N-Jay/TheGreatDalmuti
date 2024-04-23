@@ -54,12 +54,6 @@ public class GDLocalGame extends LocalGame {
 		super.state = state;
 	} //GDLocalGame
 
-//	public void start(GamePlayer[] players){
-//		super.start(players);
-//		super.state = new GDState(players.length);
-//		state = (GDState)super.state;
-//	}
-
 	// METHODS *************************************************************************************
 	/**
 	 * can this player move

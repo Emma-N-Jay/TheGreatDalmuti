@@ -73,11 +73,7 @@ public class GDState extends GameState implements Serializable {
 	 */
 	public GDState(GDState orig) {
 		// makes a deep copy of all variables so far
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 13; j++) {
-				this.deck.get(i).add(orig.deck.get(i).get(j));
-			}
-		}
+		this.deck = copyDeck(orig.deck);
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.handIsVisible = orig.handIsVisible;
 		this.numInPile = orig.numInPile;
