@@ -333,23 +333,99 @@ public class GDState extends GameState {
 		return true;
 	} // GDPayTaxes
 
+
+	/**
+	 * checks the selected cards against the rules of the game to ensure the move is legal
+	 * REMEMBER DECK IS SORTED BY PLAYER AND THEN HAND
+	 */
+	protected boolean isLegalMove(int player, int cardNumSelected,
+								  int numSelected, int jestersSelected) {
+
+		if( (cardNumSelected > 0) && (cardNumSelected < 13) ){
+
+			if (jestersSelected == 0) {
+				if (player == getTurn()) {
+
+					if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
+							&& ( deck.get(player).get(cardNumSelected)) > 0) {
+
+						if( numSelected == getNumInPile() ) {
+
+							if ( cardNumSelected < getRankInPile() ) {
+
+								return true;
+
+							}
+
+						}
+
+					}
+
+				}
+			}
+
+			else if ( (jestersSelected == 1) || (jestersSelected == 2) ){
+				if (player == getTurn()) {
+
+					if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
+							&& ( deck.get(player).get(cardNumSelected)) > 0) {
+
+						if( (numSelected  + jestersSelected) == getNumInPile() ) {
+
+							if ( cardNumSelected < getRankInPile() ) {
+
+								return true;
+
+							}
+
+						}
+
+					}
+
+				}
+			}
+
+		}
+
+		return false;
+	}
+
+	//is legal move specifically for when the player has the lead
+	protected boolean leadIsLegalMove(int player, ArrayList<ArrayList<Integer>> deck, int rankSelected,
+									  int numSelected, int jestersSelected){
+		boolean temp = true;
+		//sets to false if they don't have the cards to play
+		if(numSelected + jestersSelected <= 0){
+			temp = false;
+		}
+		if ( deck.get(player).get(rankSelected) < numSelected){
+			temp = false;
+		}
+		if ( deck.get(player).get(13) < jestersSelected){
+			temp = false;
+		}
+
+		return temp;
+	}
+
 	//this method allows a player to play a card
 	public ArrayList<ArrayList<Integer>> play(PlayAction action){
-		GDLocalGame local = new GDLocalGame(this);
-
 		boolean temp = false; //is true when the play was legal and actually happened
 
 		//for when a new round starts for the player who has the lead
 		if( (numPass >= 3) && (action.playerId == hasLead) && (action.numSelected > 0) &&
-				(local.leadIsLegalMove(action.playerId, getDeck(), action.rankSelected,
+				(leadIsLegalMove(action.playerId, getDeck(), action.rankSelected,
 						action.numSelected, action.jesterSelected) ) ){
-			this.rankInPile = action.rankSelected;
-			this.numInPile = action.numSelected + action.jesterSelected;
-			deck.get(action.playerId).set(action.rankSelected,
-					deck.get(action.playerId).get(action.rankSelected) - (action.numSelected) );
-			deck.get(action.playerId).set(13,
-					deck.get(action.playerId).get(13) - (action.jesterSelected) );
-			temp = true;
+
+			if (isLegalMove(action.playerId, action.numSelected, action.rankSelected, action.jesterSelected)) {
+				this.rankInPile = action.rankSelected;
+				this.numInPile = action.numSelected + action.jesterSelected;
+				deck.get(action.playerId).set(action.rankSelected,
+						deck.get(action.playerId).get(action.rankSelected) - (action.numSelected) );
+				deck.get(action.playerId).set(13,
+						deck.get(action.playerId).get(13) - (action.jesterSelected) );
+				temp = true;
+			}
 		}
 
 		if(temp == true) {
