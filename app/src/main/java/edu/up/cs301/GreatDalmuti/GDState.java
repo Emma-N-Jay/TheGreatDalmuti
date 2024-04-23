@@ -232,6 +232,7 @@ public class GDState extends GameState {
 
 		if(dalmutiTaxes == 2){
 			taxesPayed[0] = true;
+			turn++;
 		}
 
 		for(int i = 0; i < 4; i++){
