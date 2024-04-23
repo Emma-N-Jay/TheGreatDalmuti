@@ -81,6 +81,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 		if (state.getTurn() != this.playerNum) {
 			return;
 		}
+
 		/**
 		 * GIVING TAXES
 		 */
@@ -139,8 +140,6 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			if (played == false) {
 				game.sendAction(new PassAction(this));
 
-				//What is was
-				//state.pass(state.getTurn());
 			}
 		}
 	} // receiveInfo
