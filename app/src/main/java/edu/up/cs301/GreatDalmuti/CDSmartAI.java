@@ -74,6 +74,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 	}
 
 
+
 	// METHODS *************************************************************************************
     /**
      * callback method--game's state has changed
@@ -94,20 +95,18 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		 * GIVING TAXES
 		 */
 		//when it is the great dalmuti it will automatically pass its two highest cards
-
-
 		if(playerNum == 3){
 			boolean passedOnce = false;
 			boolean passedTwice = false;
 			// passes the highest single card if they have a single card that is a 6 or above (and isnt the jester)
 			if(highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13){
-				game.sendAction(new PassAction(this,highSingle(state.getDeck().get(playerNum))));
+				game.sendAction(new GDPayTaxesAction(this,highSingle(state.getDeck().get(playerNum))));
 				passedOnce = true;
 			}
 
 			// passes a second high single if it has one
 			if(highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13){
-				game.sendAction(new PassAction(this,highSingle(state.getDeck().get(playerNum))));
+				game.sendAction(new GDPayTaxesAction(this,highSingle(state.getDeck().get(playerNum))));
 				passedTwice = true;
 			}
 
@@ -118,7 +117,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		if(playerNum == 2){
 			// passes the highest single card if they have a single card that is a 6 or above (and isnt the jester)
 			if(highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13){
-				game.sendAction(new PassAction(this,highSingle(state.getDeck().get(playerNum))));
+				game.sendAction(new LDPayTaxesAction(this,highSingle(state.getDeck().get(playerNum))));
 			}
 
 		}
@@ -126,7 +125,6 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		/**
 		 * GETTING THE LEAD (should this somehow happen)
 		 */
-
 		//this is the index of the current highest card
 		int tempRank = highestCard(state.getDeck().get(playerNum));
 

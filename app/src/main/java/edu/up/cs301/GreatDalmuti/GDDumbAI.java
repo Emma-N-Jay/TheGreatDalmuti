@@ -59,6 +59,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		return highCard;
 	}
 
+
 	// METHODS *************************************************************************************
     /**
      * callback method--game's state has changed
@@ -78,15 +79,13 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 		/**
 		 * GIVING TAXES
 		 */
+
+
 		//when it is the great dalmuti it will automatically pass its two highest cards
 		if(playerNum == 3){
 			//I know this looks like a mess BUT its just passing in the two highest cards, thats it
-//			state.GDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
-//							state.getDeck().get(playerNum)),
-//					rankOfCard(state.getDeck().get(playerNum).size() - 2,
-//							state.getDeck().get(playerNum)));
-			game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum)),
-					highestCard(state.getDeck().get(playerNum))));
+			game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+			game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
 		}
 		//when it is the lesser dalmuti it will automatically pass its highest
 		if(playerNum == 2){
