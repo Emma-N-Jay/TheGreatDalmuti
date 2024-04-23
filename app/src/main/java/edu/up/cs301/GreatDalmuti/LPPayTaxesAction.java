@@ -10,10 +10,16 @@
 
 package edu.up.cs301.GreatDalmuti;
 
+import java.io.Serializable;
+
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
-public class LPPayTaxesAction extends GameAction {
+public class LPPayTaxesAction extends GameAction implements Serializable {
+
+    //instance variables
+    private static final long serialVersionUID = 240423102104L;
+
     /**
      * constructor for GameAction
      *

@@ -10,14 +10,16 @@
 
 package edu.up.cs301.GreatDalmuti;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
-public class PlayAction extends GameAction {
+public class PlayAction extends GameAction implements Serializable {
 
     // INSTANCE VARIABLES **************************************************************************
+    private static final long serialVersionUID = 242304102306L;
     int playerId;
     int rankSelected;
     int numSelected;
