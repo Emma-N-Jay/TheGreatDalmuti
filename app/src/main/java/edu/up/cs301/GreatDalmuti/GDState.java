@@ -228,19 +228,6 @@ public class GDState extends GameState {
 		return true;
 	} // pass
 
-
-	/** THESE METHODS ARE ALL RELATED TO THE PAYING AND RECEIVING OF TAXES */
-	//finds index of players lowest card (best)
-	public int findLowest(int player) {
-		int lowestIndex = deck.get(player).get(1);
-		for (int i = 0; i < deck.get(player).size(); i++) {
-			if( (deck.get(player).get(i) < lowestIndex) && (deck.get(player).get(i) != 0) ){
-				lowestIndex = deck.get(player).get(i);
-			}
-		}
-		return lowestIndex;
-	} // findLowest
-
 	//checks if everyone finished paying their taxes and changes exchanging taxes boolean accordingly
 	public void checkTaxes(){
 		boolean temp = true; //is not everyone has payed their taxes turns false
@@ -261,7 +248,16 @@ public class GDState extends GameState {
 	public void LPPayTaxes (LPPayTaxesAction action) {
 		if((!taxesPayed[2]) && exchangingTaxes){
 			//lesser peon gives lesser dalmuti their cards
-			int low = findLowest(2);
+			int low = deck.get(2).get(13);
+			if (low == 0) {
+				low = deck.get(2).get(12);
+			}
+			if (low == 0) {
+				low = deck.get(2).get(11);
+			}
+			if (low == 0) {
+				low = deck.get(2).get(10);
+			}
 			//adds lowest card to lesser dalmuti
 			deck.get(1).set(low, deck.get(1).get(low) + 1);
 			//takes away card from original holder
@@ -289,12 +285,31 @@ public class GDState extends GameState {
 	public void GPPayTaxes (GPPayTaxesAction action) {
 		if((!taxesPayed[3]) && exchangingTaxes) {
 			//great peon gives greater dalmuti 2 of their cards
-			int low = findLowest(3);
+			int low = deck.get(3).get(13);
+			if (low == 0) {
+				low = deck.get(3).get(12);
+			}
+			if (low == 0) {
+				low = deck.get(3).get(11);
+			}
+			if (low == 0) {
+				low = deck.get(3).get(10);
+			}
 			//adds lowest card
 			deck.get(0).set(low, deck.get(0).get(low) + 1);
 			//takes away card from original holder
 			deck.get(3).set(low, deck.get(3).get(low) - 1);
-			low = findLowest(3);
+
+			low = deck.get(2).get(13);
+			if (low == 0) {
+				low = deck.get(2).get(12);
+			}
+			if (low == 0) {
+				low = deck.get(2).get(11);
+			}
+			if (low == 0) {
+				low = deck.get(2).get(10);
+			}
 			deck.get(0).set(low, deck.get(0).get(low) + 1);
 			//takes away card from original holder
 			deck.get(3).set(low, deck.get(3).get(low) - 1);
