@@ -24,11 +24,10 @@ import edu.up.cs301.GameFramework.GameMainActivity;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.players.GameHumanPlayer;
 
-public class surfaceDraw extends SurfaceView  implements  GameHumanPlayer{
+public class surfaceDraw extends SurfaceView {
 
     public Paint purple = new Paint();
     private GDState state = new GDState();
-    private edu.up.cs301.GreatDalmuti.GDState gdState;
     private final int GD = 0;
     private final int LD = 1;
     private final int GP = 2;
@@ -174,46 +173,52 @@ public class surfaceDraw extends SurfaceView  implements  GameHumanPlayer{
             //Set the text based on rank and num cards
             //TODO Fix this. Find way to get ranks
             int humanNum;
-                humanNum = playerNum;
-            if(humanNum == 0){
-                    //name labels
-                    canvas.drawText("Lesser Dalmuti", 25, 75, purple);
-                    canvas.drawText("Lesser Peon", 275, 25, purple);
-                    canvas.drawText("Great Peon", 1810, 75, purple);
-                    canvas.drawText("Great Dalmuti", 750, 700, purple);
-            }
-            if(humanNum == 1){
-                    canvas.drawText("Lesser Dalmuti", 25, 75, purple);
-                    canvas.drawText("Great Peon" , 275, 25, purple);
-                    canvas.drawText("Lesser Peon", 1810, 75, purple);
-                    canvas.drawText("Great Dalmuti" , 750, 700, purple);
-
-            }if(humanNum == 2){
-                    canvas.drawText("Great Dalmuti", 25, 75, purple);
-                    canvas.drawText("Lesser Peon" , 275, 25, purple);
-                    canvas.drawText( "Great Peon", 1810, 75, purple);
-                    canvas.drawText("Lesser Dalmuti"  , 750, 700, purple);
-            }if(humanNum == 3){
-                    canvas.drawText("# played:", 775, 500, purple);
-                    canvas.drawText("4", 885, 500, purple);
-
-                    //draw labels of player
-                    canvas.drawText("Great Dalmuti", 25, 75, purple);
-                    canvas.drawText("Lesser Dalmuti", 275, 25, purple);
-                    canvas.drawText("Lesser Peon", 1810, 75, purple);
-                    canvas.drawText("Great Peon", 925, 575, purple);
-
-                    //Num cards labels
-                    //draw num cards of GD
-                    canvas.drawText("# cards:", 25, 475, purple);
-                    canvas.drawText(" "+ state.getP2Hand().size(), 125 , 475, purple);
-                    //draw num cards of LD
-                    canvas.drawText("# cards:", 275, 50, purple);
-                    canvas.drawText(" " + state.getP3Hand().size(), 375 , 50, purple);
-                    //draw num cards of LP
-                    canvas.drawText("# cards:", 850 , 700, purple);
-                    canvas.drawText(" " + state.getP4Hand().size(), 750, 700, purple);
-            }
+//            if(state.ranks[0] == "Great Dalmuti"){
+//                    //name labels
+//                    humanNum = GD;
+//                    canvas.drawText("Lesser Dalmuti", 25, 75, purple);
+//                    canvas.drawText("Lesser Peon", 275, 25, purple);
+//                    canvas.drawText("Great Peon", 1810, 75, purple);
+//                    canvas.drawText("Great Dalmuti", 750, 700, purple);
+//            }
+//            if(state.ranks[0] == "Lesser Dalmuti"){
+//                    humanNum = LD;
+//                    //name labels
+//                    canvas.drawText("Lesser Dalmuti", 25, 75, purple);
+//                    canvas.drawText("Great Peon" , 275, 25, purple);
+//                    canvas.drawText("Lesser Peon", 1810, 75, purple);
+//                    canvas.drawText("Great Dalmuti" , 750, 700, purple);
+//
+//            }if(state.ranks[0] == "Lesser Peon"){
+//                    //name labels
+//                    humanNum = LP;
+//                    canvas.drawText("Great Dalmuti", 25, 75, purple);
+//                    canvas.drawText("Lesser Peon" , 275, 25, purple);
+//                    canvas.drawText( "Great Peon", 1810, 75, purple);
+//                    canvas.drawText("Lesser Dalmuti"  , 750, 700, purple);
+//            }if(state.ranks[0] == "Great Peon"){
+//                    humanNum = GP;
+//                    //Draw text for num card
+//                    canvas.drawText("# played:", 775, 500, purple);
+//                    canvas.drawText("4", 885, 500, purple);
+//
+//                    //draw labels of player
+//                    canvas.drawText("Great Dalmuti", 25, 75, purple);
+//                    canvas.drawText("Lesser Dalmuti", 275, 25, purple);
+//                    canvas.drawText("Lesser Peon", 1810, 75, purple);
+//                    canvas.drawText("Great Peon", 925, 575, purple);
+//
+//                    //Num cards labels
+//                    //draw num cards of GD
+//                    canvas.drawText("# cards:", 25, 475, purple);
+//                    canvas.drawText(" "+ state.getP2Hand().size(), 125 , 475, purple);
+//                    //draw num cards of LD
+//                    canvas.drawText("# cards:", 275, 50, purple);
+//                    canvas.drawText(" " + state.getP3Hand().size(), 375 , 50, purple);
+//                    //draw num cards of LP
+//                    canvas.drawText("# cards:", 850 , 700, purple);
+//                    canvas.drawText(" " + state.getP4Hand().size(), 750, 700, purple);
+//            }
 
             //draw num cards of GD
             canvas.drawText("# cards:", 25, 475, purple);
@@ -258,19 +263,4 @@ public class surfaceDraw extends SurfaceView  implements  GameHumanPlayer{
                     canvas.drawBitmap(deckJester, 900, 250, null);
             }
     }
-
-        @Override
-        public View getTopView() {
-                return null;
-        }
-
-        @Override
-        public void receiveInfo(GameInfo info) {
-
-        }
-
-        @Override
-        public void setAsGui(GameMainActivity activity) {
-
-        }
 }
