@@ -19,6 +19,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 
+import edu.up.cs301.GameFramework.players.GameHumanPlayer;
+
 public class surfaceDraw extends SurfaceView {
 
     public Paint purple = new Paint();
@@ -168,6 +170,7 @@ public class surfaceDraw extends SurfaceView {
             //Set the text based on rank and num cards
             //TODO Fix this. Find way to get ranks
             int humanNum;
+            GameHumanPlayer
 //            if(state.ranks[0] == "Great Dalmuti"){
 //                    //name labels
 //                    humanNum = GD;
@@ -217,13 +220,13 @@ public class surfaceDraw extends SurfaceView {
 
             //draw num cards of GD
             canvas.drawText("# cards:", 25, 475, purple);
-            canvas.drawText(" "+ state.totalP1Hand(), 125 , 475, purple);
+            canvas.drawText(" "+ state.totalP2Hand(), 125 , 475, purple);
             //draw num cards of LD
             canvas.drawText("# cards:", 275, 50, purple);
-            canvas.drawText(" " + state.totalP2Hand(), 375 , 50, purple);
+            canvas.drawText(" " + state.totalP3Hand(), 375 , 50, purple);
             //draw num cards of LP
             canvas.drawText("# cards:", 925 , 600, purple);
-            canvas.drawText(" " + state.totalP3Hand(), 1025, 600, purple);
+            canvas.drawText(" " + state.totalP1Hand(), 1025, 600, purple);
             //draw num cards of GP
             canvas.drawText("# cards:", 1810, 475, purple);
             canvas.drawText(" " + state.totalP4Hand(), 1910 , 475, purple);
