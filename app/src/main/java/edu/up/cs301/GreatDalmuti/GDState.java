@@ -25,6 +25,8 @@ public class GDState extends GameState {
 	private boolean handIsVisible; //if a players hand is visible for a specific device
 	private boolean revolutionIsVisible; //is the revolution button visible
 	private boolean exchangingTaxes; //are we currently exchanging taxes
+	private boolean[] taxesPayed = {false, false, false, false}; // is all true when everyone payed their taxes
+	private int dalmutiTaxes = 0; //keeps track of the number of cards the great dalmuti has payed in taxes
 	private int numInPile = 0; // number of the current rank of cards in the middle
 	private int rankInPile = 0; // the number of the rank in the pile
 	private int hasLowestInRound = 0; // who is in line to get the lead next
@@ -238,48 +240,85 @@ public class GDState extends GameState {
 		return lowestIndex;
 	} // findLowest
 
+	//checks if everyone finished paying their taxes and changes exchanging taxes boolean accordingly
+	public void checkTaxes(){
+		boolean temp = true; //is not everyone has payed their taxes turns false
+
+		if(dalmutiTaxes == 2){
+			taxesPayed[0] = true;
+		}
+
+		for(int i = 0; i < 4; i++){
+			if(!taxesPayed[i]){
+				temp = false;
+			}
+		}
+
+		exchangingTaxes = !temp;
+	}
+
 	public void LPPayTaxes (LPPayTaxesAction action) {
-		//lesser peon gives lesser dalmuti their cards
-		int low = findLowest(2);
-		//adds lowest card to lesser dalmuti
-		deck.get(1).set(low, deck.get(1).get(low) + 1);
-		//takes away card from original holder
-		deck.get(2).set(low, deck.get(2).get(low) - 1);
+		if((!taxesPayed[2]) && exchangingTaxes){
+			//lesser peon gives lesser dalmuti their cards
+			int low = findLowest(2);
+			//adds lowest card to lesser dalmuti
+			deck.get(1).set(low, deck.get(1).get(low) + 1);
+			//takes away card from original holder
+			deck.get(2).set(low, deck.get(2).get(low) - 1);
+
+			taxesPayed[2] = true;
+			checkTaxes();
+		}
 	} //LPPayTaxes
 
 	public void LDPayTaxes (LDPayTaxesAction action) {
-		//lesser peon gives lesser dalmuti their cards
-		//adds highest card to lesser dalmuti
-		int high = action.cardChoice;
-		deck.get(1).set(high, deck.get(1).get(high) + 1);
-		//takes away card from original holder
-		deck.get(2).set(high, deck.get(2).get(high) - 1);
+		if((!taxesPayed[1]) && exchangingTaxes) {
+			//lesser peon gives lesser dalmuti their cards
+			//adds highest card to lesser dalmuti
+			int high = action.cardChoice;
+			deck.get(1).set(high, deck.get(1).get(high) + 1);
+			//takes away card from original holder
+			deck.get(2).set(high, deck.get(2).get(high) - 1);
+
+			taxesPayed[1] = true;
+			checkTaxes();
+		}
 	} //LDPayTaxes
 
 	public void GPPayTaxes (GPPayTaxesAction action) {
-		//great peon gives greater dalmuti 2 of their cards
-		int low = findLowest(3);
-		//adds lowest card
-		deck.get(0).set(low, deck.get(0).get(low) + 1);
-		//takes away card from original holder
-		deck.get(3).set(low, deck.get(3).get(low) - 1);
-		low = findLowest(3);
-		deck.get(0).set(low, deck.get(0).get(low) + 1);
-		//takes away card from original holder
-		deck.get(3).set(low, deck.get(3).get(low) - 1);
+		if((!taxesPayed[3]) && exchangingTaxes) {
+			//great peon gives greater dalmuti 2 of their cards
+			int low = findLowest(3);
+			//adds lowest card
+			deck.get(0).set(low, deck.get(0).get(low) + 1);
+			//takes away card from original holder
+			deck.get(3).set(low, deck.get(3).get(low) - 1);
+			low = findLowest(3);
+			deck.get(0).set(low, deck.get(0).get(low) + 1);
+			//takes away card from original holder
+			deck.get(3).set(low, deck.get(3).get(low) - 1);
+
+			taxesPayed[3] = true;
+			checkTaxes();
+		}
 	} //GPPayTaxes
 
 	public boolean GDPayTaxes(GDPayTaxesAction action){
-		//great dalmuti gives greater peon 2 of their cards
-		//adds lowest card
-		int high = action.cardOne;
-		deck.get(3).set(high, deck.get(3).get(high) + 1);
-		//takes away card from original holder
-		deck.get(0).set(high, deck.get(0).get(high) - 1);
-		high = action.cardTwo;
-		deck.get(3).set(high, deck.get(3).get(high) + 1);
-		//takes away card from original holder
-		deck.get(0).set(high, deck.get(0).get(high) - 1);
+		if((!taxesPayed[0]) && exchangingTaxes) {
+			//great dalmuti gives greater peon 2 of their cards
+			//adds lowest card
+			int high = action.cardOne;
+			deck.get(3).set(high, deck.get(3).get(high) + 1);
+			//takes away card from original holder
+			deck.get(0).set(high, deck.get(0).get(high) - 1);
+//			high = action.cardTwo;
+//			deck.get(3).set(high, deck.get(3).get(high) + 1);
+//			//takes away card from original holder
+//			deck.get(0).set(high, deck.get(0).get(high) - 1);
+
+			dalmutiTaxes++;
+			checkTaxes();
+		}
 
 		return true;
 	} // GDPayTaxes

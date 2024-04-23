@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import edu.up.cs301.GameFramework.GameMainActivity;
@@ -48,9 +49,12 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private Button minusB;
 	private Button jplusB;
 	private Button jminusB;
-	private Button musicB;
+
+	//music and sound related variables
+	private Switch musicSwitch;
 	//For background music
 	MediaPlayer music;
+	private boolean backgroundMusic = false;
 
 	//for image button
 	private ImageButton revolutionButton;
@@ -151,16 +155,18 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				game.sendAction(gdPayTaxesAction);
 			}
 			else if (playerNum == 1) {
+				LDPayTaxesAction ldPayTaxesAction = new LDPayTaxesAction(this, c);
+				game.sendAction(ldPayTaxesAction);
 				GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
 				game.sendAction(gpPayTaxesAction);
 			}
 			else if (playerNum == 2) {
-				LDPayTaxesAction ldPayTaxesAction = new LDPayTaxesAction(this, c);
-				game.sendAction(ldPayTaxesAction);
-			}
-			else {
 				LPPayTaxesAction lpPayTaxesAction = new LPPayTaxesAction(this);
 				game.sendAction(lpPayTaxesAction);
+			}
+			else {
+				GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
+				game.sendAction(gpPayTaxesAction);
 			}
 		}
 
@@ -257,7 +263,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 		//plays the background music
-		if(button.getId() == R.id.musicButton){
+		if(button.getId() == R.id.musicSwitch){
 			music = MediaPlayer.create(myActivity, R.raw.emmatemp);
 			music.start();
 		}
@@ -506,7 +512,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.minusB = (Button) activity.findViewById(R.id.minusbutton);
 		this.jplusB = (Button) activity.findViewById(R.id.addjbutton);
 		this.jminusB = (Button) activity.findViewById(R.id.minusjbutton);
-		this.musicB = (Button) activity.findViewById(R.id.musicButton);
+
+		//switch to turn off background noise
+		this.musicSwitch = (Switch) activity.findViewById(R.id.musicSwitch);
 
 		//listens for button presses
 		passButton.setOnClickListener(this);
@@ -515,7 +523,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		minusB.setOnClickListener(this);
 		jplusB.setOnClickListener(this);
 		jminusB.setOnClickListener(this);
-		musicB.setOnClickListener(this);
+		musicSwitch.setOnClickListener(this);
 
 		//sets image button listener
 		revolutionButton.setOnClickListener(this);
