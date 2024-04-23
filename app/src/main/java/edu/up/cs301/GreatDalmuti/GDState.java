@@ -210,6 +210,22 @@ public class GDState extends GameState implements Serializable {
 		}
 	}
 
+	public ArrayList<ArrayList<Integer>> copyDeck(ArrayList<ArrayList<Integer>> oldDeck){
+		ArrayList<ArrayList<Integer>> newDeck = new ArrayList<ArrayList<Integer>>();
+		newDeck.add(new ArrayList<Integer>());
+		newDeck.add(new ArrayList<Integer>());
+		newDeck.add(new ArrayList<Integer>());
+		newDeck.add(new ArrayList<Integer>());
+
+		for(int i = 0; i < oldDeck.size(); i++){
+			for(int j = 0; j < oldDeck.get(i).size(); j++){
+				newDeck.get(i).add(j, oldDeck.get(i).get(j));
+			}
+		}
+
+		return newDeck;
+	}
+
 	public static int getNumOf(ArrayList<Integer> foo, int num){
 		int total = 0;
 		for(int i = 0; i < foo.size(); i++){
