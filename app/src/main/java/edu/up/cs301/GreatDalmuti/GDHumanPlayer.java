@@ -150,28 +150,27 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		RevolutionAction revolutionAction = new RevolutionAction(this, playerNum);
 		game.sendAction(revolutionAction);
 		}
-		else if(button.getId() == R.id.payTaxesButton){
-			if (playerNum == 0) {
-				GDPayTaxesAction gdPayTaxesAction = new GDPayTaxesAction(this, c);
-				game.sendAction(gdPayTaxesAction);
-			}
-			else if (playerNum == 1) {
-				LDPayTaxesAction ldPayTaxesAction = new LDPayTaxesAction(this, c);
-				game.sendAction(ldPayTaxesAction);
-				GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
-				game.sendAction(gpPayTaxesAction);
-			}
-			else if (playerNum == 2) {
-				LPPayTaxesAction lpPayTaxesAction = new LPPayTaxesAction(this);
-				game.sendAction(lpPayTaxesAction);
-				soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
-				music.start();
-			}
-			else {
-				GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
-				game.sendAction(gpPayTaxesAction);
-				soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
-				music.start();
+		else if(button.getId() == R.id.payTaxesButton) {
+			if (state.getExchangingTaxes()) {
+				if (playerNum == 0) {
+					GDPayTaxesAction gdPayTaxesAction = new GDPayTaxesAction(this, c);
+					game.sendAction(gdPayTaxesAction);
+				} else if (playerNum == 1) {
+					LDPayTaxesAction ldPayTaxesAction = new LDPayTaxesAction(this, c);
+					game.sendAction(ldPayTaxesAction);
+					GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
+					game.sendAction(gpPayTaxesAction);
+				} else if (playerNum == 2) {
+					LPPayTaxesAction lpPayTaxesAction = new LPPayTaxesAction(this);
+					game.sendAction(lpPayTaxesAction);
+					soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
+					music.start();
+				} else {
+					GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
+					game.sendAction(gpPayTaxesAction);
+					soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
+					music.start();
+				}
 			}
 		}
 

@@ -170,7 +170,7 @@ public class surfaceDraw extends SurfaceView {
             //Set the text based on rank and num cards
             //TODO Fix this. Find way to get ranks
             int humanNum;
-            GameHumanPlayer
+ //           GameHumanPlayer
 //            if(state.ranks[0] == "Great Dalmuti"){
 //                    //name labels
 //                    humanNum = GD;

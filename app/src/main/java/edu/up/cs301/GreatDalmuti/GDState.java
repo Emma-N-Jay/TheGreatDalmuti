@@ -223,7 +223,6 @@ public class GDState extends GameState {
 			this.setTurn(action.playerId + 1);
 		}
 		numPass++;
-		turn++;
 		return true;
 	} // pass
 
