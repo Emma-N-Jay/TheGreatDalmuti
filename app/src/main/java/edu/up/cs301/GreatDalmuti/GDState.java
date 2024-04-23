@@ -10,12 +10,13 @@
 
 package edu.up.cs301.GreatDalmuti;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 
-public class GDState extends GameState {
+public class GDState extends GameState implements Serializable {
 	// INSTANCE VARIABLES **************************************************************************
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;

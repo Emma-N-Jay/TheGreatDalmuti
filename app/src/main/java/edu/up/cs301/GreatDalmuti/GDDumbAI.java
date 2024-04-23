@@ -10,6 +10,7 @@
 
 package edu.up.cs301.GreatDalmuti;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -17,9 +18,10 @@ import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.utilities.Tickable;
 
-public class GDDumbAI extends GameComputerPlayer implements Tickable {
+public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializable {
 
 	// INSTANCE VARIABLES *********************************************************************
+	private static final long serialVersionUID = 242304101501L;
 	//private edu.up.cs301.GreatDalmuti.GDState state;
 
 	/**
