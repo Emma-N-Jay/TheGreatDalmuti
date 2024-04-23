@@ -73,8 +73,6 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		return highCard;
 	}
 
-
-
 	// METHODS *************************************************************************************
     /**
      * callback method--game's state has changed
@@ -130,15 +128,16 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 		//this has the player play their highest set of cards
 		if(state.getHasLead() == playerNum){
-//			state.play(playerNum, state.getDeck(), tempRank,
-//					state.getDeck().get(playerNum).get(tempRank), 0);
+			int numJesters = 0;
 
-			//TODO: add conditions for smartAI having the jester
+			// if the player has jesters it will add the jesters to its play
+			if(state.getDeck().get(playerNum).get(13) != 0){
+				numJesters = state.getDeck().get(playerNum).get(13);
+			}
 
-			//this should work same as above
-			PlayAction play = new PlayAction(this, playerNum, tempRank,
-					state.getDeck().get(playerNum).get(tempRank), 0);
-			game.sendAction(play);
+			// will play highest cards (with or without jesters)
+			game.sendAction(new PlayAction(this, playerNum, tempRank,
+					state.getDeck().get(playerNum).get(tempRank), numJesters));
 		}
 
 		/**
