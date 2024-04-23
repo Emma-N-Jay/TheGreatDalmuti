@@ -10,7 +10,6 @@
 
 package edu.up.cs301.GreatDalmuti;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -82,13 +81,13 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 
 
 		//when it is the great dalmuti it will automatically pass its two highest cards
-		if(playerNum == 3){
+		if(playerNum == 3 && state.getTurn() == 3){
 			//I know this looks like a mess BUT its just passing in the two highest cards, thats it
 			game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
 			game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
 		}
 		//when it is the lesser dalmuti it will automatically pass its highest
-		if(playerNum == 2){
+		if(playerNum == 2 && state.getTurn() == 2){
 //			state.LDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
 //					state.getDeck().get(playerNum)));
 			game.sendAction(new LDPayTaxesAction(this,state.getDeck().get(playerNum).size() - 1));
@@ -103,11 +102,8 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 
 		//this has the player play their highest set of cards
 		if(state.getHasLead() == playerNum){
-//			state.play(playerNum, state.getDeck(), tempRank,
-//					state.getDeck().get(playerNum).get(tempRank), 0);
-
-			PlayAction play = new PlayAction(this);
-			game.sendAction(play);
+			game.sendAction(new PlayAction(this, playerNum, tempRank,
+					state.getDeck().get(playerNum).get(tempRank), 0));
 		}
 
 		/**
@@ -122,9 +118,6 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 					// state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0, playCard);
 					game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
 					played = true;
-
-					//This is what it was
-					// (new PlayAction(playerNum, state.getDeck(), i, state.getNumInPile(), 0));
 				}
 			}
 		}
