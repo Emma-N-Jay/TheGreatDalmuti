@@ -18,7 +18,6 @@ public class GDPayTaxesAction extends GameAction {
 
     // INSTANCE VARIABLES **************************************************************************
     int cardOne;
-    int cardTwo;
 
     // CONSTRUCTORS ********************************************************************************
     /**
@@ -30,9 +29,8 @@ public class GDPayTaxesAction extends GameAction {
         super(player);
     }
 
-    public GDPayTaxesAction(GamePlayer player, int cardChoiceOne, int cardChoiceTwo) {
+    public GDPayTaxesAction(GamePlayer player, int cardChoiceOne) {
         super(player);
         this.cardOne = cardChoiceOne;
-        this.cardTwo = cardChoiceTwo;
     }
 }

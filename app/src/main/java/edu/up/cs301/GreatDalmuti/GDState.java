@@ -311,10 +311,6 @@ public class GDState extends GameState {
 			deck.get(3).set(high, deck.get(3).get(high) + 1);
 			//takes away card from original holder
 			deck.get(0).set(high, deck.get(0).get(high) - 1);
-//			high = action.cardTwo;
-//			deck.get(3).set(high, deck.get(3).get(high) + 1);
-//			//takes away card from original holder
-//			deck.get(0).set(high, deck.get(0).get(high) - 1);
 
 			dalmutiTaxes++;
 			checkTaxes();

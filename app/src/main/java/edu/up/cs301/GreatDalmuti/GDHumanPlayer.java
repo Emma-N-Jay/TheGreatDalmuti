@@ -152,7 +152,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 		else if(button.getId() == R.id.payTaxesButton){
 			if (playerNum == 0) {
-				GDPayTaxesAction gdPayTaxesAction = new GDPayTaxesAction(this, c, c);
+				GDPayTaxesAction gdPayTaxesAction = new GDPayTaxesAction(this, c);
 				game.sendAction(gdPayTaxesAction);
 			}
 			else if (playerNum == 1) {
