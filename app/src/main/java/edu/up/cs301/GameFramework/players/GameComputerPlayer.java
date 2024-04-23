@@ -14,6 +14,7 @@ import edu.up.cs301.GameFramework.utilities.GameTimer;
 import edu.up.cs301.GameFramework.utilities.Logger;
 import edu.up.cs301.GameFramework.utilities.MessageBox;
 import edu.up.cs301.GameFramework.utilities.Tickable;
+import edu.up.cs301.GreatDalmuti.GDState;
 
 import android.os.Handler;
 import android.os.Looper;

@@ -27,13 +27,13 @@ public class GDState extends GameState implements Serializable {
 	private boolean revolutionIsVisible; //is the revolution button visible
 	private boolean exchangingTaxes; //are we currently exchanging taxes
 	private boolean[] taxesPayed = {false, false, false, false}; // is all true when everyone payed their taxes
-	private int dalmutiTaxes = 0; //keeps track of the number of cards the great dalmuti has payed in taxes
-	private int numInPile = 0; // number of the current rank of cards in the middle
-	private int rankInPile = 0; // the number of the rank in the pile
-	private int hasLowestInRound = 0; // who is in line to get the lead next
-	private int hasLead = 0; // who currently has the lead
-	private int turn = 0; // who's turn is it
-	private int numPass = 3;
+	private int dalmutiTaxes; //keeps track of the number of cards the great dalmuti has payed in taxes
+	private int numInPile; // number of the current rank of cards in the middle
+	private int rankInPile; // the number of the rank in the pile
+	private int hasLowestInRound; // who is in line to get the lead next
+	private int hasLead; // who currently has the lead
+	private int turn; // who's turn is it
+	private int numPass;
 
 	/** ALL OF THE F0LLOWING INSTANCE VARIABLES ARE FROM THE ACTION CLASSES */
 	public int[] taxCardIndexes;
@@ -62,6 +62,7 @@ public class GDState extends GameState implements Serializable {
 		 this.hasLowestInRound = 0;
 		 this.hasLead = 0; //this should assign the lead to default to GDalmuti but also could be 1 instead of 0
 		 this.revolutionIsVisible = false;
+		 this.turn = 0;
 		 shuffle();
 	 } // GDState
 	
@@ -73,11 +74,7 @@ public class GDState extends GameState implements Serializable {
 	 */
 	public GDState(GDState orig) {
 		// makes a deep copy of all variables so far
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 13; j++) {
-				this.deck.get(i).add(orig.deck.get(i).get(j));
-			}
-		}
+		this.deck = copyDeck(orig.deck);
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.handIsVisible = orig.handIsVisible;
 		this.numInPile = orig.numInPile;
@@ -85,6 +82,7 @@ public class GDState extends GameState implements Serializable {
 		this.hasLowestInRound = orig.hasLowestInRound;
 		this.hasLead = orig.hasLead;
 		this.revolutionIsVisible = orig.revolutionIsVisible;
+		this.turn = orig.turn;
 	} // GDState
 
 	// METHODS *************************************************************************************
@@ -210,6 +208,7 @@ public class GDState extends GameState implements Serializable {
 		}
 	}
 
+	//Copy deck method for the copy constructor. Copyception
 	public ArrayList<ArrayList<Integer>> copyDeck(ArrayList<ArrayList<Integer>> oldDeck){
 		ArrayList<ArrayList<Integer>> newDeck = new ArrayList<ArrayList<Integer>>();
 		newDeck.add(new ArrayList<Integer>());
@@ -253,7 +252,11 @@ public class GDState extends GameState implements Serializable {
 
 		if(dalmutiTaxes == 2){
 			taxesPayed[0] = true;
-			turn++;
+			if(turn != 3) {
+				turn++;
+			} else{
+				turn = 0;
+			}
 		}
 
 		for(int i = 0; i < 4; i++){

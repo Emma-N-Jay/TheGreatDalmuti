@@ -54,12 +54,6 @@ public class GDLocalGame extends LocalGame {
 		super.state = state;
 	} //GDLocalGame
 
-//	public void start(GamePlayer[] players){
-//		super.start(players);
-//		super.state = new GDState(players.length);
-//		state = (GDState)super.state;
-//	}
-
 	// METHODS *************************************************************************************
 	/**
 	 * can this player move
@@ -130,7 +124,7 @@ public class GDLocalGame extends LocalGame {
 	protected void sendUpdatedStateTo(GamePlayer p) {
 		// this is a perfect-information game, so we'll make a
 		// complete copy of the state to send to the player
-		p.sendInfo(new GDState(gameState));
+		p.sendInfo(new GDState(this.gameState));
 	} // sendUpdatedSate
 	
 	/**
