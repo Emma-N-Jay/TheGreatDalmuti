@@ -137,8 +137,6 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 			if (played == false) {
 				game.sendAction(new PassAction(this));
 
-				//What is was
-				//state.pass(state.getTurn());
 			}
 		}
 	} // receiveInfo
