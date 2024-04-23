@@ -121,6 +121,16 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 		}
 
+		//paytaxes for lesser peon (isLegal makes this move automatically)
+		if(playerNum == 1 && state.getTurn() == 1){
+			game.sendAction(new LPPayTaxesAction(this));
+		}
+
+		//paytaxes for lesser peon (isLegal makes this move automatically)
+		if(playerNum == 0 && state.getTurn() == 0){
+			game.sendAction(new LPPayTaxesAction(this));
+		}
+
 		/**
 		 * GETTING THE LEAD (should this somehow happen)
 		 */
