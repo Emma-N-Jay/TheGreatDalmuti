@@ -54,6 +54,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private Switch musicSwitch;
 	//For background music
 	MediaPlayer music;
+	MediaPlayer soundEffects;
 	private boolean backgroundMusic = false;
 
 	//for image button
@@ -262,8 +263,16 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//plays the background music
 		if(button.getId() == R.id.musicSwitch){
-			music = MediaPlayer.create(myActivity, R.raw.emmatemp);
-			music.start();
+			if(backgroundMusic){
+				backgroundMusic = false;
+				music.stop();
+			} else {
+				backgroundMusic = true;
+				music = MediaPlayer.create(myActivity, R.raw.moneymoneymoenybutmedieval);
+				music.start();
+				music.setLooping(true);
+			}
+
 		}
 
 		//updates number of cards
