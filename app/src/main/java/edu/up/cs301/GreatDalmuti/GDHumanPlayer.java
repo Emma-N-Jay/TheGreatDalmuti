@@ -279,7 +279,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 					music.start();
 					music.setLooping(true);
 				} else {
-					music = MediaPlayer.create(myActivity, R.raw.emmatemp);
+					music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
 					music.start();
 					music.setLooping(true);
 				}
