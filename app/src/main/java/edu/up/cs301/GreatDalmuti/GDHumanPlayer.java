@@ -164,10 +164,14 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			else if (playerNum == 2) {
 				LPPayTaxesAction lpPayTaxesAction = new LPPayTaxesAction(this);
 				game.sendAction(lpPayTaxesAction);
+				soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
+				music.start();
 			}
 			else {
 				GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
 				game.sendAction(gpPayTaxesAction);
+				soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
+				music.start();
 			}
 		}
 
@@ -270,9 +274,15 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				music.stop();
 			} else {
 				backgroundMusic = true;
-				music = MediaPlayer.create(myActivity, R.raw.moneymoneymoenybutmedieval);
-				music.start();
-				music.setLooping(true);
+				if(state.getExchangingTaxes()) {
+					music = MediaPlayer.create(myActivity, R.raw.moneymoneymoenybutmedieval);
+					music.start();
+					music.setLooping(true);
+				} else {
+					music = MediaPlayer.create(myActivity, R.raw.emmatemp);
+					music.start();
+					music.setLooping(true);
+				}
 			}
 
 		}
