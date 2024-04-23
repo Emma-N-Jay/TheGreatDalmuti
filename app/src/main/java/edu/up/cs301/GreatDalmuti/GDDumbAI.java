@@ -88,13 +88,22 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable {
 			game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
 			game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
 		}
+
 		//when it is the lesser dalmuti it will automatically pass its highest
-		if (playerNum == 2 && state.getTurn() == 2) {
-//			state.LDPayTaxes(rankOfCard(state.getDeck().get(playerNum).size() - 1,
-//					state.getDeck().get(playerNum)));
-			game.sendAction(new LDPayTaxesAction(this, state.getDeck().get(playerNum).size() - 1));
+		if(playerNum == 2 && state.getTurn() == 2){
+			game.sendAction(new LDPayTaxesAction(this,state.getDeck().get(playerNum).size() - 1));
 		}
-	}
+
+		//paytaxes for lesser peon (isLegal makes this move automatically)
+		if(playerNum == 1 && state.getTurn() == 1){
+			game.sendAction(new LPPayTaxesAction(this));
+		}
+
+		//paytaxes for lesser peon (isLegal makes this move automatically)
+		if(playerNum == 0 && state.getTurn() == 0){
+			game.sendAction(new LPPayTaxesAction(this));
+		}
+
 		/**
 		 * GETTING THE LEAD (should this somehow happen)
 		 */
