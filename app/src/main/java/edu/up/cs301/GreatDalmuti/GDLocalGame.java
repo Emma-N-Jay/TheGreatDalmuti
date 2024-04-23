@@ -39,7 +39,7 @@ public class GDLocalGame extends LocalGame {
 	public static final int TARGET_MAGNITUDE = 10;
 
 	// the game's state
-	private edu.up.cs301.GreatDalmuti.GDState gameState;
+	private GDState gameState;
 
 	// CONSTRUCTORS ********************************************************************************
 	/**
@@ -47,18 +47,18 @@ public class GDLocalGame extends LocalGame {
 	 */
 	public GDLocalGame(GameState state) {
 		// initialize the game state, with the counter value starting at 0
-		if (! (state instanceof edu.up.cs301.GreatDalmuti.GDState)) {
-			state = new edu.up.cs301.GreatDalmuti.GDState();
+		if (! (state instanceof GDState)) {
+			state = new GDState();
 		}
-		this.gameState = (edu.up.cs301.GreatDalmuti.GDState)state;
+		this.gameState = (GDState)state;
 		super.state = state;
 	} //GDLocalGame
 
-	public void start(GamePlayer[] players){
-		super.start(players);
-		super.state = new GDState(players.length);
-		state = (GDState)super.state;
-	}
+//	public void start(GamePlayer[] players){
+//		super.start(players);
+//		super.state = new GDState(players.length);
+//		state = (GDState)super.state;
+//	}
 
 	// METHODS *************************************************************************************
 	/**
@@ -82,8 +82,9 @@ public class GDLocalGame extends LocalGame {
 		if (action instanceof GDPayTaxesAction) {
 			GDPayTaxesAction gdPayTaxesAction = (GDPayTaxesAction) action;
 			//we will want to synchronize taxes probably
-			//synchronized (GPPayTaxesAction);
-			gameState.GDPayTaxes(gdPayTaxesAction);
+			synchronized(gdPayTaxesAction) {
+				gameState.GDPayTaxes(gdPayTaxesAction);
+			}
 			return true;
 		}
 		else if (action instanceof GPPayTaxesAction) {
@@ -129,7 +130,8 @@ public class GDLocalGame extends LocalGame {
 	protected void sendUpdatedStateTo(GamePlayer p) {
 		// this is a perfect-information game, so we'll make a
 		// complete copy of the state to send to the player
-		p.sendInfo(new edu.up.cs301.GreatDalmuti.GDState(this.gameState, this.getPlayerIdx(p)));
+		GDState gdState = new GDState();
+		p.sendInfo(gdState);
 	} // sendUpdatedSate
 	
 	/**
