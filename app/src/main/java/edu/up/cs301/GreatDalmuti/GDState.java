@@ -208,6 +208,7 @@ public class GDState extends GameState implements Serializable {
 		}
 	}
 
+	//Copy deck method for the copy constructor. Copyception
 	public ArrayList<ArrayList<Integer>> copyDeck(ArrayList<ArrayList<Integer>> oldDeck){
 		ArrayList<ArrayList<Integer>> newDeck = new ArrayList<ArrayList<Integer>>();
 		newDeck.add(new ArrayList<Integer>());
