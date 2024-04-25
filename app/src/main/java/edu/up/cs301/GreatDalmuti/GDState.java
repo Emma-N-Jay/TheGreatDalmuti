@@ -271,16 +271,8 @@ public class GDState extends GameState implements Serializable {
 	public void LPPayTaxes (LPPayTaxesAction action) {
 		if((!taxesPayed[2]) && exchangingTaxes){
 			//lesser peon gives lesser dalmuti their cards
-			int low = deck.get(2).get(13);
-			if (low == 0) {
-				low = deck.get(2).get(12);
-			}
-			if (low == 0) {
-				low = deck.get(2).get(11);
-			}
-			if (low == 0) {
-				low = deck.get(2).get(10);
-			}
+			int low = findLowest(2);
+
 			//adds lowest card to lesser dalmuti
 			deck.get(1).set(low, deck.get(1).get(low) + 1);
 			//takes away card from original holder
@@ -308,31 +300,15 @@ public class GDState extends GameState implements Serializable {
 	public void GPPayTaxes (GPPayTaxesAction action) {
 		if((!taxesPayed[3]) && exchangingTaxes) {
 			//great peon gives greater dalmuti 2 of their cards
-			int low = deck.get(3).get(13);
-			if (low == 0) {
-				low = deck.get(3).get(12);
-			}
-			if (low == 0) {
-				low = deck.get(3).get(11);
-			}
-			if (low == 0) {
-				low = deck.get(3).get(10);
-			}
+			int low = findLowest(3);
+
 			//adds lowest card
 			deck.get(0).set(low, deck.get(0).get(low) + 1);
 			//takes away card from original holder
 			deck.get(3).set(low, deck.get(3).get(low) - 1);
 
-			low = deck.get(2).get(13);
-			if (low == 0) {
-				low = deck.get(2).get(12);
-			}
-			if (low == 0) {
-				low = deck.get(2).get(11);
-			}
-			if (low == 0) {
-				low = deck.get(2).get(10);
-			}
+			low = findLowest(3);
+
 			deck.get(0).set(low, deck.get(0).get(low) + 1);
 			//takes away card from original holder
 			deck.get(3).set(low, deck.get(3).get(low) - 1);
@@ -442,6 +418,17 @@ public class GDState extends GameState implements Serializable {
 		return temp;
 	}
 
+	//finds lowest rank (best) card player has
+	public int findLowest(int player){
+		int low = 1;
+		for(int i = 1; i < 14; i++){
+			if(deck.get(player).get(i) > 0){
+				return i;
+			}
+		}
+		return low;
+	}
+
 	//this method allows a player to play a card
 	public ArrayList<ArrayList<Integer>> play(PlayAction action){
 		boolean temp = false; //is true when the play was legal and actually happened
@@ -478,7 +465,7 @@ public class GDState extends GameState implements Serializable {
 	//given that the player that has the jesters calls the revolution, carries out revolution
 	public boolean revolution (RevolutionAction action) {
 		if(deck.get(action.playerID).get(13) == 2){
-			if(action.playerID == 2){
+			if(action.playerID <= 2){
 				this.setExchangingTaxes(false);
 			} else if(action.playerID == 3){
 				//switches player 1 for 4 & 2 for 3
