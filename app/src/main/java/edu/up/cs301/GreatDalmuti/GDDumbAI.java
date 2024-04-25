@@ -144,13 +144,16 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 					if (state.getDeck().get(playerNum).get(i) >= state.getNumInPile()) {
 						game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
 						played = true;
+						break;
+					}
+					if(i == 1){
+						game.sendAction(new PassAction(this));
 					}
 				}
 			}
-			if (played == false) {
-				game.sendAction(new PassAction(this));
-				return;
-			}
+//			if (played == false) {
+//				game.sendAction(new PassAction(this));
+//			}
 		}
 
 	} // receiveInfo
