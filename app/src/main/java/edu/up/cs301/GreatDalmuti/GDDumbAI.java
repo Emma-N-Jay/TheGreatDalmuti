@@ -158,4 +158,8 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			//game.sendAction(new edu.up.cs301.GreatDalmuti.GDMoveAction(this, move));
 		} // timerTicked
 
+		public String getName(){
+			return this.name;
+		}
+
 } // GDComputerPlayer1 class

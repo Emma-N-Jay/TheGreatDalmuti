@@ -607,4 +607,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	} // setAsGui
 
+	public String getName(){
+		return this.name;
+	}
+
 } // GDHumanPlayer class

@@ -230,4 +230,8 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		//game.sendAction(new GDMoveAction(this, move));
 	} // timerTicked
 
+	public String getName(){
+		return this.name;
+	}
+
 } // GDComputerPlayer2

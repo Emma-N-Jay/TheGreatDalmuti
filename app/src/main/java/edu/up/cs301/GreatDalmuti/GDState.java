@@ -478,4 +478,5 @@ public class GDState extends GameState implements Serializable {
 		}
 		return true;
 	} // revolution
+
 } // GDState class

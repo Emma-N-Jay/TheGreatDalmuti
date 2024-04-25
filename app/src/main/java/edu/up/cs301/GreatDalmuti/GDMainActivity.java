@@ -27,6 +27,7 @@ public class GDMainActivity extends GameMainActivity {
 	// the port number that this game will use when playing over the network
 	private static final int PORT_NUMBER = 2234;
 	GDState localGD;
+	ArrayList<String> playerNames = new ArrayList<String>();
 
 	// METHODS *************************************************************************************
 	/**
@@ -47,16 +48,19 @@ public class GDMainActivity extends GameMainActivity {
 		// a human player player type (player type 0)
 		playerTypes.add(new GamePlayerType("Local Human Player") {
 			public GamePlayer createPlayer(String name) {
+				playerNames.add(name);
 				return new edu.up.cs301.GreatDalmuti.GDHumanPlayer(name);
 			}});
 		
 		// a computer player type (player type 1)
 		playerTypes.add(new GamePlayerType("Dumb AI") {
 			public GamePlayer createPlayer(String name) {
+				playerNames.add(name);
 				return new GDDumbAI(name);
 			}});
 		playerTypes.add(new GamePlayerType("Smart AI") {
 			public GamePlayer createPlayer(String name) {
+				playerNames.add(name);
 				return new CDSmartAI(name);
 			}});
 //		plyerTypes.add(new GamePlayerType("Computer Player 3") {
@@ -64,12 +68,13 @@ public class GDMainActivity extends GameMainActivity {
 //				return new GDDumbAI(name);
 //			}
 //		});
-		
+
 		// a computer player type (player type 2)
-		playerTypes.add(new GamePlayerType("Computer Player (GUI)") {
-			public GamePlayer createPlayer(String name) {
-				return new GDComputerPlayerGUI(name);
-			}});
+//		playerTypes.add(new GamePlayerType("Computer Player (GUI)") {
+//			public GamePlayer createPlayer(String name) {
+//				playerNames.add(name);
+//				return new GDComputerPlayerGUI(name);
+//			}});
 
 
 		// Create a game configuration class for GD:
@@ -96,6 +101,10 @@ public class GDMainActivity extends GameMainActivity {
 		// return the configuration
 		return defaultConfig;
 	} // createDefaultConfig
+
+	public ArrayList<String> getPlayerNames(){
+		return this.playerNames;
+	}
 
 	/**
 	 * create a local game
