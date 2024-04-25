@@ -410,6 +410,9 @@ public class GDState extends GameState implements Serializable {
 		if ( deck.get(player).get(13) < jestersSelected){
 			temp = false;
 		}
+		if(!(player == this.getTurn())){
+			temp = false;
+		}
 
 		return temp;
 	}
@@ -443,16 +446,22 @@ public class GDState extends GameState implements Serializable {
 		if( (numPass >= 3) && (action.playerId == hasLead) && (action.numSelected > 0) &&
 				(leadIsLegalMove(action.playerId, getDeck(), action.rankSelected,
 						action.numSelected, action.jesterSelected) ) ){
+			this.rankInPile = action.rankSelected;
+			this.numInPile = action.numSelected + action.jesterSelected;
+			deck.get(action.playerId).set(action.rankSelected,
+					deck.get(action.playerId).get(action.rankSelected) - (action.numSelected) );
+			deck.get(action.playerId).set(13,
+					deck.get(action.playerId).get(13) - (action.jesterSelected) );
+			temp = true;
 
-			if (isLegalMove(action.playerId, action.numSelected, action.rankSelected, action.jesterSelected)) {
-				this.rankInPile = action.rankSelected;
-				this.numInPile = action.numSelected + action.jesterSelected;
+		}
+
+			if (isLegalMove(action.playerId, action.rankSelected, action.numSelected, action.jesterSelected)) {
 				deck.get(action.playerId).set(action.rankSelected,
 						deck.get(action.playerId).get(action.rankSelected) - (action.numSelected) );
 				deck.get(action.playerId).set(13,
 						deck.get(action.playerId).get(13) - (action.jesterSelected) );
 				temp = true;
-			}
 		}
 
 		if(temp == true) {
