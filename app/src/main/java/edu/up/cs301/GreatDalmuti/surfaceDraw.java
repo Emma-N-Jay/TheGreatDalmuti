@@ -32,10 +32,17 @@ public class surfaceDraw extends SurfaceView {
     private final int LD = 1;
     private final int GP = 2;
     private final int LP = 3;
+    GDMainActivity mainActivity;
+    private GDHumanPlayer player;
+
 
     public surfaceDraw(Context context, AttributeSet attr) {
         super(context, attr);
         setWillNotDraw(false);
+    }
+
+    public void setPlayer(GDHumanPlayer player){
+            this.player= player;
     }
 
     public void setCurrentGameState(GDState state){
@@ -161,7 +168,14 @@ public class surfaceDraw extends SurfaceView {
             //Draw text for num card
             canvas.drawText("# played:",  750, 500, purple);
             canvas.drawText(" " + state.getNumInPile(), 885, 500, purple);
-            canvas.drawText("AHHHHHHHHH", 950, 500, purple);
+//            if(player != null){
+//                    String name = player.getPlayerName(0);
+//                    if(name != null){
+//                            canvas.drawText(name, 950, 500, purple);
+//                    }
+//            }
+
+
 
             //TODO: assign player rank
 

@@ -125,6 +125,19 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		canvas.invalidate();
 	} // updateDisplay
 
+	@Override
+	protected void initAfterReady() {
+		super.initAfterReady();
+		canvas.setPlayer(this);
+	}
+
+	public String getPlayerName(int foo){
+		if(allPlayerNames == null){
+			return null;
+		}
+		return allPlayerNames[foo];
+	}
+
 	/**
 	 * 
 	 * @param button
@@ -336,13 +349,13 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 //		GDState firstInstance = new GDState();
 //		GDState firstCopy = new GDState(firstInstance, 4);
 //
-		GDHumanPlayer[] gamePlayers = new GDHumanPlayer[4]; //array of all players in game
-		gamePlayers[0] = new GDHumanPlayer("Great Dalmuti");
-		gamePlayers[1] = new GDHumanPlayer("Lesser Dalmuti");
-		gamePlayers[2] = new GDHumanPlayer("Lesser Peon");
-		gamePlayers[3] = new GDHumanPlayer("Greater Peon");
+//		GDHumanPlayer[] gamePlayers = new GDHumanPlayer[4]; //array of all players in game
+//		gamePlayers[0] = new GDHumanPlayer("Great Dalmuti");
+//		gamePlayers[1] = new GDHumanPlayer("Lesser Dalmuti");
+//		gamePlayers[2] = new GDHumanPlayer("Lesser Peon");
+//		gamePlayers[3] = new GDHumanPlayer("Greater Peon");
 //
-//		//greater peon declares revolution
+//		//greater peon declares revolutionF
 //		state.revolution(firstCopy.getTurn(), firstCopy.getDeck()); //swaps positions
 //		textBox.setText("" + textBox.getText() + "The Lesser Dalmuti has declared a revolution!\n");
 //

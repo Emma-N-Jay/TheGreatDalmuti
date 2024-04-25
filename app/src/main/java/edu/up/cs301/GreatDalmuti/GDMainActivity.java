@@ -12,6 +12,7 @@ package edu.up.cs301.GreatDalmuti;
 
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import edu.up.cs301.GameFramework.GameMainActivity;
@@ -27,7 +28,7 @@ public class GDMainActivity extends GameMainActivity {
 	// the port number that this game will use when playing over the network
 	private static final int PORT_NUMBER = 2234;
 	GDState localGD;
-	ArrayList<String> playerNames = new ArrayList<String>();
+	ArrayList<String> playerNames;
 
 	// METHODS *************************************************************************************
 	/**
@@ -41,7 +42,7 @@ public class GDMainActivity extends GameMainActivity {
 	 */
 	@Override
 	public GameConfig createDefaultConfig() {
-		
+		playerNames  = new ArrayList<String>();
 		// Define the allowed player types
 		ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 		
