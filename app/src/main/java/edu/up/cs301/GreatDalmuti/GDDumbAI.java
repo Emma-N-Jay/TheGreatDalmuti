@@ -20,7 +20,7 @@ import edu.up.cs301.GameFramework.utilities.Tickable;
 
 public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializable {
 
-	// INSTANCE VARIABLES **************************************************************************
+	// INSTANCE VARIABLES *********************************************************************
 	private static final long serialVersionUID = 242304101501L;
 	//private edu.up.cs301.GreatDalmuti.GDState state;
 
@@ -94,17 +94,17 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			}
 
 			//when it is the lesser peon it will automatically pass its highest
-			if (playerNum == 2 && state.getTurn() == 2) {
+			else if (playerNum == 2 && state.getTurn() == 2) {
 				game.sendAction(new LPPayTaxesAction(this));
 			}
 
 			//paytaxes for lesser dalmuti (isLegal makes this move automatically)
-			if (playerNum == 1 && state.getTurn() == 1) {
+			else if (playerNum == 1 && state.getTurn() == 1) {
 				game.sendAction(new LDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
 			}
 
 			//paytaxes for greater dalmuti (isLegal makes this move automatically)
-			if (playerNum == 0 && state.getTurn() == 0) {
+			else if (playerNum == 0 && state.getTurn() == 0) {
 				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
 				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
 			}
@@ -127,24 +127,24 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			 * PASSING AND PLAYING CARDS WITH THE DUMB AI
 			 */
 
-				for (int i = 13; i >= 1; i--) {
-					//checks for highest rank below the current rank in the pile
-					if (i < state.getRankInPile()) {
-						//checks to make sure the dumb ai has enough of that card
-						if (state.getDeck().get(playerNum).get(i) >= state.getNumInPile()) {
-							// originally was this:
-							// state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0, playCard);
-							game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
-							played = true;
-						}
+			for (int i = 13; i >= 1; i--) {
+				//checks for highest rank below the current rank in the pile
+				if (i < state.getRankInPile()) {
+					//checks to make sure the dumb ai has enough of that card
+					if (state.getDeck().get(playerNum).get(i) >= state.getNumInPile()) {
+						// originally was this:
+						// state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0, playCard);
+						game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
+						played = true;
 					}
 				}
-				if (played == false) {
-					game.sendAction(new PassAction(this));
-				}
 
+			if (played == false) {
+				game.sendAction(new PassAction(this));
 			}
 
+		}
+		}
 	} // receiveInfo
 
 		/**
