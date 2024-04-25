@@ -12,6 +12,7 @@ package edu.up.cs301.GreatDalmuti;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 
 import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
@@ -72,6 +73,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 	protected void receiveInfo(GameInfo info) {
 		if (!(info instanceof GDState)) return;
 
+
 		GDState state = (GDState) info;
 
 		boolean played = false;
@@ -79,6 +81,13 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 
 		if (state.getTurn() != this.playerNum) {
 			return;
+		}
+
+		//delay
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
 		}
 
 		/**
@@ -145,6 +154,9 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 				return;
 			}
 		}
+
+
+
 	} // receiveInfo
 
 		/**
