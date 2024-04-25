@@ -292,7 +292,7 @@ public class GDState extends GameState implements Serializable {
 	} //LPPayTaxes
 
 	public void LDPayTaxes (LDPayTaxesAction action) {
-		if((!taxesPayed[1]) && exchangingTaxes) {
+		if((!taxesPayed[1]) && exchangingTaxes && dTaxesLegal(1, action.cardChoice)) {
 			//lesser peon gives lesser dalmuti their cards
 			//adds highest card to lesser dalmuti
 			int high = action.cardChoice;
@@ -343,7 +343,7 @@ public class GDState extends GameState implements Serializable {
 	} //GPPayTaxes
 
 	public boolean GDPayTaxes(GDPayTaxesAction action){
-		if((!taxesPayed[0]) && exchangingTaxes) {
+		if((!taxesPayed[0]) && exchangingTaxes && dTaxesLegal(0, action.cardOne)) {
 			//great dalmuti gives greater peon 2 of their cards
 			//adds lowest card
 			int high = action.cardOne;
@@ -429,6 +429,16 @@ public class GDState extends GameState implements Serializable {
 			temp = false;
 		}
 
+		return temp;
+	}
+
+	//is legal move to check if they have the cards for taxes
+	public boolean dTaxesLegal(int player, int cardRank){
+		//temo turns false when move isn't possible
+		boolean temp = false;
+		if(deck.get(player).get(cardRank) > 0){
+			temp = true;
+		}
 		return temp;
 	}
 
