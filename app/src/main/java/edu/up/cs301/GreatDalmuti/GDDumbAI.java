@@ -106,7 +106,6 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			//paytaxes for greater dalmuti (isLegal makes this move automatically)
 			else if (playerNum == 0 && state.getTurn() == 0) {
 				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
-				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
 			}
 		}
 
