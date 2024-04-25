@@ -9,7 +9,6 @@
  */
 
 package edu.up.cs301.GreatDalmuti;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
