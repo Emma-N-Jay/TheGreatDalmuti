@@ -354,7 +354,6 @@ public class GDState extends GameState implements Serializable {
 			dalmutiTaxes++;
 			checkTaxes();
 		}
-
 		return true;
 	} // GDPayTaxes
 
