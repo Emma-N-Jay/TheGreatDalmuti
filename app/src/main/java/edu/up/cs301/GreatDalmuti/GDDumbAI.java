@@ -52,7 +52,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 	//this method finds the index of the highest card
 	public int highestCard(ArrayList<Integer> playerHand){
 		int highCard = 1;
-		for(int i = playerHand.size() - 1; i >= 0; i--){
+		for(int i = playerHand.size() - 1; i > 0; i--){
 			if(playerHand.get(i) != 0){
 				highCard = i;
 			}
