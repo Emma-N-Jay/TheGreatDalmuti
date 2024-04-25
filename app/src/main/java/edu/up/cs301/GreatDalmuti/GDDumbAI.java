@@ -73,11 +73,9 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 	protected void receiveInfo(GameInfo info) {
 		if (!(info instanceof GDState)) return;
 
-
 		GDState state = (GDState) info;
 
 		boolean played = false;
-
 
 		if (state.getTurn() != this.playerNum) {
 			return;
@@ -154,8 +152,6 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 				return;
 			}
 		}
-
-
 
 	} // receiveInfo
 

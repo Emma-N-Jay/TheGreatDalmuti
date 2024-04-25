@@ -29,11 +29,7 @@ public class PassAction extends GameAction implements Serializable {
      *
      * who pays, who to, and what they are paying
      */
-    public PassAction(GamePlayer player) {
-        super(player);
-    }
-
-    public PassAction (GamePlayer player, int turn) {
+    public PassAction (GamePlayer player) {
         super(player);
         this.playerId = player.getPlayerNum();
     }
