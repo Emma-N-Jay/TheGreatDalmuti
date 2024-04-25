@@ -240,13 +240,16 @@ public class GDState extends GameState implements Serializable {
 
 	// PASS METHOD
 	public boolean pass(PassAction action){
-		if(action.playerId == 3 ){
-			this.setTurn(0);
-		} else {
-			this.setTurn(action.playerId + 1);
-		}
-		numPass++;
-		return true;
+		if(this.getTurn() == action.playerId) {
+			if (action.playerId == 3) {
+				this.setTurn(0);
+			} else {
+				this.setTurn(action.playerId + 1);
+			}
+			numPass++;
+			return true;
+		} else
+			return false;
 	} // pass
 
 	//checks if everyone finished paying their taxes and changes exchanging taxes boolean accordingly

@@ -108,11 +108,12 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
 				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
 			}
+		}
 
 			/**
 			 * GETTING THE LEAD (should this somehow happen)
 			 */
-
+		if(playerNum == state.getTurn()) {
 			//this is the index of the current highest card
 			int tempRank = highestCard(state.getDeck().get(playerNum));
 
@@ -125,23 +126,25 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			/**
 			 * PASSING AND PLAYING CARDS WITH THE DUMB AI
 			 */
-			for (int i = state.getDeck().get(playerNum).size() - 1; i >= 1; i--) {
-				//checks for highest rank below the current rank in the pile
-				if (i < state.getRankInPile()) {
-					//checks to make sure the dumb ai has enough of that card
-					if (state.getDeck().get(playerNum).get(i) >= state.getNumInPile()) {
-						// originally was this:
-						// state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0, playCard);
-						game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
-						played = true;
+
+				for (int i = 13; i >= 1; i--) {
+					//checks for highest rank below the current rank in the pile
+					if (i < state.getRankInPile()) {
+						//checks to make sure the dumb ai has enough of that card
+						if (state.getDeck().get(playerNum).get(i) >= state.getNumInPile()) {
+							// originally was this:
+							// state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0, playCard);
+							game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
+							played = true;
+						}
 					}
 				}
-			}
-			if (played == false) {
-				game.sendAction(new PassAction(this));
+				if (played == false) {
+					game.sendAction(new PassAction(this));
+				}
 
 			}
-		}
+
 	} // receiveInfo
 
 		/**
