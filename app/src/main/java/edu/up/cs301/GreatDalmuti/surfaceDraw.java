@@ -161,6 +161,10 @@ public class surfaceDraw extends SurfaceView {
             //Draw text for num card
             canvas.drawText("# played:",  750, 500, purple);
             canvas.drawText(" " + state.getNumInPile(), 885, 500, purple);
+            canvas.drawText("AHHHHHHHHH", 950, 500, purple);
+
+            //TODO: assign player rank
+
             //canvas.drawText("hello", 885, 500, purple);
 
             /**

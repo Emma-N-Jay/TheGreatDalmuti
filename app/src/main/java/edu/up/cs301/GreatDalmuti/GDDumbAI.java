@@ -52,7 +52,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 	//this method finds the index of the highest card
 	public int highestCard(ArrayList<Integer> playerHand){
 		int highCard = 1;
-		for(int i = playerHand.size() - 1; i >= 0; i--){
+		for(int i = playerHand.size() - 1; i > 0; i--){
 			if(playerHand.get(i) != 0){
 				highCard = i;
 			}
@@ -157,5 +157,9 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			// send the move-action to the game
 			//game.sendAction(new edu.up.cs301.GreatDalmuti.GDMoveAction(this, move));
 		} // timerTicked
+
+		public String getName(){
+			return this.name;
+		}
 
 } // GDComputerPlayer1 class

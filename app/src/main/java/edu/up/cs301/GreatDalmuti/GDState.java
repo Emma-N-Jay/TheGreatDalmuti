@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
+import edu.up.cs301.GameFramework.gameConfiguration.GameConfig;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 
 public class GDState extends GameState implements Serializable {
@@ -34,6 +35,7 @@ public class GDState extends GameState implements Serializable {
 	private int hasLead; // who currently has the lead
 	private int turn; // who's turn is it
 	private int numPass;
+	private String[] playerNames = new String[4];
 
 	/** ALL OF THE F0LLOWING INSTANCE VARIABLES ARE FROM THE ACTION CLASSES */
 	public int[] taxCardIndexes;
@@ -64,6 +66,7 @@ public class GDState extends GameState implements Serializable {
 		 this.revolutionIsVisible = false;
 		 this.turn = 0;
 		 shuffle();
+
 	 } // GDState
 	
 	/**
@@ -291,9 +294,9 @@ public class GDState extends GameState implements Serializable {
 			//lesser peon gives lesser dalmuti their cards
 			//adds highest card to lesser dalmuti
 			int high = action.cardChoice;
-			deck.get(1).set(high, deck.get(1).get(high) + 1);
+			deck.get(2).set(high, deck.get(2).get(high) + 1);
 			//takes away card from original holder
-			deck.get(2).set(high, deck.get(2).get(high) - 1);
+			deck.get(1).set(high, deck.get(1).get(high) - 1);
 
 			taxesPayed[1] = true;
 			checkTaxes();
@@ -468,20 +471,12 @@ public class GDState extends GameState implements Serializable {
 	//given that the player that has the jesters calls the revolution, carries out revolution
 	public boolean revolution (RevolutionAction action) {
 		if(deck.get(action.playerID).get(13) == 2){
-			if(action.playerID <= 2){
+			if(action.playerID == 2) {
 				this.setExchangingTaxes(false);
 				this.numPass = 3;
-			} else if(action.playerID == 3){
-				//switches player 1 for 4 & 2 for 3
-				ArrayList<ArrayList<Integer>> newCards = null;
-				for(int j = 0; j < deck.get(1).size(); j++) {
-					newCards.get(3).set(j, deck.get(0).get(j));
-					newCards.get(2).set(j, deck.get(1).get(j));
-					newCards.get(1).set(j, deck.get(2).get(j));
-					newCards.get(0).set(j, deck.get(3).get(j));
-				}
 			}
 		}
 		return true;
 	} // revolution
+
 } // GDState class

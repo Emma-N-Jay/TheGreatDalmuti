@@ -30,7 +30,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private TextView testResultsTextView;
 	
 	// the most recent game state, as given to us by the CounterLocalGame
-	private edu.up.cs301.GreatDalmuti.GDState state;
+	private GDState state;
 	
 	// the android activity that we are running
 	private GameMainActivity myActivity;
@@ -339,11 +339,11 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 //		GDState firstInstance = new GDState();
 //		GDState firstCopy = new GDState(firstInstance, 4);
 //
-//		GDHumanPlayer[] gamePlayers = new GDHumanPlayer[4]; //array of all players in game
-//		gamePlayers[0] = new GDHumanPlayer("Great Dalmuti");
-//		gamePlayers[1] = new GDHumanPlayer("Lesser Dalmuti");
-//		gamePlayers[2] = new GDHumanPlayer("Lesser Peon");
-//		gamePlayers[3] = new GDHumanPlayer("Greater Peon");
+		GDHumanPlayer[] gamePlayers = new GDHumanPlayer[4]; //array of all players in game
+		gamePlayers[0] = new GDHumanPlayer("Great Dalmuti");
+		gamePlayers[1] = new GDHumanPlayer("Lesser Dalmuti");
+		gamePlayers[2] = new GDHumanPlayer("Lesser Peon");
+		gamePlayers[3] = new GDHumanPlayer("Greater Peon");
 //
 //		//greater peon declares revolution
 //		state.revolution(firstCopy.getTurn(), firstCopy.getDeck()); //swaps positions
@@ -609,5 +609,9 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.canvas = (surfaceDraw)activity.findViewById(R.id.the_canvas);
 
 	} // setAsGui
+
+	public String getName(){
+		return this.name;
+	}
 
 } // GDHumanPlayer class
