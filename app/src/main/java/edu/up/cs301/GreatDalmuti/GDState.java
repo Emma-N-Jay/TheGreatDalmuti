@@ -266,6 +266,9 @@ public class GDState extends GameState implements Serializable {
 		}
 
 		exchangingTaxes = !temp;
+		if(exchangingTaxes == false) {
+			this.numPass = 3;
+		}
 	}
 
 	public void LPPayTaxes (LPPayTaxesAction action) {
@@ -467,6 +470,7 @@ public class GDState extends GameState implements Serializable {
 		if(deck.get(action.playerID).get(13) == 2){
 			if(action.playerID <= 2){
 				this.setExchangingTaxes(false);
+				this.numPass = 3;
 			} else if(action.playerID == 3){
 				//switches player 1 for 4 & 2 for 3
 				ArrayList<ArrayList<Integer>> newCards = null;
