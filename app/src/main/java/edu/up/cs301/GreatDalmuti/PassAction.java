@@ -35,6 +35,6 @@ public class PassAction extends GameAction implements Serializable {
 
     public PassAction (GamePlayer player, int turn) {
         super(player);
-        this.playerId = turn;
+        this.playerId = player.getPlayerNum();
     }
 }
