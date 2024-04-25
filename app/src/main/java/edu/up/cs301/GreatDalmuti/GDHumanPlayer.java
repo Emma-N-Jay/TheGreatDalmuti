@@ -147,7 +147,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			if(!state.getExchangingTaxes()){
 				afterTaxes++;
 			}
-			if(afterTaxes == 1){
+			if(afterTaxes == 1 && backgroundMusic){
 				music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
 				music.start();
 				music.setLooping(true);
@@ -161,7 +161,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			if(!state.getExchangingTaxes()){
 				afterTaxes++;
 			}
-			if(afterTaxes == 1){
+			if(afterTaxes == 1 && backgroundMusic){
 				music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
 				music.start();
 				music.setLooping(true);
