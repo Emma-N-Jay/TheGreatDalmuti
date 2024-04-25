@@ -284,9 +284,11 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			j = Integer.parseInt(jString) + 1;
 			jesterSelected.setText( "" + j);
 		} else if(button.getId() == R.id.minusjbutton){
-			String nString = jesterSelected.getText().toString();
-			j = Integer.parseInt(nString) - 1;
-			jesterSelected.setText("" + j);
+			if(j > 0) {
+				String nString = jesterSelected.getText().toString();
+				j = Integer.parseInt(nString) - 1;
+				jesterSelected.setText("" + j);
+			}
 		}
 
 		//plays the background music
