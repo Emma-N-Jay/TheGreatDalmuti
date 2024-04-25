@@ -18,7 +18,7 @@ import edu.up.cs301.GameFramework.gameConfiguration.GameConfig;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 
 public class GDState extends GameState implements Serializable {
-	// INSTANCE VARIABLES *************************************************************************
+	// INSTANCE VARIABLES ************************************************************************
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;
 

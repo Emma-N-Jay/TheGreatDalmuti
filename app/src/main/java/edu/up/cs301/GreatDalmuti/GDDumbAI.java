@@ -20,7 +20,7 @@ import edu.up.cs301.GameFramework.utilities.Tickable;
 
 public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializable {
 
-	// INSTANCE VARIABLES *********************************************************************
+	// INSTANCE VARIABLES *************************************************************************
 	private static final long serialVersionUID = 242304101501L;
 	//private edu.up.cs301.GreatDalmuti.GDState state;
 
