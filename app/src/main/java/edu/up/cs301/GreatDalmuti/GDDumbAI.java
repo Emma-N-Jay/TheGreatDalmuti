@@ -131,19 +131,18 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 				//checks for highest rank below the current rank in the pile
 				if (i < state.getRankInPile()) {
 					//checks to make sure the dumb ai has enough of that card
-					if (state.getDeck().get(playerNum).get(i) >= state.getNumInPile()) {
+					if (state.getDeck().get(playerNum).get(i) <= state.getNumInPile()) {
 						// originally was this:
 						// state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0, playCard);
 						game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
 						played = true;
+						break;
 					}
 				}
-
+			}
 			if (played == false) {
 				game.sendAction(new PassAction(this));
 			}
-
-		}
 		}
 	} // receiveInfo
 

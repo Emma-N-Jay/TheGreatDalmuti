@@ -35,7 +35,6 @@ public class GDState extends GameState implements Serializable {
 	private int hasLead; // who currently has the lead
 	private int turn; // who's turn is it
 	private int numPass;
-	private String[] playerNames = new String[4];
 
 	/** ALL OF THE F0LLOWING INSTANCE VARIABLES ARE FROM THE ACTION CLASSES */
 	public int[] taxCardIndexes;
