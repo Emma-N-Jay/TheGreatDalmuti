@@ -94,19 +94,20 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			}
 
 			//when it is the lesser peon it will automatically pass its highest
-			if (playerNum == 2 && state.getTurn() == 2) {
+			else if (playerNum == 2 && state.getTurn() == 2) {
 				game.sendAction(new LPPayTaxesAction(this));
+				return;
 			}
 
 			//paytaxes for lesser dalmuti (isLegal makes this move automatically)
-			if (playerNum == 1 && state.getTurn() == 1) {
+			else if (playerNum == 1 && state.getTurn() == 1) {
 				game.sendAction(new LDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				return;
 			}
-
 			//paytaxes for greater dalmuti (isLegal makes this move automatically)
-			if (playerNum == 0 && state.getTurn() == 0) {
+			else if (playerNum == 0 && state.getTurn() == 0) {
 				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
-				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				return;
 			}
 
 			/**
@@ -120,6 +121,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			if (state.getHasLead() == playerNum) {
 				game.sendAction(new PlayAction(this, playerNum, tempRank,
 						state.getDeck().get(playerNum).get(tempRank), 0));
+				return;
 			}
 
 			/**
@@ -139,7 +141,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			}
 			if (played == false) {
 				game.sendAction(new PassAction(this));
-
+				return;
 			}
 		}
 	} // receiveInfo
