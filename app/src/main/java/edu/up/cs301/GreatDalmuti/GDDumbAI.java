@@ -86,7 +86,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 		 * GIVING TAXES
 		 */
 
-		if (state.getExchangingTaxes() && state.getDeck() != null) {
+		if ( (state.getExchangingTaxes() ) && (state.getDeck() != null) ) {
 			//when it is the greater peon it will automatically pass its two highest cards
 			if (playerNum == 3 && state.getTurn() == 3) {
 				//I know this looks like a mess BUT its just passing in the two highest cards, thats it
