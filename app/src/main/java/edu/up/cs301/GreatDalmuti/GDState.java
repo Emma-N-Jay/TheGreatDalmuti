@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
+import edu.up.cs301.GameFramework.gameConfiguration.GameConfig;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 
 public class GDState extends GameState implements Serializable {
@@ -34,6 +35,7 @@ public class GDState extends GameState implements Serializable {
 	private int hasLead; // who currently has the lead
 	private int turn; // who's turn is it
 	private int numPass;
+	private String[] playerNames = new String[4];
 
 	/** ALL OF THE F0LLOWING INSTANCE VARIABLES ARE FROM THE ACTION CLASSES */
 	public int[] taxCardIndexes;
@@ -64,6 +66,7 @@ public class GDState extends GameState implements Serializable {
 		 this.revolutionIsVisible = false;
 		 this.turn = 0;
 		 shuffle();
+
 	 } // GDState
 	
 	/**
@@ -468,8 +471,10 @@ public class GDState extends GameState implements Serializable {
 	//given that the player that has the jesters calls the revolution, carries out revolution
 	public boolean revolution (RevolutionAction action) {
 		if(deck.get(action.playerID).get(13) == 2){
+			if(action.playerID == 2) {
 				this.setExchangingTaxes(false);
 				this.numPass = 3;
+			}
 		}
 		return true;
 	} // revolution

@@ -51,18 +51,19 @@ public class GDMainActivity extends GameMainActivity {
 			}});
 		
 		// a computer player type (player type 1)
-		playerTypes.add(new GamePlayerType("Computer Player 1") {
+		playerTypes.add(new GamePlayerType("Dumb AI") {
 			public GamePlayer createPlayer(String name) {
 				return new GDDumbAI(name);
 			}});
-		playerTypes.add(new GamePlayerType("Computer Player 2") {
+		playerTypes.add(new GamePlayerType("Smart AI") {
 			public GamePlayer createPlayer(String name) {
-				return new GDDumbAI(name);
+				return new CDSmartAI(name);
 			}});
-		playerTypes.add(new GamePlayerType("Computer Player 3") {
-			public GamePlayer createPlayer(String name) {
-				return new GDDumbAI(name);
-			}});
+//		plyerTypes.add(new GamePlayerType("Computer Player 3") {
+//			public GamePlayer createPlayer(String name) {
+//				return new GDDumbAI(name);
+//			}
+//		});
 		
 		// a computer player type (player type 2)
 		playerTypes.add(new GamePlayerType("Computer Player (GUI)") {

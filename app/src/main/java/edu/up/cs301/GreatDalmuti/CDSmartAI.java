@@ -101,9 +101,8 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		boolean played = false;
 
 		/**
-		 * GIVING TAXES
+		 * GREAT DALMUI SENDING TAXES
 		 */
-		//when it is the great dalmuti it will automatically pass its two highest cards
 		if(playerNum == 3){
 			int timesPayedTaxes = 0;
 			// passes the highest single card if they have a single card that is a 6 or above (and isnt the jester)
@@ -139,6 +138,10 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 			}
 
 		}
+
+		/**
+		 * LESSER DALMUTI SENDING TAXES
+		 */
 		//when it is the lesser dalmuti it will automatically pass its highest single card
 		if(playerNum == 2){
 			boolean hasPayedTaxes = false;
@@ -160,23 +163,26 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 		}
 
-		//paytaxes for lesser peon (isLegal makes this move automatically)
+		/**
+		 * PEON'S SENDING TAXES (isLegal does this automatically)
+		 */
+		//paytaxes for lesser peon
 		if(playerNum == 1 && state.getTurn() == 1){
 			game.sendAction(new LPPayTaxesAction(this));
 		}
 
-		//paytaxes for greater peon (isLegal makes this move automatically)
+		//paytaxes for greater peon
 		if(playerNum == 0 && state.getTurn() == 0){
 			game.sendAction(new LPPayTaxesAction(this));
 		}
 
 		/**
-		 * GETTING THE LEAD (should this somehow happen)
+		 * GETTING THE LEAD
 		 */
 		//this is the index of the current highest card
 		int tempRank = highestCard(state.getDeck().get(playerNum));
 
-		//this has the player play their highest set of cards
+		//this has the player play their highest set of cards (with jesters if it has any)
 		if(state.getHasLead() == playerNum){
 			int numJesters = 0;
 
