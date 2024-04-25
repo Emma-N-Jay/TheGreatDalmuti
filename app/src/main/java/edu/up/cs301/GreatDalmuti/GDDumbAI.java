@@ -91,22 +91,25 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			if (playerNum == 3 && state.getTurn() == 3) {
 				//I know this looks like a mess BUT its just passing in the two highest cards, thats it
 				game.sendAction(new GPPayTaxesAction(this));
+				return;
 			}
 
 			//when it is the lesser peon it will automatically pass its highest
 			else if (playerNum == 2 && state.getTurn() == 2) {
 				game.sendAction(new LPPayTaxesAction(this));
+				return;
 			}
 
 			//paytaxes for lesser dalmuti (isLegal makes this move automatically)
 			else if (playerNum == 1 && state.getTurn() == 1) {
 				game.sendAction(new LDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				return;
 			}
 
 			//paytaxes for greater dalmuti (isLegal makes this move automatically)
 			else if (playerNum == 0 && state.getTurn() == 0) {
 				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
-				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				return;
 			}
 		}
 
@@ -121,6 +124,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			if (state.getHasLead() == playerNum) {
 				game.sendAction(new PlayAction(this, playerNum, tempRank,
 						state.getDeck().get(playerNum).get(tempRank), 0));
+				return;
 			}
 
 			/**
@@ -131,17 +135,15 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 				//checks for highest rank below the current rank in the pile
 				if (i < state.getRankInPile()) {
 					//checks to make sure the dumb ai has enough of that card
-					if (state.getDeck().get(playerNum).get(i) <= state.getNumInPile()) {
-						// originally was this:
-						// state.play(playerNum, state.getDeck(), i, state.getNumInPile(), 0, playCard);
+					if (state.getDeck().get(playerNum).get(i) >= state.getNumInPile()) {
 						game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
 						played = true;
-						break;
 					}
 				}
 			}
 			if (played == false) {
 				game.sendAction(new PassAction(this));
+				return;
 			}
 		}
 	} // receiveInfo

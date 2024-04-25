@@ -277,7 +277,7 @@ public class GDState extends GameState implements Serializable {
 	}
 
 	public void LPPayTaxes (LPPayTaxesAction action) {
-		if((!taxesPayed[2]) && exchangingTaxes){
+		if(!(taxesPayed[2]) && exchangingTaxes){
 			//lesser peon gives lesser dalmuti their cards
 			int low = findLowest(2);
 
@@ -292,7 +292,7 @@ public class GDState extends GameState implements Serializable {
 	} //LPPayTaxes
 
 	public void LDPayTaxes (LDPayTaxesAction action) {
-		if((!taxesPayed[1]) && exchangingTaxes && dTaxesLegal(1, action.cardChoice)) {
+		if(!(taxesPayed[1]) && (exchangingTaxes) && (dTaxesLegal(1, action.cardChoice))) {
 			//lesser peon gives lesser dalmuti their cards
 			//adds highest card to lesser dalmuti
 			int high = action.cardChoice;
@@ -327,7 +327,7 @@ public class GDState extends GameState implements Serializable {
 	} //GPPayTaxes
 
 	public boolean GDPayTaxes(GDPayTaxesAction action){
-		if((!taxesPayed[0]) && exchangingTaxes && dTaxesLegal(0, action.cardOne)) {
+		if(!(taxesPayed[0]) && (exchangingTaxes) && (dTaxesLegal(0, action.cardOne))) {
 			//great dalmuti gives greater peon 2 of their cards
 			//adds lowest card
 			int high = action.cardOne;
@@ -399,7 +399,7 @@ public class GDState extends GameState implements Serializable {
 	}
 
 	//is legal move specifically for when the player has the lead
-	protected boolean leadIsLegalMove(int player, ArrayList<ArrayList<Integer>> deck, int rankSelected,
+	protected boolean leadIsLegalMove(int player, int rankSelected,
 									  int numSelected, int jestersSelected){
 		boolean temp = true;
 		//sets to false if they don't have the cards to play
@@ -446,7 +446,7 @@ public class GDState extends GameState implements Serializable {
 
 		//for when a new round starts for the player who has the lead
 		if( (numPass >= 3) && (action.playerId == hasLead) && (action.numSelected > 0) &&
-				(leadIsLegalMove(action.playerId, getDeck(), action.rankSelected,
+				(leadIsLegalMove(action.playerId, action.rankSelected,
 						action.numSelected, action.jesterSelected) ) ){
 			this.rankInPile = action.rankSelected;
 			this.numInPile = action.numSelected + action.jesterSelected;
@@ -455,14 +455,13 @@ public class GDState extends GameState implements Serializable {
 			deck.get(action.playerId).set(13,
 					deck.get(action.playerId).get(13) - (action.jesterSelected) );
 			temp = true;
-
 		}
-
-			if (isLegalMove(action.playerId, action.rankSelected, action.numSelected, action.jesterSelected)) {
+		else if (isLegalMove(action.playerId, action.rankSelected, action.numSelected, action.jesterSelected)) {
 				deck.get(action.playerId).set(action.rankSelected,
 						deck.get(action.playerId).get(action.rankSelected) - (action.numSelected) );
 				deck.get(action.playerId).set(13,
 						deck.get(action.playerId).get(13) - (action.jesterSelected) );
+				this.rankInPile = action.rankSelected;
 				temp = true;
 		}
 

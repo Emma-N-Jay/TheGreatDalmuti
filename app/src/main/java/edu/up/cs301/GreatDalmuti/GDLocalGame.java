@@ -75,8 +75,6 @@ public class GDLocalGame extends LocalGame {
 
 		if (action instanceof GDPayTaxesAction) {
 			GDPayTaxesAction gdPayTaxesAction = (GDPayTaxesAction) action;
-//			//we will want to synchronize taxes probably
-//			synchronized(gdPayTaxesAction) {
 				gameState.GDPayTaxes(gdPayTaxesAction);
 			return true;
 		}
