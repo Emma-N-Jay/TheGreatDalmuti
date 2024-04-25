@@ -30,7 +30,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private TextView testResultsTextView;
 	
 	// the most recent game state, as given to us by the CounterLocalGame
-	private edu.up.cs301.GreatDalmuti.GDState state;
+	private GDState state;
 	
 	// the android activity that we are running
 	private GameMainActivity myActivity;

@@ -294,9 +294,9 @@ public class GDState extends GameState implements Serializable {
 			//lesser peon gives lesser dalmuti their cards
 			//adds highest card to lesser dalmuti
 			int high = action.cardChoice;
-			deck.get(1).set(high, deck.get(1).get(high) + 1);
+			deck.get(2).set(high, deck.get(2).get(high) + 1);
 			//takes away card from original holder
-			deck.get(2).set(high, deck.get(2).get(high) - 1);
+			deck.get(1).set(high, deck.get(1).get(high) - 1);
 
 			taxesPayed[1] = true;
 			checkTaxes();
