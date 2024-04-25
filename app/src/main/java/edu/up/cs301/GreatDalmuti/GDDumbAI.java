@@ -22,7 +22,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 
 	// INSTANCE VARIABLES *************************************************************************
 	private static final long serialVersionUID = 242304101501L;
-	//private edu.up.cs301.GreatDalmuti.GDState state;
+
 
 	/**
 	 * TODO: IF THERE IS A PROBLEM WITH THIS CLASS IT IS LIKELY BECAUSE IT IS REFERENCING A
