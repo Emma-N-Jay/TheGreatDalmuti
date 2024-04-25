@@ -113,7 +113,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			/**
 			 * GETTING THE LEAD (should this somehow happen)
 			 */
-		if(playerNum == state.getHasLead()) {
+		if(playerNum == state.getTurn()) {
 			//this is the index of the current highest card
 			int tempRank = highestCard(state.getDeck().get(playerNum));
 
