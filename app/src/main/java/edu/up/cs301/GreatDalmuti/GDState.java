@@ -242,10 +242,14 @@ public class GDState extends GameState implements Serializable {
 		if(this.getTurn() == action.playerId) {
 			if (action.playerId == 3) {
 				this.setTurn(0);
+				numPass++;
 			} else {
 				this.setTurn(action.playerId + 1);
+				numPass++;
 			}
-			numPass++;
+			if ( ( (numPass - 1) == 3) && (getHasLead() == action.playerId)){
+				hasLead = action.playerId;
+			}
 			return true;
 		} else
 			return false;
