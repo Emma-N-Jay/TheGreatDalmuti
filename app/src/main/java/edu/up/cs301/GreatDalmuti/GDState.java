@@ -413,7 +413,7 @@ public class GDState extends GameState implements Serializable {
 
 	//is legal move to check if they have the cards for taxes
 	public boolean dTaxesLegal(int player, int cardRank){
-		//temo turns false when move isn't possible
+		//temp turns false when move isn't possible
 		boolean temp = false;
 		if(deck.get(player).get(cardRank) > 0){
 			temp = true;

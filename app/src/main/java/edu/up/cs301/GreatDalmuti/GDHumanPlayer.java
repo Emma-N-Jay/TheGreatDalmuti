@@ -178,17 +178,20 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				if (playerNum == 0 && state.getTurn() == 0) {
 					GDPayTaxesAction gdPayTaxesAction = new GDPayTaxesAction(this, c);
 					game.sendAction(gdPayTaxesAction);
-				} else if (playerNum == 1 && state.getTurn() == 1) {
+				}
+				if (playerNum == 1 && state.getTurn() == 1) {
 					LDPayTaxesAction ldPayTaxesAction = new LDPayTaxesAction(this, c);
 					game.sendAction(ldPayTaxesAction);
 					GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
 					game.sendAction(gpPayTaxesAction);
-				} else if (playerNum == 2 && state.getTurn() == 2) {
+				}
+				if (playerNum == 2 && state.getTurn() == 2) {
 					LPPayTaxesAction lpPayTaxesAction = new LPPayTaxesAction(this);
 					game.sendAction(lpPayTaxesAction);
 					soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
 					soundEffects.start();
-				} else if (playerNum == 3 && state.getTurn() == 3){
+				}
+				if (playerNum == 3 && state.getTurn() == 3){
 					GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
 					game.sendAction(gpPayTaxesAction);
 					soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
