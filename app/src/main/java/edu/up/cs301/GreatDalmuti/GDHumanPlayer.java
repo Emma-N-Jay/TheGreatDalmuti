@@ -36,11 +36,11 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private GameMainActivity myActivity;
 
 	//selected card
-	int c;
+	private int c;
 	//selected number of cards
-	int n;
-	int j;
-	String nString;
+	private int n;
+	private int j;
+	private String nString;
 
 	//all of the buttons galore
 	private Button passButton;
@@ -53,9 +53,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	//music and sound related variables
 	private Switch musicSwitch;
 	//For background music
-	MediaPlayer music;
-	MediaPlayer soundEffects;
+	private MediaPlayer music;
+	private MediaPlayer soundEffects;
 	private boolean backgroundMusic = false;
+	private int afterTaxes = 0;
 
 	//for image button
 	private ImageButton revolutionButton;
@@ -141,14 +142,36 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		if(button.getId() == R.id.playButton){
 			PlayAction playAction = new PlayAction(this, playerNum, c, n, j);
 			game.sendAction(playAction);
+
+			//updates music
+			if(!state.getExchangingTaxes()){
+				afterTaxes++;
+			}
+			if(afterTaxes == 1){
+				music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
+				music.start();
+				music.setLooping(true);
+			}
 		}
 		else if(button.getId() == R.id.passButton){
 		PassAction passAction = new PassAction(this, playerNum);
 		game.sendAction(passAction);
+
+		//updates music
+			if(!state.getExchangingTaxes()){
+				afterTaxes++;
+			}
+			if(afterTaxes == 1){
+				music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
+				music.start();
+				music.setLooping(true);
+			}
 		}
 		else if(button.getId() == R.id.revolutionButton){
 		RevolutionAction revolutionAction = new RevolutionAction(this, playerNum);
 		game.sendAction(revolutionAction);
+			soundEffects = MediaPlayer.create(myActivity, R.raw.revsounds);
+			soundEffects.start();
 		}
 		else if(button.getId() == R.id.payTaxesButton) {
 			if (state.getExchangingTaxes()) {
