@@ -91,22 +91,25 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			if (playerNum == 3 && state.getTurn() == 3) {
 				//I know this looks like a mess BUT its just passing in the two highest cards, thats it
 				game.sendAction(new GPPayTaxesAction(this));
+				return;
 			}
 
 			//when it is the lesser peon it will automatically pass its highest
 			else if (playerNum == 2 && state.getTurn() == 2) {
 				game.sendAction(new LPPayTaxesAction(this));
+				return;
 			}
 
 			//paytaxes for lesser dalmuti (isLegal makes this move automatically)
 			else if (playerNum == 1 && state.getTurn() == 1) {
 				game.sendAction(new LDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				return;
 			}
 
 			//paytaxes for greater dalmuti (isLegal makes this move automatically)
 			else if (playerNum == 0 && state.getTurn() == 0) {
 				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
-				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				return;
 			}
 		}
 
