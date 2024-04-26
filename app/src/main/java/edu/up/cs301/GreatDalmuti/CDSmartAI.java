@@ -123,7 +123,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		 */
 
 	if (state.getExchangingTaxes() && state.getDeck() != null) {
-		if (playerNum == 3 && state.getTurn() == 3) {
+		if (playerNum == 0 && state.getTurn() == 0) {
 			int timesPayedTaxes = 0;
 			// passes the highest single card if they have a single card that is a 6 or above (and isnt the jester)
 			if (highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13) {
@@ -147,13 +147,13 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 				boolean hasPayedTaxes = false;
 				// if it has no single card it passes the highest card it has 3 of
 				if (!hasPayedTaxes) {
-					game.sendAction(new LDPayTaxesAction(this, highOfNum(state.getDeck().get(playerNum), 3)));
+					game.sendAction(new GDPayTaxesAction(this, highOfNum(state.getDeck().get(playerNum), 3)));
 					hasPayedTaxes = true;
 				}
 
 				//if it doesnt have 3 of any cards it passes one of its highest cards
 				if (!hasPayedTaxes) {
-					game.sendAction(new LDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+					game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
 				}
 			}
 
@@ -163,7 +163,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		 * LESSER DALMUTI SENDING TAXES
 		 */
 		//when it is the lesser dalmuti it will automatically pass its highest single card
-		if (playerNum == 2 && state.getTurn() == 2) {
+		if (playerNum == 1 && state.getTurn() == 1) {
 			boolean hasPayedTaxes = false;
 			// passes the highest single card if they have a single card that is a 6 or above (and isnt the jester)
 			if (highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13) {
@@ -187,13 +187,13 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		 * PEON'S SENDING TAXES (isLegal does this automatically)
 		 */
 		//paytaxes for lesser peon
-		if (playerNum == 1 && state.getTurn() == 1) {
+		if (playerNum == 2 && state.getTurn() == 2) {
 			game.sendAction(new LPPayTaxesAction(this));
 		}
 
 		//paytaxes for greater peon
-		if (playerNum == 0 && state.getTurn() == 0) {
-			game.sendAction(new LPPayTaxesAction(this));
+		if (playerNum == 3 && state.getTurn() == 3) {
+			game.sendAction(new GPPayTaxesAction(this));
 		}
 	}
 		/**
