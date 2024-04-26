@@ -14,7 +14,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-import edu.up.cs301.GameFramework.gameConfiguration.GameConfig;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 
 public class GDState extends GameState implements Serializable {
@@ -86,6 +85,7 @@ public class GDState extends GameState implements Serializable {
 		// when we run this again and it crashes this will be the reason
 		for(int i = 0; i < orig.deck.size(); i++){
 			for(int j = 0; j < orig.deck.get(i).size(); j++){
+				assert this.deck != null;
 				this.deck.get(i).add(j, orig.deck.get(i).get(j));
 			}
 		}
@@ -97,9 +97,12 @@ public class GDState extends GameState implements Serializable {
 		this.hasLead = orig.hasLead;
 		this.revolutionIsVisible = orig.revolutionIsVisible;
 		this.turn = orig.turn;
+		this.taxesPayed = orig.taxesPayed;
+		this.dalmutiTaxes = orig.dalmutiTaxes;
+		this.numPass = orig.numPass;
 	} // GDState
 
-	// METHODS *************************************************************************************
+	// HELPER METHODS ******************************************************************************
 
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
@@ -162,6 +165,178 @@ public class GDState extends GameState implements Serializable {
 //		return null;
 //	} // toString
 
+	// TODO: CHECK TO MAKE SURE THIS DOESN'T CAUSE IT TO CRASH
+//	/**
+//	 * copy deck method for the copy constructor
+//	 * @param oldDeck
+//	 * @return
+//	 */
+//	public ArrayList<ArrayList<Integer>> copyDeck(ArrayList<ArrayList<Integer>> oldDeck){
+//		ArrayList<ArrayList<Integer>> newDeck = new ArrayList<ArrayList<Integer>>();
+//		newDeck.add(new ArrayList<Integer>());
+//		newDeck.add(new ArrayList<Integer>());
+//		newDeck.add(new ArrayList<Integer>());
+//		newDeck.add(new ArrayList<Integer>());
+//
+//		for(int i = 0; i < oldDeck.size(); i++){
+//			for(int j = 0; j < oldDeck.get(i).size(); j++){
+//				newDeck.get(i).add(j, oldDeck.get(i).get(j));
+//			}
+//		}
+//		return newDeck;
+//	} // copyDeck
+
+	/**
+	 * helper method for the shuffle method
+	 * @param foo
+	 * @param num
+	 * @return total number
+	 */
+	public static int getNumOf(ArrayList<Integer> foo, int num){
+		int total = 0;
+		for(int i = 0; i < foo.size(); i++){
+			if(foo.get(i) == num){
+				total++;
+			}
+		}
+		return total;
+	} // getNumOf
+
+	/**
+	 * checks if everyone finished paying their taxes
+	 * changes exchanging taxes boolean accordingly
+	 */
+	public void checkTaxes(){
+		boolean temp = true;
+
+		if(dalmutiTaxes == 2){
+			taxesPayed[0] = true;
+			if(turn != 3) {
+				turn++;
+			} else{
+				turn = 0;
+			}
+		}
+
+		for(int i = 0; i < 4; i++){
+			if (!taxesPayed[i]) {
+				temp = false;
+				break;
+			}
+		}
+
+		exchangingTaxes = !temp;
+		if(!exchangingTaxes) {
+			this.numPass = 3;
+		}
+	} // checkTaxes
+
+	/**
+	 * finds lowest rank (best) card player has
+	 * @param player - the number of the player in the deck
+	 * @return the lowest rank
+	 */
+	public int findLowest(int player){
+		int low = 1;
+		for(int i = 1; i < 14; i++){
+			if(deck.get(player).get(i) > 0){
+				return i;
+			}
+		}
+		return low;
+	} // findLowest
+
+	/**
+	 * checks the selected cards against the rules of the game to ensure the move is legal
+	 * @param player - the number of the player in the deck
+	 * @param cardNumSelected - the rank selected
+	 * @param numSelected - number of cards selected
+	 * @param jestersSelected - number of jesters selected
+	 * @return boolean depending on if the move is legal
+	 */
+	protected boolean isLegalMove(int player, int cardNumSelected,
+								  int numSelected, int jestersSelected) {
+
+		if( (cardNumSelected > 0) && (cardNumSelected < 13) ){
+
+			if (jestersSelected == 0) {
+				if (player == getTurn()) {
+
+					if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
+							&& ( deck.get(player).get(cardNumSelected)) > 0) {
+
+						if( numSelected == getNumInPile() ) {
+
+							return cardNumSelected < getRankInPile();
+
+						}
+
+					}
+
+				}
+			}
+
+			else if ( (jestersSelected == 1) || (jestersSelected == 2) ){
+				if (player == getTurn()) {
+
+					if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
+							&& ( deck.get(player).get(cardNumSelected)) > 0) {
+
+						if( (numSelected  + jestersSelected) == getNumInPile() ) {
+
+							return cardNumSelected < getRankInPile();
+
+						}
+
+					}
+
+				}
+			}
+
+		}
+
+		return false;
+	} // isLegalMove
+
+	/**
+	 * is legal move specifically for when the player has the lead
+	 * @param player - the number of the player in the deck
+	 * @param rankSelected - the rank selected
+	 * @param numSelected - number of cards selected
+	 * @param jestersSelected - number of jesters selected
+	 * @return boolean depending on if the move is legal
+	 */
+	protected boolean leadIsLegalMove(int player, int rankSelected,
+									  int numSelected, int jestersSelected){
+		boolean temp = numSelected + jestersSelected > 0;
+		//sets to false if they don't have the cards to play
+		if ( deck.get(player).get(rankSelected) < numSelected){
+			temp = false;
+		}
+		if ( deck.get(player).get(13) < jestersSelected){
+			temp = false;
+		}
+		if(!(player == this.getTurn())){
+			temp = false;
+		}
+
+		return temp;
+	} // leadIsLegalMove
+
+	/**
+	 * is legal move to check if they have the cards for taxes
+	 * @param player - the number of the player in the deck
+	 * @param cardRank - the rank selected
+	 * @return boolean depending on if the move is legal
+	 */
+	public boolean dTaxesLegal(int player, int cardRank){
+		//temp turns false when move isn't possible
+		boolean temp = deck.get(player).get(cardRank) > 0;
+		return temp;
+	} //dTaxesLegal
+
+// METHODS *****************************************************************************************
+
 	/**
 	 * shuffles the deck of cards and deals to players hand
 	 * no parameters or return
@@ -214,7 +389,7 @@ public class GDState extends GameState implements Serializable {
 				deckCopy.get(1).add(deckArray[i]);
 			} else if (i < 60) {
 				deckCopy.get(2).add(deckArray[i]);
-			} else if (i < 80) {
+			} else {
 				deckCopy.get(3).add(deckArray[i]);
 			}
 		}
@@ -231,45 +406,18 @@ public class GDState extends GameState implements Serializable {
 	} // shuffle
 
 	/**
-	 * copy deck method for the copy constructor
-	 * @param oldDeck
-	 * @return
+	 * pass method that takes an action from the PassAction class
+	 * @param action
+	 * @return if pass was completed
 	 */
-	public ArrayList<ArrayList<Integer>> copyDeck(ArrayList<ArrayList<Integer>> oldDeck){
-		ArrayList<ArrayList<Integer>> newDeck = new ArrayList<ArrayList<Integer>>();
-		newDeck.add(new ArrayList<Integer>());
-		newDeck.add(new ArrayList<Integer>());
-		newDeck.add(new ArrayList<Integer>());
-		newDeck.add(new ArrayList<Integer>());
-
-		for(int i = 0; i < oldDeck.size(); i++){
-			for(int j = 0; j < oldDeck.get(i).size(); j++){
-				newDeck.get(i).add(j, oldDeck.get(i).get(j));
-			}
-		}
-		return newDeck;
-	}
-
-	public static int getNumOf(ArrayList<Integer> foo, int num){
-		int total = 0;
-		for(int i = 0; i < foo.size(); i++){
-			if(foo.get(i) == num){
-				total++;
-			}
-		}
-		return total;
-	}
-
-	// PASS METHOD
 	public boolean pass(PassAction action){
 		if(this.getTurn() == action.playerId) {
 			if (action.playerId == 3) {
 				this.setTurn(0);
-				numPass++;
 			} else {
 				this.setTurn(action.playerId + 1);
-				numPass++;
 			}
+			numPass++;
 			if ( ( (numPass - 1) == 3) && (getHasLead() == action.playerId)){
 				hasLead = action.playerId;
 			}
@@ -278,39 +426,16 @@ public class GDState extends GameState implements Serializable {
 			return false;
 	} // pass
 
-	//checks if everyone finished paying their taxes and changes exchanging taxes boolean accordingly
-	public void checkTaxes(){
-		boolean temp = true; //is not everyone has payed their taxes turns false
-
-		if(dalmutiTaxes == 2){
-			taxesPayed[0] = true;
-			if(turn != 3) {
-				turn++;
-			} else{
-				turn = 0;
-			}
-		}
-
-		for(int i = 0; i < 4; i++){
-			if(!taxesPayed[i]){
-				temp = false;
-			}
-		}
-
-		exchangingTaxes = !temp;
-		if(exchangingTaxes == false) {
-			this.numPass = 3;
-		}
-	}
-
+	/**
+	 * Lesser Peon pay taxes method
+	 * automatically chooses card for the player
+	 * @param action - action sent from the LPPayTaxesAction by the player
+	 */
 	public void LPPayTaxes (LPPayTaxesAction action) {
 		if(!(taxesPayed[2]) && exchangingTaxes){
 			//lesser peon gives lesser dalmuti their cards
 			int low = findLowest(2);
-
-			//adds lowest card to lesser dalmuti
 			deck.get(1).set(low, deck.get(1).get(low) + 1);
-			//takes away card from original holder
 			deck.get(2).set(low, deck.get(2).get(low) - 1);
 
 			taxesPayed[2] = true;
@@ -318,10 +443,14 @@ public class GDState extends GameState implements Serializable {
 		}
 	} //LPPayTaxes
 
+	/**
+	 * Lesser Dalmuti taxes method
+	 * pays tax from card selected
+	 * @param action - action sent from the LDPayTaxesAction by the player
+	 */
 	public void LDPayTaxes (LDPayTaxesAction action) {
 		if(!(taxesPayed[1]) && (exchangingTaxes) && (dTaxesLegal(1, action.cardChoice))) {
-			//lesser peon gives lesser dalmuti their cards
-			//adds highest card to lesser dalmuti
+			//lesser dalmuti gives lesser peon their cards
 			int high = action.cardChoice;
 			deck.get(2).set(high, deck.get(2).get(high) + 1);
 			//takes away card from original holder
@@ -332,20 +461,19 @@ public class GDState extends GameState implements Serializable {
 		}
 	} //LDPayTaxes
 
+	/**
+	 * Greater Peon taxes method
+	 * automatically chooses card for the player
+	 * @param action - action sent from the GPPayTaxesAction by the player
+	 */
 	public void GPPayTaxes (GPPayTaxesAction action) {
 		if((!taxesPayed[3]) && exchangingTaxes) {
 			//great peon gives greater dalmuti 2 of their cards
 			int low = findLowest(3);
-
-			//adds lowest card
 			deck.get(0).set(low, deck.get(0).get(low) + 1);
-			//takes away card from original holder
 			deck.get(3).set(low, deck.get(3).get(low) - 1);
-
 			low = findLowest(3);
-
 			deck.get(0).set(low, deck.get(0).get(low) + 1);
-			//takes away card from original holder
 			deck.get(3).set(low, deck.get(3).get(low) - 1);
 
 			taxesPayed[3] = true;
@@ -353,146 +481,61 @@ public class GDState extends GameState implements Serializable {
 		}
 	} //GPPayTaxes
 
-	public boolean GDPayTaxes(GDPayTaxesAction action){
+	/**
+	 * Greater Dalmuti taxes method
+	 * pays tax from card selected
+	 * @param action - action sent from the GDPayTaxesAction by the player
+	 */
+	public void GDPayTaxes(GDPayTaxesAction action){
 		if(!(taxesPayed[0]) && (exchangingTaxes) && (dTaxesLegal(0, action.cardOne))) {
-			//great dalmuti gives greater peon 2 of their cards
-			//adds lowest card
+			//great dalmuti gives greater peon their cards
 			int high = action.cardOne;
 			deck.get(3).set(high, deck.get(3).get(high) + 1);
-			//takes away card from original holder
 			deck.get(0).set(high, deck.get(0).get(high) - 1);
 
 			dalmutiTaxes++;
 			checkTaxes();
 		}
-		return true;
 	} // GDPayTaxes
 
-
 	/**
-	 * checks the selected cards against the rules of the game to ensure the move is legal
-	 * REMEMBER DECK IS SORTED BY PLAYER AND THEN HAND
+	 * play method that takes an action from the PlayAction class
+	 * @param action
+	 * @return new deck with changes
 	 */
-	protected boolean isLegalMove(int player, int cardNumSelected,
-								  int numSelected, int jestersSelected) {
-
-		if( (cardNumSelected > 0) && (cardNumSelected < 13) ){
-
-			if (jestersSelected == 0) {
-				if (player == getTurn()) {
-
-					if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
-							&& ( deck.get(player).get(cardNumSelected)) > 0) {
-
-						if( numSelected == getNumInPile() ) {
-
-							if ( cardNumSelected < getRankInPile() ) {
-
-								return true;
-
-							}
-
-						}
-
-					}
-
-				}
-			}
-
-			else if ( (jestersSelected == 1) || (jestersSelected == 2) ){
-				if (player == getTurn()) {
-
-					if ( ( ( (deck.get(player).get(cardNumSelected) ) <= numSelected) )
-							&& ( deck.get(player).get(cardNumSelected)) > 0) {
-
-						if( (numSelected  + jestersSelected) == getNumInPile() ) {
-
-							if ( cardNumSelected < getRankInPile() ) {
-
-								return true;
-
-							}
-
-						}
-
-					}
-
-				}
-			}
-
-		}
-
-		return false;
-	}
-
-	//is legal move specifically for when the player has the lead
-	protected boolean leadIsLegalMove(int player, int rankSelected,
-									  int numSelected, int jestersSelected){
-		boolean temp = true;
-		//sets to false if they don't have the cards to play
-		if(numSelected + jestersSelected <= 0){
-			temp = false;
-		}
-		if ( deck.get(player).get(rankSelected) < numSelected){
-			temp = false;
-		}
-		if ( deck.get(player).get(13) < jestersSelected){
-			temp = false;
-		}
-		if(!(player == this.getTurn())){
-			temp = false;
-		}
-
-		return temp;
-	}
-
-	//is legal move to check if they have the cards for taxes
-	public boolean dTaxesLegal(int player, int cardRank){
-		//temp turns false when move isn't possible
-		boolean temp = false;
-		if(deck.get(player).get(cardRank) > 0){
-			temp = true;
-		}
-		return temp;
-	}
-
-	//finds lowest rank (best) card player has
-	public int findLowest(int player){
-		int low = 1;
-		for(int i = 1; i < 14; i++){
-			if(deck.get(player).get(i) > 0){
-				return i;
-			}
-		}
-		return low;
-	}
-
-	//this method allows a player to play a card
 	public ArrayList<ArrayList<Integer>> play(PlayAction action){
-		boolean temp = false; //is true when the play was legal and actually happened
+		//is true when the play was legal and actually happened
+		boolean temp = false;
 
 		//for when a new round starts for the player who has the lead
 		if( (numPass >= 3) && (action.playerId == hasLead) && (action.numSelected > 0) &&
 				(leadIsLegalMove(action.playerId, action.rankSelected,
 						action.numSelected, action.jesterSelected) ) ){
+
 			this.rankInPile = action.rankSelected;
 			this.numInPile = action.numSelected + action.jesterSelected;
 			deck.get(action.playerId).set(action.rankSelected,
 					deck.get(action.playerId).get(action.rankSelected) - (action.numSelected) );
+
 			deck.get(action.playerId).set(13,
 					deck.get(action.playerId).get(13) - (action.jesterSelected) );
 			temp = true;
 		}
-		else if (isLegalMove(action.playerId, action.rankSelected, action.numSelected, action.jesterSelected)) {
+		else if (isLegalMove(action.playerId, action.rankSelected, action.numSelected,
+				action.jesterSelected)) {
+
 				deck.get(action.playerId).set(action.rankSelected,
 						deck.get(action.playerId).get(action.rankSelected) - (action.numSelected) );
+
 				deck.get(action.playerId).set(13,
 						deck.get(action.playerId).get(13) - (action.jesterSelected) );
+
 				this.rankInPile = action.rankSelected;
 				temp = true;
 		}
 
-		if(temp == true) {
+		// changes the turn
+		if(temp) {
 			if (this.getTurn() == 3) {
 				this.setTurn(0);
 			} else {
@@ -505,7 +548,13 @@ public class GDState extends GameState implements Serializable {
 		return deck;
 	} // play
 
-	//given that the player that has the jesters calls the revolution, carries out revolution
+	/**
+	 * revolution method that takes an action from the RevolutionAction class
+	 * given that the player that has the jesters calls the revolution,
+	 * carries out revolution
+	 * @param action
+	 * @return if revolution was completed
+	 */
 	public boolean revolution (RevolutionAction action) {
 		if(deck.get(action.playerID).get(13) == 2){
 			if(action.playerID == 2) {
