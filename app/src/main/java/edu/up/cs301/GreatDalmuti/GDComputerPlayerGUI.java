@@ -22,19 +22,19 @@ public class GDComputerPlayerGUI extends GDDumbAI {
 	
 	// INSTANCE VARIABLES **************************************************************************
 	
-	// the most recent game state, as given to us by the CounterLocalGame
+	// the most recent game state, as given to us by the GDLocalGame
 	private GDState currentGameState;
 	
-	// If this player is running the GUI, the activity (null if the player is
-	// not running a GUI).
+	// If this player is running the GUI, the activity
+	// (null if the player is not running a GUI).
 	private Activity activityForGui;
 	
-	// If this player is running the GUI, the widget containing the counter's
-	// value (otherwise, null);
+	// If this player is running the GUI, the widget containing the counter's value
+	// (otherwise, null)
 	private TextView counterValueTextView;
 	
-	// If this player is running the GUI, the handler for the GUI thread (otherwise
-	// null)
+	// If this player is running the GUI, the handler for the GUI thread
+	// (otherwise null)
 	private Handler guiHandler;
 
 	// CONSTRUCTORS ********************************************************************************
@@ -64,7 +64,7 @@ public class GDComputerPlayerGUI extends GDDumbAI {
 		
 		Log.i("computer player", "receiving");
 		
-		// if there is no game, ignore
+		// if there is no game
 		if (game == null) {
 			return;
 		}
@@ -80,16 +80,13 @@ public class GDComputerPlayerGUI extends GDDumbAI {
 	 *  */
 	private void updateDisplay() {
 		// if the guiHandler is available, set the new counter value
-		// in the counter-display widget, doing it in the Activity's
-		// thread.
+		// in the counter-display widget, doing it in the Activity's thread.
 		if (guiHandler != null) {
 			guiHandler.post(
 					new Runnable() {
 						public void run() {
 							if (counterValueTextView != null && currentGameState != null) {
 
-								//TODO Change this to something else if we need to
-								//counterValueTextView.setText("" + currentGameState.getCounter());
 							}
 						}
 					});
@@ -135,7 +132,7 @@ public class GDComputerPlayerGUI extends GDDumbAI {
 		Button minusButton = (Button)activityForGui.findViewById(R.id.minusButton);
 		minusButton.setEnabled(false);
 		
-		// if the state is non=null, update the display
+		// if the state is non-null, update the display
 		if (currentGameState != null) {
 			updateDisplay();
 		}

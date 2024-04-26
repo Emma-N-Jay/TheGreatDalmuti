@@ -64,34 +64,20 @@ public class GDMainActivity extends GameMainActivity {
 				playerNames.add(name);
 				return new CDSmartAI(name);
 			}});
-//		plyerTypes.add(new GamePlayerType("Computer Player 3") {
-//			public GamePlayer createPlayer(String name) {
-//				return new GDDumbAI(name);
-//			}
-//		});
-
-		// a computer player type (player type 2)
-//		playerTypes.add(new GamePlayerType("Computer Player (GUI)") {
-//			public GamePlayer createPlayer(String name) {
-//				playerNames.add(name);
-//				return new GDComputerPlayerGUI(name);
-//			}});
-
 
 		// Create a game configuration class for GD:
 		// - player types as given above
 		// - from 1 to 4 players
 		// - name of game is "The Great Dalmuti"
 		// - port number as defined above
-		GameConfig defaultConfig = new GameConfig(playerTypes, 1, 4, "Great Dalmuti",
-				PORT_NUMBER);
+		GameConfig defaultConfig = new GameConfig(playerTypes, 1, 4,
+				"Great Dalmuti", PORT_NUMBER);
 
 		// Add the default players to the configuration
 		defaultConfig.addPlayer("Greater Dalmuti", 0); // player 1: a human player
 		defaultConfig.addPlayer("Lesser Dalmuti", 1); // player 2: a computer player
 		defaultConfig.addPlayer("Lesser Peon", 2); // player 3: a computer player
 		defaultConfig.addPlayer("Greater Peon", 3); // player 4: a computer player
-
 
 		// Set the default remote-player setup:
 		// - player name: "Remote Player"
@@ -102,10 +88,6 @@ public class GDMainActivity extends GameMainActivity {
 		// return the configuration
 		return defaultConfig;
 	} // createDefaultConfig
-
-	public ArrayList<String> getPlayerNames(){
-		return this.playerNames;
-	}
 
 	/**
 	 * create a local game

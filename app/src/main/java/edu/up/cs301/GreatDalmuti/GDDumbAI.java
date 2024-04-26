@@ -1,11 +1,11 @@
 /**
- * This contains the dumb ai for the Great Dalmuti game.
+ * This contains the dumb AI for the Great Dalmuti game.
  *
  * @author Tramanh Best
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 2024
+ * @version April 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
@@ -16,21 +16,18 @@ import java.util.concurrent.TimeUnit;
 
 import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
+import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.utilities.Tickable;
 
 public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializable {
 
-	// INSTANCE VARIABLES *************************************************************************
+	// INSTANCE VARIABLES **************************************************************************
+
 	private static final long serialVersionUID = 242304101501L;
-	//private edu.up.cs301.GreatDalmuti.GDState state;
+
+	// CONSTRUCTORS ********************************************************************************
 
 	/**
-	 * TODO: IF THERE IS A PROBLEM WITH THIS CLASS IT IS LIKELY BECAUSE IT IS REFERENCING A
-	 * CERTAIN SET OF NUMBERS (GD = 0, LD = 1, LP = 2 GP = 3)
-	 */
-
-	// CONSTRUCTORS ***************************************************************************
-    /**
      * Constructor for objects of class CounterComputerPlayer1
      * 
      * @param name
