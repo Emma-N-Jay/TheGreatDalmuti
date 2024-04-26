@@ -11,7 +11,6 @@
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
-
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.utilities.Tickable;
