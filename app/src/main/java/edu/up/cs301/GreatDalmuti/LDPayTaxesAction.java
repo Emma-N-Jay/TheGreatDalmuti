@@ -11,7 +11,6 @@
 package edu.up.cs301.GreatDalmuti;
 
 import java.io.Serializable;
-
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
@@ -22,15 +21,14 @@ public class LDPayTaxesAction extends GameAction implements Serializable {
     int cardChoice;
 
     // CONSTRUCTORS*********************************************************************************
+
     /**
      * constructor for GameAction
-     *
      * @param player the player who created the action
+     * @param cardChoice the card selected by the player to be used for taxes
      */
-
-
     public LDPayTaxesAction (GamePlayer player, int cardChoice) {
         super(player);
         this.cardChoice = cardChoice;
-    }
-}
+    } // LDPayTaxesAction
+} // LDPayTaxesAction

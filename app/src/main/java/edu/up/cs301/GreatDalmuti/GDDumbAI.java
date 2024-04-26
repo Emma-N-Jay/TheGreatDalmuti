@@ -1,36 +1,32 @@
 /**
- * This contains the dumb ai for the Great Dalmuti game.
+ * This contains the dumb AI for the Great Dalmuti game.
  *
  * @author Tramanh Best
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 2024
+ * @version April 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
-import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
+import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.utilities.Tickable;
 
 public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializable {
 
-	// INSTANCE VARIABLES *************************************************************************
+	// INSTANCE VARIABLES **************************************************************************
+
 	private static final long serialVersionUID = 242304101501L;
-	//private edu.up.cs301.GreatDalmuti.GDState state;
+
+	// CONSTRUCTORS ********************************************************************************
 
 	/**
-	 * TODO: IF THERE IS A PROBLEM WITH THIS CLASS IT IS LIKELY BECAUSE IT IS REFERENCING A
-	 * CERTAIN SET OF NUMBERS (GD = 0, LD = 1, LP = 2 GP = 3)
-	 */
-
-	// CONSTRUCTORS ***************************************************************************
-    /**
      * Constructor for objects of class CounterComputerPlayer1
      * 
      * @param name
@@ -42,9 +38,15 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
         // start the timer, ticking 20 times per second
         getTimer().setInterval(50);
         getTimer().start();
-    } // GDComputerPlayer1
+    } // GDDumbAI
 
-	//this method finds the index of the highest card
+	// HELPER METHODS ******************************************************************************
+
+	/**
+	 * finds the index of the highest card
+	 * @param playerHand - the cards the player has
+	 * @return the highest card in the player's hand
+	 */
 	public int highestCard(ArrayList<Integer> playerHand){
 		int highCard = 1;
 		for(int i = playerHand.size() - 1; i > 0; i--){
@@ -53,10 +55,11 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			}
 		}
 		return highCard;
-	}
+	} // highestCard
 
 	// METHODS *************************************************************************************
-    /**
+
+	/**
      * callback method--game's state has changed
      * 
      * @param info
@@ -69,7 +72,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 
 		GDState state = (GDState) info;
 
-		boolean played = false;
+		boolean played;
 
 		if (state.getTurn() != this.playerNum) {
 			return;
@@ -89,7 +92,6 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 		if (state.getExchangingTaxes() && state.getDeck() != null) {
 			//when it is the greater peon it will automatically pass its two highest cards
 			if (playerNum == 3 && state.getTurn() == 3) {
-				//I know this looks like a mess BUT its just passing in the two highest cards, thats it
 				game.sendAction(new GPPayTaxesAction(this));
 				return;
 			}
@@ -102,19 +104,21 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 
 			//paytaxes for lesser dalmuti (isLegal makes this move automatically)
 			else if (playerNum == 1 && state.getTurn() == 1) {
-				game.sendAction(new LDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				game.sendAction(new LDPayTaxesAction(this,
+						highestCard(state.getDeck().get(playerNum))));
 				return;
 			}
 
 			//paytaxes for greater dalmuti (isLegal makes this move automatically)
 			else if (playerNum == 0 && state.getTurn() == 0) {
-				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				game.sendAction(new GDPayTaxesAction(this,
+						highestCard(state.getDeck().get(playerNum))));
 				return;
 			}
 		}
 
 			/**
-			 * GETTING THE LEAD (should this somehow happen)
+			 * GETTING THE LEAD
 			 */
 		if(playerNum == state.getTurn()) {
 			//this is the index of the current highest card
@@ -128,7 +132,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			}
 
 			/**
-			 * PASSING AND PLAYING CARDS WITH THE DUMB AI
+			 * PASSING AND PLAYING CARDS
 			 */
 			played = false;
 			for (int i = 12; i >= 1; i--) {
@@ -136,12 +140,14 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 				if ( (i < state.getRankInPile()) && !(played) ) {
 					//checks to make sure the dumb ai has enough of that card
 					if (state.getDeck().get(playerNum).get(i) == state.getNumInPile()) {
-						game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
+						game.sendAction(new PlayAction(this, playerNum, i,
+								state.getNumInPile(), 0));
+
 						played = true;
 					}
 				}
 			}
-			if (played == false) {
+			if (!played) {
 				game.sendAction(new PassAction(this));
 			}
 		}
@@ -158,12 +164,6 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			// "flip a coin" to determine whether to increment or decrement
 			boolean move = Math.random() >= 0.5;
 
-			// send the move-action to the game
-			//game.sendAction(new edu.up.cs301.GreatDalmuti.GDMoveAction(this, move));
 		} // timerTicked
 
-		public String getName(){
-			return this.name;
-		}
-
-} // GDComputerPlayer1 class
+} // GDDumbAI
