@@ -124,61 +124,35 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 	if (state.getExchangingTaxes() && state.getDeck() != null) {
 		if (playerNum == 0 && state.getTurn() == 0) {
-			int timesPayedTaxes = 0;
 			// passes the highest single card if they have a single card that is a 6 or above (and isnt the jester)
 			if (highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13) {
 				game.sendAction(new GDPayTaxesAction(this, highSingle(state.getDeck().get(playerNum))));
-				timesPayedTaxes++;
+				return;
 			}
 
 			// passes a second high single if it has one
 			if (highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13) {
 				game.sendAction(new GDPayTaxesAction(this, highSingle(state.getDeck().get(playerNum))));
-				timesPayedTaxes++;
+				return;
 			}
-
-			// if this has no high single cards
-			if (timesPayedTaxes == 0) {
-				boolean hasPayedTaxes = false;
-
-			}
-
-			if (timesPayedTaxes == 1) {
-				boolean hasPayedTaxes = false;
-				// if it has no single card it passes the highest card it has 3 of
-				if (!hasPayedTaxes) {
-					game.sendAction(new GDPayTaxesAction(this, highOfNum(state.getDeck().get(playerNum), 3)));
-					hasPayedTaxes = true;
-				}
-
-				//if it doesnt have 3 of any cards it passes one of its highest cards
-				if (!hasPayedTaxes) {
-					game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
-				}
-			}
-
 		}
 
 		/**
 		 * LESSER DALMUTI SENDING TAXES
 		 */
 		//when it is the lesser dalmuti it will automatically pass its highest single card
-		if (playerNum == 1 && state.getTurn() == 1) {
+		else if (playerNum == 1 && state.getTurn() == 1) {
 			boolean hasPayedTaxes = false;
 			// passes the highest single card if they have a single card that is a 6 or above (and isnt the jester)
-			if (highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13) {
+			if ( (highSingle(state.getDeck().get(playerNum)) >= 6) && (highSingle(state.getDeck().get(playerNum)) != 13) ) {
 				game.sendAction(new LDPayTaxesAction(this, highSingle(state.getDeck().get(playerNum))));
 				hasPayedTaxes = true;
+				return;
 			}
-			// if it has no single card it passes the highest card it has 3 of
-			if (!hasPayedTaxes) {
-				game.sendAction(new LDPayTaxesAction(this, highOfNum(state.getDeck().get(playerNum), 3)));
-				hasPayedTaxes = true;
-			}
-
-			//if it doesnt have 3 of any cards it passes a 12
-			if (!hasPayedTaxes) {
+			//if it doesn't have 3 of any cards it passes a 12
+			else if (!hasPayedTaxes) {
 				game.sendAction(new LDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				return;
 			}
 
 		}
@@ -187,13 +161,15 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		 * PEON'S SENDING TAXES (isLegal does this automatically)
 		 */
 		//paytaxes for lesser peon
-		if (playerNum == 2 && state.getTurn() == 2) {
+		else if (playerNum == 2 && state.getTurn() == 2) {
 			game.sendAction(new LPPayTaxesAction(this));
+			return;
 		}
 
 		//paytaxes for greater peon
-		if (playerNum == 3 && state.getTurn() == 3) {
+		else if (playerNum == 3 && state.getTurn() == 3) {
 			game.sendAction(new GPPayTaxesAction(this));
+			return;
 		}
 	}
 		/**
