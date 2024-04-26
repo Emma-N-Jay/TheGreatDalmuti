@@ -5,25 +5,23 @@
  * @author Emma Jeppesen
  * @author Alex Burns
  * @author Theresa Wunderlich
- * @version March 19 2024
+ * @version April 2024
  */
 
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
-
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.utilities.Tickable;
 
-
 public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 	// INSTANCE VARIABLES **************************************************************************
-	private edu.up.cs301.GreatDalmuti.GDState state;
 
 	// CONSTRUCTORS ********************************************************************************
-    /**
+
+	/**
      * Constructor for objects of class CounterComputerPlayer1
      *
      * @param name
@@ -35,23 +33,31 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		// start the timer, ticking 20 times per second
 		getTimer().setInterval(50);
 		getTimer().start();
-	} // GDComputerPlayer1
+	} // CDSmartAI
 
+	// HELPER METHODS ******************************************************************************
+
+	/**
+	 * number of cards of a certain rank in the players hand
+	 * @param rank
+	 * @param playerHand
+	 * @return
+	 */
 	public int numOfRank(int rank, ArrayList<Integer> playerHand){
 		int numCards = 0;
-		for(int i = 0; i >= playerHand.size(); i++){
+		for(int i = 0; i == playerHand.size(); i++){
 			if(playerHand.get(i) == rank){
 				numCards++;
 			}
 		}
 		return numCards;
-	}
+	} // numOfRank
 
-	public int rankOfCard(int index, ArrayList<Integer> playerHand){
-		return playerHand.get(index);
-	}
-
-	/** locates highest single card*/
+	/**
+	 * locates highest single card
+	 * @param playerHand
+	 * @return
+	 */
 	public int highSingle(ArrayList<Integer> playerHand){
 		int num = 1; //given the first num in the arrayList is the players rank default highest is lowest card
 		for(int i = 0; i < playerHand.size(); i++){
@@ -60,8 +66,14 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 			}
 		}
 		return num;
-	}
+	} // highSingle
 
+	/**
+	 *
+	 * @param playerHand
+	 * @param number
+	 * @return
+	 */
 	public int highOfNum(ArrayList<Integer> playerHand, int number){
 		int num = 1; //given the first num in the arrayList is the players rank default highest is lowest card
 		for(int i = 0; i < playerHand.size(); i++){
@@ -70,7 +82,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 			}
 		}
 		return num;
-	}
+	} // highOfNum
 
 	//this method finds the index of the highest card
 	public int highestCard(ArrayList<Integer> playerHand){
@@ -217,10 +229,8 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 				}
 			}
 		}
-		if(played == false){
+		if(!played){
 			game.sendAction(new PassAction(this));
-
-			//state.pass(state.getTurn());
 		}
 	} // receiveInfo
 	
@@ -233,13 +243,6 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 		// "flip a coin" to determine whether to increment or decrement
 		boolean move = Math.random() >= 0.5;
-		
-		// send the move-action to the game
-		//game.sendAction(new GDMoveAction(this, move));
 	} // timerTicked
 
-	public String getName(){
-		return this.name;
-	}
-
-} // GDComputerPlayer2
+} // CDSmartAI

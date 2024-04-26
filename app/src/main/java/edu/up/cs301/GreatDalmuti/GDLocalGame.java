@@ -77,7 +77,8 @@ public class GDLocalGame extends LocalGame {
 	 */
 	@Override
 	protected boolean makeMove(GameAction action) {
-		Log.i("makeMove", "Player " + action.getPlayer().getPlayerNum() + " " + action.getClass().toString());
+		Log.i("makeMove", "Player " + action.getPlayer().getPlayerNum() +
+				" " + action.getClass().toString());
 
 		if (action instanceof GDPayTaxesAction) {
 			GDPayTaxesAction gdPayTaxesAction = (GDPayTaxesAction) action;
