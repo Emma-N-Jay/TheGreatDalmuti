@@ -1,5 +1,5 @@
 /**
- * This contains the state for the GreatDalmuti game.
+ * This contains the state for the Great Dalmuti game.
  *
  * @author Tramanh Best
  * @author Emma Jeppesen
@@ -22,50 +22,58 @@ public class GDState extends GameState implements Serializable {
 	// to satisfy Serializable interface
 	private static final long serialVersionUID = 7737393762469851826L;
 
-	//TODO: SORTED BY PERSON AND THEN THAT PERSONS HAND (IF YOU DO NOT UNDERSTAND THIS ASK ALEX)
-	private ArrayList<ArrayList<Integer>> deck; //this is literally the entire deck of cards
-	private boolean handIsVisible; //if a players hand is visible for a specific device
-	private boolean revolutionIsVisible; //is the revolution button visible
-	private boolean exchangingTaxes; //are we currently exchanging taxes
-	private boolean[] taxesPayed = {false, false, false, false}; // is all true when everyone payed their taxes
-	private int dalmutiTaxes; //keeps track of the number of cards the great dalmuti has payed in taxes
-	private int numInPile; // number of the current rank of cards in the middle
-	private int rankInPile; // the number of the rank in the pile
-	private int hasLowestInRound; // who is in line to get the lead next
-	private int hasLead; // who currently has the lead
-	private int turn; // who's turn is it
+	// entire deck of cards, sorted by person then hand
+	private ArrayList<ArrayList<Integer>> deck;
+
+	//if a players hand is visible for a specific device
+	private boolean handIsVisible;
+
+	//true if the revolution button visible
+	private boolean revolutionIsVisible;
+
+	// true if we are currently exchanging taxes
+	private boolean exchangingTaxes;
+
+	// is all true when everyone payed their taxes
+	private boolean[] taxesPayed = {false, false, false, false};
+
+	//keeps track of the number of cards the great dalmuti has payed in taxes
+	private int dalmutiTaxes;
+
+	// number of the cards in the pile (played)
+	private int numInPile;
+
+	// the number of the rank in the pile (played)
+	private int rankInPile;
+
+	// who is in line to get the lead next
+	private int hasLowestInRound;
+
+	// who currently has the lead
+	private int hasLead;
+
+	// who's turn is it
+	private int turn;
+
+	// number of concurrent passes
 	private int numPass;
 
-	/** ALL OF THE F0LLOWING INSTANCE VARIABLES ARE FROM THE ACTION CLASSES */
-	public int[] taxCardIndexes;
-	public int indexHand;
-
 	// CONSTRUCTORS ********************************************************************************
-	/**
-	 * constructor
-	 * @param playNum
-	 */
-	 public GDState(int playNum){
-		 //intentionally left blank
-	 }
-
 	/**
 	 * constructor
 	 * no parameters
 	 */
 	 public GDState(){
-		 // makes a deep copy of all variables so far
 		 this.deck = new ArrayList<ArrayList<Integer>>();
 		 this.exchangingTaxes = true;
 		 this.handIsVisible = false;
 		 this.numInPile = 0;
 		 this.rankInPile = 0;
 		 this.hasLowestInRound = 0;
-		 this.hasLead = 0; //this should assign the lead to default to GDalmuti but also could be 1 instead of 0
+		 this.hasLead = 0;
 		 this.revolutionIsVisible = false;
 		 this.turn = 0;
 		 shuffle();
-
 	 } // GDState
 	
 	/**
@@ -75,8 +83,12 @@ public class GDState extends GameState implements Serializable {
 	 * 		the object from which the copy should be made
 	 */
 	public GDState(GDState orig) {
-		// makes a deep copy of all variables so far
-		this.deck = copyDeck(orig.deck);
+		// when we run this again and it crashes this will be the reason
+		for(int i = 0; i < orig.deck.size(); i++){
+			for(int j = 0; j < orig.deck.get(i).size(); j++){
+				this.deck.get(i).add(j, orig.deck.get(i).get(j));
+			}
+		}
 		this.exchangingTaxes = orig.exchangingTaxes;
 		this.handIsVisible = orig.handIsVisible;
 		this.numInPile = orig.numInPile;
@@ -88,7 +100,7 @@ public class GDState extends GameState implements Serializable {
 	} // GDState
 
 	// METHODS *************************************************************************************
-	//Getter and setter for turn
+
 	public int getTurn(){return this.turn;}
 	public void setTurn(int turn){this.turn = turn;}
 	public GDState getState(){return this;}
@@ -103,49 +115,57 @@ public class GDState extends GameState implements Serializable {
 	public ArrayList<Integer>getP2Hand(){return deck.get(1);}
 	public ArrayList<Integer>getP3Hand(){return deck.get(2);}
 	public ArrayList<Integer>getP4Hand(){return deck.get(3);}
+
 	public int totalP1Hand(){
 		int total = 0;
 		for(int i = 1; i < getP1Hand().size(); i++) {
 			total += getP1Hand().get(i);
 		}
 		return total;
-	}
+	} // totalP1Hand
+
 	public int totalP2Hand(){
 		int total = 0;
 		for(int i = 1; i < getP2Hand().size(); i++) {
 			total += getP2Hand().get(i);
 		}
 		return total;
-	}
+	} // totalP2Hand
+
 	public int totalP3Hand(){
 		int total = 0;
 		for(int i = 1; i < getP3Hand().size(); i++) {
 			total += getP3Hand().get(i);
 		}
 		return total;
-	}
+	} // totalP3Hand
+
 	public int totalP4Hand(){
 		int total = 0;
 		for(int i = 1; i < getP4Hand().size(); i++) {
 			total += getP4Hand().get(i);
 		}
 		return total;
-	}
+	} // totalP4Hand
 
-	@Override
-	public String toString() {
-		System.out.println("Taxes have been exchanged - " + this.exchangingTaxes);
-		System.out.println("Deck of cards - " + this.deck);
-		System.out.println("Hand is variable - " + this.handIsVisible);
-		System.out.println("Number of cards last put in pile - " + this.numInPile);
-		System.out.println("Rank of cards last put in pile - " + this.rankInPile);
-		System.out.println("If player has played the lowest card of the round - " + this.hasLowestInRound);
-		System.out.println("Number of player who has the lead - " + this.hasLead);
-		System.out.println("Revolution is visible - " + this.revolutionIsVisible);
-		return null;
-	} // toString
+	// TODO: ASK NUX IF THIS CAN BE REMOVED
+//	@Override
+//	public String toString() {
+//		System.out.println("Taxes have been exchanged - " + this.exchangingTaxes);
+//		System.out.println("Deck of cards - " + this.deck);
+//		System.out.println("Hand is variable - " + this.handIsVisible);
+//		System.out.println("Number of cards last put in pile - " + this.numInPile);
+//		System.out.println("Rank of cards last put in pile - " + this.rankInPile);
+//		System.out.println("If player has played the lowest card of the round - " + this.hasLowestInRound);
+//		System.out.println("Number of player who has the lead - " + this.hasLead);
+//		System.out.println("Revolution is visible - " + this.revolutionIsVisible);
+//		return null;
+//	} // toString
 
-	//SHUFFLES DECK
+	/**
+	 * shuffles the deck of cards and deals to players hand
+	 * no parameters or return
+	 */
 	public void shuffle(){
 		ArrayList<ArrayList<Integer>> deckCopy = new ArrayList<ArrayList<Integer>>();
 
@@ -208,9 +228,13 @@ public class GDState extends GameState implements Serializable {
 				deck.get(i).add(getNumOf(deckCopy.get(i), j));
 			}
 		}
-	}
+	} // shuffle
 
-	//Copy deck method for the copy constructor. Copyception
+	/**
+	 * copy deck method for the copy constructor
+	 * @param oldDeck
+	 * @return
+	 */
 	public ArrayList<ArrayList<Integer>> copyDeck(ArrayList<ArrayList<Integer>> oldDeck){
 		ArrayList<ArrayList<Integer>> newDeck = new ArrayList<ArrayList<Integer>>();
 		newDeck.add(new ArrayList<Integer>());
@@ -223,7 +247,6 @@ public class GDState extends GameState implements Serializable {
 				newDeck.get(i).add(j, oldDeck.get(i).get(j));
 			}
 		}
-
 		return newDeck;
 	}
 
