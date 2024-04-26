@@ -17,8 +17,11 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class LPPayTaxesAction extends GameAction implements Serializable {
 
-    //instance variables
+    // INSTANCE VARIABLES **************************************************************************
+
     private static final long serialVersionUID = 240423102104L;
+
+    // CONSTRUCTORS ********************************************************************************
 
     /**
      * constructor for GameAction
@@ -27,5 +30,5 @@ public class LPPayTaxesAction extends GameAction implements Serializable {
      */
     public LPPayTaxesAction(GamePlayer player) {
         super(player);
-    }
-}
+    } // LPPayTaxesAction
+} // LPPayTaxesAction

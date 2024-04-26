@@ -10,32 +10,26 @@
 
 package edu.up.cs301.GreatDalmuti;
 
-import android.app.Notification;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class RevolutionAction extends GameAction implements Serializable {
 
     // INSTANCE VARIABLES **************************************************************************
+
     private static final long serialVersionUID = 242304102407L;
     public int playerID;
 
     // CONSTRUCTORS ********************************************************************************
+
     /**
      * constructor for GameAction
-     *
      * @param player the player who created the action
+     * @param id the id of the play who created the action
      */
-    public RevolutionAction(GamePlayer player) {
-        super(player);
-    }
-
     public RevolutionAction (GamePlayer player, int id) {
         super(player);
         this.playerID = id;
-    }
-}
+    } // RevolutionAction
+} // RevolutionAction

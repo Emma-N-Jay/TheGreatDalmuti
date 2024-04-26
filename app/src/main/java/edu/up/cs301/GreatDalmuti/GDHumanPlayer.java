@@ -25,10 +25,7 @@ import edu.up.cs301.GameFramework.players.GameHumanPlayer;
 public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	// INSTANCE VARIABLES **************************************************************************
-	
-	// The TextView the displays the current counter value
-	private TextView testResultsTextView;
-	
+
 	// the most recent game state, as given to us by the CounterLocalGame
 	private GDState state;
 	
@@ -37,28 +34,18 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	//selected card
 	private int c;
+
 	//selected number of cards
 	private int n;
+
+	// number of jesters selected
 	private int j;
-	private String nString;
 
-	//all of the buttons galore
-	private Button passButton;
-	private Button playButton;
-	private Button plusB;
-	private Button minusB;
-	private Button jplusB;
-	private Button jminusB;
-
-	//music and sound related variables
-	private Switch musicSwitch;
 	//For background music
 	private MediaPlayer music;
-	private MediaPlayer soundEffects;
 	private boolean backgroundMusic = false;
-	private int afterTaxes = 0;
 
-	//for image button
+	// image button variables
 	private ImageButton revolutionButton;
 	private ImageButton paytaxesButton;
 	private ImageButton jester;
@@ -75,7 +62,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private ImageButton eleven;
 	private ImageButton twelve;
 
-	//text for number of cards
+	// text for number of cards variables
 	private TextView cardsNum;
 	private TextView jesterSelected ;
 	private TextView jesterNum;
@@ -92,7 +79,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private TextView elevenNum;
 	private TextView twelveNum;
 
-	//the canvas
 	private surfaceDraw canvas;
 
 	// CONSTRUCTORS ********************************************************************************
@@ -103,9 +89,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	public GDHumanPlayer(String name) {
 		super(name);
-	}
+	} // GDHumanPlayer
 
 	// METHODS *************************************************************************************
+
 	/**
 	 * Returns the GUI's top view object
 	 * 
@@ -118,93 +105,80 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	
 	/**
 	 * redraws canvas
-	 *
-	 * no parameters or return statements
 	*/
 	protected void updateDisplay() {
 		canvas.invalidate();
 	} // updateDisplay
 
+	/**
+	 * initializes canvas once ready
+	 */
 	@Override
 	protected void initAfterReady() {
 		super.initAfterReady();
 		canvas.setPlayer(this);
 	}
 
-	public String getPlayerName(int foo){
-		if(allPlayerNames == null){
-			return null;
-		}
-		return allPlayerNames[foo];
-	}
-
 	/**
-	 * 
-	 * @param button
-	 * 		the button that was clicked
+	 * identifies what button was clicked and sends an action to the corresponding class
+	 * the variable c refers to the selected rank of the card
+	 * the variable n refers to the number of cards selected
+	 * @param button - the button that was clicked
 	 */
 	public void onClick(View button) {
-		//current selected card is c, number is n
 
-		// if we are not yet connected to a game
+		// checks if we are not yet connected to a game
 		if (game == null) return;
 
-		if(button.getId() == R.id.editTextTextMultiLine){
-		}
+		// TODO: is this needed or can this be removed?
+//		if(button.getId() == R.id.editTextTextMultiLine){
+//		}
 
-		if(button.getId() == R.id.playButton){
+		MediaPlayer soundEffects;
+		if (button.getId() == R.id.playButton) {
 			PlayAction playAction = new PlayAction(this, playerNum, c, n, j);
 			game.sendAction(playAction);
 
 			//updates music
-			if(!state.getExchangingTaxes()){
-				afterTaxes++;
-			}
-			if(afterTaxes == 1 && backgroundMusic){
+			if ((!state.getExchangingTaxes()) && backgroundMusic) {
 				music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
 				music.start();
 				music.setLooping(true);
 			}
-		}
-		else if(button.getId() == R.id.passButton){
-		PassAction passAction = new PassAction(this);
-		game.sendAction(passAction);
+		} else if (button.getId() == R.id.passButton) {
+			PassAction passAction = new PassAction(this);
+			game.sendAction(passAction);
 
-		//updates music
-			if(!state.getExchangingTaxes()){
-				afterTaxes++;
-			}
-			if(afterTaxes == 1 && backgroundMusic){
+			//updates music
+			if ((!state.getExchangingTaxes()) && backgroundMusic) {
 				music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
 				music.start();
 				music.setLooping(true);
 			}
-		}
-		else if(button.getId() == R.id.revolutionButton){
-		RevolutionAction revolutionAction = new RevolutionAction(this, playerNum);
-		game.sendAction(revolutionAction);
+		} else if (button.getId() == R.id.revolutionButton) {
+			RevolutionAction revolutionAction = new RevolutionAction(this, playerNum);
+			game.sendAction(revolutionAction);
 			soundEffects = MediaPlayer.create(myActivity, R.raw.revsounds);
 			soundEffects.start();
-		}
-		else if(button.getId() == R.id.payTaxesButton) {
+		} else if (button.getId() == R.id.payTaxesButton) {
 			if (state.getExchangingTaxes()) {
 				if (playerNum == 0 && state.getTurn() == 0) {
 					GDPayTaxesAction gdPayTaxesAction = new GDPayTaxesAction(this, c);
 					game.sendAction(gdPayTaxesAction);
 					return;
-				}else if (playerNum == 1 && state.getTurn() == 1) {
+				} else if (playerNum == 1 && state.getTurn() == 1) {
 					LDPayTaxesAction ldPayTaxesAction = new LDPayTaxesAction(this, c);
 					game.sendAction(ldPayTaxesAction);
 					GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
 					game.sendAction(gpPayTaxesAction);
 					return;
-				}else if (playerNum == 2 && state.getTurn() == 2) {
+				} else if (playerNum == 2 && state.getTurn() == 2) {
 					LPPayTaxesAction lpPayTaxesAction = new LPPayTaxesAction(this);
 					game.sendAction(lpPayTaxesAction);
 					soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
 					soundEffects.start();
 					return;
-				}else if (playerNum == 3 && state.getTurn() == 3){
+				} else if (playerNum == 3 && state.getTurn() == 3) {
 					GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
 					game.sendAction(gpPayTaxesAction);
 					soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
@@ -215,93 +189,57 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 		//selected cards/display for selected cards
-		else if(button.getId() == R.id.jester){
-			 c = 13;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
-		} else if(button.getId() == R.id.one){
+		else if (button.getId() == R.id.jester) {
+			c = 13;
+		} else if (button.getId() == R.id.one) {
 			c = 1;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
-		} else if(button.getId() == R.id.two){
+		} else if (button.getId() == R.id.two) {
 			c = 2;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
-		} else if(button.getId() == R.id.three){
+		} else if (button.getId() == R.id.three) {
 			c = 3;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
-		} else if(button.getId() == R.id.four){
+		} else if (button.getId() == R.id.four) {
 			c = 4;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
-		} else if(button.getId() == R.id.five){
+		} else if (button.getId() == R.id.five) {
 			c = 5;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
-		} else if(button.getId() == R.id.six){
+		} else if (button.getId() == R.id.six) {
 			c = 6;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
-		} else if(button.getId() == R.id.seven){
+		} else if (button.getId() == R.id.seven) {
 			c = 7;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
-		} else if(button.getId() == R.id.eight){
+		} else if (button.getId() == R.id.eight) {
 			c = 8;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
-		} else if(button.getId() == R.id.nine){
+		} else if (button.getId() == R.id.nine) {
 			c = 9;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
-		} else if(button.getId() == R.id.ten){
+		} else if (button.getId() == R.id.ten) {
 			c = 10;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
-		} else if(button.getId() == R.id.eleven){
+		} else if (button.getId() == R.id.eleven) {
 			c = 11;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
-		} else if(button.getId() == R.id.twelve){
+		} else if (button.getId() == R.id.twelve) {
 			c = 12;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
 		}
+		cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
+		String nString1 = state.getDeck().get(playerNum).get(c).toString();
+		n = Integer.parseInt(nString1);
 
 		//more or less cards
-		 if(button.getId() == R.id.addbutton){
-			nString = cardsNum.getText().toString();
-			n = Integer.parseInt(nString) + 1;
+		if (button.getId() == R.id.addbutton) {
+			nString1 = cardsNum.getText().toString();
+			n = Integer.parseInt(nString1) + 1;
 			cardsNum.setText("" + n);
-		} else if(button.getId() == R.id.minusbutton){
-			 nString = cardsNum.getText().toString();
-			 if(n > 0) {
-				 n = Integer.parseInt(nString) - 1;
-				 cardsNum.setText("" + n);
-			 }
+		} else if (button.getId() == R.id.minusbutton) {
+			nString1 = cardsNum.getText().toString();
+			if (n > 0) {
+				n = Integer.parseInt(nString1) - 1;
+				cardsNum.setText("" + n);
+			}
 		}
 
-		 //more or less jesters selected
-		if(button.getId() == R.id.addjbutton){
+		//more or less jesters selected
+		if (button.getId() == R.id.addjbutton) {
 			String jString = jesterSelected.getText().toString();
 			j = Integer.parseInt(jString) + 1;
-			jesterSelected.setText( "" + j);
-		} else if(button.getId() == R.id.minusjbutton){
-			if(j > 0) {
+			jesterSelected.setText("" + j);
+		} else if (button.getId() == R.id.minusjbutton) {
+			if (j > 0) {
 				String nString = jesterSelected.getText().toString();
 				j = Integer.parseInt(nString) - 1;
 				jesterSelected.setText("" + j);
@@ -309,13 +247,13 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 		//plays the background music
-		if(button.getId() == R.id.musicSwitch){
-			if(backgroundMusic){
+		if (button.getId() == R.id.musicSwitch) {
+			if (backgroundMusic) {
 				backgroundMusic = false;
 				music.stop();
 			} else {
 				backgroundMusic = true;
-				if(state.getExchangingTaxes()) {
+				if (state.getExchangingTaxes()) {
 					music = MediaPlayer.create(myActivity, R.raw.moneymoneymoenybutmedieval);
 					music.start();
 					music.setLooping(true);
@@ -325,7 +263,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 					music.setLooping(true);
 				}
 			}
-
 		}
 
 		//updates number of cards
@@ -344,7 +281,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		twelveNum.setText("" + state.getDeck().get(playerNum).get(12));
 		canvas.invalidate();
 
-
+		// TODO: ASK NUX IF THIS STILL NEEDS TO BE INCLUDED FOR FINAL
 //		// I cannot overstate how long I took me to figure out this needed to be called on
 //		// myActivity and not that for some reason nothing works for no reason
 //		EditText textBox = myActivity.findViewById(R.id.editTextTextMultiLine);
@@ -416,14 +353,13 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	
 	/**
 	 * callback method when we get a message (e.g., from the game)
-	 * 
-	 * @param info
-	 * 		the message
+	 * @param info - the message
 	 *
 	 */
 	@Override
 	public void receiveInfo(GameInfo info) {
 
+		// if it is not an instance of the state it returns
 		if (!(info instanceof edu.up.cs301.GreatDalmuti.GDState)) return;
 
 		GDState postType = (GDState) info;
@@ -434,147 +370,149 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		updateDisplay();
 
 		// image of revolution image button set if possible
-		if(state.getDeck().get(playerNum).get(13) == 2){
+		if (state.getDeck().get(playerNum).get(13) == 2) {
 			revolutionButton.setImageResource(R.drawable.revbutton);
 		} else {
 			revolutionButton.setImageResource(R.drawable.blankspace);
 		}
 
 		//image of pay taxes button if during that phase of the game
-		if(state.getExchangingTaxes()){
+		if (state.getExchangingTaxes()) {
 			paytaxesButton.setImageResource(R.drawable.paytaxesimage);
 		} else {
 			paytaxesButton.setImageResource(R.drawable.blankspace);
 		}
 
 		//displays total cards numbers for every card
-			jesterNum.setText("" + postType.getDeck().get(playerNum).get(13));
-			oneNum.setText("" + postType.getDeck().get(playerNum).get(1));
-			twoNum.setText("" +postType.getDeck().get(playerNum).get(2));
-			threeNum.setText("" +postType.getDeck().get(playerNum).get(3));
-			fourNum.setText("" +postType.getDeck().get(playerNum).get(4));
-			fiveNum.setText("" +postType.getDeck().get(playerNum).get(5));
-			sixNum.setText("" +postType.getDeck().get(playerNum).get(6));
-			sevenNum.setText("" +postType.getDeck().get(playerNum).get(7));
-			eightNum.setText("" +postType.getDeck().get(playerNum).get(8));
-			nineNum.setText("" +postType.getDeck().get(playerNum).get(9));
-			tenNum.setText("" +postType.getDeck().get(playerNum).get(10));
-			elevenNum.setText("" +postType.getDeck().get(playerNum).get(11));
-			twelveNum.setText("" +postType.getDeck().get(playerNum).get(12));
+		jesterNum.setText("" + postType.getDeck().get(playerNum).get(13));
+		oneNum.setText("" + postType.getDeck().get(playerNum).get(1));
+		twoNum.setText("" + postType.getDeck().get(playerNum).get(2));
+		threeNum.setText("" + postType.getDeck().get(playerNum).get(3));
+		fourNum.setText("" + postType.getDeck().get(playerNum).get(4));
+		fiveNum.setText("" + postType.getDeck().get(playerNum).get(5));
+		sixNum.setText("" + postType.getDeck().get(playerNum).get(6));
+		sevenNum.setText("" + postType.getDeck().get(playerNum).get(7));
+		eightNum.setText("" + postType.getDeck().get(playerNum).get(8));
+		nineNum.setText("" + postType.getDeck().get(playerNum).get(9));
+		tenNum.setText("" + postType.getDeck().get(playerNum).get(10));
+		elevenNum.setText("" + postType.getDeck().get(playerNum).get(11));
+		twelveNum.setText("" + postType.getDeck().get(playerNum).get(12));
 
-		// if number of cards is more than 0, else grey once imported
-		if(postType.getDeck().get(playerNum).get(1) >= 1){
+		// if number of cards is more than 0 then color version, else grey
+		if (postType.getDeck().get(playerNum).get(1) >= 1) {
 			one.setImageResource(R.drawable.great_dalmuti);
 		} else {
 			one.setImageResource(R.drawable.grey_gd);
 		}
-		if(postType.getDeck().get(playerNum).get(2) >= 1){
+		if (postType.getDeck().get(playerNum).get(2) >= 1) {
 			two.setImageResource(R.drawable.arch_bishop);
 		} else {
 			two.setImageResource(R.drawable.grey_archbishop);
 		}
-		if(postType.getDeck().get(playerNum).get(3) >= 1){
+		if (postType.getDeck().get(playerNum).get(3) >= 1) {
 			three.setImageResource(R.drawable.earl_marshal);
 		} else {
 			three.setImageResource(R.drawable.grey_earl);
 		}
-		if(postType.getDeck().get(playerNum).get(4) >= 1){
+		if (postType.getDeck().get(playerNum).get(4) >= 1) {
 			four.setImageResource(R.drawable.baroness);
 		} else {
 			four.setImageResource(R.drawable.grey_baroness);
 		}
-		if(postType.getDeck().get(playerNum).get(5) >= 1){
+		if (postType.getDeck().get(playerNum).get(5) >= 1) {
 			five.setImageResource(R.drawable.abbess);
 		} else {
 			five.setImageResource(R.drawable.grey_abbess);
 		}
-		if(postType.getDeck().get(playerNum).get(6) >= 1){
+		if (postType.getDeck().get(playerNum).get(6) >= 1) {
 			six.setImageResource(R.drawable.knight);
 		} else {
 			six.setImageResource(R.drawable.grey_knight);
 		}
-		if(postType.getDeck().get(playerNum).get(7) >= 1){
+		if (postType.getDeck().get(playerNum).get(7) >= 1) {
 			seven.setImageResource(R.drawable.seamstress);
 		} else {
 			seven.setImageResource(R.drawable.grey_seamstress);
 		}
-		if(postType.getDeck().get(playerNum).get(8) >= 1){
+		if (postType.getDeck().get(playerNum).get(8) >= 1) {
 			eight.setImageResource(R.drawable.mason);
 		} else {
 			eight.setImageResource(R.drawable.grey_mason);
 		}
-		if(postType.getDeck().get(playerNum).get(9) >= 1){
+		if (postType.getDeck().get(playerNum).get(9) >= 1) {
 			nine.setImageResource(R.drawable.cook);
 		} else {
 			nine.setImageResource(R.drawable.grey_cook);
 		}
-		if(postType.getDeck().get(playerNum).get(10) >= 1){
+		if (postType.getDeck().get(playerNum).get(10) >= 1) {
 			ten.setImageResource(R.drawable.sheperdess);
 		} else {
 			ten.setImageResource(R.drawable.grey_shepherdress);
 		}
-		if(postType.getDeck().get(playerNum).get(11) >= 1){
+		if (postType.getDeck().get(playerNum).get(11) >= 1) {
 			eleven.setImageResource(R.drawable.stonecutter);
 		} else {
 			eleven.setImageResource(R.drawable.grey_stonecutter);
 		}
-		if(postType.getDeck().get(playerNum).get(12) >= 1){
+		if (postType.getDeck().get(playerNum).get(12) >= 1) {
 			twelve.setImageResource(R.drawable.peasant);
 		} else {
 			twelve.setImageResource(R.drawable.grey_peasant);
 		}
-		if(postType.getDeck().get(playerNum).get(13) >= 1){
+		if (postType.getDeck().get(playerNum).get(13) >= 1) {
 			jester.setImageResource(R.drawable.jesteryetagain);
 		} else {
 			jester.setImageResource(R.drawable.grey_jester);
 		}
 
 	} // receiveInfo
-	
+
 	/**
 	 * callback method--our game has been chosen/rechosen to be the GUI,
 	 * called from the GUI thread
-	 * 
-	 * @param activity
-	 * 		the activity under which we are running
+	 *
+	 * @param activity the activity under which we are running
 	 */
 	public void setAsGui(GameMainActivity activity) {
-		
+
 		// remember the activity
 		this.myActivity = activity;
-		
-	    // Load the layout resource for our GUI
+
+		// Load the layout resource for our GUI
 		activity.setContentView(R.layout.dalmuti_main_xml);
 
-		this.testResultsTextView = (TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
+		// The TextView the displays the current counter value
+		TextView testResultsTextView = (TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
 
-		//image button for rev and the cards
-		this.revolutionButton = (ImageButton)activity.findViewById(R.id.revolutionButton);
-		this.paytaxesButton = (ImageButton)activity.findViewById(R.id.payTaxesButton);
-		this.one = (ImageButton)activity.findViewById(R.id.one);
-		this.two = (ImageButton)activity.findViewById(R.id.two);
-		this.three = (ImageButton)activity.findViewById(R.id.three);
-		this.four = (ImageButton)activity.findViewById(R.id.four);
-		this.five = (ImageButton)activity.findViewById(R.id.five);
-		this.six = (ImageButton)activity.findViewById(R.id.six);
-		this.seven = (ImageButton)activity.findViewById(R.id.seven);
-		this.eight = (ImageButton)activity.findViewById(R.id.eight);
-		this.nine = (ImageButton)activity.findViewById(R.id.nine);
-		this.ten = (ImageButton)activity.findViewById(R.id.ten);
-		this.eleven = (ImageButton)activity.findViewById(R.id.eleven);
-		this.twelve = (ImageButton)activity.findViewById(R.id.twelve);
-		this.jester = (ImageButton)activity.findViewById(R.id.jester);
+		//image buttons
+		this.revolutionButton = (ImageButton) activity.findViewById(R.id.revolutionButton);
+		this.paytaxesButton = (ImageButton) activity.findViewById(R.id.payTaxesButton);
+		this.one = (ImageButton) activity.findViewById(R.id.one);
+		this.two = (ImageButton) activity.findViewById(R.id.two);
+		this.three = (ImageButton) activity.findViewById(R.id.three);
+		this.four = (ImageButton) activity.findViewById(R.id.four);
+		this.five = (ImageButton) activity.findViewById(R.id.five);
+		this.six = (ImageButton) activity.findViewById(R.id.six);
+		this.seven = (ImageButton) activity.findViewById(R.id.seven);
+		this.eight = (ImageButton) activity.findViewById(R.id.eight);
+		this.nine = (ImageButton) activity.findViewById(R.id.nine);
+		this.ten = (ImageButton) activity.findViewById(R.id.ten);
+		this.eleven = (ImageButton) activity.findViewById(R.id.eleven);
+		this.twelve = (ImageButton) activity.findViewById(R.id.twelve);
+		this.jester = (ImageButton) activity.findViewById(R.id.jester);
 
 		//player action buttons
-		this.passButton = (Button) activity.findViewById(R.id.passButton);
-		this.playButton = (Button) activity.findViewById(R.id.playButton);
-		this.plusB = (Button) activity.findViewById(R.id.addbutton);
-		this.minusB = (Button) activity.findViewById(R.id.minusbutton);
-		this.jplusB = (Button) activity.findViewById(R.id.addjbutton);
-		this.jminusB = (Button) activity.findViewById(R.id.minusjbutton);
+		// button variables
+		Button passButton = (Button) activity.findViewById(R.id.passButton);
+		Button playButton = (Button) activity.findViewById(R.id.playButton);
+		Button plusB = (Button) activity.findViewById(R.id.addbutton);
+		Button minusB = (Button) activity.findViewById(R.id.minusbutton);
+		Button jplusB = (Button) activity.findViewById(R.id.addjbutton);
+		Button jminusB = (Button) activity.findViewById(R.id.minusjbutton);
 
 		//switch to turn off background noise
-		this.musicSwitch = (Switch) activity.findViewById(R.id.musicSwitch);
+		//music and sound variables
+		Switch musicSwitch = (Switch) activity.findViewById(R.id.musicSwitch);
 
 		//listens for button presses
 		passButton.setOnClickListener(this);
@@ -620,12 +558,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.twelveNum = (TextView) activity.findViewById(R.id.twelveNum);
 
 		//find the surface view
-		this.canvas = (surfaceDraw)activity.findViewById(R.id.the_canvas);
+		this.canvas = (surfaceDraw) activity.findViewById(R.id.the_canvas);
 
 	} // setAsGui
-
-	public String getName(){
-		return this.name;
-	}
 
 } // GDHumanPlayer class

@@ -11,18 +11,19 @@
 package edu.up.cs301.GreatDalmuti;
 
 import java.io.Serializable;
-
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class GPPayTaxesAction extends GameAction implements Serializable {
 
-    //instance variables
+    // INSTANCE VARIABLES **************************************************************************
+
     private static final long serialVersionUID = 242304101902L;
+
+    // CONSTRUCTORS ********************************************************************************
 
     /**
      * constructor for GameAction
-     *
      * @param player the player who created the action
      */
     public GPPayTaxesAction(GamePlayer player) {
