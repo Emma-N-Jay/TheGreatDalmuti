@@ -31,6 +31,7 @@ public class GDMainActivity extends GameMainActivity {
 	ArrayList<String> playerNames;
 
 	// METHODS *************************************************************************************
+
 	/**
 	 * Create the default configuration for this game:
 	 * - one human player vs. one computer player

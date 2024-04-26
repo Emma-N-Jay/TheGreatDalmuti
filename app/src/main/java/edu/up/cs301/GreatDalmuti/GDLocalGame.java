@@ -75,6 +75,14 @@ public class GDLocalGame extends LocalGame {
 	 * @param action - action player has selected
 	 * @return if the action sent was completed
 	 */
+
+	/**
+	 External Citation
+	 Date: 26 April 2024
+	 Problem: Struggling to get actions to work and send properly
+	 Resource: The Stratego Team, specifically Josh
+	 Solution: We used the same method/idea as their team
+	 */
 	@Override
 	protected boolean makeMove(GameAction action) {
 		Log.i("makeMove", "Player " + action.getPlayer().getPlayerNum() +
@@ -118,7 +126,8 @@ public class GDLocalGame extends LocalGame {
 		else {
 			return false;
 		}
-	} // makeMove
+	} //
+
 	
 	/**
 	 * sends the complete and updated state to a given player

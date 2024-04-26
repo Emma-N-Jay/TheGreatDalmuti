@@ -163,24 +163,28 @@ public class surfaceDraw extends SurfaceView {
             canvas.drawBitmap(backright, 1785, 300, null);
             canvas.drawBitmap(backright, 1785, 325, null);
 
-            //Draw text for num card
+            //Draw text for num cards played
             canvas.drawText("# played:",  750, 500, purple);
             canvas.drawText(" " + state.getNumInPile(), 885, 500, purple);
 
-            //draw num cards of GD
+            //draw num cards of left player
             canvas.drawText("# cards:", 25, 475, purple);
             canvas.drawText(" "+ state.totalP2Hand(), 125 , 475, purple);
-            //draw num cards of LD
+
+            //draw num cards of top player
             canvas.drawText("# cards:", 275, 50, purple);
             canvas.drawText(" " + state.totalP3Hand(), 375 , 50, purple);
-            //draw num cards of LP
+
+            //draw num cards of human player
             canvas.drawText("# cards:", 925 , 600, purple);
             canvas.drawText(" " + state.totalP1Hand(), 1025, 600, purple);
-            //draw num cards of GP
+
+            //draw num cards of right player
             canvas.drawText("# cards:", 1810, 475, purple);
             canvas.drawText(" " + state.totalP4Hand(), 1910 , 475, purple);
 
-            //Time to do the pile!
+            //Time to do the pile! This draws the cards in pile based on
+            //what the rank/card type in the pile is
             if(state.getRankInPile() == 1){
                 canvas.drawBitmap(deckDal, 900, 250, null);
             }else if(state.getRankInPile() == 2) {
