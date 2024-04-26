@@ -41,6 +41,10 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
         getTimer().start();
     } // GDComputerPlayer1
 
+	public int rankOfCard(int index, ArrayList<Integer> playerHand){
+		return playerHand.get(index);
+	}
+
 	//this method finds the index of the highest card
 	public int highestCard(ArrayList<Integer> playerHand){
 		int highCard = 1;
@@ -127,19 +131,19 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			/**
 			 * PASSING AND PLAYING CARDS WITH THE DUMB AI
 			 */
-			for (int i = 13; i >= 1; i--) {
+			played = false;
+			for (int i = 12; i >= 1; i--) {
 				//checks for highest rank below the current rank in the pile
-				if (i < state.getRankInPile()) {
+				if ( (i < state.getRankInPile()) && !(played) ) {
 					//checks to make sure the dumb ai has enough of that card
-					if (state.getDeck().get(playerNum).get(i) >= state.getNumInPile()) {
+					if (state.getDeck().get(playerNum).get(i) == state.getNumInPile()) {
 						game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
 						played = true;
-						break;
-					}
-					if (i == 1) {
-						game.sendAction(new PassAction(this));
 					}
 				}
+			}
+			if (played == false) {
+				game.sendAction(new PassAction(this));
 			}
 		}
 	} // receiveInfo
