@@ -36,17 +36,18 @@ import java.util.ArrayList;
 public class GDLocalGame extends LocalGame {
 
 	// INSTANCE VARIABLES **************************************************************************
-	public static final int TARGET_MAGNITUDE = 10;
 
-	// the game's state
+	public static final int TARGET_MAGNITUDE = 10;
 	private GDState gameState;
 
 	// CONSTRUCTORS ********************************************************************************
+
 	/**
 	 * This constructor should be called when a new Dalmuti game is started
+	 * initializes the game state, with the counter value starting at 0
+	 * @param state - the current state of the game
 	 */
 	public GDLocalGame(GameState state) {
-		// initialize the game state, with the counter value starting at 0
 		if (! (state instanceof GDState)) {
 			state = new GDState();
 		}
@@ -55,8 +56,11 @@ public class GDLocalGame extends LocalGame {
 	} //GDLocalGame
 
 	// METHODS *************************************************************************************
+
 	/**
-	 * can this player move
+	 * Checks if the player can move
+	 * @param playerIdx - the id number of the player
+	 * @return if the player is able to move or not
 	 */
 	@Override
 	protected boolean canMove(int playerIdx) {
@@ -67,7 +71,9 @@ public class GDLocalGame extends LocalGame {
 	} // canMove
 
 	/**
-	 * The only type of GameAction that should be sent is CounterMoveAction
+	 * Makes the move sent by the player through GameAction
+	 * @param action - action player has selected
+	 * @return if the action sent was completed
 	 */
 	@Override
 	protected boolean makeMove(GameAction action) {
@@ -109,29 +115,24 @@ public class GDLocalGame extends LocalGame {
 			return true;
 		}
 		else {
-			// denote that this was an illegal move
 			return false;
 		}
 	} // makeMove
 	
 	/**
-	 * send the updated state to a given player
+	 * sends the complete and updated state to a given player
+	 * @param p - the player the gameState is being sent to
 	 */
 	@Override
 	protected void sendUpdatedStateTo(GamePlayer p) {
-		// this is a perfect-information game, so we'll make a
-		// complete copy of the state to send to the player
 		p.sendInfo(new GDState(this.gameState));
 	} // sendUpdatedSate
 	
 	/**
-	 * Check if the game is over. It is over, return a string that tells
-	 * who the winner(s), if any, are. If the game is not over, return null;
-	 * 
-	 * @return
-	 * 		a message that tells who has won the game, or null if the
-	 * 		game is not over
-	 *
+	 * Check if the game is over.
+	 * It is over, return a string that tells who the winner(s), if any, are.
+	 * If the game is not over, return null;
+	 * @return - message that tells who has won the game, or null if the game is not over
 	 */
 	@Override
 	protected String checkIfGameOver() {
@@ -140,6 +141,8 @@ public class GDLocalGame extends LocalGame {
 		int playerThree = 0;
 		int playerFour = 0;
 
+		// loops through each hand and checks the number of cards in each rank slot
+		// if a rank has cards the variable adds one to its total
 		for (int i = 1; i < gameState.getP1Hand().size(); i++) {
 			if (gameState.getP1Hand().get(i) != 0) {
 				playerOne++;
