@@ -92,7 +92,6 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 		if (state.getExchangingTaxes() && state.getDeck() != null) {
 			//when it is the greater peon it will automatically pass its two highest cards
 			if (playerNum == 3 && state.getTurn() == 3) {
-				//I know this looks like a mess BUT its just passing in the two highest cards, thats it
 				game.sendAction(new GPPayTaxesAction(this));
 				return;
 			}
@@ -105,13 +104,15 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 
 			//paytaxes for lesser dalmuti (isLegal makes this move automatically)
 			else if (playerNum == 1 && state.getTurn() == 1) {
-				game.sendAction(new LDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				game.sendAction(new LDPayTaxesAction(this,
+						highestCard(state.getDeck().get(playerNum))));
 				return;
 			}
 
 			//paytaxes for greater dalmuti (isLegal makes this move automatically)
 			else if (playerNum == 0 && state.getTurn() == 0) {
-				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				game.sendAction(new GDPayTaxesAction(this,
+						highestCard(state.getDeck().get(playerNum))));
 				return;
 			}
 		}
@@ -139,7 +140,9 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 				if ( (i < state.getRankInPile()) && !(played) ) {
 					//checks to make sure the dumb ai has enough of that card
 					if (state.getDeck().get(playerNum).get(i) == state.getNumInPile()) {
-						game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
+						game.sendAction(new PlayAction(this, playerNum, i,
+								state.getNumInPile(), 0));
+
 						played = true;
 					}
 				}
@@ -151,23 +154,16 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 
 	} // receiveInfo
 
-	// TODO: ask if this can be deleted
-//		/**
-//		 * callback method: the timer ticked
-//		 */
-//		protected void timerTicked () {
-//			// 5% of the time, increment or decrement the counter
-//			if (Math.random() >= 0.05) return; // do nothing 95% of the time
-//
-//			// "flip a coin" to determine whether to increment or decrement
-//			boolean move = Math.random() >= 0.5;
-//
-//			// send the move-action to the game
-//			//game.sendAction(new edu.up.cs301.GreatDalmuti.GDMoveAction(this, move));
-//		} // timerTicked
-//
-//		public String getName(){
-//			return this.name;
-//		}
+		/**
+		 * callback method: the timer ticked
+		 */
+		protected void timerTicked () {
+			// 5% of the time, increment or decrement the counter
+			if (Math.random() >= 0.05) return; // do nothing 95% of the time
+
+			// "flip a coin" to determine whether to increment or decrement
+			boolean move = Math.random() >= 0.5;
+
+		} // timerTicked
 
 } // GDDumbAI

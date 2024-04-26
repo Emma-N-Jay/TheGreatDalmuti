@@ -232,8 +232,6 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		}
 		if(played == false){
 			game.sendAction(new PassAction(this));
-
-			//state.pass(state.getTurn());
 		}
 	} // receiveInfo
 	
@@ -246,13 +244,6 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 		// "flip a coin" to determine whether to increment or decrement
 		boolean move = Math.random() >= 0.5;
-		
-		// send the move-action to the game
-		//game.sendAction(new GDMoveAction(this, move));
 	} // timerTicked
 
-	public String getName(){
-		return this.name;
-	}
-
-} // GDComputerPlayer2
+} // CDSmartAI
