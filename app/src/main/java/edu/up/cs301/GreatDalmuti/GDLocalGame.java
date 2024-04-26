@@ -160,16 +160,16 @@ public class GDLocalGame extends LocalGame {
 		}
 
 		if (playerOne == 0) {
-			return "The Greater Dalmuti has won!";
+			return "The Greater Dalmuti has won! ";
 		}
 		else if (playerTwo == 0) {
-			return "The Lesser Dalmuti has won!";
+			return "The Lesser Dalmuti has won! ";
 		}
 		else if (playerThree == 0) {
-			return "The Greater Peon has won!";
+			return "The Greater Peon has won! ";
 		}
 		else if (playerFour == 0) {
-			return "The Lesser Peon has won!";
+			return "The Lesser Peon has won! ";
 		}
 		else {
 			return null;
