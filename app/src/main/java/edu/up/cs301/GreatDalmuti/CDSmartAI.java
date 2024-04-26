@@ -45,7 +45,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 	 */
 	public int numOfRank(int rank, ArrayList<Integer> playerHand){
 		int numCards = 0;
-		for(int i = 0; i == playerHand.size(); i++){
+		for(int i = 0; i >= playerHand.size(); i++){
 			if(playerHand.get(i) == rank){
 				numCards++;
 			}
