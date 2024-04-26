@@ -1,5 +1,5 @@
 /**
- * This contains the surfaceView for the GreatDalmuti game.
+ * This contains the surfaceView for the Great Dalmuti game.
  *
  * @author Tramanh Best
  * @author Emma Jeppesen
@@ -14,40 +14,38 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
-import android.view.View;
-
-import edu.up.cs301.GameFramework.GameMainActivity;
-import edu.up.cs301.GameFramework.infoMessage.GameInfo;
-import edu.up.cs301.GameFramework.players.GameHumanPlayer;
 
 public class surfaceDraw extends SurfaceView {
 
+    // INSTANCE VARIABLES **************************************************************************
     public Paint purple = new Paint();
     private GDState state = new GDState();
-    private final int GD = 0;
-    private final int LD = 1;
-    private final int GP = 2;
-    private final int LP = 3;
-    GDMainActivity mainActivity;
-    private GDHumanPlayer player;
 
+        // CONSTRUCTOR *********************************************************************************
 
-    public surfaceDraw(Context context, AttributeSet attr) {
-        super(context, attr);
-        setWillNotDraw(false);
-    }
+        /**
+         * constructor
+         * @param context
+         * @param attr
+         */
+        public surfaceDraw(Context context, AttributeSet attr) {
+                super(context, attr);
+                setWillNotDraw(false);
+        } // surfaceDraw
 
-    public void setPlayer(GDHumanPlayer player){
-            this.player= player;
-    }
+    // METHODS *************************************************************************************
 
     public void setCurrentGameState(GDState state){
         this.state = state;
     }
+
+        /**
+         * draws the canvas
+         * @param canvas the canvas on which the background will be drawn
+         */
     @Override
     protected void onDraw(Canvas canvas){
 
@@ -168,75 +166,6 @@ public class surfaceDraw extends SurfaceView {
             //Draw text for num card
             canvas.drawText("# played:",  750, 500, purple);
             canvas.drawText(" " + state.getNumInPile(), 885, 500, purple);
-//            if(player != null){
-//                    String name = player.getPlayerName(0);
-//                    if(name != null){
-//                            canvas.drawText(name, 950, 500, purple);
-//                    }
-//            }
-
-
-
-            //TODO: assign player rank
-
-            //canvas.drawText("hello", 885, 500, purple);
-
-            /**
-           JUST NEED TO FIND RANK OF HUMAN PLAYER
-
-             if(player.getRank == the rank)
-
-             */
-
-            //Set the text based on rank and num cards
-            //TODO Fix this. Find way to get ranks
-            int humanNum;
-//            if(state.ranks[0] == "Great Dalmuti"){
-//                    //name labels
-//                    humanNum = GD;
-//                    canvas.drawText("Lesser Dalmuti", 25, 75, purple);
-//                    canvas.drawText("Lesser Peon", 275, 25, purple);
-//                    canvas.drawText("Great Peon", 1810, 75, purple);
-//                    canvas.drawText("Great Dalmuti", 750, 700, purple);
-//            }
-//            if(state.ranks[0] == "Lesser Dalmuti"){
-//                    humanNum = LD;
-//                    //name labels
-//                    canvas.drawText("Lesser Dalmuti", 25, 75, purple);
-//                    canvas.drawText("Great Peon" , 275, 25, purple);
-//                    canvas.drawText("Lesser Peon", 1810, 75, purple);
-//                    canvas.drawText("Great Dalmuti" , 750, 700, purple);
-//
-//            }if(state.ranks[0] == "Lesser Peon"){
-//                    //name labels
-//                    humanNum = LP;
-//                    canvas.drawText("Great Dalmuti", 25, 75, purple);
-//                    canvas.drawText("Lesser Peon" , 275, 25, purple);
-//                    canvas.drawText( "Great Peon", 1810, 75, purple);
-//                    canvas.drawText("Lesser Dalmuti"  , 750, 700, purple);
-//            }if(state.ranks[0] == "Great Peon"){
-//                    humanNum = GP;
-//                    //Draw text for num card
-//                    canvas.drawText("# played:", 775, 500, purple);
-//                    canvas.drawText("4", 885, 500, purple);
-//
-//                    //draw labels of player
-//                    canvas.drawText("Great Dalmuti", 25, 75, purple);
-//                    canvas.drawText("Lesser Dalmuti", 275, 25, purple);
-//                    canvas.drawText("Lesser Peon", 1810, 75, purple);
-//                    canvas.drawText("Great Peon", 925, 575, purple);
-//
-//                    //Num cards labels
-//                    //draw num cards of GD
-//                    canvas.drawText("# cards:", 25, 475, purple);
-//                    canvas.drawText(" "+ state.getP2Hand().size(), 125 , 475, purple);
-//                    //draw num cards of LD
-//                    canvas.drawText("# cards:", 275, 50, purple);
-//                    canvas.drawText(" " + state.getP3Hand().size(), 375 , 50, purple);
-//                    //draw num cards of LP
-//                    canvas.drawText("# cards:", 850 , 700, purple);
-//                    canvas.drawText(" " + state.getP4Hand().size(), 750, 700, purple);
-//            }
 
             //draw num cards of GD
             canvas.drawText("# cards:", 25, 475, purple);
@@ -252,7 +181,6 @@ public class surfaceDraw extends SurfaceView {
             canvas.drawText(" " + state.totalP4Hand(), 1910 , 475, purple);
 
             //Time to do the pile!
-            //TODO Fix what card is placed on the pile based on what card was just played
             if(state.getRankInPile() == 1){
                 canvas.drawBitmap(deckDal, 900, 250, null);
             }else if(state.getRankInPile() == 2) {
@@ -280,5 +208,5 @@ public class surfaceDraw extends SurfaceView {
             }else if(state.getRankInPile() == 13) {
                     canvas.drawBitmap(deckJester, 900, 250, null);
             }
-    }
-}
+    } // onDraw
+} // surfaceDraw
