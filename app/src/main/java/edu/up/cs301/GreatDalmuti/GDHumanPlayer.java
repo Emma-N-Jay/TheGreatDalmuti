@@ -26,9 +26,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	// INSTANCE VARIABLES **************************************************************************
 
-	// The TextView the displays the current counter value
-	private TextView testResultsTextView;
-	
 	// the most recent game state, as given to us by the CounterLocalGame
 	private GDState state;
 	
@@ -44,21 +41,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	// number of jesters selected
 	private int j;
 
-	private String nString;
-
-	// button variables
-	private Button passButton;
-	private Button playButton;
-	private Button plusB;
-	private Button minusB;
-	private Button jplusB;
-	private Button jminusB;
-
-	//music and sound variables
-	private Switch musicSwitch;
 	//For background music
 	private MediaPlayer music;
-	private MediaPlayer soundEffects;
 	private boolean backgroundMusic = false;
 
 	// image button variables
@@ -150,6 +134,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 //		if(button.getId() == R.id.editTextTextMultiLine){
 //		}
 
+		MediaPlayer soundEffects;
 		if (button.getId() == R.id.playButton) {
 			PlayAction playAction = new PlayAction(this, playerNum, c, n, j);
 			game.sendAction(playAction);
@@ -232,18 +217,18 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			c = 12;
 		}
 		cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-		nString = state.getDeck().get(playerNum).get(c).toString();
-		n = Integer.parseInt(nString);
+		String nString1 = state.getDeck().get(playerNum).get(c).toString();
+		n = Integer.parseInt(nString1);
 
 		//more or less cards
 		if (button.getId() == R.id.addbutton) {
-			nString = cardsNum.getText().toString();
-			n = Integer.parseInt(nString) + 1;
+			nString1 = cardsNum.getText().toString();
+			n = Integer.parseInt(nString1) + 1;
 			cardsNum.setText("" + n);
 		} else if (button.getId() == R.id.minusbutton) {
-			nString = cardsNum.getText().toString();
+			nString1 = cardsNum.getText().toString();
 			if (n > 0) {
-				n = Integer.parseInt(nString) - 1;
+				n = Integer.parseInt(nString1) - 1;
 				cardsNum.setText("" + n);
 			}
 		}
@@ -496,7 +481,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// Load the layout resource for our GUI
 		activity.setContentView(R.layout.dalmuti_main_xml);
 
-		this.testResultsTextView = (TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
+		// The TextView the displays the current counter value
+		TextView testResultsTextView = (TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
 
 		//image buttons
 		this.revolutionButton = (ImageButton) activity.findViewById(R.id.revolutionButton);
@@ -516,15 +502,17 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.jester = (ImageButton) activity.findViewById(R.id.jester);
 
 		//player action buttons
-		this.passButton = (Button) activity.findViewById(R.id.passButton);
-		this.playButton = (Button) activity.findViewById(R.id.playButton);
-		this.plusB = (Button) activity.findViewById(R.id.addbutton);
-		this.minusB = (Button) activity.findViewById(R.id.minusbutton);
-		this.jplusB = (Button) activity.findViewById(R.id.addjbutton);
-		this.jminusB = (Button) activity.findViewById(R.id.minusjbutton);
+		// button variables
+		Button passButton = (Button) activity.findViewById(R.id.passButton);
+		Button playButton = (Button) activity.findViewById(R.id.playButton);
+		Button plusB = (Button) activity.findViewById(R.id.addbutton);
+		Button minusB = (Button) activity.findViewById(R.id.minusbutton);
+		Button jplusB = (Button) activity.findViewById(R.id.addjbutton);
+		Button jminusB = (Button) activity.findViewById(R.id.minusjbutton);
 
 		//switch to turn off background noise
-		this.musicSwitch = (Switch) activity.findViewById(R.id.musicSwitch);
+		//music and sound variables
+		Switch musicSwitch = (Switch) activity.findViewById(R.id.musicSwitch);
 
 		//listens for button presses
 		passButton.setOnClickListener(this);
