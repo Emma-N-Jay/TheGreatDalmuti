@@ -278,7 +278,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 					music.setLooping(true);
 				}
 			}
-
 		}
 
 		//updates number of cards
@@ -297,7 +296,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		twelveNum.setText("" + state.getDeck().get(playerNum).get(12));
 		canvas.invalidate();
 
-
+		// TODO: ASK NUX IF THIS STILL NEEDS TO BE INCLUDED FOR FINAL
 //		// I cannot overstate how long I took me to figure out this needed to be called on
 //		// myActivity and not that for some reason nothing works for no reason
 //		EditText textBox = myActivity.findViewById(R.id.editTextTextMultiLine);
@@ -369,14 +368,13 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	
 	/**
 	 * callback method when we get a message (e.g., from the game)
-	 * 
-	 * @param info
-	 * 		the message
+	 * @param info - the message
 	 *
 	 */
 	@Override
 	public void receiveInfo(GameInfo info) {
 
+		// if it is not an instance of the state it returns
 		if (!(info instanceof edu.up.cs301.GreatDalmuti.GDState)) return;
 
 		GDState postType = (GDState) info;
@@ -387,136 +385,135 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		updateDisplay();
 
 		// image of revolution image button set if possible
-		if(state.getDeck().get(playerNum).get(13) == 2){
+		if (state.getDeck().get(playerNum).get(13) == 2) {
 			revolutionButton.setImageResource(R.drawable.revbutton);
 		} else {
 			revolutionButton.setImageResource(R.drawable.blankspace);
 		}
 
 		//image of pay taxes button if during that phase of the game
-		if(state.getExchangingTaxes()){
+		if (state.getExchangingTaxes()) {
 			paytaxesButton.setImageResource(R.drawable.paytaxesimage);
 		} else {
 			paytaxesButton.setImageResource(R.drawable.blankspace);
 		}
 
 		//displays total cards numbers for every card
-			jesterNum.setText("" + postType.getDeck().get(playerNum).get(13));
-			oneNum.setText("" + postType.getDeck().get(playerNum).get(1));
-			twoNum.setText("" +postType.getDeck().get(playerNum).get(2));
-			threeNum.setText("" +postType.getDeck().get(playerNum).get(3));
-			fourNum.setText("" +postType.getDeck().get(playerNum).get(4));
-			fiveNum.setText("" +postType.getDeck().get(playerNum).get(5));
-			sixNum.setText("" +postType.getDeck().get(playerNum).get(6));
-			sevenNum.setText("" +postType.getDeck().get(playerNum).get(7));
-			eightNum.setText("" +postType.getDeck().get(playerNum).get(8));
-			nineNum.setText("" +postType.getDeck().get(playerNum).get(9));
-			tenNum.setText("" +postType.getDeck().get(playerNum).get(10));
-			elevenNum.setText("" +postType.getDeck().get(playerNum).get(11));
-			twelveNum.setText("" +postType.getDeck().get(playerNum).get(12));
+		jesterNum.setText("" + postType.getDeck().get(playerNum).get(13));
+		oneNum.setText("" + postType.getDeck().get(playerNum).get(1));
+		twoNum.setText("" + postType.getDeck().get(playerNum).get(2));
+		threeNum.setText("" + postType.getDeck().get(playerNum).get(3));
+		fourNum.setText("" + postType.getDeck().get(playerNum).get(4));
+		fiveNum.setText("" + postType.getDeck().get(playerNum).get(5));
+		sixNum.setText("" + postType.getDeck().get(playerNum).get(6));
+		sevenNum.setText("" + postType.getDeck().get(playerNum).get(7));
+		eightNum.setText("" + postType.getDeck().get(playerNum).get(8));
+		nineNum.setText("" + postType.getDeck().get(playerNum).get(9));
+		tenNum.setText("" + postType.getDeck().get(playerNum).get(10));
+		elevenNum.setText("" + postType.getDeck().get(playerNum).get(11));
+		twelveNum.setText("" + postType.getDeck().get(playerNum).get(12));
 
-		// if number of cards is more than 0, else grey once imported
-		if(postType.getDeck().get(playerNum).get(1) >= 1){
+		// if number of cards is more than 0 then color version, else grey
+		if (postType.getDeck().get(playerNum).get(1) >= 1) {
 			one.setImageResource(R.drawable.great_dalmuti);
 		} else {
 			one.setImageResource(R.drawable.grey_gd);
 		}
-		if(postType.getDeck().get(playerNum).get(2) >= 1){
+		if (postType.getDeck().get(playerNum).get(2) >= 1) {
 			two.setImageResource(R.drawable.arch_bishop);
 		} else {
 			two.setImageResource(R.drawable.grey_archbishop);
 		}
-		if(postType.getDeck().get(playerNum).get(3) >= 1){
+		if (postType.getDeck().get(playerNum).get(3) >= 1) {
 			three.setImageResource(R.drawable.earl_marshal);
 		} else {
 			three.setImageResource(R.drawable.grey_earl);
 		}
-		if(postType.getDeck().get(playerNum).get(4) >= 1){
+		if (postType.getDeck().get(playerNum).get(4) >= 1) {
 			four.setImageResource(R.drawable.baroness);
 		} else {
 			four.setImageResource(R.drawable.grey_baroness);
 		}
-		if(postType.getDeck().get(playerNum).get(5) >= 1){
+		if (postType.getDeck().get(playerNum).get(5) >= 1) {
 			five.setImageResource(R.drawable.abbess);
 		} else {
 			five.setImageResource(R.drawable.grey_abbess);
 		}
-		if(postType.getDeck().get(playerNum).get(6) >= 1){
+		if (postType.getDeck().get(playerNum).get(6) >= 1) {
 			six.setImageResource(R.drawable.knight);
 		} else {
 			six.setImageResource(R.drawable.grey_knight);
 		}
-		if(postType.getDeck().get(playerNum).get(7) >= 1){
+		if (postType.getDeck().get(playerNum).get(7) >= 1) {
 			seven.setImageResource(R.drawable.seamstress);
 		} else {
 			seven.setImageResource(R.drawable.grey_seamstress);
 		}
-		if(postType.getDeck().get(playerNum).get(8) >= 1){
+		if (postType.getDeck().get(playerNum).get(8) >= 1) {
 			eight.setImageResource(R.drawable.mason);
 		} else {
 			eight.setImageResource(R.drawable.grey_mason);
 		}
-		if(postType.getDeck().get(playerNum).get(9) >= 1){
+		if (postType.getDeck().get(playerNum).get(9) >= 1) {
 			nine.setImageResource(R.drawable.cook);
 		} else {
 			nine.setImageResource(R.drawable.grey_cook);
 		}
-		if(postType.getDeck().get(playerNum).get(10) >= 1){
+		if (postType.getDeck().get(playerNum).get(10) >= 1) {
 			ten.setImageResource(R.drawable.sheperdess);
 		} else {
 			ten.setImageResource(R.drawable.grey_shepherdress);
 		}
-		if(postType.getDeck().get(playerNum).get(11) >= 1){
+		if (postType.getDeck().get(playerNum).get(11) >= 1) {
 			eleven.setImageResource(R.drawable.stonecutter);
 		} else {
 			eleven.setImageResource(R.drawable.grey_stonecutter);
 		}
-		if(postType.getDeck().get(playerNum).get(12) >= 1){
+		if (postType.getDeck().get(playerNum).get(12) >= 1) {
 			twelve.setImageResource(R.drawable.peasant);
 		} else {
 			twelve.setImageResource(R.drawable.grey_peasant);
 		}
-		if(postType.getDeck().get(playerNum).get(13) >= 1){
+		if (postType.getDeck().get(playerNum).get(13) >= 1) {
 			jester.setImageResource(R.drawable.jesteryetagain);
 		} else {
 			jester.setImageResource(R.drawable.grey_jester);
 		}
 
 	} // receiveInfo
-	
+
 	/**
 	 * callback method--our game has been chosen/rechosen to be the GUI,
 	 * called from the GUI thread
-	 * 
-	 * @param activity
-	 * 		the activity under which we are running
+	 *
+	 * @param activity the activity under which we are running
 	 */
 	public void setAsGui(GameMainActivity activity) {
-		
+
 		// remember the activity
 		this.myActivity = activity;
-		
-	    // Load the layout resource for our GUI
+
+		// Load the layout resource for our GUI
 		activity.setContentView(R.layout.dalmuti_main_xml);
 
 		this.testResultsTextView = (TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
 
-		//image button for rev and the cards
-		this.revolutionButton = (ImageButton)activity.findViewById(R.id.revolutionButton);
-		this.paytaxesButton = (ImageButton)activity.findViewById(R.id.payTaxesButton);
-		this.one = (ImageButton)activity.findViewById(R.id.one);
-		this.two = (ImageButton)activity.findViewById(R.id.two);
-		this.three = (ImageButton)activity.findViewById(R.id.three);
-		this.four = (ImageButton)activity.findViewById(R.id.four);
-		this.five = (ImageButton)activity.findViewById(R.id.five);
-		this.six = (ImageButton)activity.findViewById(R.id.six);
-		this.seven = (ImageButton)activity.findViewById(R.id.seven);
-		this.eight = (ImageButton)activity.findViewById(R.id.eight);
-		this.nine = (ImageButton)activity.findViewById(R.id.nine);
-		this.ten = (ImageButton)activity.findViewById(R.id.ten);
-		this.eleven = (ImageButton)activity.findViewById(R.id.eleven);
-		this.twelve = (ImageButton)activity.findViewById(R.id.twelve);
-		this.jester = (ImageButton)activity.findViewById(R.id.jester);
+		//image buttons
+		this.revolutionButton = (ImageButton) activity.findViewById(R.id.revolutionButton);
+		this.paytaxesButton = (ImageButton) activity.findViewById(R.id.payTaxesButton);
+		this.one = (ImageButton) activity.findViewById(R.id.one);
+		this.two = (ImageButton) activity.findViewById(R.id.two);
+		this.three = (ImageButton) activity.findViewById(R.id.three);
+		this.four = (ImageButton) activity.findViewById(R.id.four);
+		this.five = (ImageButton) activity.findViewById(R.id.five);
+		this.six = (ImageButton) activity.findViewById(R.id.six);
+		this.seven = (ImageButton) activity.findViewById(R.id.seven);
+		this.eight = (ImageButton) activity.findViewById(R.id.eight);
+		this.nine = (ImageButton) activity.findViewById(R.id.nine);
+		this.ten = (ImageButton) activity.findViewById(R.id.ten);
+		this.eleven = (ImageButton) activity.findViewById(R.id.eleven);
+		this.twelve = (ImageButton) activity.findViewById(R.id.twelve);
+		this.jester = (ImageButton) activity.findViewById(R.id.jester);
 
 		//player action buttons
 		this.passButton = (Button) activity.findViewById(R.id.passButton);
@@ -573,12 +570,8 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.twelveNum = (TextView) activity.findViewById(R.id.twelveNum);
 
 		//find the surface view
-		this.canvas = (surfaceDraw)activity.findViewById(R.id.the_canvas);
+		this.canvas = (surfaceDraw) activity.findViewById(R.id.the_canvas);
 
 	} // setAsGui
-
-	public String getName(){
-		return this.name;
-	}
 
 } // GDHumanPlayer class
