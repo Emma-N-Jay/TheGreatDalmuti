@@ -58,6 +58,7 @@ public class GDState extends GameState implements Serializable {
 	private int numPass;
 
 	// CONSTRUCTORS ********************************************************************************
+
 	/**
 	 * constructor
 	 * no parameters

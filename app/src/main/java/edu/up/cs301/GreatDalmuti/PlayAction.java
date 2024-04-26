@@ -18,6 +18,7 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
 public class PlayAction extends GameAction implements Serializable {
 
     // INSTANCE VARIABLES **************************************************************************
+
     private static final long serialVersionUID = 242304102306L;
     int playerId;
     int rankSelected;
@@ -41,5 +42,5 @@ public class PlayAction extends GameAction implements Serializable {
         this.rankSelected = rankSelected;
         this.numSelected = numSelected;
         this.jesterSelected = jesterSelected;
-    }
-}
+    } // PlayAction
+} // PlayAction

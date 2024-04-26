@@ -209,4 +209,7 @@ public class surfaceDraw extends SurfaceView {
                     canvas.drawBitmap(deckJester, 900, 250, null);
             }
     } // onDraw
+
+    public void setPlayer(GDHumanPlayer gdHumanPlayer) {
+    }
 } // surfaceDraw
