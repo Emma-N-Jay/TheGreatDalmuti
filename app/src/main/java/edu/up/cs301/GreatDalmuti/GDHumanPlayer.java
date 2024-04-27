@@ -10,6 +10,7 @@
 
 package edu.up.cs301.GreatDalmuti;
 
+import android.app.Dialog;
 import android.media.MediaPlayer;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -99,6 +100,20 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private TextView twelveNum;
 	// surface draw for other players cards, card numbers, and in pile display
 	private surfaceDraw canvas;
+	
+	/** External Citation
+	 * Date: 4/26/2024
+	 * Problem: Wanted to make pop-ups for how to play and the rules
+	 * Resource: https://www.youtube.com/watch?v=P9rnjyX3sgk
+	 * Solution: Figured out how to do so using this example
+	 * */
+	private Dialog howToPlay;
+	private Dialog rules;
+	private ImageButton rulesCloseButton;
+	private ImageButton howToCloseButton;
+	private Button rulesButton;
+	private Button howToButton;
+	
 
 	// CONSTRUCTORS ********************************************************************************
 	/**
@@ -349,6 +364,31 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			updateBackgroundMusic();
 		}
 
+		/** External Citation
+		 * Date: 4/26/2024
+		 * Problem: Wanted to make pop-ups for how to play and the rules
+		 * Resource: https://www.youtube.com/watch?v=P9rnjyX3sgk
+		 * Solution: Figured out how to do so using this example
+		 * */
+		// shows rules popup when clicked
+		else if (button.getId() == R.id.rulesButton) {
+			rules.show();
+		}
+		// shows how to play popup when clicked
+		else if (button.getId() == R.id.howToPlayButton) {
+			howToPlay.show();
+		}
+		// closes popup if clicked
+		else if (button.getId() == R.id.rulesClose) {
+			rules.dismiss();
+		}
+		// closes popup if clicked
+		else if (button.getId() == R.id.howToClose) {
+			howToPlay.dismiss();
+		}
+
+
+
 		//updates number of cards displays
 		updateCardTexts();
 		updateDisplay();
@@ -558,6 +598,34 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.tenNum = (TextView) activity.findViewById(R.id.tenNum);
 		this.elevenNum = (TextView) activity.findViewById(R.id.elevenNum);
 		this.twelveNum = (TextView) activity.findViewById(R.id.twelveNum);
+
+		/** External Citation
+		 * Date: 4/26/2024
+		 * Problem: Wanted to make pop-ups for how to play and the rules
+		 * Resource: https://www.youtube.com/watch?v=P9rnjyX3sgk
+		 * Solution: Figured out how to do so using this example
+		 * */
+		// displays rules pop-up when button pushed
+		this.rulesButton = myActivity.findViewById(R.id.rulesButton);
+		this.rules = new Dialog(myActivity,
+				android.R.style.Theme_DeviceDefault_Dialog_NoActionBar);
+		this.rules.setContentView(R.layout.gd_rules_popup);
+		this.rulesButton.setOnClickListener(this);
+
+		// sets close button to work in pop-up
+		this.rulesCloseButton = rules.findViewById(R.id.rulesClose);
+		this.rulesCloseButton.setOnClickListener(this);
+
+		// displays how to play popup
+		this.howToButton = myActivity.findViewById(R.id.howToPlayButton);
+		this.howToPlay = new Dialog(myActivity,
+				android.R.style.Theme_DeviceDefault_Dialog_NoActionBar);
+		this.howToPlay.setContentView(R.layout.gd_how_to_play_popup);
+		this.howToButton.setOnClickListener(this);
+
+		// sets close button to work in pop-up
+		this.howToCloseButton = howToPlay.findViewById(R.id.howToClose);
+		this.howToCloseButton.setOnClickListener(this);
 
 		//find the surface view
 		this.canvas = (surfaceDraw)activity.findViewById(R.id.the_canvas);

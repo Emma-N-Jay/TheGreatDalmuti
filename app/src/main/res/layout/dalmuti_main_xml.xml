@@ -27,11 +27,32 @@
             android:textStyle="italic"
             android:typeface="serif" />
 
+        <Button
+            android:id="@+id/rulesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="120dp"
+            android:backgroundTint="#402264"
+            android:text="rules"
+            android:fontFamily="serif"
+            android:textColor="#BC9BFF">
+        </Button>
+
+        <Button
+            android:id="@+id/howToPlayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="#402264"
+            android:text="how to play"
+            android:fontFamily="serif"
+            android:textColor="#BC9BFF">
+        </Button>
+
         <Switch
             android:id="@+id/musicSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="440dp"
+            android:layout_marginLeft="15dp"
             android:backgroundTint="#402264"
             android:text="Music"
             android:textColor="#BC9BFF" />
@@ -469,7 +490,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#402264"
                 android:text="pass"
-                android:textColor="#BC9BFF" />
+                android:textColor="#BC9BFF"
+                android:fontFamily="serif"/>
 
             <Button
                 android:id="@+id/playButton"
@@ -477,7 +499,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#402264"
                 android:text="play"
-                android:textColor="#BC9BFF" />
+                android:textColor="#BC9BFF"
+                android:fontFamily="serif"/>
 
             <ImageButton
                 android:id="@+id/revolutionButton"
@@ -524,7 +547,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#402264"
                     android:text="+"
-                    android:textColor="#BC9BFF" />
+                    android:textColor="#BC9BFF"
+                    android:fontFamily="serif"/>
 
                 <TextView
                     android:id="@+id/jesterNumSelected"
@@ -548,7 +572,8 @@
                     android:layout_marginRight="60dp"
                     android:backgroundTint="#402264"
                     android:text="-"
-                    android:textColor="#BC9BFF" />
+                    android:textColor="#BC9BFF"
+                    android:fontFamily="serif"/>
 
                 <TextView
                     android:id="@+id/label2"
@@ -571,7 +596,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#402264"
                     android:text="+"
-                    android:textColor="#BC9BFF" />
+                    android:textColor="#BC9BFF"
+                    android:fontFamily="serif"/>
 
 
                 <TextView
@@ -596,7 +622,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#402264"
                     android:text="-"
-                    android:textColor="#BC9BFF" />
+                    android:textColor="#BC9BFF"
+                    android:fontFamily="serif"/>
 
             </LinearLayout>
 
