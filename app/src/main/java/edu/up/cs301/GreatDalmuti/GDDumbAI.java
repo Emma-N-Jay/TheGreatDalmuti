@@ -9,9 +9,9 @@
  */
 
 package edu.up.cs301.GreatDalmuti;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 import edu.up.cs301.GameFramework.players.GameComputerPlayer;
@@ -39,13 +39,15 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
         // start the timer, ticking 20 times per second
         getTimer().setInterval(50);
         getTimer().start();
-    } // GDComputerPlayer1
+    } // GDDumbAI
 
-	public int rankOfCard(int index, ArrayList<Integer> playerHand){
-		return playerHand.get(index);
-	}
+	// HELPER METHODS ******************************************************************************
 
-	//this method finds the index of the highest card
+	/**
+	 * find the index of the highest card
+	 * @param playerHand - the cards a player holds
+	 * @return
+	 */
 	public int highestCard(ArrayList<Integer> playerHand){
 		int highCard = 1;
 		for(int i = playerHand.size() - 1; i > 0; i--){
@@ -54,9 +56,10 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			}
 		}
 		return highCard;
-	}
+	} // highestCard
 
 	// METHODS *************************************************************************************
+
     /**
      * callback method--game's state has changed
      * 
@@ -86,11 +89,9 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 		/**
 		 * GIVING TAXES
 		 */
-
 		if (state.getExchangingTaxes() && state.getDeck() != null) {
 			//when it is the greater peon it will automatically pass its two highest cards
 			if (playerNum == 3 && state.getTurn() == 3) {
-				//I know this looks like a mess BUT its just passing in the two highest cards, thats it
 				game.sendAction(new GPPayTaxesAction(this));
 				return;
 			}
@@ -101,21 +102,23 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 				return;
 			}
 
-			//paytaxes for lesser dalmuti (isLegal makes this move automatically)
+			//paytaxes for lesser dalmuti (makes this move automatically)
 			else if (playerNum == 1 && state.getTurn() == 1) {
-				game.sendAction(new LDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				game.sendAction(new LDPayTaxesAction(this,
+						highestCard(state.getDeck().get(playerNum))));
 				return;
 			}
 
-			//paytaxes for greater dalmuti (isLegal makes this move automatically)
+			//paytaxes for greater dalmuti (makes this move automatically)
 			else if (playerNum == 0 && state.getTurn() == 0) {
-				game.sendAction(new GDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
+				game.sendAction(new GDPayTaxesAction(this,
+						highestCard(state.getDeck().get(playerNum))));
 				return;
 			}
 		}
 
 			/**
-			 * GETTING THE LEAD (should this somehow happen)
+			 * GETTING THE LEAD
 			 */
 		if(playerNum == state.getTurn()) {
 			//this is the index of the current highest card
@@ -137,7 +140,8 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 				if ( (i < state.getRankInPile()) && !(played) ) {
 					//checks to make sure the dumb ai has enough of that card
 					if (state.getDeck().get(playerNum).get(i) == state.getNumInPile()) {
-						game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
+						game.sendAction(new PlayAction(this, playerNum, i,
+								state.getNumInPile(), 0));
 						played = true;
 					}
 				}
@@ -158,12 +162,6 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			// "flip a coin" to determine whether to increment or decrement
 			boolean move = Math.random() >= 0.5;
 
-			// send the move-action to the game
-			//game.sendAction(new edu.up.cs301.GreatDalmuti.GDMoveAction(this, move));
 		} // timerTicked
 
-		public String getName(){
-			return this.name;
-		}
-
-} // GDComputerPlayer1 class
+} // GDDumbAI
