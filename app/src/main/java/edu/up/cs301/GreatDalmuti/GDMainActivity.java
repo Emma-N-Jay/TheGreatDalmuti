@@ -6,6 +6,32 @@
  * @author Alex Burns
  * @author Theresa Wunderlich
  * @version April 12 2024
+ *
+ * Our game allows a user to pay taxes, declare a revolution when they have two jesters, play, and pass.
+ * We chose that the greater and lesser peons' taxes are automatically paid for them, whereas the greater
+ * and lesser dalmatis' get to select the cards they want to be sent as taxes. We decided that the only revolution
+ * allowed in our game is the case when no taxes are present. We made this decision because we could not figure out
+ * how to get the players' names to switch the players' ranks. We consulted Vegdahl about accessing players and
+ * concluded it would be unrealistic, so we decided to scrap the second case and support only the first revolution case.
+ * The play allows the jester to be added to the cards selected to meet the required number of cards in the pile.
+ * Our GUI has improved from our initial design; using image buttons and a surface view, we created a clean and
+ * intuitive layout for the user. The differences between the smart and dumb AIs are the following:
+ * taxes are smarter and leading. The play style is similar, where they will only play the same
+ *amount of cards as in the pile. Leading will play the highest set of cards, including jesters,
+ * for the smart AI, whereas the dumb AI will first play the jester and then their lowest card.
+ * Our game supports network play with up to four devices. We made the decision that our game must be
+ * played with four players.
+ *
+ * One bug we have is that when a revolution is able to be declared, if a player pays taxes before
+ * declaring a revolution, they will lose those tax cards and not get them back. In this case, we
+ * did not have time to implement a helper method for precedence to prevent this from happening.
+ * Another functionality that could have been added is the second revolution case, switching the
+ * ranks of players, which would mean figuring out how to access players. Additionally, by finding
+ * out how to access players, we would be able to label player ranks on the GUI. We also would have
+ * liked to figure out and implement a way to display whose turn it is.
+ *
+ * Additional features: custom cards, background music, sound effects when buttons are clicked,
+ * app icon, pop-ups (rules and how to play)
  */
 
 package edu.up.cs301.GreatDalmuti;
