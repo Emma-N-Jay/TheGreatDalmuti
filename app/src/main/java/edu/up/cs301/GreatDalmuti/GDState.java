@@ -27,7 +27,7 @@ public class GDState extends GameState implements Serializable {
 	private boolean handIsVisible; //if a players hand is visible for a specific device
 	private boolean revolutionIsVisible; //is the revolution button visible
 	private boolean exchangingTaxes; //are we currently exchanging taxes
-	private boolean[] taxesPayed = {false, false, false, false}; // is all true when everyone payed their taxes
+	private boolean[] taxesPayed = {false, false, false, false}; //is all true when everyone payed taxes
 	private int dalmutiTaxes; //keeps track of the number of cards the great dalmuti has payed in taxes
 	private int numInPile; // number of the current rank of cards in the middle
 	private int rankInPile; // the number of the rank in the pile
@@ -61,7 +61,7 @@ public class GDState extends GameState implements Serializable {
 		this.numInPile = 0;
 		this.rankInPile = 0;
 		this.hasLowestInRound = 0;
-		this.hasLead = 0; //this should assign the lead to default to GDalmuti but also could be 1 instead of 0
+		this.hasLead = 0; //assigns default lead to GDalmuti but also could be 1 instead of 0
 		this.revolutionIsVisible = false;
 		this.turn = 0;
 		shuffle();
@@ -139,7 +139,8 @@ public class GDState extends GameState implements Serializable {
 		System.out.println("Hand is variable - " + this.handIsVisible);
 		System.out.println("Number of cards last put in pile - " + this.numInPile);
 		System.out.println("Rank of cards last put in pile - " + this.rankInPile);
-		System.out.println("If player has played the lowest card of the round - " + this.hasLowestInRound);
+		System.out.println("If player has played the lowest card of the round - " +
+				this.hasLowestInRound);
 		System.out.println("Number of player who has the lead - " + this.hasLead);
 		System.out.println("Revolution is visible - " + this.revolutionIsVisible);
 		return null;
@@ -460,7 +461,8 @@ public class GDState extends GameState implements Serializable {
 					deck.get(action.playerId).get(13) - (action.jesterSelected) );
 			temp = true;
 		}
-		else if (isLegalMove(action.playerId, action.rankSelected, action.numSelected, action.jesterSelected)) {
+		else if (isLegalMove(action.playerId, action.rankSelected, action.numSelected,
+				action.jesterSelected)) {
 			deck.get(action.playerId).set(action.rankSelected,
 					deck.get(action.playerId).get(action.rankSelected) - (action.numSelected) );
 			deck.get(action.playerId).set(13,

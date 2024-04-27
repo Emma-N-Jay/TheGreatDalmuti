@@ -233,7 +233,8 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 			if(i < state.getRankInPile()){
 				//checks to make sure the smart ai has the same amount of that card
 				if(state.getDeck().get(playerNum).get(i) == state.getNumInPile()){
-					game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(), 0));
+					game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(),
+							0));
 					played = true;
 				}
 			}

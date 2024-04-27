@@ -24,7 +24,7 @@ public class surfaceDraw extends SurfaceView {
     public Paint purple = new Paint();
     private GDState state = new GDState();
 
-        // CONSTRUCTOR *********************************************************************************
+        // CONSTRUCTOR *****************************************************************************
 
         /**
          * constructor
