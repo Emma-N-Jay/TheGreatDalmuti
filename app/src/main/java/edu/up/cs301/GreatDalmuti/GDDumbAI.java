@@ -145,7 +145,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			 * PASSING AND PLAYING CARDS WITH THE DUMB AI
 			 */
 			played = false;
-			for (int i = 12; i >= 1; i--) {
+			for (int i = 1; i < 14; i++) {
 				// checks for highest rank below the current rank in the pile
 				if ( (i < state.getRankInPile()) && !(played) ) {
 					// checks to make sure the dumb ai has enough of that card
