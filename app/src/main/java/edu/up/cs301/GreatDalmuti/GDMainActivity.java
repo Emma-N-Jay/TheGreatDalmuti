@@ -22,13 +22,17 @@
  * Our game supports network play with up to four devices. We made the decision that our game must be
  * played with four players.
  *
+ * UPDATE: the smart AI now plays high cards first instead of its lowest card
+ *
  * One bug we have is that when a revolution is able to be declared, if a player pays taxes before
  * declaring a revolution, they will lose those tax cards and not get them back. In this case, we
  * did not have time to implement a helper method for precedence to prevent this from happening.
  * Another functionality that could have been added is the second revolution case, switching the
  * ranks of players, which would mean figuring out how to access players. Additionally, by finding
  * out how to access players, we would be able to label player ranks on the GUI. We also would have
- * liked to figure out and implement a way to display whose turn it is.
+ * liked to figure out and implement a way to display whose turn it is. Additional bug is that when
+ * the human player is any other rank than the greater dalmuti, the number of cards in hand displayed
+ * is not displayed for the right player, again because of the inability to access the human player id.
  *
  * Additional features: custom cards, background music, sound effects when buttons are clicked,
  * app icon, pop-ups (rules and how to play)
