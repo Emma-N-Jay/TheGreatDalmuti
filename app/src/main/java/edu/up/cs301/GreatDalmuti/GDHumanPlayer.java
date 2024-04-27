@@ -339,11 +339,13 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		// more or less cards
 		else if(button.getId() == R.id.addbutton){
-			updateNum();
+			n++;
+			cardsNum.setText("" + n);
 		} else if(button.getId() == R.id.minusbutton){
 			// can't select negative cards
 			if(n > 0) {
-				updateNum();
+				n--;
+				cardsNum.setText("" + n);
 			}
 		}
 
