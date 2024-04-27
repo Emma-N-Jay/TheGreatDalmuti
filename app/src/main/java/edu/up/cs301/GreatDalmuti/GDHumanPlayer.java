@@ -158,13 +158,13 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		if(button.getId() == R.id.playButton){
 			PlayAction playAction = new PlayAction(this, playerNum, c, n, j);
 			game.sendAction(playAction);
-			updateMusic();
+			updateSong();
 		}
 
 		else if(button.getId() == R.id.passButton){
 			PassAction passAction = new PassAction(this);
 			game.sendAction(passAction);
-			updateMusic();
+			updateSong();
 		}
 
 		else if(button.getId() == R.id.revolutionButton){
@@ -178,134 +178,77 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			sendTaxes();
 		}
 
-		//selected cards/display for selected cards
+		//updates selected cards & number of cards ints, text and display for selected cards
 		else if(button.getId() == R.id.jester){
 			c = 13;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		} else if(button.getId() == R.id.one){
 			c = 1;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		} else if(button.getId() == R.id.two){
 			c = 2;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		} else if(button.getId() == R.id.three){
 			c = 3;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		} else if(button.getId() == R.id.four){
 			c = 4;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		} else if(button.getId() == R.id.five){
 			c = 5;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		} else if(button.getId() == R.id.six){
 			c = 6;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		} else if(button.getId() == R.id.seven){
 			c = 7;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		} else if(button.getId() == R.id.eight){
 			c = 8;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		} else if(button.getId() == R.id.nine){
 			c = 9;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		} else if(button.getId() == R.id.ten){
 			c = 10;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		} else if(button.getId() == R.id.eleven){
 			c = 11;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		} else if(button.getId() == R.id.twelve){
 			c = 12;
-			cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
-			nString = state.getDeck().get(playerNum).get(c).toString();
-			n = Integer.parseInt(nString);
+			updateNum();
 		}
 
 		//more or less cards
-		if(button.getId() == R.id.addbutton){
-			nString = cardsNum.getText().toString();
-			n = Integer.parseInt(nString) + 1;
-			cardsNum.setText("" + n);
+		else if(button.getId() == R.id.addbutton){
+			updateNum();
 		} else if(button.getId() == R.id.minusbutton){
-			nString = cardsNum.getText().toString();
+			//can't select negative cards
 			if(n > 0) {
-				n = Integer.parseInt(nString) - 1;
-				cardsNum.setText("" + n);
+				updateNum();
 			}
 		}
 
 		//more or less jesters selected
-		if(button.getId() == R.id.addjbutton){
-			String jString = jesterSelected.getText().toString();
-			j = Integer.parseInt(jString) + 1;
+		else if(button.getId() == R.id.addjbutton){
+			j++;
 			jesterSelected.setText( "" + j);
 		} else if(button.getId() == R.id.minusjbutton){
+			//can't select negative jesters
 			if(j > 0) {
-				String nString = jesterSelected.getText().toString();
-				j = Integer.parseInt(nString) - 1;
+				j--;
 				jesterSelected.setText("" + j);
 			}
 		}
 
 		//plays the background music
-		if(button.getId() == R.id.musicSwitch){
-			if(backgroundMusic){
-				backgroundMusic = false;
-				music.stop();
-			} else {
-				backgroundMusic = true;
-				if(state.getExchangingTaxes()) {
-					music = MediaPlayer.create(myActivity, R.raw.moneymoneymoenybutmedieval);
-					music.start();
-					music.setLooping(true);
-				} else {
-					music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
-					music.start();
-					music.setLooping(true);
-				}
-			}
-
+		else if(button.getId() == R.id.musicSwitch){
+			updateBackgroundMusic();
 		}
 
-		//updates number of cards
-		jesterNum.setText("" + state.getDeck().get(playerNum).get(13));
-		oneNum.setText("" + state.getDeck().get(playerNum).get(1));
-		twoNum.setText("" + state.getDeck().get(playerNum).get(2));
-		threeNum.setText("" + state.getDeck().get(playerNum).get(3));
-		fourNum.setText("" + state.getDeck().get(playerNum).get(4));
-		fiveNum.setText("" + state.getDeck().get(playerNum).get(5));
-		sixNum.setText("" + state.getDeck().get(playerNum).get(6));
-		sevenNum.setText("" + state.getDeck().get(playerNum).get(7));
-		eightNum.setText("" + state.getDeck().get(playerNum).get(8));
-		nineNum.setText("" + state.getDeck().get(playerNum).get(9));
-		tenNum.setText("" + state.getDeck().get(playerNum).get(10));
-		elevenNum.setText("" + state.getDeck().get(playerNum).get(11));
-		twelveNum.setText("" + state.getDeck().get(playerNum).get(12));
+		//updates number of cards displays
+		updateCardTexts();
 		canvas.invalidate();
 
 	}// onClick
@@ -321,7 +264,6 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	public void receiveInfo(GameInfo info) {
 
 		if (!(info instanceof edu.up.cs301.GreatDalmuti.GDState)) return;
-
 		GDState postType = (GDState) info;
 
 		// update our state; then update the display
@@ -330,7 +272,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		updateDisplay();
 
 		// image of revolution image button set if possible
-		if(state.getDeck().get(playerNum).get(13) == 2){
+		if(state.getDeck().get(playerNum).get(13) == 2 && state.getExchangingTaxes()){
 			revolutionButton.setImageResource(R.drawable.revbutton);
 		} else {
 			revolutionButton.setImageResource(R.drawable.blankspace);
@@ -520,16 +462,21 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	} // setAsGui
 
+
+	/**
+	 * methods
+	 */
+
 	public String getName(){
 		return this.name;
 	}
 
 	//after taxes have been played, changes song except if promiscuous is playing already
-	public void updateMusic(){
+	public void updateSong(){
 
 		if(!state.getExchangingTaxes()) {
 			afterTaxes++;
-			if (afterTaxes == 1 && backgroundMusic) {
+			if (afterTaxes == 1) {
 				music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
 				music.start();
 				music.setLooping(true);
@@ -568,5 +515,54 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 	}
+
+	//updates number of cards selected text in display and int n as selected
+	public void updateNum(){
+
+		cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
+		n = state.getDeck().get(playerNum).get(c);
+
+	}
+
+	//either stops music or plays background song according to phase of the game
+	public void updateBackgroundMusic(){
+
+		if(backgroundMusic){
+			backgroundMusic = false;
+			music.stop();
+		} else {
+			backgroundMusic = true;
+			if(state.getExchangingTaxes()) {
+				music = MediaPlayer.create(myActivity, R.raw.moneymoneymoenybutmedieval);
+				music.start();
+				music.setLooping(true);
+			} else {
+				music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
+				music.start();
+				music.setLooping(true);
+			}
+		}
+
+	}
+
+	//updates display card number texts and canvas
+	public void updateCardTexts(){
+
+		jesterNum.setText("" + state.getDeck().get(playerNum).get(13));
+		oneNum.setText("" + state.getDeck().get(playerNum).get(1));
+		twoNum.setText("" + state.getDeck().get(playerNum).get(2));
+		threeNum.setText("" + state.getDeck().get(playerNum).get(3));
+		fourNum.setText("" + state.getDeck().get(playerNum).get(4));
+		fiveNum.setText("" + state.getDeck().get(playerNum).get(5));
+		sixNum.setText("" + state.getDeck().get(playerNum).get(6));
+		sevenNum.setText("" + state.getDeck().get(playerNum).get(7));
+		eightNum.setText("" + state.getDeck().get(playerNum).get(8));
+		nineNum.setText("" + state.getDeck().get(playerNum).get(9));
+		tenNum.setText("" + state.getDeck().get(playerNum).get(10));
+		elevenNum.setText("" + state.getDeck().get(playerNum).get(11));
+		twelveNum.setText("" + state.getDeck().get(playerNum).get(12));
+
+	}
+
 
 } // GDHumanPlayer class
