@@ -115,7 +115,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 
 		//delay
 		try {
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}

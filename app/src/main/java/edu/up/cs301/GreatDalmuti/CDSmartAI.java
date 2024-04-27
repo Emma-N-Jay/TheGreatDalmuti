@@ -11,6 +11,8 @@
 package edu.up.cs301.GreatDalmuti;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.GameFramework.players.GameComputerPlayer;
 import edu.up.cs301.GameFramework.utilities.Tickable;
@@ -177,6 +179,13 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 		if (state.getTurn() != this.playerNum) {
 			return;
+		}
+
+		//delay
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
 		}
 
 	if (state.getExchangingTaxes() && state.getDeck() != null) {
