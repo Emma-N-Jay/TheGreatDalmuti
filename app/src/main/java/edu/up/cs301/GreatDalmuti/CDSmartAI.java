@@ -74,7 +74,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 	private int highestCard(ArrayList<Integer> playerHand){
 		int highCard = 1;
 		for(int i = 1; i < playerHand.size() - 1; i++){
-			if(playerHand.get(i) != 0 && playerHand.get(i) > highCard){
+			if(playerHand.get(i) != 0){
 				highCard = i;
 			}
 		}
