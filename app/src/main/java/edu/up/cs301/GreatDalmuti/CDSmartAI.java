@@ -61,7 +61,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 	 * @return - the number on the card
 	 */
 	private int highSingle(ArrayList<Integer> playerHand){
-		//given the first num in the arrayList is the players rank default highest is lowest card
+		// given the first num in the arrayList is the players rank default highest is lowest card
 		int num = 1;
 		for(int i = 0; i < playerHand.size(); i++){
 			if(numOfRank(i,playerHand) == 1){
@@ -78,7 +78,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 	 */
 	private int highestCard(ArrayList<Integer> playerHand){
 		int highCard = 1;
-		//this loop purposefully skips the jester
+		// this loop purposefully skips the jester
 		for(int i = playerHand.size() - 2; i >= 1; i--){
 			if(playerHand.get(i) != 0){
 				highCard = i;
@@ -128,7 +128,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 			hasPayedTaxes = true;
 			return;
 		}
-		//if it doesn't have 3 of any cards it passes a 12
+		// if it doesn't have 3 of any cards it passes a 12
 		else if (!hasPayedTaxes) {
 			game.sendAction(new LDPayTaxesAction(this,
 					highestCard(state.getDeck().get(playerNum))));
@@ -141,10 +141,10 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 	 * @param state - the state of the game send from the receive info
 	 */
 	private void lead (GDState state) {
-		//this is the index of the current highest card
+		// this is the index of the current highest card
 		int tempRank = highestCard(state.getDeck().get(playerNum));
 
-		//this has the player play their highest set of cards (with jesters if it has any)
+		// this has the player play their highest set of cards (with jesters if it has any)
 		if(state.getHasLead() == playerNum){
 			int numJesters = 0;
 
@@ -181,7 +181,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 			return;
 		}
 
-		//delay
+		// delay
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
@@ -200,7 +200,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		/**
 		 * LESSER DALMUTI SENDING TAXES
 		 */
-		//when it is the lesser dalmuti it will automatically pass its highest single card
+		// when it is the lesser dalmuti it will automatically pass its highest single card
 		else if (playerNum == 1 && state.getTurn() == 1) {
 			ldTax(state);
 		}
@@ -208,13 +208,13 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		/**
 		 * PEON'S SENDING TAXES
 		 */
-		//paytaxes for lesser peon
+		// paytaxes for lesser peon
 		else if (playerNum == 2 && state.getTurn() == 2) {
 			game.sendAction(new LPPayTaxesAction(this));
 			return;
 		}
 
-		//paytaxes for greater peon
+		// paytaxes for greater peon
 		else if (playerNum == 3 && state.getTurn() == 3) {
 			game.sendAction(new GPPayTaxesAction(this));
 			return;
@@ -229,9 +229,9 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		 * PASSING AND PLAYING CARDS WITH THE SMART AI
 		 */
 		for(int i = state.getDeck().get(playerNum).size() - 1; i >= 1; i--){
-			//checks for highest rank below the current rank in the pile
+			// checks for highest rank below the current rank in the pile
 			if(i < state.getRankInPile()){
-				//checks to make sure the smart ai has the same amount of that card
+				// checks to make sure the smart ai has the same amount of that card
 				if(state.getDeck().get(playerNum).get(i) == state.getNumInPile()){
 					game.sendAction(new PlayAction(this, playerNum, i, state.getNumInPile(),
 							0));

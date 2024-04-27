@@ -63,26 +63,26 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 	 */
 	private void taxes (GDState gameState) {
 		if (gameState.getExchangingTaxes() && gameState.getDeck() != null) {
-			//when it is the greater peon it will automatically pass its two highest cards
+			// when it is the greater peon it will automatically pass its two highest cards
 			if (playerNum == 3 && gameState.getTurn() == 3) {
 				game.sendAction(new GPPayTaxesAction(this));
 				return;
 			}
 
-			//when it is the lesser peon it will automatically pass its highest
+			// when it is the lesser peon it will automatically pass its highest
 			else if (playerNum == 2 && gameState.getTurn() == 2) {
 				game.sendAction(new LPPayTaxesAction(this));
 				return;
 			}
 
-			//paytaxes for lesser dalmuti (makes this move automatically)
+			// paytaxes for lesser dalmuti (makes this move automatically)
 			else if (playerNum == 1 && gameState.getTurn() == 1) {
 				game.sendAction(new LDPayTaxesAction(this,
 						highestCard(gameState.getDeck().get(playerNum))));
 				return;
 			}
 
-			//paytaxes for greater dalmuti (makes this move automatically)
+			// paytaxes for greater dalmuti (makes this move automatically)
 			else if (playerNum == 0 && gameState.getTurn() == 0) {
 				game.sendAction(new GDPayTaxesAction(this,
 						highestCard(gameState.getDeck().get(playerNum))));
@@ -113,7 +113,7 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			return;
 		}
 
-		//delay
+		// delay
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
@@ -131,10 +131,10 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			/**
 			 * GETTING THE LEAD
 			 */
-			//this is the index of the current highest card
+			// this is the index of the current highest card
 			int tempRank = highestCard(state.getDeck().get(playerNum));
 
-			//this has the player play their highest set of cards
+			// this has the player play their highest set of cards
 			if (state.getHasLead() == playerNum) {
 				game.sendAction(new PlayAction(this, playerNum, tempRank,
 						state.getDeck().get(playerNum).get(tempRank), 0));
@@ -146,9 +146,9 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 			 */
 			played = false;
 			for (int i = 12; i >= 1; i--) {
-				//checks for highest rank below the current rank in the pile
+				// checks for highest rank below the current rank in the pile
 				if ( (i < state.getRankInPile()) && !(played) ) {
-					//checks to make sure the dumb ai has enough of that card
+					// checks to make sure the dumb ai has enough of that card
 					if (state.getDeck().get(playerNum).get(i) == state.getNumInPile()) {
 						game.sendAction(new PlayAction(this, playerNum, i,
 								state.getNumInPile(), 0));

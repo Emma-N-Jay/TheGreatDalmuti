@@ -49,7 +49,7 @@ public class surfaceDraw extends SurfaceView {
     @Override
     protected void onDraw(Canvas canvas){
 
-            //Bitmaps for the pile
+            // Bitmaps for the pile
             Bitmap deckDal;
             Bitmap deckArch;
             Bitmap deckEarl;
@@ -64,19 +64,19 @@ public class surfaceDraw extends SurfaceView {
             Bitmap deckPeasant;
             Bitmap deckJester;
 
-            //set the purple color
+            // set the purple color
             purple.setColor(0xFF402264);
             purple.setTextSize(25);
             this.setBackgroundColor(0Xffffffff);
             purple.setStyle(Paint.Style.FILL);
 
-            //Create a bitmap that contains image
-            //back of the cards
+            // Create a bitmap that contains image
+            // back of the cards
             Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.card_back);
             Bitmap backleft = BitmapFactory.decodeResource(getResources(), R.drawable.card_leftside);
             Bitmap backright = BitmapFactory.decodeResource(getResources(), R.drawable.card_rightside);
 
-            //Player cards
+            // player cards
             Bitmap dalmuti = BitmapFactory.decodeResource(getResources(), R.drawable.great_dalmuti);
             Bitmap archbish = BitmapFactory.decodeResource(getResources(), R.drawable.arch_bishop);
             Bitmap earlmarsh = BitmapFactory.decodeResource(getResources(), R.drawable.earl_marshal);
@@ -91,13 +91,13 @@ public class surfaceDraw extends SurfaceView {
             Bitmap peasant = BitmapFactory.decodeResource(getResources(), R.drawable.peasant);
             Bitmap jester = BitmapFactory.decodeResource(getResources(), R.drawable.jesteryetagain);
 
-            //scale the bitmaps
+            // scale the bitmaps
             //back of the card
             back = Bitmap.createScaledBitmap(back, 125, 175, false);
             backleft = Bitmap.createScaledBitmap(backleft, 175, 125, false);
             backright = Bitmap.createScaledBitmap(backright, 175, 125, false);
 
-            //Player cards
+            // player cards
             dalmuti = Bitmap.createScaledBitmap(dalmuti, 125, 175, false);
             archbish = Bitmap.createScaledBitmap(archbish, 125, 175, false);
             earlmarsh = Bitmap.createScaledBitmap(earlmarsh,125, 175, false);
@@ -112,7 +112,7 @@ public class surfaceDraw extends SurfaceView {
             peasant = Bitmap.createScaledBitmap(peasant, 125, 175, false);
             jester = Bitmap.createScaledBitmap(jester, 125, 175, false);
 
-            //scale the play pile cards
+            // scale the play pile cards
             deckDal = Bitmap.createScaledBitmap(dalmuti, 175, 225, false);
             deckArch = Bitmap.createScaledBitmap(archbish, 175, 225, false);
             deckEarl = Bitmap.createScaledBitmap(earlmarsh, 175, 225, false);
@@ -127,7 +127,7 @@ public class surfaceDraw extends SurfaceView {
             deckPeasant = Bitmap.createScaledBitmap(peasant, 175, 225, false);
             deckJester = Bitmap.createScaledBitmap(jester, 175, 225, false);
 
-            //draw the top hand
+            // draw the top hand
             canvas.drawBitmap(back, 450, 10, null);
             canvas.drawBitmap(back, 550, 10, null);
             canvas.drawBitmap(back, 650, 10, null);
@@ -139,7 +139,7 @@ public class surfaceDraw extends SurfaceView {
             canvas.drawBitmap(back, 1250, 10, null);
             canvas.drawBitmap(back, 1350, 10, null);
 
-            //draw the left players hand
+            // draw the left players hand
             canvas.drawBitmap(backleft, 10, 100, null);
             canvas.drawBitmap(backleft, 10, 125, null);
             canvas.drawBitmap(backleft, 10, 150, null);
@@ -151,7 +151,7 @@ public class surfaceDraw extends SurfaceView {
             canvas.drawBitmap(backleft, 10, 300, null);
             canvas.drawBitmap(backleft, 10, 325, null);
 
-            //draw the right players hand
+            // draw the right players hand
             canvas.drawBitmap(backright, 1785, 100, null);
             canvas.drawBitmap(backright, 1785, 125, null);
             canvas.drawBitmap(backright, 1785, 150, null);
@@ -163,28 +163,28 @@ public class surfaceDraw extends SurfaceView {
             canvas.drawBitmap(backright, 1785, 300, null);
             canvas.drawBitmap(backright, 1785, 325, null);
 
-            //Draw text for num cards played
+            // draw text for num cards played
             canvas.drawText("# played:",  750, 500, purple);
             canvas.drawText(" " + state.getNumInPile(), 885, 500, purple);
 
-            //draw num cards of left player
+            // draw num cards of left player
             canvas.drawText("# cards:", 25, 475, purple);
             canvas.drawText(" "+ state.totalP2Hand(), 125 , 475, purple);
 
-            //draw num cards of top player
+            // draw num cards of top player
             canvas.drawText("# cards:", 275, 50, purple);
             canvas.drawText(" " + state.totalP3Hand(), 375 , 50, purple);
 
-            //draw num cards of human player
+            // draw num cards of human player
             canvas.drawText("# cards:", 925 , 600, purple);
             canvas.drawText(" " + state.totalP1Hand(), 1025, 600, purple);
 
-            //draw num cards of right player
+            // draw num cards of right player
             canvas.drawText("# cards:", 1810, 475, purple);
             canvas.drawText(" " + state.totalP4Hand(), 1910 , 475, purple);
 
-            //Time to do the pile! This draws the cards in pile based on
-            //what the rank/card type in the pile is
+            // Time to do the pile! This draws the cards in pile based on
+            // what the rank/card type in the pile is
             if(state.getRankInPile() == 1){
                 canvas.drawBitmap(deckDal, 900, 250, null);
             }else if(state.getRankInPile() == 2) {

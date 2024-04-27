@@ -46,7 +46,7 @@ public class GDState extends GameState implements Serializable {
 	 * @param playNum
 	 */
 	public GDState(int playNum){
-		//intentionally left blank
+		// intentionally left blank
 	}
 
 	/**
@@ -211,7 +211,7 @@ public class GDState extends GameState implements Serializable {
 		}
 	}
 
-	//Copy deck method for the copy constructor. Copyception
+	// Copy deck method for the copy constructor. Copyception
 	public ArrayList<ArrayList<Integer>> copyDeck(ArrayList<ArrayList<Integer>> oldDeck){
 		ArrayList<ArrayList<Integer>> newDeck = new ArrayList<ArrayList<Integer>>();
 		newDeck.add(new ArrayList<Integer>());
@@ -256,9 +256,9 @@ public class GDState extends GameState implements Serializable {
 			return false;
 	} // pass
 
-	//checks if everyone finished paying their taxes and changes exchanging taxes boolean accordingly
+	// checks if everyone finished paying their taxes and changes exchanging taxes boolean accordingly
 	public void checkTaxes(){
-		boolean temp = true; //is not everyone has payed their taxes turns false
+		boolean temp = true; // is not everyone has payed their taxes turns false
 
 		if(dalmutiTaxes == 2){
 			taxesPayed[0] = true;
@@ -283,61 +283,61 @@ public class GDState extends GameState implements Serializable {
 
 	public void LPPayTaxes (LPPayTaxesAction action) {
 		if(!(taxesPayed[2]) && exchangingTaxes){
-			//lesser peon gives lesser dalmuti their cards
+			// lesser peon gives lesser dalmuti their cards
 			int low = findLowest(2);
 
-			//adds lowest card to lesser dalmuti
+			// adds lowest card to lesser dalmuti
 			deck.get(1).set(low, deck.get(1).get(low) + 1);
-			//takes away card from original holder
+			// takes away card from original holder
 			deck.get(2).set(low, deck.get(2).get(low) - 1);
 
 			taxesPayed[2] = true;
 			checkTaxes();
 		}
-	} //LPPayTaxes
+	} // LPPayTaxes
 
 	public void LDPayTaxes (LDPayTaxesAction action) {
 		if(!(taxesPayed[1]) && (exchangingTaxes) && (dTaxesLegal(1, action.cardChoice))) {
-			//lesser peon gives lesser dalmuti their cards
-			//adds highest card to lesser dalmuti
+			// lesser peon gives lesser dalmuti their cards
+			// adds highest card to lesser dalmuti
 			int high = action.cardChoice;
 			deck.get(2).set(high, deck.get(2).get(high) + 1);
-			//takes away card from original holder
+			// takes away card from original holder
 			deck.get(1).set(high, deck.get(1).get(high) - 1);
 
 			taxesPayed[1] = true;
 			checkTaxes();
 		}
-	} //LDPayTaxes
+	} // LDPayTaxes
 
 	public void GPPayTaxes (GPPayTaxesAction action) {
 		if((!taxesPayed[3]) && exchangingTaxes) {
-			//great peon gives greater dalmuti 2 of their cards
+			// great peon gives greater dalmuti 2 of their cards
 			int low = findLowest(3);
 
-			//adds lowest card
+			// adds lowest card
 			deck.get(0).set(low, deck.get(0).get(low) + 1);
-			//takes away card from original holder
+			// takes away card from original holder
 			deck.get(3).set(low, deck.get(3).get(low) - 1);
 
 			low = findLowest(3);
 
 			deck.get(0).set(low, deck.get(0).get(low) + 1);
-			//takes away card from original holder
+			// takes away card from original holder
 			deck.get(3).set(low, deck.get(3).get(low) - 1);
 
 			taxesPayed[3] = true;
 			checkTaxes();
 		}
-	} //GPPayTaxes
+	} // GPPayTaxes
 
 	public boolean GDPayTaxes(GDPayTaxesAction action){
 		if(!(taxesPayed[0]) && (exchangingTaxes) && (dTaxesLegal(0, action.cardOne))) {
-			//great dalmuti gives greater peon 2 of their cards
-			//adds lowest card
+			// great dalmuti gives greater peon 2 of their cards
+			// adds lowest card
 			int high = action.cardOne;
 			deck.get(3).set(high, deck.get(3).get(high) + 1);
-			//takes away card from original holder
+			// takes away card from original holder
 			deck.get(0).set(high, deck.get(0).get(high) - 1);
 
 			dalmutiTaxes++;
@@ -403,11 +403,11 @@ public class GDState extends GameState implements Serializable {
 		return false;
 	}
 
-	//is legal move specifically for when the player has the lead
+	// is legal move specifically for when the player has the lead
 	protected boolean leadIsLegalMove(int player, int rankSelected,
 									  int numSelected, int jestersSelected){
 		boolean temp = true;
-		//sets to false if they don't have the cards to play
+		// sets to false if they don't have the cards to play
 		if(numSelected + jestersSelected <= 0){
 			temp = false;
 		}
@@ -424,7 +424,7 @@ public class GDState extends GameState implements Serializable {
 		return temp;
 	}
 
-	//is legal move to check if they have the cards for taxes
+	// is legal move to check if they have the cards for taxes
 	public boolean dTaxesLegal(int player, int cardRank){
 		//temp turns false when move isn't possible
 		boolean temp = false;
@@ -434,7 +434,7 @@ public class GDState extends GameState implements Serializable {
 		return temp;
 	}
 
-	//finds lowest rank (best) card player has
+	// finds lowest rank (best) card player has
 	public int findLowest(int player){
 		int low = 1;
 		for(int i = 1; i < 14; i++){
@@ -445,11 +445,11 @@ public class GDState extends GameState implements Serializable {
 		return low;
 	}
 
-	//this method allows a player to play a card
+	// this method allows a player to play a card
 	public ArrayList<ArrayList<Integer>> play(PlayAction action){
 		boolean temp = false; //is true when the play was legal and actually happened
 
-		//for when a new round starts for the player who has the lead
+		// for when a new round starts for the player who has the lead
 		if( (numPass >= 3) && (action.playerId == hasLead) && (action.numSelected > 0) &&
 				(leadIsLegalMove(action.playerId, action.rankSelected,
 						action.numSelected, action.jesterSelected) ) ){
@@ -484,7 +484,7 @@ public class GDState extends GameState implements Serializable {
 		return deck;
 	} // play
 
-	//given that the player that has the jesters calls the revolution, carries out revolution
+	// given that the player that has the jesters calls the revolution, carries out revolution
 	public boolean revolution (RevolutionAction action) {
 		if(deck.get(action.playerID).get(13) == 2){
 				this.setExchangingTaxes(false);
