@@ -485,10 +485,8 @@ public class GDState extends GameState implements Serializable {
 	//given that the player that has the jesters calls the revolution, carries out revolution
 	public boolean revolution (RevolutionAction action) {
 		if(deck.get(action.playerID).get(13) == 2){
-			if(action.playerID == 2) {
 				this.setExchangingTaxes(false);
 				this.numPass = 3;
-			}
 		}
 		return true;
 	} // revolution
