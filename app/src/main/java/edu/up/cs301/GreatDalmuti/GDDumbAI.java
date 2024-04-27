@@ -46,9 +46,9 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 	/**
 	 * find the index of the highest card
 	 * @param playerHand - the cards a player holds
-	 * @return
+	 * @return - the highest card in players hand
 	 */
-	public int highestCard(ArrayList<Integer> playerHand){
+	private int highestCard(ArrayList<Integer> playerHand){
 		int highCard = 1;
 		for(int i = playerHand.size() - 1; i > 0; i--){
 			if(playerHand.get(i) != 0){
@@ -58,6 +58,42 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 		return highCard;
 	} // highestCard
 
+	/**
+	 * pays taxes for all ranks depending on computer players rank
+	 * @param gameState - the state of the game send from the receive info
+	 */
+	private void taxes (GDState gameState) {
+		if (gameState.getExchangingTaxes() && gameState.getDeck() != null) {
+			//when it is the greater peon it will automatically pass its two highest cards
+			if (playerNum == 3 && gameState.getTurn() == 3) {
+				game.sendAction(new GPPayTaxesAction(this));
+				return;
+			}
+
+			//when it is the lesser peon it will automatically pass its highest
+			else if (playerNum == 2 && gameState.getTurn() == 2) {
+				game.sendAction(new LPPayTaxesAction(this));
+				return;
+			}
+
+			//paytaxes for lesser dalmuti (makes this move automatically)
+			else if (playerNum == 1 && gameState.getTurn() == 1) {
+				game.sendAction(new LDPayTaxesAction(this,
+						highestCard(gameState.getDeck().get(playerNum))));
+				return;
+			}
+
+			//paytaxes for greater dalmuti (makes this move automatically)
+			else if (playerNum == 0 && gameState.getTurn() == 0) {
+				game.sendAction(new GDPayTaxesAction(this,
+						highestCard(gameState.getDeck().get(playerNum))));
+				return;
+			}
+		}
+	} // taxes
+
+
+
 	// METHODS *************************************************************************************
 
     /**
@@ -65,7 +101,6 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
      * 
      * @param info
      * 		the information (presumably containing the game's state)
-	 *GDComputerPlayer1
      */
 	@Override
 	protected void receiveInfo(GameInfo info) {
@@ -89,38 +124,14 @@ public class GDDumbAI extends GameComputerPlayer implements Tickable, Serializab
 		/**
 		 * GIVING TAXES
 		 */
-		if (state.getExchangingTaxes() && state.getDeck() != null) {
-			//when it is the greater peon it will automatically pass its two highest cards
-			if (playerNum == 3 && state.getTurn() == 3) {
-				game.sendAction(new GPPayTaxesAction(this));
-				return;
-			}
+		taxes(state);
 
-			//when it is the lesser peon it will automatically pass its highest
-			else if (playerNum == 2 && state.getTurn() == 2) {
-				game.sendAction(new LPPayTaxesAction(this));
-				return;
-			}
 
-			//paytaxes for lesser dalmuti (makes this move automatically)
-			else if (playerNum == 1 && state.getTurn() == 1) {
-				game.sendAction(new LDPayTaxesAction(this,
-						highestCard(state.getDeck().get(playerNum))));
-				return;
-			}
-
-			//paytaxes for greater dalmuti (makes this move automatically)
-			else if (playerNum == 0 && state.getTurn() == 0) {
-				game.sendAction(new GDPayTaxesAction(this,
-						highestCard(state.getDeck().get(playerNum))));
-				return;
-			}
-		}
+		if(playerNum == state.getTurn()) {
 
 			/**
 			 * GETTING THE LEAD
 			 */
-		if(playerNum == state.getTurn()) {
 			//this is the index of the current highest card
 			int tempRank = highestCard(state.getDeck().get(playerNum));
 

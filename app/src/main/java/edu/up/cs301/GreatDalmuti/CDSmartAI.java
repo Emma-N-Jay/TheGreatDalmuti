@@ -39,11 +39,11 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 	/**
 	 * number of cards of a certain rank in the players hand
-	 * @param rank
-	 * @param playerHand
-	 * @return
+	 * @param rank - rank of card
+	 * @param playerHand - cards in players hand
+	 * @return - the number of cards of the rank
 	 */
-	public int numOfRank(int rank, ArrayList<Integer> playerHand){
+	private int numOfRank(int rank, ArrayList<Integer> playerHand){
 		int numCards = 0;
 		for(int i = 0; i >= playerHand.size(); i++){
 			if(playerHand.get(i) == rank){
@@ -55,11 +55,12 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 
 	/**
 	 * locates highest single card
-	 * @param playerHand
-	 * @return
+	 * @param playerHand - the cards in the players hand
+	 * @return - the number on the card
 	 */
-	public int highSingle(ArrayList<Integer> playerHand){
-		int num = 1; //given the first num in the arrayList is the players rank default highest is lowest card
+	private int highSingle(ArrayList<Integer> playerHand){
+		//given the first num in the arrayList is the players rank default highest is lowest card
+		int num = 1;
 		for(int i = 0; i < playerHand.size(); i++){
 			if(numOfRank(i,playerHand) == 1){
 				return i;
@@ -69,23 +70,11 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 	} // highSingle
 
 	/**
-	 *
-	 * @param playerHand
-	 * @param number
-	 * @return
+	 * finds the index of the highest card
+	 * @param playerHand - the cards in the players hand
+	 * @return - the highest card in the players hand
 	 */
-	public int highOfNum(ArrayList<Integer> playerHand, int number){
-		int num = 1; //given the first num in the arrayList is the players rank default highest is lowest card
-		for(int i = 0; i < playerHand.size(); i++){
-			if(numOfRank(i,playerHand) == number){
-				return i;
-			}
-		}
-		return num;
-	} // highOfNum
-
-	//this method finds the index of the highest card
-	public int highestCard(ArrayList<Integer> playerHand){
+	private int highestCard(ArrayList<Integer> playerHand){
 		int highCard = 1;
 		//this loop purposefully skips the jester
 		for(int i = playerHand.size() - 2; i >= 1; i--){
@@ -94,10 +83,83 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 			}
 		}
 		return highCard;
+	} // highestCard
+
+	/**
+	 * GREAT DALMUI SENDING TAXES
+	 * @param state - the state of the game send from the receive info
+	 */
+	private void gdTax (GDState state) {
+		// passes the highest single card if they have a single card that is a 6 or above
+		// (and isnt the jester)
+		if (highSingle(state.getDeck().get(playerNum)) >= 6 &&
+				highSingle(state.getDeck().get(playerNum)) != 13) {
+
+			game.sendAction(new GDPayTaxesAction(this,
+					highSingle(state.getDeck().get(playerNum))));
+			return;
+		}
+
+		// passes a second high single if it has one
+		if (highSingle(state.getDeck().get(playerNum)) >= 6 &&
+				highSingle(state.getDeck().get(playerNum)) != 13) {
+
+			game.sendAction(new GDPayTaxesAction(this,
+					highSingle(state.getDeck().get(playerNum))));
+			return;
+		}
+	} // gdTax
+
+	/**
+	 * LESSER DALMUTI SENDING TAXES
+	 * @param state - the state of the game send from the receive info
+	 */
+	private void ldTax (GDState state) {
+		boolean hasPayedTaxes = false;
+		// passes the highest single card if they have a single card that is a 6 or above
+		// (and isnt the jester)
+		if ( (highSingle(state.getDeck().get(playerNum)) >= 6) &&
+				(highSingle(state.getDeck().get(playerNum)) != 13) ) {
+
+			game.sendAction(new LDPayTaxesAction(this,
+					highSingle(state.getDeck().get(playerNum))));
+			hasPayedTaxes = true;
+			return;
+		}
+		//if it doesn't have 3 of any cards it passes a 12
+		else if (!hasPayedTaxes) {
+			game.sendAction(new LDPayTaxesAction(this,
+					highestCard(state.getDeck().get(playerNum))));
+			return;
+		}
+	} // ldTax
+
+	/**
+	 * gets the ai the lead
+	 * @param state - the state of the game send from the receive info
+	 */
+	private void lead (GDState state) {
+		//this is the index of the current highest card
+		int tempRank = highestCard(state.getDeck().get(playerNum));
+
+		//this has the player play their highest set of cards (with jesters if it has any)
+		if(state.getHasLead() == playerNum){
+			int numJesters = 0;
+
+			// if the player has jesters it will add the jesters to its play
+			if(state.getDeck().get(playerNum).get(13) != 0){
+				numJesters = state.getDeck().get(playerNum).get(13);
+			}
+
+			// will play highest cards (with or without jesters)
+			game.sendAction(new PlayAction(this, playerNum, tempRank,
+					state.getDeck().get(playerNum).get(tempRank), numJesters));
+		}
 	}
 
 	// METHODS *************************************************************************************
-    /**
+
+	/**
      * callback method--game's state has changed
      * 
      * @param info
@@ -117,24 +179,13 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 			return;
 		}
 
+	if (state.getExchangingTaxes() && state.getDeck() != null) {
 
 		/**
 		 * GREAT DALMUI SENDING TAXES
 		 */
-
-	if (state.getExchangingTaxes() && state.getDeck() != null) {
 		if (playerNum == 0 && state.getTurn() == 0) {
-			// passes the highest single card if they have a single card that is a 6 or above (and isnt the jester)
-			if (highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13) {
-				game.sendAction(new GDPayTaxesAction(this, highSingle(state.getDeck().get(playerNum))));
-				return;
-			}
-
-			// passes a second high single if it has one
-			if (highSingle(state.getDeck().get(playerNum)) >= 6 && highSingle(state.getDeck().get(playerNum)) != 13) {
-				game.sendAction(new GDPayTaxesAction(this, highSingle(state.getDeck().get(playerNum))));
-				return;
-			}
+			gdTax(state);
 		}
 
 		/**
@@ -142,23 +193,11 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		 */
 		//when it is the lesser dalmuti it will automatically pass its highest single card
 		else if (playerNum == 1 && state.getTurn() == 1) {
-			boolean hasPayedTaxes = false;
-			// passes the highest single card if they have a single card that is a 6 or above (and isnt the jester)
-			if ( (highSingle(state.getDeck().get(playerNum)) >= 6) && (highSingle(state.getDeck().get(playerNum)) != 13) ) {
-				game.sendAction(new LDPayTaxesAction(this, highSingle(state.getDeck().get(playerNum))));
-				hasPayedTaxes = true;
-				return;
-			}
-			//if it doesn't have 3 of any cards it passes a 12
-			else if (!hasPayedTaxes) {
-				game.sendAction(new LDPayTaxesAction(this, highestCard(state.getDeck().get(playerNum))));
-				return;
-			}
-
+			ldTax(state);
 		}
 
 		/**
-		 * PEON'S SENDING TAXES (isLegal does this automatically)
+		 * PEON'S SENDING TAXES
 		 */
 		//paytaxes for lesser peon
 		else if (playerNum == 2 && state.getTurn() == 2) {
@@ -175,22 +214,7 @@ public class CDSmartAI extends GameComputerPlayer implements Tickable {
 		/**
 		 * GETTING THE LEAD
 		 */
-		//this is the index of the current highest card
-		int tempRank = highestCard(state.getDeck().get(playerNum));
-
-		//this has the player play their highest set of cards (with jesters if it has any)
-		if(state.getHasLead() == playerNum){
-			int numJesters = 0;
-
-			// if the player has jesters it will add the jesters to its play
-			if(state.getDeck().get(playerNum).get(13) != 0){
-				numJesters = state.getDeck().get(playerNum).get(13);
-			}
-
-			// will play highest cards (with or without jesters)
-			game.sendAction(new PlayAction(this, playerNum, tempRank,
-					state.getDeck().get(playerNum).get(tempRank), numJesters));
-		}
+		lead(state);
 
 		/**
 		 * PASSING AND PLAYING CARDS WITH THE SMART AI
