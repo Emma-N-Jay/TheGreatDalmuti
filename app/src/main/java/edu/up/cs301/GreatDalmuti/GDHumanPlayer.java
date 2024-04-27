@@ -34,17 +34,17 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	// the android activity that we are running
 	private GameMainActivity myActivity;
 
-	//selected card
+	// selected card
 	private int c;
 
-	//selected number of cards
+	// selected number of cards
 	private int n;
 
 	// number of jesters selected
 	private int j;
-	//updates music after taxes without restarting song if promiscuous is already playing
+	// updates music after taxes without restarting song if promiscuous is already playing
 	private int afterTaxes = 0;
-	//gets text number of cards from xml selected to turn into int n
+	// gets text number of cards from xml selected to turn into int n
 	private String nString;
 
 	/** External Citation Date: 26 April 2024
@@ -52,7 +52,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * Resource: https://developer.android.com/reference/android/media/MediaPlayer
 	 * Solution: I used the information on this website to find the needed methods and names */
 
-	//For music and sound effects
+	// For music and sound effects
 	private MediaPlayer music;
 	private MediaPlayer soundEffects;
 	private boolean backgroundMusic = false;
@@ -164,7 +164,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		return this.name;
 	}
 
-	//after taxes have been played, changes song except if promiscuous is playing already
+	// after taxes have been played, changes song except if promiscuous is playing already
 	public void updateSong(){
 
 		if(!state.getExchangingTaxes()) {
@@ -180,7 +180,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	}
 
-	//depending on the player's rank, sends correct taxes action if we're still exchanging taxes
+	// depending on the player's rank, sends correct taxes action if we're still exchanging taxes
 	public void sendTaxes(){
 
 		if (state.getExchangingTaxes()) {
@@ -211,7 +211,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	}
 
-	//updates number of cards selected text in display and int n as selected
+	// updates number of cards selected text in display and int n as selected
 	public void updateNum(){
 
 		cardsNum.setText("" + state.getDeck().get(playerNum).get(c));
@@ -219,7 +219,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	}
 
-	//either stops music or plays background song according to phase of the game
+	// either stops music or plays background song according to phase of the game
 	public void updateBackgroundMusic(){
 
 		if(backgroundMusic){
@@ -295,7 +295,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			sendTaxes();
 		}
 
-		//updates selected cards & number of cards ints, text and display for selected cards
+		// updates selected cards & number of cards ints, text and display for selected cards
 		else if(button.getId() == R.id.jester){
 			c = 13;
 			updateNum();
@@ -337,17 +337,17 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			updateNum();
 		}
 
-		//more or less cards
+		// more or less cards
 		else if(button.getId() == R.id.addbutton){
 			updateNum();
 		} else if(button.getId() == R.id.minusbutton){
-			//can't select negative cards
+			// can't select negative cards
 			if(n > 0) {
 				updateNum();
 			}
 		}
 
-		//more or less jesters selected
+		// more or less jesters selected
 		else if(button.getId() == R.id.addjbutton){
 			j++;
 			jesterSelected.setText( "" + j);
@@ -359,7 +359,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}
 		}
 
-		//plays the background music
+		// plays the background music
 		else if(button.getId() == R.id.musicSwitch){
 			updateBackgroundMusic();
 		}
@@ -389,7 +389,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 
 
-		//updates number of cards displays
+		// updates number of cards displays
 		updateCardTexts();
 		updateDisplay();
 
@@ -420,7 +420,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			revolutionButton.setImageResource(R.drawable.blankspace);
 		}
 
-		//image of pay taxes button if during that phase of the game
+		// image of pay taxes button if during that phase of the game
 		if(state.getExchangingTaxes()){
 			paytaxesButton.setImageResource(R.drawable.paytaxesimage);
 		} else {
@@ -528,7 +528,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		this.testResultsTextView = (TextView) activity.findViewById(R.id.greatDalmutiValueTextView);
 
-		//image button for rev and the cards
+		// image button for revoltion and the cards
 		this.revolutionButton = (ImageButton)activity.findViewById(R.id.revolutionButton);
 		this.paytaxesButton = (ImageButton)activity.findViewById(R.id.payTaxesButton);
 		this.one = (ImageButton)activity.findViewById(R.id.one);
@@ -545,7 +545,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.twelve = (ImageButton)activity.findViewById(R.id.twelve);
 		this.jester = (ImageButton)activity.findViewById(R.id.jester);
 
-		//player action buttons
+		// player action buttons
 		this.passButton = (Button) activity.findViewById(R.id.passButton);
 		this.playButton = (Button) activity.findViewById(R.id.playButton);
 		this.plusB = (Button) activity.findViewById(R.id.addbutton);
@@ -553,10 +553,10 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.jplusB = (Button) activity.findViewById(R.id.addjbutton);
 		this.jminusB = (Button) activity.findViewById(R.id.minusjbutton);
 
-		//switch to turn off background noise
+		// switch to turn on and off background noise
 		this.musicSwitch = (Switch) activity.findViewById(R.id.musicSwitch);
 
-		//listens for button presses
+		// listens for button presses
 		passButton.setOnClickListener(this);
 		playButton.setOnClickListener(this);
 		plusB.setOnClickListener(this);
@@ -565,7 +565,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		jminusB.setOnClickListener(this);
 		musicSwitch.setOnClickListener(this);
 
-		//sets image button listener
+		// sets image button listener
 		revolutionButton.setOnClickListener(this);
 		paytaxesButton.setOnClickListener(this);
 		one.setOnClickListener(this);
@@ -582,7 +582,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		twelve.setOnClickListener(this);
 		jester.setOnClickListener(this);
 
-		//text views
+		// text views
 		this.cardsNum = (TextView) activity.findViewById(R.id.cardnum);
 		this.jesterSelected = (TextView) activity.findViewById(R.id.jesterNumSelected);
 		this.jesterNum = (TextView) activity.findViewById(R.id.jesterNum);
@@ -627,7 +627,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.howToCloseButton = howToPlay.findViewById(R.id.howToClose);
 		this.howToCloseButton.setOnClickListener(this);
 
-		//find the surface view
+		// find the surface view
 		this.canvas = (surfaceDraw)activity.findViewById(R.id.the_canvas);
 
 	} // setAsGui
