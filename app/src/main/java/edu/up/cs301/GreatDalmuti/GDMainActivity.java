@@ -34,8 +34,8 @@
  * the human player is any other rank than the greater dalmuti, the number of cards in hand displayed
  * is not displayed for the right player, again because of the inability to access the human player id.
  *
- * Additional features: custom cards, background music, sound effects when buttons are clicked,
- * app icon, pop-ups (rules and how to play)
+ * Additional features: custom cards, background music, sound effects when certain buttons are
+ * clicked, app icon, pop-ups (rules and how to play)
  */
 
 package edu.up.cs301.GreatDalmuti;
