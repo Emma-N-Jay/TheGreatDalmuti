@@ -41,14 +41,21 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	// number of jesters selected
 	private int j;
-
+	//updates music after taxes without restarting song if promiscuous is already playing
 	private int afterTaxes = 0;
-
+	//gets text number of cards from xml selected to turn into int n
 	private String nString;
-	//For background music
+
+	/** External Citation Date: 26 April 2024
+	 * Problem: Did not know the object names and methods to get music
+	 * Resource: https://developer.android.com/reference/android/media/MediaPlayer
+	 * Solution: I used the information on this website to find the needed methods and names */
+
+	//For music and sound effects
 	private MediaPlayer music;
 	private MediaPlayer soundEffects;
 	private boolean backgroundMusic = false;
+	// button variables
 	private Button passButton;
 	private Button playButton;
 	private Button plusB;
@@ -90,7 +97,7 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private TextView tenNum;
 	private TextView elevenNum;
 	private TextView twelveNum;
-
+	// surface draw for other players cards, card numbers, and in pile display
 	private surfaceDraw canvas;
 
 	// CONSTRUCTORS ********************************************************************************
@@ -148,69 +155,27 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		if (game == null) return;
 
-		if(button.getId() == R.id.editTextTextMultiLine){
-		}
-
 		if(button.getId() == R.id.playButton){
 			PlayAction playAction = new PlayAction(this, playerNum, c, n, j);
 			game.sendAction(playAction);
-
-			//updates music
-			if(!state.getExchangingTaxes()){
-				afterTaxes++;
-			}
-			if(afterTaxes == 1 && backgroundMusic){
-				music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
-				music.start();
-				music.setLooping(true);
-			}
+			updateMusic();
 		}
+
 		else if(button.getId() == R.id.passButton){
 			PassAction passAction = new PassAction(this);
 			game.sendAction(passAction);
-
-			//updates music
-			if(!state.getExchangingTaxes()){
-				afterTaxes++;
-			}
-			if(afterTaxes == 1 && backgroundMusic){
-				music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
-				music.start();
-				music.setLooping(true);
-			}
+			updateMusic();
 		}
+
 		else if(button.getId() == R.id.revolutionButton){
 			RevolutionAction revolutionAction = new RevolutionAction(this, playerNum);
 			game.sendAction(revolutionAction);
 			soundEffects = MediaPlayer.create(myActivity, R.raw.revsounds);
 			soundEffects.start();
 		}
+
 		else if(button.getId() == R.id.payTaxesButton) {
-			if (state.getExchangingTaxes()) {
-				if (playerNum == 0 && state.getTurn() == 0) {
-					GDPayTaxesAction gdPayTaxesAction = new GDPayTaxesAction(this, c);
-					game.sendAction(gdPayTaxesAction);
-					return;
-				}else if (playerNum == 1 && state.getTurn() == 1) {
-					LDPayTaxesAction ldPayTaxesAction = new LDPayTaxesAction(this, c);
-					game.sendAction(ldPayTaxesAction);
-					GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
-					game.sendAction(gpPayTaxesAction);
-					return;
-				}else if (playerNum == 2 && state.getTurn() == 2) {
-					LPPayTaxesAction lpPayTaxesAction = new LPPayTaxesAction(this);
-					game.sendAction(lpPayTaxesAction);
-					soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
-					soundEffects.start();
-					return;
-				}else if (playerNum == 3 && state.getTurn() == 3){
-					GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
-					game.sendAction(gpPayTaxesAction);
-					soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
-					soundEffects.start();
-					return;
-				}
-			}
+			sendTaxes();
 		}
 
 		//selected cards/display for selected cards
@@ -557,6 +522,51 @@ public class GDHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	public String getName(){
 		return this.name;
+	}
+
+	//after taxes have been played, changes song except if promiscuous is playing already
+	public void updateMusic(){
+
+		if(!state.getExchangingTaxes()) {
+			afterTaxes++;
+			if (afterTaxes == 1 && backgroundMusic) {
+				music = MediaPlayer.create(myActivity, R.raw.promiscuousbutmedieval);
+				music.start();
+				music.setLooping(true);
+			}
+		}
+
+	}
+
+	//depending on the player's rank, sends correct taxes action if we're still exchanging taxes
+	public void sendTaxes(){
+
+		if (state.getExchangingTaxes()) {
+			if (playerNum == 0 && state.getTurn() == 0) {
+				GDPayTaxesAction gdPayTaxesAction = new GDPayTaxesAction(this, c);
+				game.sendAction(gdPayTaxesAction);
+				return;
+			}else if (playerNum == 1 && state.getTurn() == 1) {
+				LDPayTaxesAction ldPayTaxesAction = new LDPayTaxesAction(this, c);
+				game.sendAction(ldPayTaxesAction);
+				GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
+				game.sendAction(gpPayTaxesAction);
+				return;
+			}else if (playerNum == 2 && state.getTurn() == 2) {
+				LPPayTaxesAction lpPayTaxesAction = new LPPayTaxesAction(this);
+				game.sendAction(lpPayTaxesAction);
+				soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
+				soundEffects.start();
+				return;
+			}else if (playerNum == 3 && state.getTurn() == 3){
+				GPPayTaxesAction gpPayTaxesAction = new GPPayTaxesAction(this);
+				game.sendAction(gpPayTaxesAction);
+				soundEffects = MediaPlayer.create(myActivity, R.raw.wompwomp);
+				soundEffects.start();
+				return;
+			}
+		}
+
 	}
 
 } // GDHumanPlayer class
