@@ -30,8 +30,8 @@
  * out how to access players, we would be able to label player ranks on the GUI. We also would have
  * liked to figure out and implement a way to display whose turn it is.
  *
- * Additional features: custom cards, background music, sound effects when buttons are clicked,
- * app icon, pop-ups (rules and how to play)
+ * Additional features: custom cards, background music, sound effects when certain buttons are
+ * clicked, app icon, pop-ups (rules and how to play)
  */
 
 package edu.up.cs301.GreatDalmuti;
